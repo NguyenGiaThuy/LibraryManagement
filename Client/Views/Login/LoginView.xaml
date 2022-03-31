@@ -26,6 +26,7 @@
                 FontFamily="Berlin Sans FB Demi"
                 Foreground="white"
                 Padding="0"
+                BorderThickness="0"
                 Click="ExitBtn_Click"
                 >
             </Button>
@@ -69,8 +70,13 @@
                         Background="#F0F0F0"
                         BorderBrush="#707070" BorderThickness="1"
                         Padding="10,10,10,10">
-                        <TextBox 
-                            Name="AccountTextBox" FontSize="14"></TextBox>
+                        <TextBox Name="AccountTextBox" 
+                                 FontSize="14"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 VerticalAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch"
+                                 Margin="0,0,0,0"/>
                     </Border>
                 </Grid>
 
@@ -94,17 +100,24 @@
                         Background="#F0F0F0"
                         BorderBrush="#707070" BorderThickness="1"
                         Padding="10,10,10,10">
-                        <PasswordBox Name="PasswordTextBox" FontSize="14"></PasswordBox>
+                        <PasswordBox Name="PasswordBox" 
+                                     FontSize="14"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     VerticalAlignment="Stretch"
+                                     HorizontalAlignment="Stretch"
+                                     Margin="0,0,0,0"/>
                     </Border>
                 </Grid>
 
-                <RadioButton 
+                <CheckBox 
                     Grid.Column="1" 
                     Content="Remember me" 
                     HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5"
                     Foreground="#3C3535"
                     BorderBrush="#3C3535"
-                    FontSize="14" Height="21" Width="112"/>
+                    FontSize="14" 
+                    Width="150"/>
 
                 <TextBlock
                     Grid.Column="1" 

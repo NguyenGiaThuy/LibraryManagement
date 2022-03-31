@@ -4,12 +4,316 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="DevView" Height="450" Width="800">
+        Title="DevView" Height="700" Width="1300">
     <Grid>
-        <TextBlock 
-            Text="DevView"
-            FontSize="20"
-            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TabControl 
+            TabStripPlacement="Top">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem
+                Header="Library Administrator" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,10,0,0">
+                            <Border Name="UserDatabaseBorder"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="User Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="White"
+                        Margin="10,10,10,10">
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem
+                Header="Libraran" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,10,0,0">
+                            <Border Name="DashboardBorder"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="BookDatabaseBorder"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Book" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Book Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="MemberDatabaseBorder"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="CallCardBorder"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="White"
+                        Margin="10,10,10,10">
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem
+                Header="Treasurer" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,10,0,0">
+                            <Border Name="DashboardBorder2"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="BookDatabaseBorder2"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Book" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Book Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="MemberDatabaseBorder2"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="CallCardBorder2"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="White"
+                        Margin="10,10,10,10">
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem
+                Header="Storekeeper" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,10,0,0">
+                            <Border Name="DashboardBorder3"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="BookDatabaseBorder3"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Book" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Book Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="MemberDatabaseBorder3"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Name="CallCardBorder3"
+                                BorderThickness="1"
+                                BorderBrush="Transparent"
+                                Margin="0,0,0,0"
+                                Height="50">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="White"
+                        Margin="10,10,10,10">
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
