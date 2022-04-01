@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CallCardView" Height="700" Width="1100">
+        Title="CallCardView" Height="450" Width="800">
     <Grid>
         <Border Background="White"
             CornerRadius="0">
@@ -14,7 +14,7 @@
                 <Button 
                 Name="ExitBtn"
                 Width="20" Height="20" 
-                Margin="0,15,15,0"
+                Margin="0,2,2,0"
                 VerticalAlignment="Top" HorizontalAlignment="Right"
                 Background="Transparent"
                 Content="X"
@@ -24,64 +24,30 @@
                 Click="ExitBtn_Click">
                 </Button>
 
-                <Grid>
+                <Grid RenderTransformOrigin="0.39,0.493">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150*"/>
-                        <ColumnDefinition Width="400*"/>
-                        <ColumnDefinition Width="110*"/>
-                        <ColumnDefinition Width="110*"/>
-                        <ColumnDefinition Width="110*"/>
-                        <ColumnDefinition Width="110*"/>
+
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
 
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0"
-                          Background="#DCDCDC">
+                    <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60*"/>
                             <RowDefinition Height="250*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Hello,"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Left"
-                        Foreground="Black"
-                        FontSize="16"
-                        Margin="5,6,0,0"/>
 
-                        <StackPanel Grid.Row="1">
-
-                            <RadioButton Content="Dasboard"
-                             Foreground="black"
-                             FontSize="16"
-                             Height="70"
-                             Style="{StaticResource VerticalMenuTheme}"/>
-
-
-                            <RadioButton Content="Book Database"
-                             Foreground="Black"
-                             FontSize="16"
-                             Height="70"
-                             Style="{StaticResource VerticalMenuTheme}"/>
-
-                            <RadioButton Content="Member Database"
-                             Foreground="Black"
-                             FontSize="16"
-                             Height="50"
-                             Style="{StaticResource VerticalMenuTheme}"/>
-
-                            <RadioButton Content="Call Cards"
-                             Foreground="Black"
-                             FontSize="16"
-                             Height="50"
-                             Style="{StaticResource VerticalMenuTheme}"/>
-                        </StackPanel>
-
-                        <GridSplitter Width="5" 
-                                      Height="700"
-                                      HorizontalAlignment="Stretch" 
-                                      Margin="146,0,0,0" 
-                                      Grid.RowSpan="2" />
+                        <TextBox
+                               Width="700"
+                               Height="80"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource SearchboxTheme}" Margin="9,0,0,0" />
 
                     </Grid>
 
@@ -91,15 +57,14 @@
                             <RowDefinition Height="250*"/>
                         </Grid.RowDefinitions>
 
-
-                        <TextBox
-                               Width="416"
-                               Height="80"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"
-                               Margin="18,0,0,0"
-                               Style="{StaticResource SearchboxTheme}"/>
-
+                        <RadioButton
+                            Content="New"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                           
+                            Style="{StaticResource HorizontalMenuTheme}" 
+                            Margin="0,29,0,23" Width="70"/>
                     </Grid>
 
                     <Grid Grid.Column="2">
@@ -108,15 +73,17 @@
                             <RowDefinition Height="250*"/>
                         </Grid.RowDefinitions>
 
-                        <RadioButton Grid.Column="3"
-                            Content="New"
+
+                        <RadioButton
+                            Content="Update"
                             Foreground="White"
                             HorizontalAlignment="Center"
                             FontSize="16"
-                           
+                            
                             Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,50,0,50" Width="90"/>
+                            Margin="0,29,0,23" Width="70"/>
                     </Grid>
+
 
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
@@ -124,17 +91,15 @@
                             <RowDefinition Height="250*"/>
                         </Grid.RowDefinitions>
 
-
-                        <RadioButton Grid.Column="5"
-                            Content="Update"
+                        <RadioButton
+                            Content="Remove"
                             Foreground="White"
                             HorizontalAlignment="Center"
                             FontSize="16"
                             
                             Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,50,0,50" Width="90"/>
+                            Margin="0,29,0,23" Width="70"/>
                     </Grid>
-
 
                     <Grid Grid.Column="4">
                         <Grid.RowDefinitions>
@@ -142,53 +107,35 @@
                             <RowDefinition Height="250*"/>
                         </Grid.RowDefinitions>
 
-                        <RadioButton Grid.Column="5"
-                            Content="Remove"
-                            Foreground="White"
-                            HorizontalAlignment="Center"
-                            FontSize="16"
-                            
-                            Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,50,0,50" Width="90"/>
-                    </Grid>
-
-                    <Grid Grid.Column="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-                        <RadioButton Grid.Column="6"
+                        <RadioButton
                             Content="Report"
                             Foreground="White"
                             HorizontalAlignment="Center"
                             FontSize="16"
                             
                             Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,50,0,50" Width="90"/>
+                            Margin="0,29,0,23" Width="70"/>
                     </Grid>
 
-                    <DataGrid Grid.Column="1" 
-                              Grid.ColumnSpan="6" 
+                    <DataGrid 
+                              Grid.ColumnSpan="5" 
                               HorizontalAlignment="Left" 
-                              Height="568" Margin="21,106,0,0" 
+                              Height="568" Margin="10,106,0,0" 
                               VerticalAlignment="Top" 
-                              Width="904" 
-                              BorderThickness="1"
-                              CanUserResizeColumns="True"
-                              SelectionChanged="DataGrid_SelectionChanged" FontWeight="Bold" FontStretch="Normal" 
-                              AutoGenerateColumns="False"                                
-                              ColumnHeaderHeight="50" 
+                              Width="1080" 
+                              BorderThickness="1"                             
+                              SelectionChanged="DataGrid_SelectionChanged"                              
                               AlternatingRowBackground="#FF929191">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Width="50" Binding="{Binding ID}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Name" Width="80" Binding="{Binding Name}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Email" Width="80" Binding="{Binding Email}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Arrear amount" Width="50" Binding="{Binding AM}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Days in arrear" Width="50" Binding="{Binding ID}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Created date" Width="80" Binding="{Binding Name}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Expiration data" Width="80" Binding="{Binding Email}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Membership type" Width="50" Binding="{Binding AM}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Type" Width="80" Binding="{Binding Type}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="ISBN" Width="80" Binding="{Binding ISBN}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Mem. ID" Width="50" Binding="{Binding MemID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Arrear Amount" Width="50" Binding="{Binding AA}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Current date" Width="80" Binding="{Binding Curr}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Expiration data" Width="80" Binding="{Binding Exp}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Creator" Width="50" Binding="{Binding CR}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Status" Width="50" Binding="{Binding STT}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

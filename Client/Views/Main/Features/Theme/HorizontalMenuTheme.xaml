@@ -11,9 +11,9 @@
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
                             <TextBlock Text="{TemplateBinding Property=Content}"
+                                       FontFamily="Berlin Sans FB Demi"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center" />
-
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -26,7 +26,7 @@
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#89809e"/>
-            </Trigger>
+            </Trigger>      
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

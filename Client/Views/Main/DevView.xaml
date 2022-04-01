@@ -105,6 +105,12 @@
                                 BorderBrush="Transparent"
                                 Margin="0,0,0,0"
                                 Height="50">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                        <GradientStop Color="White" Offset="0.005"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
@@ -127,7 +133,12 @@
                                 Height="50">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
+                                    <RadioButton Content="Member Database"
+                                         Foreground="black"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="-10,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"/>
                                 </StackPanel>
                             </Border>
                             <Border Name="CallCardBorder"
@@ -137,7 +148,12 @@
                                 Height="50">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
+                                    <RadioButton Content="Call Cards"
+                                         Foreground="black"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="-10,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"/>
                                 </StackPanel>
                             </Border>
                         </StackPanel>

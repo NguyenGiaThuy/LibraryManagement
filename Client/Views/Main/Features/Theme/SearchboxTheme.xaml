@@ -8,7 +8,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="0"
                             Background="#CFCFCF"
-                            Width="500"
+                            Width="700"
                             Height="50">
                         <Grid>
                             <materialDesign:PackIcon 
@@ -22,6 +22,7 @@
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="26,0,0,0"
                                        Text="{TemplateBinding Text}"
+                                       BorderThickness="0"
                                        Background="Transparent"
                                        VerticalAlignment="Center"
                                        Padding="5"
