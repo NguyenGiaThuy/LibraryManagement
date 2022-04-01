@@ -33,6 +33,12 @@
                 <ResourceDictionary Source="/FluentUI;component/Styles/FabricUI.ScrollViewer.xaml"/>
                 <ResourceDictionary Source="/FluentUI;component/Styles/FabricUI.ProgressBar.xaml"/>
                 <ResourceDictionary Source="/FluentUI;component/Styles/FabricUI.Controls.xaml"/>
+
+
+                <!--Custom Theme Control-->
+                <ResourceDictionary Source="Views/Main/Features/Theme/VerticalMenuTheme.xaml"/>
+                <ResourceDictionary Source="Views/Main/Features/Theme/HorizontalMenuTheme.xaml"/>
+                <ResourceDictionary Source="Views/Main/Features/Theme/SearchboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

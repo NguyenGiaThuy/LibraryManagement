@@ -3,10 +3,583 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         mc:Ignorable="d"
-        Title="MemberView" Height="450" Width="800">
+        Title="MemberView" Height="700" Width=" 1100"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
     <Grid>
-        
+        <Border Background="White"
+            CornerRadius="0">
+            <Grid>
+                <Button 
+                Name="ExitBtn"
+                Width="20" Height="20" 
+                Margin="0,15,15,0"
+                VerticalAlignment="Top" HorizontalAlignment="Right"
+                Background="Transparent"
+                Content="X"
+                FontFamily="Berlin Sans FB Demi"
+                Foreground="Black"
+                Padding="0"
+                Click="ExitBtn_Click">
+                </Button>
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="150*"/>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="110*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Background="#DCDCDC">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Hello,"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Foreground="Black"
+                        FontSize="16"
+                        Margin="5,6,0,0"/>
+
+                        <StackPanel Grid.Row="1">
+
+                            <RadioButton Content="Dasboard"
+                             Foreground="black"
+                             FontSize="16"
+                             Height="70"
+                             Style="{StaticResource VerticalMenuTheme}"/>
+
+
+                            <RadioButton Content="Book Database"
+                             Foreground="Black"
+                             FontSize="16"
+                             Height="70"
+                             Style="{StaticResource VerticalMenuTheme}"/>
+
+                            <RadioButton Content="Member Database"
+                             Foreground="Black"
+                             FontSize="16"
+                             Height="50"
+                             Style="{StaticResource VerticalMenuTheme}"/>
+
+                            <RadioButton Content="Call Cards"
+                             Foreground="Black"
+                             FontSize="16"
+                             Height="50"
+                             Style="{StaticResource VerticalMenuTheme}"/>
+                        </StackPanel>
+
+                        <GridSplitter Width="5" 
+                                      Height="700"
+                                      HorizontalAlignment="Stretch" 
+                                      Margin="146,0,0,0" 
+                                      Grid.RowSpan="2" />
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="40*"/>
+
+
+                        </Grid.RowDefinitions>
+                        <!--<Image
+                            Source="Theme/ava.png" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="15,15,15,15"/>-->
+
+                        <materialDesign:PackIcon 
+                            Kind="Account" 
+                            Height="176" Width="182" 
+                            HorizontalAlignment="Center"
+                            Foreground="#3C3535" Margin="0,14,0,0"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Background="Transparent"
+                                   Text="Name:"
+                                   FontSize="14" 
+                                   Margin="6,10,-6,29" 
+                                   Grid.RowSpan="2"/>
+
+
+                        <Border Grid.Row="1"
+                            Background="Transparent"
+                            BorderBrush="Black" 
+                            BorderThickness="1"
+                            Margin="4,33,6,12" 
+                            Grid.RowSpan="2">
+                            <TextBlock 
+                                   Text="Name"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9" />
+
+                        </Border>
+
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Date of Birth:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="3,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="DOB"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9" RenderTransformOrigin="0.5,0.5" >
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Address:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="3,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="address"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9" RenderTransformOrigin="0.5,0.5" >
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Mobie:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="3,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="phone number"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9">
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Email:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="3,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="email address"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9">
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+
+                        <Grid Grid.Row="7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Created date:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="date"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9">
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="87*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock                                   
+                                Text="Exp. date:"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="3,12,0,0"
+                                FontSize="14"
+                                Foreground="Black" />
+
+                            <Border Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Black" 
+                                VerticalAlignment="Top"
+                                BorderThickness="1"
+                                Margin="1,12,9,0" 
+                                RenderTransformOrigin="0.5,0.5" 
+                                Height="19" Grid.ColumnSpan="2">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <TextBlock 
+                                   Text="date"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="5,0,0,0"
+                                   FontSize="11"
+                                   Foreground="#a9a9a9">
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+
+
+
+                        <GridSplitter 
+                                   Width="5" 
+                                   Height="700"
+                                   Grid.RowSpan="7"
+                                   HorizontalAlignment="Stretch" 
+                                   Margin="202,24,-5,9"  />
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <TextBox Grid.Column="2"
+                               Width="400"
+                               Height="80"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,0"
+                               Style="{StaticResource SearchboxTheme}"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Grid.Column="3"
+                            Content="New"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                           
+                            Style="{StaticResource HorizontalMenuTheme}" 
+                            Margin="0,50,0,50" Width="90"/>
+                    </Grid>
+
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <RadioButton Grid.Column="5"
+                            Content="Update"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            
+                            Style="{StaticResource HorizontalMenuTheme}" 
+                            Margin="0,50,0,50" Width="90"/>
+                    </Grid>
+
+
+                    <Grid Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Grid.Column="5"
+                            Content="Remove"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            
+                            Style="{StaticResource HorizontalMenuTheme}" 
+                            Margin="0,50,0,50" Width="90"/>
+                    </Grid>
+
+                    <Grid Grid.Column="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="250*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Grid.Column="6"
+                            Content="Report"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            
+                            Style="{StaticResource HorizontalMenuTheme}" 
+                            Margin="0,50,0,50" Width="90"/>
+                    </Grid>
+
+                    <DataGrid Grid.Column="2" 
+                              Grid.ColumnSpan="5" 
+                              HorizontalAlignment="Left" 
+                              Height="578" Margin="10,112,0,0" 
+                              VerticalAlignment="Top" 
+                              Width="727" 
+                              
+                              BorderThickness="1"
+                              CanUserResizeColumns="True"
+                              SelectionChanged="DataGrid_SelectionChanged" FontWeight="Bold" FontStretch="Normal" AutoGenerateColumns="False" MinColumnWidth="28" HeadersVisibility="Column" ColumnHeaderHeight="50" RowHeaderWidth="50" GridLinesVisibility="Horizontal" AlternatingRowBackground="#FF929191">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Width="50" Binding="{Binding ID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Name" Width="80" Binding="{Binding Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Email" Width="80" Binding="{Binding Email}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Arrear amount" Width="50" Binding="{Binding AM}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Days in arrear" Width="50" Binding="{Binding ID}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Created date" Width="80" Binding="{Binding Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Expiration data" Width="80" Binding="{Binding Email}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Membership type" Width="50" Binding="{Binding AM}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

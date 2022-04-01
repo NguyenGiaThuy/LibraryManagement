@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using Client.Views.Login;
 using Client.Views.Main;
 using Client.Views.Main.Users;
+using Client.Views.Main.Features;
 
 namespace Client.Views.Login
 {
@@ -62,6 +63,16 @@ namespace Client.Views.Login
                 case "treasurer":
                     TreasurerView treasurerView = new TreasurerView();
                     treasurerView.Show();
+                    Close();
+                    break;
+                case "memberview":
+                    MemberView memberView = new MemberView();
+                    memberView.Show();
+                    Close();
+                    break;
+                case "callcardsview":
+                    CallCardView callCardView = new CallCardView();
+                    callCardView.Show();
                     Close();
                     break;
                 default:
