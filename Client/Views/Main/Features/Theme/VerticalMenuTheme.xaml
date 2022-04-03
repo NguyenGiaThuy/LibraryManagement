@@ -12,7 +12,9 @@
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
                             <materialDesign:PackIcon Kind="{TemplateBinding Property=DataContext}" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="{TemplateBinding Property=Content}"                                      
+                            <TextBlock Text="{TemplateBinding Property=Content}"
+                                       FontFamily="Segoe UI"
+                                       FontSize="14"
                                        VerticalAlignment="Center"
                                        Margin="50,0,0,0"/>
                         </Grid>
@@ -26,11 +28,13 @@
 
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#FF9E9E9E"/>
+                <Setter Property="Background" Value="#3B2C5E"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="#DCDCDC" />
-               
+                <Setter Property="Background" Value="#DCDCDC"/>
+                <Setter Property="Foreground" Value="Black"/>
             </Trigger>
         </Style.Triggers>
     </Style>

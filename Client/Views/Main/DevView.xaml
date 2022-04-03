@@ -8,6 +8,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="DevView" Height="700" Width="1300">
+
     <Grid>
         <TabControl 
             TabStripPlacement="Top">
@@ -32,7 +33,7 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="13*"/>
                     </Grid.ColumnDefinitions>
 
@@ -48,16 +49,21 @@
 
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
-                            <Border Name="UserDatabaseBorder"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="User Database" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
+
+                            <RadioButton Content="Dashboard"                                        
+                                        DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                        FontSize="16"
+                                        Height="50"
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"
+                                        IsChecked="True"/>
+
+                            <RadioButton Content="User Database"                                        
+                                        DataContext="{x:Static materialDesign:PackIconKind.Account}"
+                                        FontSize="16"
+                                        Height="50"
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"/>
                         </StackPanel>
                     </Border>
 
@@ -84,7 +90,7 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="13*"/>
                     </Grid.ColumnDefinitions>
 
@@ -102,43 +108,39 @@
                                     Margin="0,10,0,0">
 
                             <RadioButton Content="Dashboard"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"                                         
-                                        Foreground="black"
+                                        DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                         FontSize="16"
                                         Height="50"
-                                        Margin="-10,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"
+                                        IsChecked="True"/>
 
                             <RadioButton Content="Book Database"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Book}"                                         
-                                        Foreground="black"
+                                        DataContext="{x:Static materialDesign:PackIconKind.Book}"
                                         FontSize="16"
                                         Height="50"
-                                        Margin="-10,0,0,0"
+                                        Margin="0,0,0,0"
                                         Style="{StaticResource VerticalMenuTheme}"/>
 
                             <RadioButton Content="Member Database"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.User}"                                         
-                                        Foreground="black"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="-10,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                                         DataContext="{x:Static materialDesign:PackIconKind.User}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"/>
 
                             <RadioButton Content="Call Cards"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"                                         
-                                        Foreground="black"
+                                        DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
                                         FontSize="16"
                                         Height="50"
-                                        Margin="-10,0,0,0"
+                                        Margin="0,0,0,0"
                                         Style="{StaticResource VerticalMenuTheme}"/>
                         </StackPanel>
                     </Border>
 
-                    <Border 
-                        Grid.Column="1"
-                        Background="White"
-                        Margin="10,10,10,10">
+                    <Border Grid.Column="1"
+                            Background="White"
+                            Margin="10,10,10,10">
                     </Border>
                 </Grid>
             </TabItem>
@@ -158,7 +160,7 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="13*"/>
                     </Grid.ColumnDefinitions>
 
@@ -174,46 +176,21 @@
 
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
-                            <Border Name="DashboardBorder2"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="BookDatabaseBorder2"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Book" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Book Database" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="MemberDatabaseBorder2"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="CallCardBorder2"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
+
+                            <RadioButton Content="Dashboard"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"/>
+                            
+                            <RadioButton Content="Call Cards"                                        
+                                        DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
+                                        FontSize="16"
+                                        Height="50"
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"/>
                         </StackPanel>
                     </Border>
 
@@ -240,7 +217,7 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="13*"/>
                     </Grid.ColumnDefinitions>
 
@@ -256,46 +233,28 @@
 
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
-                            <Border Name="DashboardBorder3"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ChartBar" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="BookDatabaseBorder3"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Book" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Book Database" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="MemberDatabaseBorder3"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="User" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Member Database" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-                            <Border Name="CallCardBorder3"
-                                BorderThickness="1"
-                                BorderBrush="Transparent"
-                                Margin="0,0,0,0"
-                                Height="50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ChromeReaderMode" Margin="15,0,10,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Call Cards" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
+
+                            <RadioButton Content="Dashboard"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"/>
+
+                            <RadioButton Content="Book Database"                                        
+                                        DataContext="{x:Static materialDesign:PackIconKind.Book}"
+                                        FontSize="16"
+                                        Height="50"
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"/>
+
+                            <RadioButton Content="Book Management"                                        
+                                        DataContext="{x:Static materialDesign:PackIconKind.Edit}"
+                                        FontSize="16"
+                                        Height="50"
+                                        Margin="0,0,0,0"
+                                        Style="{StaticResource VerticalMenuTheme}"/>
                         </StackPanel>
                     </Border>
 

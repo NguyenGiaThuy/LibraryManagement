@@ -78,6 +78,7 @@ namespace Client.Views.Login
                 default:
                     DevView devView = new DevView();
                     devView.Show();
+                    Close();
                     break;
             }
         }
