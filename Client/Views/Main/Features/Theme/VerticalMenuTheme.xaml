@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
            x:Key="VerticalMenuTheme">
@@ -10,11 +11,10 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
-                            <TextBlock Text="{TemplateBinding Property=Content}"
-                                       FontFamily="Berlin Sans FB Demi"
+                            <materialDesign:PackIcon Kind="{TemplateBinding Property=DataContext}" Margin="15,0,10,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{TemplateBinding Property=Content}"                                      
                                        VerticalAlignment="Center"
-                                       Margin="10,0,0,0"/>
-
+                                       Margin="50,0,0,0"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -27,7 +27,11 @@
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#FF9E9E9E"/>
-            </Trigger> 
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="#DCDCDC" />
+               
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
