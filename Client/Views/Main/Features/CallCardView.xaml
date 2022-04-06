@@ -7,133 +7,12 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="CallCardView" Height="450" Width="800">
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <!--<Border Background="White"
-            CornerRadius="0">
-            <Grid>
-                <Grid RenderTransformOrigin="0.39,0.493">
-                    <Grid.ColumnDefinitions>
-
-                        <ColumnDefinition Width="300*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="60*"/>
-
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-
-                        <TextBox
-                               Width="700"
-                               Height="80"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"
-                               Style="{StaticResource SearchboxTheme}" Margin="9,0,0,0" />
-
-                    </Grid>
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-                        <RadioButton
-                            Content="New"
-                            Foreground="White"
-                            HorizontalAlignment="Center"
-                            FontSize="16"
-                           
-                            Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,29,0,23" Width="70"/>
-                    </Grid>
-
-                    <Grid Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-
-                        <RadioButton
-                            Content="Update"
-                            Foreground="White"
-                            HorizontalAlignment="Center"
-                            FontSize="16"
-                            
-                            Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,29,0,23" Width="70"/>
-                    </Grid>
-
-
-                    <Grid Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-                        <RadioButton
-                            Content="Remove"
-                            Foreground="White"
-                            HorizontalAlignment="Center"
-                            FontSize="16"
-                            
-                            Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,29,0,23" Width="70"/>
-                    </Grid>
-
-                    <Grid Grid.Column="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60*"/>
-                            <RowDefinition Height="250*"/>
-                        </Grid.RowDefinitions>
-
-                        <RadioButton
-                            Content="Report"
-                            Foreground="White"
-                            HorizontalAlignment="Center"
-                            FontSize="16"
-                            
-                            Style="{StaticResource HorizontalMenuTheme}" 
-                            Margin="0,29,0,23" Width="70"/>
-                    </Grid>
-
-                    <DataGrid 
-                              Grid.ColumnSpan="5" 
-                              HorizontalAlignment="Left" 
-                              Height="568" Margin="10,106,0,0" 
-                              VerticalAlignment="Top" 
-                              Width="1080" 
-                              BorderThickness="1"                             
-                              SelectionChanged="DataGrid_SelectionChanged"                              
-                              AlternatingRowBackground="#FF929191">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Width="50" Binding="{Binding ID}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Type" Width="80" Binding="{Binding Type}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="ISBN" Width="80" Binding="{Binding ISBN}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Mem. ID" Width="50" Binding="{Binding MemID}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Arrear Amount" Width="50" Binding="{Binding AA}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Current date" Width="80" Binding="{Binding Curr}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Expiration data" Width="80" Binding="{Binding Exp}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Creator" Width="50" Binding="{Binding CR}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Status" Width="50" Binding="{Binding STT}"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-
-
-            </Grid>
-        </Border>-->
+        
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -155,7 +34,8 @@
                     HorizontalAlignment="Stretch"
                     Height="40"
                     Margin="0,0,10,0"
-                    Padding="5"/>
+                    Padding="5"
+                    Click="CallCardNewBtn_Click"/>
             <Button Name="CallCardUpdateBtn"
                     Grid.Column="2"
                     Content="Update"
@@ -163,7 +43,8 @@
                     HorizontalAlignment="Stretch"
                     Margin="0,0,10,0"
                     Height="40"
-                    Padding="5"/>
+                    Padding="5"
+                    Click="CallCardUpdateBtn_Click"/>
             <Button Name="CallCardRemoveBtn"
                     Grid.Column="3"
                     Content="Remove"
@@ -171,7 +52,8 @@
                     HorizontalAlignment="Stretch"
                     Margin="0,0,10,0"
                     Height="40"
-                    Padding="5"/>
+                    Padding="5"
+                    Click="CallCardRemoveBtn_Click"/>
             <Button Name="CallCardReportBtn"
                     Grid.Column="4"
                     Content="Report"
@@ -179,7 +61,8 @@
                     HorizontalAlignment="Stretch"
                     Margin="0,0,10,0"
                     Height="40"
-                    Padding="5"/>
+                    Padding="5"
+                    Click="CallCardReportBtn_Click"/>
         </Grid>
 
         <DataGrid Name="CallCardDataGrid"
@@ -190,8 +73,7 @@
                   HorizontalContentAlignment="Stretch"
                   HorizontalScrollBarVisibility="Visible"
                   Margin="10,0,10,10"
-                  BorderThickness="1"                             
-                  SelectionChanged="DataGrid_SelectionChanged"                              
+                  BorderThickness="1"                                                       
                   AlternatingRowBackground="#FF929191"
                   ColumnWidth="auto">
             <DataGrid.Columns>

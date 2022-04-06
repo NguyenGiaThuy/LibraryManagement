@@ -73,7 +73,7 @@
 
                     <Border 
                         Grid.Column="1"
-                        Background="White"
+                        Background="Transparent"
                         Margin="10,10,10,10">
                         <Frame Name="LibraryAdminFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
@@ -152,7 +152,7 @@
                     </Border>
 
                     <Border Grid.Column="1"
-                            Background="White"
+                            Background="Transparent"
                             Margin="10,10,10,10">
                         <Frame Name="LibrarianFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
@@ -213,7 +213,7 @@
 
                     <Border 
                         Grid.Column="1"
-                        Background="White"
+                        Background="Transparent"
                         Margin="10,10,10,10">
                         <Frame Name="TreasurerFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
@@ -284,7 +284,7 @@
 
                     <Border 
                         Grid.Column="1"
-                        Background="White"
+                        Background="Transparent"
                         Margin="10,10,10,10">
                         <Frame Name="StorekeeperFrame" NavigationUIVisibility="Hidden"/>
                     </Border>

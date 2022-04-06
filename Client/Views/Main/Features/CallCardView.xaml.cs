@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Client.Views.Main.Features.Dialogs;
 
 namespace Client.Views.Main.Features
 {
@@ -35,7 +36,37 @@ namespace Client.Views.Main.Features
             Close();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Adding new call cards";
+            decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
+            decisionView.IndividualBtn.Content = "Add by form";
+            decisionView.MassBtn.Content = "Add from a file";
+            decisionView.Show();
+        }
+
+        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Updating call cards";
+            decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
+            decisionView.IndividualBtn.Content = "Individual update";
+            decisionView.MassBtn.Content = "Mass update";
+            decisionView.Show();
+        }
+
+        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Removing call cards";
+            decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
+            decisionView.IndividualBtn.Content = "Individual remove";
+            decisionView.MassBtn.Content = "Mass remove";
+            decisionView.Show();
+        }
+
+        private void CallCardReportBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
