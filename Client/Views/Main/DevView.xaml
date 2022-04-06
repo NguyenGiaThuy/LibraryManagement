@@ -10,7 +10,7 @@
         Title="DevView" Height="700" Width="1300">
 
     <Grid>
-        <TabControl 
+        <TabControl
             TabStripPlacement="Top">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
@@ -46,31 +46,36 @@
                                 <GradientStop Color="White" Offset="0.005"/>
                             </LinearGradientBrush>
                         </Border.Background>
-
+                        
                         <StackPanel Orientation="Vertical"
-                                    Margin="0,10,0,0">
+                                        Margin="0,10,0,0" Grid.Row="0">
 
-                            <RadioButton Content="Dashboard"                                        
+                                <RadioButton Name="LibraryAdminDashboardRBtn" 
+                                         Content="Dashboard"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
                                         Style="{StaticResource VerticalMenuTheme}"
-                                        IsChecked="True"/>
+                                        IsChecked="True"
+                                        Checked="LibraryAdminDashboardRBtn_Checked"/>
 
-                            <RadioButton Content="User Database"                                        
+                                <RadioButton Name="LibraryAdminUserRBtn" 
+                                         Content="User Database"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.Account}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
-                        </StackPanel>
+                                        Style="{StaticResource VerticalMenuTheme}"
+                                        Checked="LibraryAdminUserRBtn_Checked"/>
+                            </StackPanel>
                     </Border>
 
                     <Border 
                         Grid.Column="1"
                         Background="White"
                         Margin="10,10,10,10">
+                        <Frame Name="LibraryAdminFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
                 </Grid>
             </TabItem>
@@ -107,40 +112,49 @@
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
 
-                            <RadioButton Content="Dashboard"                                        
+                            <RadioButton Name="LibrarianDashboardRBtn"
+                                         Content="Dashboard"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
                                         Style="{StaticResource VerticalMenuTheme}"
-                                        IsChecked="True"/>
+                                        IsChecked="True"
+                                         Checked="LibrarianDashboardRBtn_Checked"/>
 
-                            <RadioButton Content="Book Database"                                        
+                            <RadioButton Name="LibrarianBookRBtn"
+                                         Content="Book Database"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.Book}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                                        Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="LibrarianBookRBtn_Checked"/>
 
-                            <RadioButton Content="Member Database"                                        
+                            <RadioButton Name="LibrarianMemberRBtn"
+                                         Content="Member Database"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.User}"
                                          FontSize="16"
                                          Height="50"
                                          Margin="0,0,0,0"
-                                         Style="{StaticResource VerticalMenuTheme}"/>
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="LibrarianMemberRBtn_Checked"/>
 
-                            <RadioButton Content="Call Cards"                                        
+                            <RadioButton Name="LibrarianCallCardRBtn"
+                                         Content="Call Cards"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                                        Style="{StaticResource VerticalMenuTheme}"
+                                        Checked="LibrarianCallCardRBtn_Checked"/>
                         </StackPanel>
                     </Border>
 
                     <Border Grid.Column="1"
                             Background="White"
                             Margin="10,10,10,10">
+                        <Frame Name="LibrarianFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
                 </Grid>
             </TabItem>
@@ -177,20 +191,23 @@
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
 
-                            <RadioButton Content="Dashboard"                                        
+                            <RadioButton Name="TreasurerDashboardRBtn" 
+                                         Content="Dashboard"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                          FontSize="16"
                                          Height="50"
                                          Margin="0,0,0,0"
                                          Style="{StaticResource VerticalMenuTheme}"
-                                         IsChecked="True"/>
-                            
-                            <RadioButton Content="Call Cards"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                                         IsChecked="True"
+                                         Checked="TreasurerDashboardRBtn_Checked"/>
+
+                            <RadioButton Name="TreasurerCallCardRBtn" Content="Call Cards"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="TreasurerCallCardRBtn_Checked"/>
                         </StackPanel>
                     </Border>
 
@@ -198,6 +215,7 @@
                         Grid.Column="1"
                         Background="White"
                         Margin="10,10,10,10">
+                        <Frame Name="TreasurerFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
                 </Grid>
             </TabItem>
@@ -234,27 +252,33 @@
                         <StackPanel Orientation="Vertical"
                                     Margin="0,10,0,0">
 
-                            <RadioButton Content="Dashboard"                                        
+                            <RadioButton Name="StorekeeperDashboardRBtn" 
+                                         Content="Dashboard"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                          FontSize="16"
                                          Height="50"
                                          Margin="0,0,0,0"
                                          Style="{StaticResource VerticalMenuTheme}"
-                                         IsChecked="True"/>
+                                         IsChecked="True"
+                                         Checked="StorekeeperDashboardRBtn_Checked"/>
 
-                            <RadioButton Content="Book Database"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Book}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                            <RadioButton Name="StorekeeperBookRBtn" 
+                                         Content="Book Database"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.Book}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="StorekeeperBookRBtn_Checked"/>
 
-                            <RadioButton Content="Book Management"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Edit}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"/>
+                            <RadioButton Name="StorekeeperBMRBtn" 
+                                         Content="Book Management"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.Edit}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="StorekeeperBMRBtn_Checked"/>
                         </StackPanel>
                     </Border>
 
@@ -262,6 +286,7 @@
                         Grid.Column="1"
                         Background="White"
                         Margin="10,10,10,10">
+                        <Frame Name="StorekeeperFrame" NavigationUIVisibility="Hidden"/>
                     </Border>
                 </Grid>
             </TabItem>

@@ -23,5 +23,13 @@ namespace Client.Views.Main.Users
         {
             InitializeComponent();
         }
+
+        //Close properly the app when the exit button is pressed
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }

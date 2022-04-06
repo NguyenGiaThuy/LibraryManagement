@@ -17,9 +17,9 @@ namespace Client.Views.Main.Features
     /// <summary>
     /// Interaction logic for BookManagementCardView.xaml
     /// </summary>
-    public partial class BookManagementCardView : Window
+    public partial class BMCardViewCardView : Window
     {
-        public BookManagementCardView()
+        public BMCardViewCardView()
         {
             InitializeComponent();
         }

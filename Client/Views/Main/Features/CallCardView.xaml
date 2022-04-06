@@ -8,22 +8,13 @@
         mc:Ignorable="d"
         Title="CallCardView" Height="450" Width="800">
     <Grid>
-        <Border Background="White"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--<Border Background="White"
             CornerRadius="0">
             <Grid>
-                <Button 
-                Name="ExitBtn"
-                Width="20" Height="20" 
-                Margin="0,2,2,0"
-                VerticalAlignment="Top" HorizontalAlignment="Right"
-                Background="Transparent"
-                Content="X"
-                FontFamily="Berlin Sans FB Demi"
-                Foreground="Black"
-                Padding="0"
-                Click="ExitBtn_Click">
-                </Button>
-
                 <Grid RenderTransformOrigin="0.39,0.493">
                     <Grid.ColumnDefinitions>
 
@@ -142,6 +133,78 @@
 
 
             </Grid>
-        </Border>
+        </Border>-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="CallCardSearchTxt"
+                     Grid.Column="0"
+                 Style="{StaticResource SearchboxTheme}"
+                 Margin="10,10,10,10" />
+
+            <Button Name="CallCardNewBtn"
+                    Grid.Column="1"
+                    Content="New"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Height="40"
+                    Margin="0,0,10,0"
+                    Padding="5"/>
+            <Button Name="CallCardUpdateBtn"
+                    Grid.Column="2"
+                    Content="Update"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,10,0"
+                    Height="40"
+                    Padding="5"/>
+            <Button Name="CallCardRemoveBtn"
+                    Grid.Column="3"
+                    Content="Remove"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,10,0"
+                    Height="40"
+                    Padding="5"/>
+            <Button Name="CallCardReportBtn"
+                    Grid.Column="4"
+                    Content="Report"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,10,0"
+                    Height="40"
+                    Padding="5"/>
+        </Grid>
+
+        <DataGrid Name="CallCardDataGrid"
+                  Grid.Row="1"
+                  VerticalAlignment="Stretch"
+                  VerticalScrollBarVisibility="Visible"
+                  HorizontalAlignment="Stretch" 
+                  HorizontalContentAlignment="Stretch"
+                  HorizontalScrollBarVisibility="Visible"
+                  Margin="10,0,10,10"
+                  BorderThickness="1"                             
+                  SelectionChanged="DataGrid_SelectionChanged"                              
+                  AlternatingRowBackground="#FF929191"
+                  ColumnWidth="auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding ISBN}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="1.5*" Binding="{Binding MemID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="*" Binding="{Binding AA}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Current date" MinWidth="50" Width="*" Binding="{Binding Curr}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Expiration data" MinWidth="0" Width="*" Binding="{Binding Exp}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding CR}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding STT}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

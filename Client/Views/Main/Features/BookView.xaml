@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="BookView" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock Text="BookView"/>
     </Grid>
 </Window>

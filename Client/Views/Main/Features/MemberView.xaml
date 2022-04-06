@@ -15,19 +15,6 @@
         <Border Background="White"
             CornerRadius="0">
             <Grid>
-                <Button 
-                Name="ExitBtn"
-                Width="20" Height="20" 
-                Margin="0,15,15,0"
-                VerticalAlignment="Top" HorizontalAlignment="Right"
-                Background="Transparent"
-                Content="X"
-                FontFamily="Berlin Sans FB Demi"
-                Foreground="Black"
-                Padding="0"
-                Click="ExitBtn_Click">
-                </Button>
-
                 <Grid>
 
                     <Grid.ColumnDefinitions>

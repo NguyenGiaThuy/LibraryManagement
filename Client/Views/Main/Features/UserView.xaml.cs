@@ -12,24 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Client.Views.Main.Users
+namespace Client.Views.Main.Features
 {
     /// <summary>
-    /// Interaction logic for LibraryAdminView.xaml
+    /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class LibraryAdminView : Window
+    public partial class UserView : Window
     {
-        public LibraryAdminView()
+        public UserView()
         {
             InitializeComponent();
-        }
-
-        //Close properly the app when the exit button is pressed
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-
-            Application.Current.Shutdown();
         }
     }
 }

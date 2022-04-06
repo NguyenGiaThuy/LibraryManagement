@@ -72,7 +72,7 @@ namespace Server.Models
 
             modelBuilder.Entity<LibBookManagementCard>(entity =>
             {
-                entity.ToTable("Lib_BookManagementCard");
+                entity.ToTable("Lib_BookModificationCard");
 
                 entity.Property(e => e.Id)
                     .ValueGeneratedNever()

@@ -1,12 +1,12 @@
-﻿<Window x:Class="Client.Views.Main.Features.Dashboard.TreasurerDashboardView"
+﻿<Window x:Class="Client.Views.Main.Features.BMCardViewCardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Client.Views.Main.Features.Dashboard"
+        xmlns:local="clr-namespace:Client.Views.Main.Features"
         mc:Ignorable="d"
-        Title="TreasurerDashboardView" Height="450" Width="800">
+        Title="BMCardViewCardView" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="TreasurerDashboardView"/>
+        <TextBlock Text="BMCardViewCardView"/>
     </Grid>
 </Window>

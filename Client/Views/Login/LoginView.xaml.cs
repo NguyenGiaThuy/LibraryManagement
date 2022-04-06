@@ -65,28 +65,40 @@ namespace Client.Views.Login
                     treasurerView.Show();
                     Close();
                     break;
-                case "memberview":
-                    MemberView memberView = new MemberView();
-                    memberView.Show();
-                    Close();
-                    break;
-                case "callcardsview":
-                    CallCardView callCardView = new CallCardView();
-                    callCardView.Show();
-                    Close();
-                    break;
-                default:
+                case "dev":
                     DevView devView = new DevView();
                     devView.Show();
                     Close();
+                    break;
+                case "":
+                    LoginCheckTxt.Text = "The username & password field cannot be blank!";
+                    break;
+                default:
+                    LoginCheckTxt.Text = "Incorrect username or password!";
                     break;
             }
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
-            forgotPasswordView.Show();
+            //ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
+            //forgotPasswordView.Show();
+            MessageBox.Show("Please contact to your administrator to retrieve password!", "Forgot password", MessageBoxButton.OK,MessageBoxImage.Information);
+        }
+
+        //Press Enter key to Login
+        private void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            UIElement uIElement = e.OriginalSource as UIElement;
+            try
+            {
+                if ((uIElement != null) && (e.Key == Key.Enter))
+                {
+                    e.Handled = true;
+                    LoginBtn_Click(LoginBtn, e);
+                }
+            }
+            catch (Exception ex) { }
         }
     }
 }
