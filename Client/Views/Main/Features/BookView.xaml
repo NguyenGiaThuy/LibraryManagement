@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="BookView" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="BookView"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Background="White">
+            
+        </Grid>
+
+        <Grid Grid.Column="2"
+              Background="White">
+        </Grid>
     </Grid>
 </Window>
