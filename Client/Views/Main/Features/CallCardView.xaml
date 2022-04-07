@@ -25,7 +25,7 @@
             <TextBox Name="CallCardSearchTxt"
                      Grid.Column="0"
                  Style="{StaticResource SearchboxTheme}"
-                 Margin="10,10,10,10" />
+                 Margin="10,10,0,10" />
 
             <Button Name="CallCardNewBtn"
                     Grid.Column="1"
@@ -33,7 +33,7 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Height="40"
-                    Margin="0,0,10,0"
+                    Margin="10,0,5,0"
                     Padding="5"
                     Click="CallCardNewBtn_Click"/>
             <Button Name="CallCardUpdateBtn"
@@ -41,7 +41,7 @@
                     Content="Update"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
-                    Margin="0,0,10,0"
+                    Margin="5,0,5,0"
                     Height="40"
                     Padding="5"
                     Click="CallCardUpdateBtn_Click"/>
@@ -50,7 +50,7 @@
                     Content="Remove"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
-                    Margin="0,0,10,0"
+                    Margin="5,0,5,0"
                     Height="40"
                     Padding="5"
                     Click="CallCardRemoveBtn_Click"/>
@@ -59,7 +59,7 @@
                     Content="Report"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
-                    Margin="0,0,10,0"
+                    Margin="5,0,10,0"
                     Height="40"
                     Padding="5"
                     Click="CallCardReportBtn_Click"/>
@@ -77,15 +77,17 @@
                   AlternatingRowBackground="#FF929191"
                   ColumnWidth="auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding ID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding Type}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding ISBN}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="1.5*" Binding="{Binding MemID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="*" Binding="{Binding AA}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Current date" MinWidth="50" Width="*" Binding="{Binding Curr}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Expiration data" MinWidth="0" Width="*" Binding="{Binding Exp}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding CR}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding STT}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" MinWidth="50" Width="0.5*" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" MinWidth="50" Width="0.75*" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="0.75*" Binding="{Binding ISBN}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="1*" Binding="{Binding MembershipID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Membership name" MinWidth="50" Width="1.5*" Binding="{Binding MembershipName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="1*" Binding="{Binding ArrearAmount}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Created date" MinWidth="50" Width="1*" Binding="{Binding CreatedDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Current date" MinWidth="50" Width="1*" Binding="{Binding CurrentDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Expiration date" MinWidth="0" Width="1*" Binding="{Binding Exp}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creator" MinWidth="50" Width="0.75*" Binding="{Binding Creator}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" MinWidth="50" Width="0.75*" Binding="{Binding Status}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
