@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Client.Views.Main.Features.Dialogs;
+using Microsoft.Win32;
 
 namespace Client.Views.Main.Features
 {
@@ -30,14 +32,46 @@ namespace Client.Views.Main.Features
                 this.DragMove();
         }
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        private void MemberNewBtn_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Adding new members";
+            decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
+            decisionView.IndividualBtn.Content = "Add by form";
+            decisionView.MassBtn.Content = "Add from a file";
+            decisionView.ShowDialog();
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MemberUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Updating members";
+            decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
+            decisionView.IndividualBtn.Content = "Individual update";
+            decisionView.MassBtn.Content = "Mass update";
+            decisionView.ShowDialog();
         }
+
+        private void MemberRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DecisionView decisionView = new DecisionView();
+            decisionView.Title = "Removing members";
+            decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
+            decisionView.IndividualBtn.Content = "Individual remove";
+            decisionView.MassBtn.Content = "Mass remove";
+            decisionView.ShowDialog();
+        }
+
+        private void MemberReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Export a report";
+            saveFileDialog.FileName = "Member_Report";
+            saveFileDialog.DefaultExt = "csv";
+            saveFileDialog.Filter = "CSV files (.csv)|*.csv";
+            saveFileDialog.OverwritePrompt = true;
+            saveFileDialog.ValidateNames = true;
+            saveFileDialog.ShowDialog();
+        } 
     }
 }

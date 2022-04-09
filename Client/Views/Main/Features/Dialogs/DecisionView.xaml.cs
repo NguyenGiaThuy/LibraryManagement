@@ -28,7 +28,7 @@ namespace Client.Views.Main.Features.Dialogs
         private void MassBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|JSON files (*.json)|*.json";
+            openFileDialog.Filter = "CSV files (*.csv)|*.csv";
             openFileDialog.ShowDialog();
         }
 

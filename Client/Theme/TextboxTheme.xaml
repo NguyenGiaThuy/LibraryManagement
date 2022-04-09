@@ -2,24 +2,26 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Style TargetType="{x:Type TextBox}"
-           x:Key="ParagraphTextbox">
+           x:Key="TitleTextbox"
+           BasedOn="{x:Null}">
         <Setter Property="VerticalContentAlignment" Value="Top"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Padding" Value="3"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Padding" Value="20"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsReadOnlyCaretVisible" Value="True"/>
     </Style>
 
-    <Style TargetType="TextBox"
-           x:Key="PropertyTextbox">
-        <Setter Property="VerticalContentAlignment" Value="Top"/>
+    <Style TargetType="{x:Type TextBox}"
+           x:Key="PropertyTextbox"
+           BasedOn="{x:Null}">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Bottom"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="HorizontalScrollBarVisibility" Value="Visible"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="IsReadOnly" Value="True"/>

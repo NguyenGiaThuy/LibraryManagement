@@ -68,26 +68,24 @@
         <DataGrid Name="CallCardDataGrid"
                   Grid.Row="1"
                   VerticalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Visible"
-                  HorizontalAlignment="Stretch" 
-                  HorizontalContentAlignment="Stretch"
-                  HorizontalScrollBarVisibility="Visible"
+                  HorizontalAlignment="Stretch"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto"
                   Margin="10,0,10,10"
-                  BorderThickness="1"                                                       
-                  AlternatingRowBackground="#FF929191"
-                  ColumnWidth="auto">
+                  BorderThickness="1"
+                  AlternatingRowBackground="#FF929191">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="50" Width="0.5*" Binding="{Binding ID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" MinWidth="50" Width="0.75*" Binding="{Binding Type}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="0.75*" Binding="{Binding ISBN}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="1*" Binding="{Binding MembershipID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Membership name" MinWidth="50" Width="1.5*" Binding="{Binding MembershipName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="1*" Binding="{Binding ArrearAmount}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Created date" MinWidth="50" Width="1*" Binding="{Binding CreatedDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Current date" MinWidth="50" Width="1*" Binding="{Binding CurrentDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Expiration date" MinWidth="0" Width="1*" Binding="{Binding Exp}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creator" MinWidth="50" Width="0.75*" Binding="{Binding Creator}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" MinWidth="50" Width="0.75*" Binding="{Binding Status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding CallCardID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding CallCardType}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding CallCardISBN}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="*" Binding="{Binding CallCardMembershipID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Membership name" MinWidth="50" Width="*" Binding="{Binding CallCardMembershipName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="*" Binding="{Binding CallCardArrearAmount}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding CallCardCreatedDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Current date" MinWidth="50" Width="*" Binding="{Binding CallCardCurrentDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Expiration date" MinWidth="0" Width="*" Binding="{Binding CallCardExpirationDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding CallCardCreator}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding CallCardStatus}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

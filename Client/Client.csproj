@@ -2,18 +2,19 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <StartupObject></StartupObject>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Content Include="Assets\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentUI.Core" Version="1.0.51" />
-    <PackageReference Include="FluentWPF" Version="0.10.2" />
     <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
   </ItemGroup>
 

@@ -54,7 +54,7 @@
                          Text="Calculus (8th Edition)"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
-                         Style="{StaticResource ParagraphTextbox}"/>
+                         Style="{StaticResource TitleTextbox}"/>
             </Grid>
 
             <Grid Grid.Row="2">
@@ -64,12 +64,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="37"/>
-                    <RowDefinition Height="37"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -105,52 +105,42 @@
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
                 <TextBox Name="AuthorTxt"
-                         Text="James Stewart"
+                         Text="James Stewart asdfasdfasd"
                          Grid.Column="1"
                          Grid.Row="0"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Margin="0,5,10,5"
+                         Style="{StaticResource PropertyTextbox}"
+                         TextChanged="AuthorTxt_TextChanged"/>
                 <TextBox Name="PublisherTxt"
                          Text="Cengage Learning; 8th edition (May 19, 2015)"
                          Grid.Column="1"
                          Grid.Row="1"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Margin="0,5,10,5"
+                         Style="{StaticResource PropertyTextbox}"
+                         TextChanged="PublisherTxt_TextChanged"/>
                 <TextBox Name="LanguageTxt"
                          Text="English"
                          Grid.Column="1"
                          Grid.Row="2"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
+                         Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="PagesTxt"
                          Text="1392"
                          Grid.Column="1"
                          Grid.Row="3"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
+                         Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="ISBNTxt"
                          Text="1285740629"
                          Grid.Column="1"
                          Grid.Row="4"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
+                         Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="GenreTxt"
                          Text="Mathematics"
                          Grid.Column="1"
                          Grid.Row="5"
-                         VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch"
-                         Margin="0,2,10,2"
+                         Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
             </Grid>
         </Grid>
@@ -177,59 +167,61 @@
                          Margin="10,10,0,10" />
 
                 <Button Name="BookNewBtn"
-                    Grid.Column="1"
-                    Content="New"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Height="40"
-                    Margin="10,0,5,0"
-                    Padding="5"/>
+                        Grid.Column="1"
+                        Content="New"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Height="40"
+                        Margin="10,0,5,0"
+                        Padding="5"
+                        Click="BookNewBtn_Click"/>
                 <Button Name="BookUpdateBtn"
-                    Grid.Column="2"
-                    Content="Update"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"/>
+                        Grid.Column="2"
+                        Content="Update"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5,0,5,0"
+                        Height="40"
+                        Padding="5"
+                        Click="BookUpdateBtn_Click"/>
                 <Button Name="BookRemoveBtn"
-                    Grid.Column="3"
-                    Content="Remove"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"/>
+                        Grid.Column="3"
+                        Content="Remove"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5,0,5,0"
+                        Height="40"
+                        Padding="5"
+                        Click="BookRemoveBtn_Click"/>
                 <Button Name="BookReportBtn"
-                    Grid.Column="4"
-                    Content="Report"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,10,0"
-                    Height="40"
-                    Padding="5"/>
+                        Grid.Column="4"
+                        Content="Report"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5,0,10,0"
+                        Height="40"
+                        Padding="5"
+                        Click="BookReportBtn_Click"/>
             </Grid>
 
             <DataGrid Name="BookDataGrid"
                       Grid.Row="1"
                       VerticalAlignment="Stretch"
-                      VerticalScrollBarVisibility="Visible"
-                      HorizontalAlignment="Stretch" 
-                      HorizontalContentAlignment="Stretch"
-                      HorizontalScrollBarVisibility="Visible"
+                      HorizontalAlignment="Stretch"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"
                       Margin="10,0,10,10"
                       BorderThickness="1"
-                      AlternatingRowBackground="#FF929191"
-                      ColumnWidth="auto">
+                      AlternatingRowBackground="#FF929191">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Book name" MinWidth="50" Width="2.25*" Binding="{Binding ID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Author" MinWidth="50" Width="1*" Binding="{Binding Type}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="1*" Binding="{Binding ISBN}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="1.5*" Binding="{Binding MemID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="1.5*" Binding="{Binding AA}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="1.5*" Binding="{Binding Curr}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Price" MinWidth="50" Width="1*" Binding="{Binding Exp}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Status" MinWidth="50" Width="1*" Binding="{Binding CR}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Book name" MinWidth="50" Width="*" Binding="{Binding BookID}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Author" MinWidth="50" Width="*" Binding="{Binding BookAuthor}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BookISBN}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="*" Binding="{Binding BookPublisher}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="*" Binding="{Binding BookReceivedDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="*" Binding="{Binding BookReceiver}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Price" MinWidth="50" Width="*" Binding="{Binding BookPrice}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding BookStatus}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

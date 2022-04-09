@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Client.Views.Login"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         Title="LoginView"
         Height="700" Width="1100" 
         Background="Transparent"
