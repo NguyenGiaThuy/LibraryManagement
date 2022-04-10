@@ -51,7 +51,7 @@
                            FontWeight="SemiBold"/>
                 <TextBox Grid.Row="1" 
                          Name="BookNameTxt"
-                         Text="Calculus (8th Edition)"
+                         Text="Calculus (8th Edition) asdfasdfasdfasdfasdfasdf asdfasdfas dfasdfasdfas dfasdfas dfasdfasdfasdfasdfasddfasdfasdfasdfasdfasdfasdf"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Style="{StaticResource TitleTextbox}"/>
