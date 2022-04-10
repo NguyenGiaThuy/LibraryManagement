@@ -12,15 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Client.Views.Main.Features
-{
+namespace Client.Views.Main.Features {
     /// <summary>
     /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class UserView : Window
-    {
-        public UserView()
-        {
+    public partial class UserView : Window {
+        public UserView() {
             InitializeComponent();
         }
     }

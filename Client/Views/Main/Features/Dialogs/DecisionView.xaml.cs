@@ -13,27 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 
-namespace Client.Views.Main.Features.Dialogs
-{
+namespace Client.Views.Main.Features.Dialogs {
     /// <summary>
     /// Interaction logic for DecisionView.xaml
     /// </summary>
-    public partial class DecisionView : Window
-    {
-        public DecisionView()
-        {
+    public partial class DecisionView : Window {
+        public DecisionView() {
             InitializeComponent();
         }
 
-        private void MassBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void MassBtn_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV files (*.csv)|*.csv";
             openFileDialog.ShowDialog();
         }
 
-        private void IndividualBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void IndividualBtn_Click(object sender, RoutedEventArgs e) {
             MessageBox.Show("\"Under development! This command will pop up a form.\"");
         }
     }

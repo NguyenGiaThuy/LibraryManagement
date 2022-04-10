@@ -18,33 +18,26 @@ using Client.Views.Main;
 using Client.Views.Main.Users;
 using Client.Views.Main.Features;
 
-namespace Client.Views.Login
-{
+namespace Client.Views.Login {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
-    {
-        public LoginView()
-        {
+    public partial class LoginView : Window {
+        public LoginView() {
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void ExitBtn_Click(object sender, RoutedEventArgs e) {
             Close();
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            switch (AccountTextBox.Text)
-            {
+        private void LoginBtn_Click(object sender, RoutedEventArgs e) {
+            switch (AccountTextBox.Text) {
                 case "librarian":
                     LibrarianView librarianView = new LibrarianView();
                     librarianView.Show();
@@ -79,21 +72,15 @@ namespace Client.Views.Login
             }
         }
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            //ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
-            //forgotPasswordView.Show();
-            MessageBox.Show("Please contact to your administrator to retrieve password!", "Forgot password", MessageBoxButton.OK,MessageBoxImage.Information);
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
+            MessageBox.Show("Please contact to your administrator to retrieve password!", "Forgot password", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         //Press Enter key to Login
-        private void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
+        private void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e) {
             UIElement uIElement = e.OriginalSource as UIElement;
-            try
-            {
-                if ((uIElement != null) && (e.Key == Key.Enter))
-                {
+            try {
+                if ((uIElement != null) && (e.Key == Key.Enter)) {
                     e.Handled = true;
                     LoginBtn_Click(LoginBtn, e);
                 }

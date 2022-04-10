@@ -12,15 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Client.Views.Main.Features.Dashboard
-{
+namespace Client.Views.Main.Features.Dashboard {
     /// <summary>
     /// Interaction logic for LibraryAdminDashboardView.xaml
     /// </summary>
-    public partial class LibraryAdminDashboardView : Window
-    {
-        public LibraryAdminDashboardView()
-        {
+    public partial class LibraryAdminDashboardView : Window {
+        public LibraryAdminDashboardView() {
             InitializeComponent();
         }
     }

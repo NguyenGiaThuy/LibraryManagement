@@ -14,31 +14,25 @@ using System.Windows.Shapes;
 using Client.Views.Main.Features.Dialogs;
 using Microsoft.Win32;
 
-namespace Client.Views.Main.Features
-{
+namespace Client.Views.Main.Features {
     /// <summary>
     /// Interaction logic for CallCardView.xaml
     /// </summary>
-    public partial class CallCardView : Window
-    {
-        public CallCardView()
-        {
+    public partial class CallCardView : Window {
+        public CallCardView() {
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void ExitBtn_Click(object sender, RoutedEventArgs e) {
             Close();
         }
 
-        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Adding new call cards";
             decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
@@ -47,8 +41,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Updating call cards";
             decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
@@ -57,8 +50,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Removing call cards";
             decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
@@ -67,8 +59,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void CallCardReportBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void CallCardReportBtn_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Export a report";
             saveFileDialog.FileName = "Call_Card_Report";

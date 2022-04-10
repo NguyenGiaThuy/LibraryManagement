@@ -14,26 +14,21 @@ using System.Windows.Shapes;
 using Client.Views.Main.Features.Dialogs;
 using Microsoft.Win32;
 
-namespace Client.Views.Main.Features
-{
+namespace Client.Views.Main.Features {
     /// <summary>
     /// Interaction logic for MemberView.xaml
     /// </summary>
-    public partial class MemberView : Window
-    {
-        public MemberView()
-        {
+    public partial class MemberView : Window {
+        public MemberView() {
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void MemberNewBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void MemberNewBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Adding new members";
             decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
@@ -42,8 +37,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void MemberUpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void MemberUpdateBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Updating members";
             decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
@@ -52,8 +46,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void MemberRemoveBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void MemberRemoveBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Removing members";
             decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
@@ -62,8 +55,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void MemberReportBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void MemberReportBtn_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Export a report";
             saveFileDialog.FileName = "Member_Report";
@@ -72,6 +64,6 @@ namespace Client.Views.Main.Features
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
             saveFileDialog.ShowDialog();
-        } 
+        }
     }
 }

@@ -15,20 +15,16 @@ using System.Windows.Controls.Primitives;
 using Client.Views.Main.Features.Dialogs;
 using Microsoft.Win32;
 
-namespace Client.Views.Main.Features
-{
+namespace Client.Views.Main.Features {
     /// <summary>
     /// Interaction logic for BookView.xaml
     /// </summary>
-    public partial class BookView : Window
-    {
-        public BookView()
-        {
+    public partial class BookView : Window {
+        public BookView() {
             InitializeComponent();
         }
 
-        private void BookNewBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookNewBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Adding new books";
             decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
@@ -37,8 +33,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Updating books";
             decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
@@ -47,8 +42,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Removing books";
             decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
@@ -57,8 +51,7 @@ namespace Client.Views.Main.Features
             decisionView.ShowDialog();
         }
 
-        private void BookReportBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookReportBtn_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Export a report";
             saveFileDialog.FileName = "Book_Report";
@@ -69,13 +62,11 @@ namespace Client.Views.Main.Features
             saveFileDialog.ShowDialog();
         }
 
-        private void AuthorTxt_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void AuthorTxt_TextChanged(object sender, TextChangedEventArgs e) {
             AuthorTxt.ScrollToEnd();
         }
 
-        private void PublisherTxt_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void PublisherTxt_TextChanged(object sender, TextChangedEventArgs e) {
             PublisherTxt.ScrollToEnd();
         }
     }

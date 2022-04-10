@@ -12,15 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Client.Views.Main.Features.Dashboard
-{
+namespace Client.Views.Main.Features.Dashboard {
     /// <summary>
     /// Interaction logic for StorekeeperDashboardView.xaml
     /// </summary>
-    public partial class StorekeeperDashboardView : Window
-    {
-        public StorekeeperDashboardView()
-        {
+    public partial class StorekeeperDashboardView : Window {
+        public StorekeeperDashboardView() {
             InitializeComponent();
         }
     }
