@@ -278,7 +278,7 @@
                                          Checked="StorekeeperBookRBtn_Checked"/>
 
                             <RadioButton Name="StorekeeperBMRBtn" 
-                                         Content="Book Management"                                        
+                                         Content="Book Modification"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.Edit}"
                                          FontSize="16"
                                          Height="50"

@@ -6,7 +6,80 @@
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         mc:Ignorable="d"
         Title="BMCardViewCardView" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="BMCardViewCardView"/>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="BMCardSearchTxt"
+                     Grid.Column="0"
+                 Style="{StaticResource SearchboxTheme}"
+                 Margin="10,10,0,10" />
+
+            <Button Name="BMCardNewBtn"
+                    Grid.Column="1"
+                    Content="New"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Height="40"
+                    Margin="10,0,5,0"
+                    Padding="5"
+                    Click="BMCardNewBtn_Click"/>
+            <Button Name="BMCardUpdateBtn"
+                    Grid.Column="2"
+                    Content="Update"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="5,0,5,0"
+                    Height="40"
+                    Padding="5"
+                    Click="BMCardUpdateBtn_Click"/>
+            <Button Name="BMCardRemoveBtn"
+                    Grid.Column="3"
+                    Content="Remove"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="5,0,5,0"
+                    Height="40"
+                    Padding="5"
+                    Click="BMCardRemoveBtn_Click"/>
+            <Button Name="BMCardReportBtn"
+                    Grid.Column="4"
+                    Content="Report"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Margin="5,0,10,0"
+                    Height="40"
+                    Padding="5"
+                    Click="BMCardReportBtn_Click"/>
+        </Grid>
+
+        <DataGrid Name="BMCardDataGrid"
+                  Grid.Row="1"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto"
+                  Margin="10,0,10,10"
+                  BorderThickness="1"
+                  AlternatingRowBackground="#FF929191">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding BMCardID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding BMCardType}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BMCardISBN}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding BMCardCreatedDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding BMCardCreator}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

@@ -23,15 +23,6 @@ namespace Client.Views.Main.Features {
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
-        }
-
-        private void ExitBtn_Click(object sender, RoutedEventArgs e) {
-            Close();
-        }
-
         private void CallCardNewBtn_Click(object sender, RoutedEventArgs e) {
             DecisionView decisionView = new DecisionView();
             decisionView.Title = "Adding new call cards";
