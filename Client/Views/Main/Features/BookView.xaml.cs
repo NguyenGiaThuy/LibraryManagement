@@ -14,12 +14,15 @@ using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using Client.Views.Main.Features.Dialogs;
 using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace Client.Views.Main.Features {
     /// <summary>
     /// Interaction logic for BookView.xaml
     /// </summary>
+
     public partial class BookView : Window {
+
         public BookView() {
             InitializeComponent();
         }

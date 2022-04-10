@@ -11,7 +11,7 @@
         AllowsTransparency="True">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10">
-                <Image Name="BookImg"
+                <Image Name="MemberImg"
                        Source="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"/>
             </Border>
 
@@ -39,7 +39,8 @@
                   HorizontalAlignment="Stretch"
                   Margin="10,0,10,5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="5"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -50,9 +51,8 @@
                            HorizontalAlignment="Left"
                            FontSize="14"
                            FontWeight="SemiBold"/>
-                <TextBox Grid.Row="1" 
+                <TextBox Grid.Row="2" 
                          Name="MemberNameTxt"
-                         Text="Donald Freeman"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Style="{StaticResource TitleTextbox}"/>
@@ -60,7 +60,7 @@
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="82"/>
+                    <ColumnDefinition Width="95"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -106,7 +106,7 @@
                            Grid.Row="5"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Expiration date"
+                <TextBlock Text="Exp. date"
                            Grid.Column="0"
                            Grid.Row="6"
                            Margin="10,5,10,5"
@@ -166,12 +166,12 @@
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="BookSearchTxt"
+                <TextBox Name="MemberSearchTxt"
                          Grid.Column="0"
                          Style="{StaticResource SearchboxTheme}"
                          Margin="10,10,0,10" />
 
-                <Button Name="BookNewBtn"
+                <Button Name="MemberNewBtn"
                         Grid.Column="1"
                         Content="New"
                         VerticalAlignment="Stretch"
@@ -180,7 +180,7 @@
                         Margin="10,0,5,0"
                         Padding="5"
                         Click="MemberNewBtn_Click"/>
-                <Button Name="BookUpdateBtn"
+                <Button Name="MemberUpdateBtn"
                         Grid.Column="2"
                         Content="Update"
                         VerticalAlignment="Stretch"
@@ -189,7 +189,7 @@
                         Height="40"
                         Padding="5"
                         Click="MemberUpdateBtn_Click"/>
-                <Button Name="BookRemoveBtn"
+                <Button Name="MemberRemoveBtn"
                         Grid.Column="3"
                         Content="Remove"
                         VerticalAlignment="Stretch"
@@ -198,7 +198,7 @@
                         Height="40"
                         Padding="5"
                         Click="MemberRemoveBtn_Click"/>
-                <Button Name="BookReportBtn"
+                <Button Name="MemberReportBtn"
                         Grid.Column="4"
                         Content="Report"
                         VerticalAlignment="Stretch"
@@ -217,6 +217,7 @@
                       HorizontalScrollBarVisibility="Auto"
                       Margin="10,0,10,10"
                       BorderThickness="1"
+                      BorderBrush="Gray"
                       AlternatingRowBackground="#FF929191">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding MemberID}"></DataGridTextColumn>

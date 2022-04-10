@@ -8,21 +8,23 @@
         Title="BookView" Height="600" Width="900"
         Background="Transparent"
         AllowsTransparency="True">
-    <Grid>
+    <Grid Name="PrimaryGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Name="PropertyColumnDefinition" Width="300"/>
+            <ColumnDefinition Name="MainColumnDefinition" Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0"
+        <Grid Name="PropertyGrid"
+              Grid.Column="0"
+              Grid.ColumnSpan="1"
               Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="250"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Border Grid.Row="0" 
                     BorderThickness="1"
                     BorderBrush="Gray"
@@ -38,18 +40,17 @@
                   HorizontalAlignment="Stretch"
                   Margin="10,0,10,5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="5"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Grid.Row="0" 
                            Text="Name:"
-                           Margin="0,0,0,5"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="14"
-                           FontWeight="SemiBold"/>
-                <TextBox Grid.Row="1" 
+                           Style="{StaticResource PropertyLabelTextBlock}"/>
+                <TextBox Grid.Row="2" 
                          Name="BookNameTxt"
                          Text="Calculus (8th Edition) asdfasdfasdfasdfasdfasdf asdfasdfas dfasdfasdfas dfasdfas dfasdfasdfasdfasdfasddfasdfasdfasdfasdfasdfasdf"
                          VerticalAlignment="Stretch"
@@ -59,7 +60,7 @@
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="82"/>
+                    <ColumnDefinition Width="78"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -105,7 +106,7 @@
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
                 <TextBox Name="AuthorTxt"
-                         Text="James Stewart asdfasdfasd"
+                         Text="James Stewart"
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
@@ -145,7 +146,9 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="2" 
+        <Grid Name="MainGrid" 
+              Grid.Column="2"
+              Grid.ColumnSpan="3"
               Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -212,6 +215,7 @@
                       HorizontalScrollBarVisibility="Auto"
                       Margin="10,0,10,10"
                       BorderThickness="1"
+                      BorderBrush="Gray"
                       AlternatingRowBackground="#FF929191">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Book name" MinWidth="50" Width="*" Binding="{Binding BookID}"></DataGridTextColumn>
