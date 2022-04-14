@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add Repositories
 builder.Services.AddScoped<Server.Repositories.ILibUserRepository, Server.Repositories.LibUserRepository>();
+builder.Services.AddScoped<Server.Repositories.ITreasurerRepository, Server.Repositories.TreasurerRepository>();
 
 builder.Services.AddDbContext<Server.Models.LibraryManagementContext>();
 builder.Services.AddControllers();
