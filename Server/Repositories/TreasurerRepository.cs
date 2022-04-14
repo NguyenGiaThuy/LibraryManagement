@@ -12,7 +12,11 @@ namespace Server.Repositories
             _context = context;
         }
 
-
+        public async Task<List<LibCallCard>> GetCallCardAsync()
+        {
+            var result = await _context.LibCallCards.ToListAsync();
+            return result;
+        }
 
         public async Task<LibCallCard> GetCallCardByIdAsync(int Id)
         {
@@ -23,11 +27,7 @@ namespace Server.Repositories
             return result;
         }
 
-        public async Task<List<LibCallCard>> GetCallCardAsync()
-        {
-            var result = await _context.LibCallCards.ToListAsync();
-            return result;
-        }
+        
 
     }
 }

@@ -4,7 +4,7 @@ using Server.Models;
 
 namespace Server.Controllers
 {
-    [Route("api/cac")]
+    [Route("api/[controller]")]
     [ApiController]
     public class TreasurerController : Controller
     {
