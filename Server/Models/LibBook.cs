@@ -7,7 +7,7 @@ namespace Server.Models
     {
         public LibBook()
         {
-            LibBookManagementCards = new HashSet<LibBookManagementCard>();
+            LibBookAuditCards = new HashSet<LibFineCard>();
             LibCallCards = new HashSet<LibCallCard>();
         }
 
@@ -21,10 +21,10 @@ namespace Server.Models
         public DateTime? ReceivedDate { get; set; }
         public string? Receiver { get; set; }
         public int? Price { get; set; }
-        public int? Status { get; set; }
+        public int? Quantity { get; set; }
 
         public virtual LibUser? ReceiverNavigation { get; set; }
-        public virtual ICollection<LibBookManagementCard> LibBookManagementCards { get; set; }
+        public virtual ICollection<LibFineCard> LibBookAuditCards { get; set; }
         public virtual ICollection<LibCallCard> LibCallCards { get; set; }
     }
 }
