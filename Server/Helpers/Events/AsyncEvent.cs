@@ -1,4 +1,4 @@
-﻿namespace Server.Helpers
+﻿namespace Server.Helpers.Events
 {
     public class AsyncEvent<TEventArgs> where TEventArgs : EventArgs
     {
