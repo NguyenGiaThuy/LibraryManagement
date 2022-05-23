@@ -24,10 +24,11 @@ namespace Client.Views.Main.Features {
 
     public partial class BookView : Window {
 
+        List<Book> bookList = new List<Book>();
+
         public BookView() {
             InitializeComponent();
 
-            List<Book> bookList = new List<Book>();
             bookList.Add(new Book("1285740629", "ACalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21, "https://m.media-amazon.com/images/I/41Ln0mEFcdL._AC_SY780_.jpg"));
             bookList.Add(new Book("1617295485", "AAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13, "https://images-na.ssl-images-amazon.com/images/I/41TgDUtgXmS._SX397_BO1,204,203,200_.jpg"));
             bookList.Add(new Book("006230125X", "AElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5, "https://m.media-amazon.com/images/I/51tw6UjHpDL.jpg"));
@@ -60,7 +61,11 @@ namespace Client.Views.Main.Features {
         private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             Book selectedBook = BookDataGrid.SelectedItem as Book;
             if (selectedBook != null) {
-                MessageBox.Show("Remove the book " + selectedBook.Title);
+                if (MessageBox.Show("Remove the book: " + selectedBook.Title, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+                    bookList.Remove(selectedBook);
+                    BookDataGrid.ItemsSource = null;
+                    BookDataGrid.ItemsSource = bookList;
+                }
             }
         }
 
