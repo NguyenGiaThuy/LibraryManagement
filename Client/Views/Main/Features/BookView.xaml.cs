@@ -61,7 +61,7 @@ namespace Client.Views.Main.Features {
         private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             Book selectedBook = BookDataGrid.SelectedItem as Book;
             if (selectedBook != null) {
-                if (MessageBox.Show("Remove the book: " + selectedBook.Title, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+                if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.ISBN + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
                     bookList.Remove(selectedBook);
                     BookDataGrid.ItemsSource = null;
                     BookDataGrid.ItemsSource = bookList;
