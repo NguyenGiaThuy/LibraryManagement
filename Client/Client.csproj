@@ -18,4 +18,8 @@
     <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\BookImgSource\" />
+  </ItemGroup>
+
 </Project>

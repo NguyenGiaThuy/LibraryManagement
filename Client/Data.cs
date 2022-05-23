@@ -18,7 +18,9 @@ namespace Client {
         public int Price { get; set; }
         public int Quantity { get; set; }
 
-        public Book(string isbn, string title, int genre, string author, string publisher, DateTime publishedDate, DateTime receiverDate, string receiverId, int price, int quantity) { 
+        public string ImgSource { get; set; }
+
+        public Book(string isbn, string title, int genre, string author, string publisher, DateTime publishedDate, DateTime receiverDate, string receiverId, int price, int quantity, string imgSource) { 
             this.ISBN = isbn;
             this.Title = title;
             this.Genre = genre;
@@ -29,6 +31,7 @@ namespace Client {
             this.ReceiverId = receiverId;
             this.Price = price;
             this.Quantity = quantity;
+            this.ImgSource = imgSource;
         }
     }
 }

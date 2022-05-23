@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <Style TargetType="DataGrid"
            BasedOn="{StaticResource FabricDataGridStyle}">
         <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -13,7 +13,7 @@
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="AlternatingRowBackground" Value="#FFDBDBDB"/>
     </Style>
-    
+
     <Style TargetType="DataGridCell"
            x:Key="LeftContent"
            BasedOn="{StaticResource MaterialDesignDataGridCell}">

@@ -32,8 +32,7 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10">
-                <Image Name="BookImg"
-                       Source="https://m.media-amazon.com/images/I/41Ln0mEFcdL._AC_SY780_.jpg"/>
+                <Image Name="BookImg"/>
             </Border>
 
             <Grid Grid.Row="1"
@@ -47,15 +46,16 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" 
-                           Text="Name:"
+                           Text="Title:"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
                 <TextBox Grid.Row="2" 
-                         Name="BookNameTxt"
-                         Text="Calculus (8th Edition) asdfasdfasdfasdfasdfasdf asdfasdfas dfasdfasdfas dfasdfas dfasdfasdfasdfasdfasddfasdfasdfasdfasdfasdfasdf"
+                         Name="BookTitleTxt"
+                         Text=""
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
+                         Margin="0"
                          Style="{StaticResource TitleTextbox}"/>
             </Grid>
 
@@ -107,39 +107,39 @@
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
                 <TextBox Name="AuthorTxt"
-                         Text="James Stewart"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"
                          TextChanged="AuthorTxt_TextChanged"/>
                 <TextBox Name="PublisherTxt"
-                         Text="Cengage Learning; 8th edition (May 19, 2015)"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"
                          TextChanged="PublisherTxt_TextChanged"/>
                 <TextBox Name="LanguageTxt"
-                         Text="English"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="PagesTxt"
-                         Text="1392"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="ISBNTxt"
-                         Text="1285740629"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="GenreTxt"
-                         Text="Mathematics"
+                         Text=""
                          Grid.Column="1"
                          Grid.Row="5"
                          Margin="0,5,10,5"
@@ -183,7 +183,9 @@
                       Grid.Row="1"
                       Margin="10,0,10,10"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True"
+                      MouseDoubleClick="BookDataGridRow_MouseDown">
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Book title" MinWidth="50" Width="2*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Author" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Author}"></DataGridTextColumn>

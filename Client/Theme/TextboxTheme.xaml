@@ -3,18 +3,26 @@
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Style TargetType="{x:Type TextBox}"
            x:Key="TitleTextbox"
-           BasedOn="{x:Null}">
+           BasedOn="{StaticResource FabricTextBoxStyle}">
         <Setter Property="VerticalContentAlignment" Value="Top"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="IsReadOnlyCaretVisible" Value="True"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu Style="{StaticResource FabricContextMenuStyle}">
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                    <MenuItem Header="Select All" Command="ApplicationCommands.SelectAll"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="{x:Type TextBox}"
@@ -32,5 +40,13 @@
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="IsReadOnlyCaretVisible" Value="True"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu Style="{StaticResource FabricContextMenuStyle}">
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                    <MenuItem Header="Select All" Command="ApplicationCommands.SelectAll"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
