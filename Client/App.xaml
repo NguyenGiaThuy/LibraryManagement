@@ -36,6 +36,7 @@
                 <ResourceDictionary Source="Theme/SearchboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextBlockTheme.xaml"/>
+                <ResourceDictionary Source="Theme/DatagridContentTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

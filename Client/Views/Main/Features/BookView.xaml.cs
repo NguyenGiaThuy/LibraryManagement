@@ -28,47 +28,40 @@ namespace Client.Views.Main.Features {
             InitializeComponent();
 
             List<Book> bookList = new List<Book>();
-            bookList.Add(new Book("1285740629", "Calculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 3));
-            bookList.Add(new Book("1617295485", "Advanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 5));
+            bookList.Add(new Book("1285740629", "ACalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "AAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "AElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856",10, 5));
+            bookList.Add(new Book("1285740629", "BCalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "BAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "BElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
+            bookList.Add(new Book("1285740629", "CCalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "CAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "CElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
+            bookList.Add(new Book("1285740629", "DCalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "DAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "DElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
+            bookList.Add(new Book("1285740629", "ECalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "EAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "EElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
+            bookList.Add(new Book("1285740629", "FCalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "FAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "FElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
+            bookList.Add(new Book("1285740629", "GCalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 21));
+            bookList.Add(new Book("1617295485", "GAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 13));
+            bookList.Add(new Book("006230125X", "GElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), new DateTime(2019, 11, 18), "353856", 10, 5));
             BookDataGrid.ItemsSource = bookList;
         }
 
         private void BookNewBtn_Click(object sender, RoutedEventArgs e) {
-            DecisionView decisionView = new DecisionView();
-            decisionView.Title = "Adding new books";
-            decisionView.DecisionContentTxt.Text = "What kind of adding do you want?";
-            decisionView.IndividualBtn.Content = "Add by form";
-            decisionView.MassBtn.Content = "Add from a file";
-            decisionView.ShowDialog();
+            MessageBox.Show("Add a book");
         }
 
         private void BookUpdateBtn_Click(object sender, RoutedEventArgs e) {
-            DecisionView decisionView = new DecisionView();
-            decisionView.Title = "Updating books";
-            decisionView.DecisionContentTxt.Text = "What kind of updating do you want?";
-            decisionView.IndividualBtn.Content = "Individual update";
-            decisionView.MassBtn.Content = "Mass update";
-            decisionView.ShowDialog();
+            MessageBox.Show("Update the book");
         }
 
         private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
-            DecisionView decisionView = new DecisionView();
-            decisionView.Title = "Removing books";
-            decisionView.DecisionContentTxt.Text = "What kind of removing do you want?";
-            decisionView.IndividualBtn.Content = "Individual remove";
-            decisionView.MassBtn.Content = "Mass remove";
-            decisionView.ShowDialog();
-        }
-
-        private void BookReportBtn_Click(object sender, RoutedEventArgs e) {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "Export a report";
-            saveFileDialog.FileName = "Book_Report";
-            saveFileDialog.DefaultExt = "csv";
-            saveFileDialog.Filter = "CSV files (.csv)|*.csv";
-            saveFileDialog.OverwritePrompt = true;
-            saveFileDialog.ValidateNames = true;
-            saveFileDialog.ShowDialog();
+            MessageBox.Show("Remove the book");
         }
 
         private void AuthorTxt_TextChanged(object sender, TextChangedEventArgs e) {

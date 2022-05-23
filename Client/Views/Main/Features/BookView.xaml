@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="BookView" Height="600" Width="900"
         Background="Transparent"
@@ -151,7 +152,7 @@
               Grid.ColumnSpan="3"
               Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -159,14 +160,12 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBox Name="BookSearchTxt"
                          Grid.Column="0"
                          Style="{StaticResource SearchboxTheme}"
+                         Height="35"
                          Margin="10,10,0,10" />
 
                 <Button Name="BookNewBtn"
@@ -174,60 +173,58 @@
                         Content="New"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"
-                        Height="40"
-                        Margin="10,0,5,0"
+                        Height="35"
+                        Margin="10,0,10,0"
                         Padding="5"
                         Click="BookNewBtn_Click"/>
-                <Button Name="BookUpdateBtn"
-                        Grid.Column="2"
-                        Content="Update"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,5,0"
-                        Height="40"
-                        Padding="5"
-                        Click="BookUpdateBtn_Click"/>
-                <Button Name="BookRemoveBtn"
-                        Grid.Column="3"
-                        Content="Remove"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,5,0"
-                        Height="40"
-                        Padding="5"
-                        Click="BookRemoveBtn_Click"/>
-                <Button Name="BookReportBtn"
-                        Grid.Column="4"
-                        Content="Report"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,10,0"
-                        Height="40"
-                        Padding="5"
-                        Click="BookReportBtn_Click"/>
             </Grid>
 
             <DataGrid Name="BookDataGrid"
                       Grid.Row="1"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto"
                       Margin="10,0,10,10"
-                      BorderThickness="1"
-                      BorderBrush="Gray"
-                      AlternatingRowBackground="#FF929191"
                       AutoGenerateColumns="False"
                       IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Book title" MinWidth="50" Width="*" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Author" MinWidth="50" Width="*" Binding="{Binding Author}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding ISBN}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="*" Binding="{Binding Publisher}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="*" Binding="{Binding ReceivedDate, StringFormat=\{0:dd.MM.yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="*" Binding="{Binding ReceiverId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Price" MinWidth="50" Width="*" Binding="{Binding Price}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Quantity" MinWidth="50" Width="*" Binding="{Binding Quantity}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Book title" MinWidth="50" Width="2*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Author" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Author}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ISBN}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Publisher}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceivedDate, StringFormat=\{0:dd.MM.yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceiverId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Price" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Price}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Quantity" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Quantity}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Tools" MinWidth="95" MaxWidth="95">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="BookUpdateBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2,0,1,0">
+                                        <materialDesign:PackIcon Kind="Edit"/>
+                                    </Button>
+                                    <Button Grid.Column="1" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="BookRemoveBtn_Click" 
+                                            Padding="2" 
+                                            Margin="1,0,2,0">
+                                        <materialDesign:PackIcon Kind="Remove"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
