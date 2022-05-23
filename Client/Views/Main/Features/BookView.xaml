@@ -216,16 +216,18 @@
                       Margin="10,0,10,10"
                       BorderThickness="1"
                       BorderBrush="Gray"
-                      AlternatingRowBackground="#FF929191">
+                      AlternatingRowBackground="#FF929191"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Book name" MinWidth="50" Width="*" Binding="{Binding BookID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Author" MinWidth="50" Width="*" Binding="{Binding BookAuthor}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BookISBN}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="*" Binding="{Binding BookPublisher}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="*" Binding="{Binding BookReceivedDate}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="*" Binding="{Binding BookReceiver}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Price" MinWidth="50" Width="*" Binding="{Binding BookPrice}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding BookStatus}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Book title" MinWidth="50" Width="*" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Author" MinWidth="50" Width="*" Binding="{Binding Author}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding ISBN}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Publisher" MinWidth="50" Width="*" Binding="{Binding Publisher}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Received date" MinWidth="50" Width="*" Binding="{Binding ReceivedDate, StringFormat=\{0:dd.MM.yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Receiver" MinWidth="50" Width="*" Binding="{Binding ReceiverId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Price" MinWidth="50" Width="*" Binding="{Binding Price}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Quantity" MinWidth="50" Width="*" Binding="{Binding Quantity}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

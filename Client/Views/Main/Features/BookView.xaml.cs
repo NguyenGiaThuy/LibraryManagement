@@ -15,6 +15,7 @@ using System.Windows.Controls.Primitives;
 using Client.Views.Main.Features.Dialogs;
 using Microsoft.Win32;
 using System.Diagnostics;
+using Client;
 
 namespace Client.Views.Main.Features {
     /// <summary>
@@ -25,6 +26,11 @@ namespace Client.Views.Main.Features {
 
         public BookView() {
             InitializeComponent();
+
+            List<Book> bookList = new List<Book>();
+            bookList.Add(new Book("1285740629", "Calculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), new DateTime(2017, 09, 20), "330216", 29, 3));
+            bookList.Add(new Book("1617295485", "Advanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), new DateTime(2021, 03, 2), "330356", 47, 5));
+            BookDataGrid.ItemsSource = bookList;
         }
 
         private void BookNewBtn_Click(object sender, RoutedEventArgs e) {
