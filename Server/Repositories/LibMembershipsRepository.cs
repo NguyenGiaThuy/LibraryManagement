@@ -20,7 +20,7 @@ namespace Server.Repositories
 
         public async Task<LibMembership> GetMembershipByIdAsync(string membershipId)
         {
-            var result = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId.Contains(membershipId));
+            var result = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipId);
 
             if (result == null) throw new ArgumentException(membershipId + " not found");
 
@@ -41,7 +41,6 @@ namespace Server.Repositories
             if (result == null) throw new ArgumentException(membershipId + " not found");
 
             result.Status = 1;
-            _context.LibMemberships.Update(result);
             await _context.SaveChangesAsync();
             return membershipId;
         }
@@ -53,7 +52,6 @@ namespace Server.Repositories
             if (result == null) throw new ArgumentException(membershipId + " not found");
 
             result.Status = 0;
-            _context.LibMemberships.Update(result);
             await _context.SaveChangesAsync();
             return membershipId;
         }
@@ -64,8 +62,7 @@ namespace Server.Repositories
 
             if (result == null) throw new ArgumentException(membershipId + " not found");
 
-            result.ExpiryDate = DateTime.Now.AddYears(1);
-            _context.LibMemberships.Update(result);
+            result.ExpiryDate = DateOnly.FromDateTime(DateTime.Now.AddYears(1));
             await _context.SaveChangesAsync();
             return membershipId;
         }
