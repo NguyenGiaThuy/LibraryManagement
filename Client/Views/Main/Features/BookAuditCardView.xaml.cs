@@ -15,20 +15,20 @@ using Microsoft.Win32;
 
 namespace Client.Views.Main.Features {
     /// <summary>
-    /// Interaction logic for CallCardView.xaml
+    /// Interaction logic for BookManagementCardView.xaml
     /// </summary>
-    public partial class CallCardView : Window {
-        public CallCardView() {
+    public partial class BookAuditCardView : Window {
+        public BookAuditCardView() {
             InitializeComponent();
         }
 
-        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookAuditCardNewBtn_Click(object sender, RoutedEventArgs e) {
         }
 
-        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookAuditCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
         }
 
-        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookAuditCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
         }
     }
 }

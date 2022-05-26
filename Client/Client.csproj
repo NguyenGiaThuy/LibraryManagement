@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\Algorithms.jpg" />
+    <None Remove="Assets\Images\Calculus.jpg" />
+    <None Remove="Assets\Images\ElonMusk.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Assets\Icon.ico" />
   </ItemGroup>
 
@@ -19,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\BookImgSource\" />
+    <Resource Include="Assets\Images\Algorithms.jpg" />
+    <Resource Include="Assets\Images\Calculus.jpg" />
+    <Resource Include="Assets\Images\ElonMusk.jpg" />
   </ItemGroup>
 
 </Project>

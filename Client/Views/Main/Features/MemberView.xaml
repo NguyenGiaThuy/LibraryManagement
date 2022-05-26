@@ -11,7 +11,7 @@
         AllowsTransparency="True">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -198,15 +198,6 @@
                         Height="40"
                         Padding="5"
                         Click="MemberRemoveBtn_Click"/>
-                <Button Name="MemberReportBtn"
-                        Grid.Column="4"
-                        Content="Report"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,10,0"
-                        Height="40"
-                        Padding="5"
-                        Click="MemberReportBtn_Click"/>
             </Grid>
 
             <DataGrid Name="MemberDataGrid"

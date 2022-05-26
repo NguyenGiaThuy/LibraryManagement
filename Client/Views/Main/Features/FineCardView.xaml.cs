@@ -12,13 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Client.Views.Main.Features.Dialogs {
+namespace Client.Views.Main.Features {
     /// <summary>
-    /// Interaction logic for InputForm.xaml
+    /// Interaction logic for FineCardView.xaml
     /// </summary>
-    public partial class InputForm : Window {
-        public InputForm() {
+    public partial class FineCardView : Window {
+        public FineCardView() {
             InitializeComponent();
+        }
+        private void FineCardNewBtn_Click(object sender, RoutedEventArgs e) {
+        }
+
+        private void FineCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        }
+
+        private void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
         }
     }
 }

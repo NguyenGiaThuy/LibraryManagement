@@ -10,7 +10,7 @@
         AllowsTransparency="True">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -197,15 +197,6 @@
                         Height="40"
                         Padding="5"
                         Click="UserRemoveBtn_Click"/>
-                <Button Name="UserReportBtn"
-                        Grid.Column="4"
-                        Content="Report"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,10,0"
-                        Height="40"
-                        Padding="5"
-                        Click="UserReportBtn_Click"/>
             </Grid>
 
             <DataGrid Name="UserDataGrid"

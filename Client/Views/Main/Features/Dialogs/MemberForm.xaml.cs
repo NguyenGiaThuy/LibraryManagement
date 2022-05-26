@@ -11,24 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Win32;
 
-namespace Client.Views.Main.Features {
+namespace Client.Views.Main.Features.Dialogs {
     /// <summary>
-    /// Interaction logic for UserView.xaml
+    /// Interaction logic for MemberForm.xaml
     /// </summary>
-    public partial class UserView : Window {
-        public UserView() {
+    public partial class MemberForm : Window {
+        public MemberForm() {
             InitializeComponent();
-        }
-
-        private void UserNewBtn_Click(object sender, RoutedEventArgs e) {
-        }
-
-        private void UserUpdateBtn_Click(object sender, RoutedEventArgs e) {
-        }
-
-        private void UserRemoveBtn_Click(object sender, RoutedEventArgs e) {
         }
     }
 }

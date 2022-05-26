@@ -1,11 +1,11 @@
-﻿<Window x:Class="Client.Views.Main.Features.BMCardViewCardView"
+﻿<Window x:Class="Client.Views.Main.Features.BookAuditCardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         mc:Ignorable="d"
-        Title="BMCardViewCardView" Height="450" Width="800">
+        Title="BookAuditCardView" Height="450" Width="800">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -21,12 +21,12 @@
                 <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Name="BMCardSearchTxt"
+            <TextBox Name="BookAuditCardSearchTxt"
                      Grid.Column="0"
                  Style="{StaticResource SearchboxTheme}"
                  Margin="10,10,0,10" />
 
-            <Button Name="BMCardNewBtn"
+            <Button Name="BookAuditCardNewBtn"
                     Grid.Column="1"
                     Content="New"
                     VerticalAlignment="Stretch"
@@ -34,8 +34,8 @@
                     Height="40"
                     Margin="10,0,5,0"
                     Padding="5"
-                    Click="BMCardNewBtn_Click"/>
-            <Button Name="BMCardUpdateBtn"
+                    Click="BookAuditCardNewBtn_Click"/>
+            <Button Name="BookAuditCardUpdateBtn"
                     Grid.Column="2"
                     Content="Update"
                     VerticalAlignment="Stretch"
@@ -43,8 +43,8 @@
                     Margin="5,0,5,0"
                     Height="40"
                     Padding="5"
-                    Click="BMCardUpdateBtn_Click"/>
-            <Button Name="BMCardRemoveBtn"
+                    Click="BookAuditCardUpdateBtn_Click"/>
+            <Button Name="BookAuditCardRemoveBtn"
                     Grid.Column="3"
                     Content="Remove"
                     VerticalAlignment="Stretch"
@@ -52,19 +52,10 @@
                     Margin="5,0,5,0"
                     Height="40"
                     Padding="5"
-                    Click="BMCardRemoveBtn_Click"/>
-            <Button Name="BMCardReportBtn"
-                    Grid.Column="4"
-                    Content="Report"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,10,0"
-                    Height="40"
-                    Padding="5"
-                    Click="BMCardReportBtn_Click"/>
+                    Click="BookAuditCardRemoveBtn_Click"/>
         </Grid>
 
-        <DataGrid Name="BMCardDataGrid"
+        <DataGrid Name="BookAuditCardDataGrid"
                   Grid.Row="1"
                   VerticalAlignment="Stretch"
                   HorizontalAlignment="Stretch"
@@ -74,11 +65,11 @@
                   BorderThickness="1"
                   AlternatingRowBackground="#FF929191">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding BMCardID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding BMCardType}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BMCardISBN}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding BMCardCreatedDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding BMCardCreator}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding BookAuditCardID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding BookAuditCardType}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BookAuditCardISBN}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding BookAuditCardCreatedDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding BookAuditCardCreator}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
