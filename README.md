@@ -11,7 +11,7 @@ Project link: https://github.com/NguyenGiaThuy/LibraryManagement
   - [Mục lục](#mục-lục)
   - [Project liên quan](#project-liên-quan)
   - [Môi trường thực thi](#môi-trường-thực-thi)
-  - [Cấu hình project](#cấu-hình-project)
+  - [Cấu hình project chạy local](#cấu-hình-project-chạy-local)
   - [Deploy project](#deploy-project)
   - [Demo](#demo)
   - [Tiến độ hiện tại](#tiến-độ-hiện-tại)
@@ -27,7 +27,7 @@ Cơ sở dữ liệu: **Microsoft SQL Server**
 
 Frameworks and libraries: **ASP.NET Core**, **EF Core** và **WPF** trên nền tảng **.NET 6.0**
 
-## Cấu hình project
+## Cấu hình project chạy local
 Mở file ``Server/appsettings.json`` để xem thông tin **localhost** và **libmproddb**:
 ```json
 {
