@@ -5,6 +5,72 @@ Với sự phát triển không ngừng của thế giới hiện đại, con ng
 
 Project link: https://github.com/NguyenGiaThuy/LibraryManagement
 
-# Môi trường thực thi
+## Mục lục
+---
 
-# Hướng dẫn sử dụng
+- [Giới thiệu Project](#giới-thiệu-project)
+  - [Mục lục](#-mục-lục)
+  - [Project liên quan](#-project-liên-quan)
+  - [Môi trường thực thi](#-môi-trường-thực-thi)
+  - [Cấu hình project](#-cấu-hình-project)
+  - [Deploy project](#-deploy-project)
+  - [Demo](#-demo)
+  - [Tiến độ hiện tại](#-tiến-độ-hiện-tại)
+  - [Tính năng chưa triển khai](#-tính-năng-chưa-triển-khai)
+
+## Project liên quan
+-------
+Project của nhóm chỉ có 1 Gihub repository, đã dẫn link phía trên.
+
+## Môi trường thực thi
+-------
+Hệ điều hành: **Windows 7, 8, 9, 10, 11**
+
+Cơ sở dữ liệu: **Microsoft SQL Server**
+
+Frameworks and libraries: **ASP.NET Core**, **EF Core** và **WPF** trên nền tảng **.NET 6.0**
+
+## Cấu hình project
+-------
+Mở file ``Server/appsettings.json`` để xem thông tin **localhost** và **libmproddb**:
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "localhost": "Data Source=localhost;Initial Catalog=LibraryManagement;Integrated Security=True",
+    "libmproddb": "Data Source=libmanagement.database.windows.net;Initial Catalog=LibraryManagement;Persist Security Info=True;User ID=libadmin;Password=P@ssw0rd"
+  },
+  "AllowedHosts": "*"
+}
+```
+Mở file ``Server/Models/LibraryManagementContext.cs`` để cấu hình:
+```c#
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    if (!optionsBuilder.IsConfigured)
+    {
+        optionsBuilder.UseSqlServer("Name=localhost");
+    }
+}
+```
+
+## Deploy project
+-------
+(Bổ sung sau)
+
+## Demo
+-------
+(Bổ sung sau)
+
+## Tiến độ hiện tại
+-------
+(Bổ sung sau)
+
+## Tính năng chưa triển khai
+-------
+(Bổ sung sau)
