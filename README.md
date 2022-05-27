@@ -6,24 +6,21 @@ Với sự phát triển không ngừng của thế giới hiện đại, con ng
 Project link: https://github.com/NguyenGiaThuy/LibraryManagement
 
 ## Mục lục
----
 
 - [Giới thiệu Project](#giới-thiệu-project)
-  - [Mục lục](#-mục-lục)
-  - [Project liên quan](#-project-liên-quan)
-  - [Môi trường thực thi](#-môi-trường-thực-thi)
-  - [Cấu hình project](#-cấu-hình-project)
-  - [Deploy project](#-deploy-project)
-  - [Demo](#-demo)
-  - [Tiến độ hiện tại](#-tiến-độ-hiện-tại)
-  - [Tính năng chưa triển khai](#-tính-năng-chưa-triển-khai)
+  - [Mục lục](#mục-lục)
+  - [Project liên quan](#project-liên-quan)
+  - [Môi trường thực thi](#môi-trường-thực-thi)
+  - [Cấu hình project](#cấu-hình-project)
+  - [Deploy project](#deploy-project)
+  - [Demo](#demo)
+  - [Tiến độ hiện tại](#tiến-độ-hiện-tại)
+  - [Tính năng chưa triển khai](#tính-năng-chưa-triển-khai)
 
 ## Project liên quan
--------
 Project của nhóm chỉ có 1 Gihub repository, đã dẫn link phía trên.
 
 ## Môi trường thực thi
--------
 Hệ điều hành: **Windows 7, 8, 9, 10, 11**
 
 Cơ sở dữ liệu: **Microsoft SQL Server**
@@ -31,7 +28,6 @@ Cơ sở dữ liệu: **Microsoft SQL Server**
 Frameworks and libraries: **ASP.NET Core**, **EF Core** và **WPF** trên nền tảng **.NET 6.0**
 
 ## Cấu hình project
--------
 Mở file ``Server/appsettings.json`` để xem thông tin **localhost** và **libmproddb**:
 ```json
 {
@@ -60,17 +56,13 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ```
 
 ## Deploy project
--------
 (Bổ sung sau)
 
 ## Demo
--------
 (Bổ sung sau)
 
 ## Tiến độ hiện tại
--------
 (Bổ sung sau)
 
 ## Tính năng chưa triển khai
--------
 (Bổ sung sau)
