@@ -1,24 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Server.Models
 {
-    public partial class LibCallCard
+    [Table("LibCallCards")]
+    public class LibCallCard
     {
-        public int Id { get; set; }
-        public int? Type { get; set; }
-        public string? Isbn { get; set; }
-        public string? MembershipId { get; set; }
-        public string? MembershipName { get; set; }
-        public int? ArrearAmount { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? CurrentDate { get; set; }
-        public DateTime? ExpirationDate { get; set; }
-        public string? Creator { get; set; }
-        public int? Status { get; set; }
+        public LibCallCard(string bookId, DateTime? dueDate, string membershipId, string? creatorId)
+        {
+            BookId = bookId;
+            DueDate = dueDate;
+            MembershipId = membershipId;
+            Status = 0;
+            CreatorId = creatorId;
+            CreatedDate = DateTime.Now;
+            CallCardId = string.Concat("CALL", (BookId + CreatedDate.ToString()).GetHashCode().ToString().AsSpan(1, 6));
+        }
 
-        public virtual LibUser? CreatorNavigation { get; set; }
-        public virtual LibBook? IsbnNavigation { get; set; }
-        public virtual LibMembership? Membership { get; set; }
+        [Key]
+        [StringLength(10)]
+        public string CallCardId { get; set; } = null!;
+        public DateTime? DueDate { get; set; }
+        [ForeignKey("Book")]
+        [Required]
+        public string BookId { get; set; } = null!;
+        [ForeignKey("Membership")]
+        [Required]
+        public string MembershipId { get; set; } = null!;
+        [Range(0, 3)]
+        public int? Status { get; set; }
+        [ForeignKey("Creator")]
+        public string? CreatorId { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
+        public virtual LibBook Book { get; set; } = null!;
+        public virtual LibMembership Membership { get; set; } = null!;
+        public virtual LibUser? Creator { get; set; }
     }
 }
