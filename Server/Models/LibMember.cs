@@ -25,7 +25,7 @@ namespace Server.Models
         public string MemberId { get; set; } = null!;
         [StringLength(12)]
         [Required]
-        public string SocialId { get; set; } = null!;
+        public string SocialId { get; set; }
         public string? Name { get; set; }
         public DateTime? Dob { get; set; }
         public string? Address { get; set; }

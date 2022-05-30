@@ -23,18 +23,18 @@ namespace Server.Models
         public DateTime? DueDate { get; set; }
         [ForeignKey("Book")]
         [Required]
-        public string BookId { get; set; } = null!;
+        public string BookId { get; set; }
         [ForeignKey("Membership")]
         [Required]
-        public string MembershipId { get; set; } = null!;
+        public string MembershipId { get; set; }
         [Range(0, 3)]
         public int? Status { get; set; }
         [ForeignKey("Creator")]
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
 
-        public virtual LibBook Book { get; set; } = null!;
-        public virtual LibMembership Membership { get; set; } = null!;
+        public virtual LibBook? Book { get; set; }
+        public virtual LibMembership? Membership { get; set; }
         public virtual LibUser? Creator { get; set; }
     }
 }

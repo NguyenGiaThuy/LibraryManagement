@@ -24,7 +24,7 @@ namespace Server.Models
         public int? DaysInArrears { get; set; }
         [ForeignKey("CallCard")]
         [Required]
-        public string CallCardId { get; set; } = null!;
+        public string CallCardId { get; set; }
         [Range(0, 1)]
         public int? Reason { get; set; }
         [Range(0, 1)]
@@ -33,7 +33,7 @@ namespace Server.Models
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
 
-        public virtual LibCallCard CallCard { get; set; } = null!;
+        public virtual LibCallCard? CallCard { get; set; } = null!;
         public virtual LibUser? Creator { get; set; }
     }
 }

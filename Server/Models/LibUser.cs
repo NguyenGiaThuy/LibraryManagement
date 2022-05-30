@@ -37,7 +37,7 @@ namespace Server.Models
         public string UserId { get; set; } = null!;
         [StringLength(15)]
         [Required]
-        public string Password { get; set; } = null!;
+        public string Password { get; set; }
         public string? Name { get; set; }
         public string? Address { get; set; }
         public DateTime? Dob { get; set; }

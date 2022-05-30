@@ -21,7 +21,7 @@ namespace Server.Models
         public string BookAuditCardId { get; set; } = null!;
         [ForeignKey("Book")]
         [Required]
-        public string BookId { get; set; } = null!;
+        public string BookId { get; set; }
         [Range(0, 2)]
         public int? Type { get; set; }
         [Range(0, 2)]
@@ -30,7 +30,7 @@ namespace Server.Models
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
 
-        public virtual LibBook Book { get; set; } = null!;
+        public virtual LibBook? Book { get; set; }
         public virtual LibUser? Creator { get; set; }
     }
 }

@@ -30,7 +30,8 @@ namespace Server.Models
         [StringLength(10)]
         public string BookId { get; set; } = null!;
         [StringLength(13)]
-        public string Isbn { get; set; } = null!;
+        [Required]
+        public string Isbn { get; set; }
         public string? Title { get; set; }
         [Range(0, 2)]
         public int? Genre { get; set; }

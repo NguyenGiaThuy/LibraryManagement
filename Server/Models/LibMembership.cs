@@ -26,7 +26,7 @@ namespace Server.Models
         public string MembershipId { get; set; } = null!;
         [StringLength(12)]
         [Required]
-        public string SocialId { get; set; } = null!;
+        public string SocialId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         [Range(0, 1)]
@@ -35,7 +35,7 @@ namespace Server.Models
         public int? Status { get; set; }
         [ForeignKey("Member")]
         [Required]
-        public string MemberId { get; set; } = null!;
+        public string MemberId { get; set; }
         [ForeignKey("Creator")]
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
@@ -43,7 +43,7 @@ namespace Server.Models
         public string? ModifierId { get; set; }
         public DateTime? ModifiedDate { get; set; }
 
-        public virtual LibMember Member { get; set; } = null!;
+        public virtual LibMember? Member { get; set; }
         public virtual LibUser? Creator { get; set; }
         public virtual LibUser? Modifier { get; set; }
         public virtual ICollection<LibCallCard> LibCallCards { get; set; }
