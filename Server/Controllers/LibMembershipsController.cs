@@ -20,14 +20,14 @@ namespace Server.Controllers
 
         // GET: api/<LibMembershipsController>
         [HttpGet]
-        public async Task<IActionResult> GetAllMembershipsAsync()
+        public async Task<IActionResult> GetMembershipsAsync()
         {
             var result = await _membershipsRepository.GetMembershipsAsync();
             return Ok(result);
         }
 
         // GET api/<MembershipsController>/5
-        [HttpGet("{LibMembershipsController}")]
+        [HttpGet("{membershipId}")]
         public async Task<IActionResult> GetMembershipByIdAsync([FromRoute] string membershipId)
         {
             try
@@ -38,6 +38,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -54,10 +58,14 @@ namespace Server.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<LibMembershipsController>/disable/5
-        [HttpPut("disable/{membershipId}")]
+        // PUT api/<LibMembershipsController>/5/disable
+        [HttpPut("{membershipId}/disable")]
         public async Task<IActionResult> DisableMembershipAsync([FromRoute] string membershipId, [FromBody] LibMembership membership)
         {
             if (membershipId != membership.MembershipId) return BadRequest("Membership Id does not match");
@@ -72,10 +80,14 @@ namespace Server.Controllers
                 return NotFound(ex.Message);
 
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<LibMembershipsController>/enable/5
-        [HttpPut("enable/{membershipId}")]
+        // PUT api/<LibMembershipsController>/5/enable
+        [HttpPut("{membershipId}/enable")]
         public async Task<IActionResult> EnableMembershipAsync([FromRoute] string membershipId, [FromBody] LibMembership membership)
         {
             if (membershipId != membership.MembershipId) return BadRequest("Membership Id does not match");
@@ -90,10 +102,14 @@ namespace Server.Controllers
                 return NotFound(ex.Message);
 
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<LibMembershipsController>/extend/5
-        [HttpPut("extend/{membershipId}")]
+        // PUT api/<LibMembershipsController>/5/extend
+        [HttpPut("{membershipId}/extend")]
         public async Task<IActionResult> ExtendMembershipAsync([FromRoute] string membershipId, [FromBody] LibMembership membership)
         {
             if (membershipId != membership.MembershipId) return BadRequest("Membership Id does not match");
@@ -106,7 +122,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
-
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

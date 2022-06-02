@@ -21,14 +21,14 @@ namespace Server.Repositories
         public async Task<LibMember> GetMemberByIdAsync(string memberId)
         {
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberId);
-            if (member == null) throw new NonExistenceException(string.Format("Member {0} not found", memberId));
+            if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberId));
             return member;
         }
 
         public async Task<LibMember> GetMemberByMembershipIdAsync(string membershipId)
         {
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MembershipId == membershipId);
-            if (member == null) throw new NonExistenceException(string.Format("Member with membership ID {0} not found", membershipId));
+            if (member == null) throw new NonExistenceException(string.Format("Member with membership ID {0} is not found", membershipId));
             return member;
         }
 
@@ -49,7 +49,7 @@ namespace Server.Repositories
         public async Task<string> UpdateMemberAsync(LibMember memberToUpdate)
         {
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberToUpdate.MemberId);
-            if (member == null) throw new NonExistenceException(string.Format("Member {0} not found", memberToUpdate.MemberId));
+            if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberToUpdate.MemberId));
 
             member.SocialId = memberToUpdate.SocialId;
             member.Name = memberToUpdate.Name;
@@ -61,6 +61,16 @@ namespace Server.Repositories
             member.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
             return memberToUpdate.MemberId;
+        }
+
+        public async Task<string> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId)
+        {
+            var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberId);
+            if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberId));
+
+            member.MembershipId = membershipId;
+            await _context.SaveChangesAsync();
+            return member.MemberId;
         }
     }
 }

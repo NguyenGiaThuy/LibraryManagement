@@ -20,7 +20,7 @@ namespace Server.Controllers
 
         // GET: api/<LibMembersController>
         [HttpGet]
-        public async Task<IActionResult> GetAllMembersAsync()
+        public async Task<IActionResult> GetMembersAsync()
         {
             var result = await _membersRepository.GetMembersAsync();
             return Ok(result);
@@ -39,6 +39,10 @@ namespace Server.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // GET api/<LibMembersController>/membership/5
@@ -53,6 +57,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -69,6 +77,10 @@ namespace Server.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST api/<LibMembersController>
@@ -79,7 +91,8 @@ namespace Server.Controllers
             {
                 var result1 = await _membersRepository.CreateMemberAsync(member);
                 var result2 = await membershipsRepository.CreateMembershipFromMemberAsync(member);
-                return Ok(string.Format("{0}\n{1}", result1, result2));
+                var result3 = await _membersRepository.UpdateMemberhipIdforMemberAsync(result1, result2);
+                return Ok(string.Format("{0}\n{1}", result3, result2));
             }
             catch (Exception ex)
             {

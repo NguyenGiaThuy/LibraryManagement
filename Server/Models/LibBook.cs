@@ -9,7 +9,7 @@ namespace Server.Models
         public LibBook(string isbn, string? title, int? genre, string? author, string? publisher,
             DateTime? publishedDate, int? price, string? receiverId, string? imageUrl)
         {
-            LibBookAuditCards = new HashSet<LibFineCard>();
+            LibBookAuditCards = new HashSet<LibBookAuditCard>();
             LibCallCards = new HashSet<LibCallCard>();
 
             Isbn = isbn;
@@ -40,11 +40,6 @@ namespace Server.Models
         public DateTime? PublishedDate { get; set; }
         [Range(0, int.MaxValue)]
         public int? Price { get; set; }
-<<<<<<< HEAD
-        public int? Quantity { get; set; }
-
-        public virtual LibUser? ReceiverNavigation { get; set; }
-=======
         [Range(0, 1)]
         public int? Status { get; set; }
         [ForeignKey("Receiver")]
@@ -57,8 +52,7 @@ namespace Server.Models
 
         public virtual LibUser? Receiver { get; set; }
         public virtual LibUser? Modifier { get; set; }
->>>>>>> 80e0ef1fe8bb3570a50cd27b3a281ae3f1bf2f10
-        public virtual ICollection<LibFineCard> LibBookAuditCards { get; set; }
+        public virtual ICollection<LibBookAuditCard> LibBookAuditCards { get; set; }
         public virtual ICollection<LibCallCard> LibCallCards { get; set; }
     }
 }

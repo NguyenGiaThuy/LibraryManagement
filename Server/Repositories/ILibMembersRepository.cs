@@ -10,5 +10,6 @@ namespace Server.Repositories
         public Task<LibMember> GetMemberBySocialIdAsync(string socialId);
         public Task<string> CreateMemberAsync(LibMember memberToCreate);
         public Task<string> UpdateMemberAsync(LibMember memberToUpdate);
+        public Task<string> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId);
     }
 }
