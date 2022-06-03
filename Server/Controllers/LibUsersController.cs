@@ -20,7 +20,7 @@ namespace Server.Controllers
 
         // GET: api/<LibUsersController>
         [HttpGet]
-        public async Task<IActionResult> GetAllUsersAsync()
+        public async Task<IActionResult> GetUsersAsync()
         {
             var result = await _usersRepository.GetUsersAsync();
             return Ok(result);
@@ -38,6 +38,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -77,8 +81,8 @@ namespace Server.Controllers
             }
         }
 
-        // PUT api/<LibUsersController>/disable/5
-        [HttpPut("disable/{userId}")]
+        // PUT api/<LibUsersController>/5/disable
+        [HttpPut("{userId}/disable")]
         public async Task<IActionResult> DisableUserAsync([FromRoute] string userId)
         {
             try
@@ -90,10 +94,14 @@ namespace Server.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<LibUsersController>/enable/5
-        [HttpPut("enable/{userId}")]
+        // PUT api/<LibUsersController>/5/enable
+        [HttpPut("{userId}/enable")]
         public async Task<IActionResult> EnableUserAsync([FromRoute] string userId)
         {
             try
@@ -104,6 +112,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

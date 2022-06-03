@@ -3,7 +3,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // Add Repositories
-builder.Services.AddScoped<Server.Repositories.ILibUserRepository, Server.Repositories.LibUserRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibBookAuditCardsRepository, Server.Repositories.LibBookAuditCardsRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibBooksRepository, Server.Repositories.LibBooksRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibCallCardsRepository, Server.Repositories.LibCallCardsRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibFineCardsRepository, Server.Repositories.LibFineCardsRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibMembershipsRepository, Server.Repositories.LibMembershipsRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibMembersRepository, Server.Repositories.LibMembersRepository>();
+builder.Services.AddTransient<Server.Repositories.ILibUsersRepository, Server.Repositories.LibUsersRepository>();
 
 builder.Services.AddDbContext<Server.Models.LibraryManagementContext>();
 builder.Services.AddControllers();

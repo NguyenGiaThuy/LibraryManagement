@@ -5,10 +5,11 @@ namespace Server.Repositories
     public interface ILibFineCardsRepository
     {
         public Task<List<LibFineCard>> GetFineCardsAsync();
-        public Task<List<LibFineCard>> GetFineCardsByIsbnAsync(string isbn);
-        public Task<List<LibFineCard>> GetFineCardsByMembershipIdAsync(string membershipId);
         public Task<LibFineCard> GetFineCardByIdAsync(string fineCardId);
-        public Task<string> CreateFineCardAsync(LibFineCard fineCard);
-        public Task<string> UpdateFineCardStatusAsync(string fineCardId, int status);
+        public Task<LibFineCard> GetFineCardByCallCardIdAsync(string callCardId);
+        public Task<string> CreateFineCardAsync(LibFineCard fineCardToCreate);
+        //public void UpdateAllFineCardsArrearsAsync();
+        public Task<string> UpdateFineCardArrearsAsync(string fineCardId);
+        public Task<string> CloseFineCardAsync(string fineCardId);
     }
 }

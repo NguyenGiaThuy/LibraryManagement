@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Server.Helpers.Exceptions;
 using Server.Models;
 
 namespace Server.Repositories
@@ -14,66 +15,60 @@ namespace Server.Repositories
 
         public async Task<List<LibUser>> GetUsersAsync()
         {
-            var result = await _context.LibUsers.ToListAsync();
-            return result;
+            var users = await _context.LibUsers.ToListAsync();
+            return users;
         }
 
         public async Task<LibUser> GetUserByIdAsync(string userId)
         {
-            var result = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId.Contains(userId));
-
-            if (result == null) throw new ArgumentException(userId + " not found");
-
-            return result;
+            var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId.Contains(userId));
+            if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
+            return user;
         }
 
-        public async Task<string> CreateUserAsync(LibUser user)
+        public async Task<string> CreateUserAsync(LibUser userToCreate)
         {
-            _context.LibUsers.Add(user);
+            _context.LibUsers.Add(userToCreate);
             await _context.SaveChangesAsync();
-            return user.UserId;
+            return userToCreate.UserId;
         }
 
-        public async Task<string> UpdateUserAsync(LibUser user)
+        public async Task<string> UpdateUserAsync(LibUser userToUpdate)
         {
-            var result = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+            var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userToUpdate.UserId);
+            if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userToUpdate.UserId));
 
-            if (result == null) throw new ArgumentException(user.UserId + " not found");
-
-            result.Password = user.Password;
-            result.Name = user.Name;
-            result.Address = user.Address;
-            result.Dob = user.Dob;
-            result.Mobile = user.Mobile;
-            result.Education = user.Education;
-            result.Department = user.Department;
-            result.Position = user.Position;
-            result.Status = user.Status;
-
+            user.Password = userToUpdate.Password;
+            user.Name = userToUpdate.Name;
+            user.Address = userToUpdate.Address;
+            user.Dob = userToUpdate.Dob;
+            user.Mobile = userToUpdate.Mobile;
+            user.Education = userToUpdate.Education;
+            user.Department = userToUpdate.Department;
+            user.Position = userToUpdate.Position;
+            user.Status = userToUpdate.Status;
             await _context.SaveChangesAsync();
-            return user.UserId;
+            return userToUpdate.UserId;
         }
 
         public async Task<string> DisableUserAsync(string userId)
         {
-            var result = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+            var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+            if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
 
-            if (result == null) throw new ArgumentException(userId + " not found");
-
-            result.Status = 1;
-            _context.LibUsers.Update(result);
+            user.Status = 1;
+            _context.LibUsers.Update(user);
             await _context.SaveChangesAsync();
             return userId;
         }
 
         public async Task<string> EnableUserAsync(string userId)
         {
-            var result = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+            var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+            if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
 
-            if (result == null) throw new ArgumentException(userId + " not found");
-
-            result.Status = 0;
-            _context.LibUsers.Update(result);
+            user.Status = 0;
+            _context.LibUsers.Update(user);
             await _context.SaveChangesAsync();
             return userId;
         }
