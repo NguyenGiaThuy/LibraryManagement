@@ -24,18 +24,22 @@ namespace Client.Views.Main {
     /// Interaction logic for DevView.xaml
     /// </summary>
     public partial class DevView : Window {
-        private List<Window> views;
-        private Window view;
-
         LibrarianDashboardView librarianDashboardView = new LibrarianDashboardView();
         LibraryAdminDashboardView libraryAdminDashboardView = new LibraryAdminDashboardView();
         StorekeeperDashboardView storekeeperDashboardView = new StorekeeperDashboardView();
         TreasurerDashboardView treasurerDashboardView = new TreasurerDashboardView();
 
-        public DevView() {
-            InitializeComponent();
+        BookView bookView = new BookView();
+        MemberView memberView = new MemberView();
+        CallCardView callCardView = new CallCardView();
+        BookAuditCardView bookAuditCardView = new BookAuditCardView();
+        UserView userView = new UserView();
 
-            views = new List<Window>();
+        public string Text { get; set; } = "abc";
+
+        public DevView() {
+            this.DataContext = this;
+            InitializeComponent();
 
             LibraryAdminFrame.Content = libraryAdminDashboardView.Content;
             LibrarianFrame.Content = librarianDashboardView.Content;
@@ -49,7 +53,7 @@ namespace Client.Views.Main {
         }
 
         private void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e) {
-            //LibraryAdminFrame.Content = userView.Content;
+            LibraryAdminFrame.Content = userView.Content;
         }
 
         //LIBRARIAN ====================================================================================
@@ -58,60 +62,15 @@ namespace Client.Views.Main {
         }
 
         private void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e) {
-            // MemberView exists
-            foreach (var v in views)
-                if (v is MemberView) {
-                    view = v;
-                    break;
-                }
-
-            // MemberView does not exist
-            if (view is not MemberView) {
-                view = new MemberView();
-                views.Add(view);
-            }
-
-            LibrarianFrame.Content = view.Content;
-
-            if (views.Count > 2) views.RemoveAt(0);
+            LibrarianFrame.Content = memberView.Content;
         }
 
         private void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            // BookView exists
-            foreach (var v in views)
-                if (v is BookView) {
-                    view = v;
-                    break;
-                }
-
-            // BookView does not exist
-            if (view is not BookView) {
-                view = new BookView();
-                views.Add(view);
-            }
-
-            LibrarianFrame.Content = view.Content;
-
-            if (views.Count > 2) views.RemoveAt(0);
+            LibrarianFrame.Content = bookView.Content;
         }
 
         private void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            // CallCardView exists
-            foreach (var v in views)
-                if (v is CallCardView) {
-                    view = v;
-                    break;
-                }
-
-            // CallCardView does not exist
-            if (view is not CallCardView) {
-                view = new CallCardView();
-                views.Add(view);
-            }
-
-            LibrarianFrame.Content = view.Content;
-
-            if (views.Count > 2) views.RemoveAt(0);
+            LibrarianFrame.Content = callCardView.Content;
         }
 
         //TREASURER ====================================================================================
@@ -120,7 +79,7 @@ namespace Client.Views.Main {
         }
 
         private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            //TreasurerFrame.Content = callCardView.Content;
+            TreasurerFrame.Content = callCardView.Content;
         }
 
         //STOREKEEPER ==================================================================================
@@ -129,11 +88,11 @@ namespace Client.Views.Main {
         }
 
         private void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            //StorekeeperFrame.Content = bookView.Content;
+            StorekeeperFrame.Content = bookView.Content;
         }
 
-        private void StorekeeperBMRBtn_Checked(object sender, RoutedEventArgs e) {
-            //StorekeeperFrame.Content = bMCardView.Content;
+        private void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e) {
+            StorekeeperFrame.Content = bookAuditCardView.Content;
         }
 
         //Close properly the application when the exit button is pressed

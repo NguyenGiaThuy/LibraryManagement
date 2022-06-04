@@ -3,24 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MemberView" Height="600" Width="900"
         Background="Transparent"
         AllowsTransparency="True">
-    <Grid>
+    <Grid Name="SidePanelGrid" Margin="0,0,0,-37">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Name="PropertyColumnDefinition" Width="250"/>
+            <ColumnDefinition Name="MainColumnDefinition" Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0"
               Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="250"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="75"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -30,8 +30,7 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10">
-                <Image Name="MemberImg"
-                       Source="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg"/>
+                <Image Name="UserImg"/>
             </Border>
 
             <Grid Grid.Row="1"
@@ -45,16 +44,17 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" 
-                           Text="Name:"
+                           Text="Tên độc giả:"
                            Margin="0,0,0,5"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="14"
                            FontWeight="SemiBold"/>
                 <TextBox Grid.Row="2" 
-                         Name="MemberNameTxt"
+                         Name="UserNameTxt"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
+                         Margin="0,0,0,10"
                          Style="{StaticResource TitleTextbox}"/>
             </Grid>
 
@@ -71,156 +71,156 @@
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="ID"
+                <TextBlock Text="ID Độc giả"
                            Grid.Column="0"
                            Grid.Row="0"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="DOB"
+                <TextBlock Text="Số định danh"
                            Grid.Column="0"
                            Grid.Row="1"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Address"
+                <TextBlock Text="Ngày sinh"
                            Grid.Column="0"
                            Grid.Row="2"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Mobile"
+                <TextBlock Text="Địa chỉ"
                            Grid.Column="0"
                            Grid.Row="3"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Email"
+                <TextBlock Text="Di động"
                            Grid.Column="0"
                            Grid.Row="4"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Created date"
+                <TextBlock Text="Email"
                            Grid.Column="0"
                            Grid.Row="5"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Exp. date"
-                           Grid.Column="0"
-                           Grid.Row="6"
-                           Margin="10,5,10,5"
-                           Style="{StaticResource PropertyLabelTextBlock}"/>
 
-                <TextBox Name="IDTxt"
+                <TextBox Name="MemberIdTxt"
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="DOBTxt"
+                <TextBox Name="SocialIdTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="AddressTxt"
+                <TextBox Name="DobTxt"
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="MobileTxt"
+                <TextBox Name="AddressTxt"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="EmailTxt"
+                <TextBox Name="MobileTxt"
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="CreatedDateTxt"
+                <TextBox Name="EmailTxt"
                          Grid.Column="1"
                          Grid.Row="5"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="ExpirationDateTxt"
-                         Grid.Column="1"
-                         Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="2" 
+        <Grid Name="MainGrid" 
+              Grid.Column="2"
               Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBox Name="MemberSearchTxt"
                          Grid.Column="0"
                          Style="{StaticResource SearchboxTheme}"
+                         Height="35"
                          Margin="10,10,0,10" />
 
                 <Button Name="MemberNewBtn"
                         Grid.Column="1"
-                        Content="New"
+                        Content="Tạo mới"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"
-                        Height="40"
-                        Margin="10,0,5,0"
+                        Height="35"
+                        Margin="10,0,10,0"
                         Padding="5"
                         Click="MemberNewBtn_Click"/>
-                <Button Name="MemberUpdateBtn"
-                        Grid.Column="2"
-                        Content="Update"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,5,0"
-                        Height="40"
-                        Padding="5"
-                        Click="MemberUpdateBtn_Click"/>
-                <Button Name="MemberRemoveBtn"
-                        Grid.Column="3"
-                        Content="Remove"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5,0,5,0"
-                        Height="40"
-                        Padding="5"
-                        Click="MemberRemoveBtn_Click"/>
             </Grid>
 
             <DataGrid Name="MemberDataGrid"
                       Grid.Row="1"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto"
                       Margin="10,0,10,10"
-                      BorderThickness="1"
-                      BorderBrush="Gray"
-                      AlternatingRowBackground="#FF929191">
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionChanged="MemberDataGrid_SelectionChanged">
+
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding MemberID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Name" MinWidth="50" Width="*" Binding="{Binding MemberName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Email" MinWidth="50" Width="*" Binding="{Binding MemberEmail}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Arrear amount" MinWidth="50" Width="*" Binding="{Binding MemberArrearAmount}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Days in arrear" MinWidth="50" Width="*" Binding="{Binding MemberDaysInArrear}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding MemberCreatedDate}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="*" Binding="{Binding MemberMembershipID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Membership type" MinWidth="50" Width="*" Binding="{Binding MemberMembershipType}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding MemberCreator}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding MemberStatus}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID Thẻ độc giả" MinWidth="50" Width="2*" CellStyle="{StaticResource LeftContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Số định danh" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding SocialId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày bắt đầu" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding StartDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày hết hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ExpiryDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Loại thẻ độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipType}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID Độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MemberId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID Người chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifierId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+
+                    <DataGridTemplateColumn Header="Công cụ" MinWidth="95" MaxWidth="95">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="MemberUpdateBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2,0,1,0">
+                                        <materialDesign:PackIcon Kind="Edit"/>
+                                    </Button>
+                                    <Button Grid.Column="1" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="MemberRemoveBtn_Click" 
+                                            Padding="2" 
+                                            Margin="1,0,2,0">
+                                        <materialDesign:PackIcon Kind="Remove"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

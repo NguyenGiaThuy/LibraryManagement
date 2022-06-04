@@ -30,5 +30,9 @@ namespace Client.Views.Main.Features {
 
         private void MemberRemoveBtn_Click(object sender, RoutedEventArgs e) {
         }
+
+        private void MemberDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }

@@ -20,5 +20,17 @@ namespace Client.Views.Main.Features.Dialogs {
         public MemberForm() {
             InitializeComponent();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+
+        }
+
+        private void UserFormSaveBtn_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void UserFormCancelBtn_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

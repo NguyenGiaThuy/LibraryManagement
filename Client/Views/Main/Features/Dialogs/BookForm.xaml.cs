@@ -12,22 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Client.Views.Main.Features;
+using Client.Models;
 
 namespace Client.Views.Main.Features.Dialogs {
     /// <summary>
     /// Interaction logic for BookForm.xaml
     /// </summary>
     public partial class BookForm : Window {
-        public Action<Book> OnBookFormSaved;
+        public Action<LibBook> OnBookFormSaved;
 
         public BookForm() {
             InitializeComponent();
         }
 
         private void BookFormSaveBtn_Click(object sender, RoutedEventArgs e) {
-            Book book = new Book();
+            LibBook book = new LibBook();
+
+            book.BookId = BookIdTxt.Text;
+            book.Isbn = ISBNTxt.Text;
             book.Title = TitleTxt.Text;
-            book.ISBN = ISBNTxt.Text;
             book.Genre = int.Parse(GenreTxt.Text);
             book.Author = AuthorTxt.Text;
             book.Publisher = PublisherTxt.Text;

@@ -7,76 +7,83 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="CallCardView" Height="450" Width="800">
-    <Grid Background="White">
+    <Grid Grid.Column="2"
+          Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
 
             <TextBox Name="CallCardSearchTxt"
-                     Grid.Column="0"
-                 Style="{StaticResource SearchboxTheme}"
-                 Margin="10,10,0,10" />
+                         Grid.Column="0"
+                         Style="{StaticResource SearchboxTheme}"
+                         Height="35"
+                         Margin="10,10,0,10" />
 
             <Button Name="CallCardNewBtn"
-                    Grid.Column="1"
-                    Content="New"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Height="40"
-                    Margin="10,0,5,0"
-                    Padding="5"
-                    Click="CallCardNewBtn_Click"/>
-            <Button Name="CallCardUpdateBtn"
-                    Grid.Column="2"
-                    Content="Update"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"
-                    Click="CallCardUpdateBtn_Click"/>
-            <Button Name="CallCardRemoveBtn"
-                    Grid.Column="3"
-                    Content="Remove"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"
-                    Click="CallCardRemoveBtn_Click"/>
+                        Grid.Column="1"
+                        Content="Tạo mới"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Height="35"
+                        Margin="10,0,10,0"
+                        Padding="5"
+                        Click="CallCardNewBtn_Click"/>
         </Grid>
 
         <DataGrid Name="CallCardDataGrid"
-                  Grid.Row="1"
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Auto"
-                  Margin="10,0,10,10"
-                  BorderThickness="1"
-                  AlternatingRowBackground="#FF929191">
+                      Grid.Row="1"
+                      Margin="10,0,10,10"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding CallCardID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding CallCardType}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding CallCardISBN}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Membership ID" MinWidth="50" Width="*" Binding="{Binding CallCardMembershipID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Membership name" MinWidth="50" Width="*" Binding="{Binding CallCardMembershipName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Arrear Amount" MinWidth="50" Width="*" Binding="{Binding CallCardArrearAmount}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding CallCardCreatedDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Current date" MinWidth="50" Width="*" Binding="{Binding CallCardCurrentDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Expiration date" MinWidth="0" Width="*" Binding="{Binding CallCardExpirationDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding CallCardCreator}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" MinWidth="50" Width="*" Binding="{Binding CallCardStatus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Phiếu mượn sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CallCardId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tới hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding DueDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Thẻ độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Tools" MinWidth="95" MaxWidth="95">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="CallCardUpdateBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2,0,1,0">
+                                    <materialDesign:PackIcon Kind="Edit"/>
+                                </Button>
+                                <Button Grid.Column="1" 
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="CallCardRemoveBtn_Click" 
+                                            Padding="2" 
+                                            Margin="1,0,2,0">
+                                    <materialDesign:PackIcon Kind="Remove"/>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

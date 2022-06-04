@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Client.Views.Main"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Library Management" Height="700" Width="1300">
+        Title="Library Management" Height="700" Width="1300"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
         <TabControl
@@ -18,7 +19,7 @@
             </TabControl.Resources>
 
             <TabItem
-                Header="Library Administrator" 
+                Header="Ban giám đốc" 
                 Foreground="Black" 
                 Background="White"
                 VerticalAlignment="Center"
@@ -57,7 +58,7 @@
                                         Margin="0,10,0,0" Grid.Row="0">
 
                             <RadioButton Name="LibraryAdminDashboardRBtn" 
-                                         Content="Dashboard"                                        
+                                         Content="Bảng điều khiển"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                         FontSize="16"
                                         Height="50"
@@ -67,7 +68,7 @@
                                         Checked="LibraryAdminDashboardRBtn_Checked"/>
 
                             <RadioButton Name="LibraryAdminUserRBtn" 
-                                         Content="User Database"                                        
+                                         Content="Thông tin nhân viên"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.Account}"
                                         FontSize="16"
                                         Height="50"
@@ -80,7 +81,7 @@
             </TabItem>
 
             <TabItem
-                Header="Libraran" 
+                Header="Thủ thư"
                 Foreground="Black" 
                 Background="White"
                 VerticalAlignment="Center"
@@ -118,7 +119,7 @@
                                     Margin="0,10,0,0">
 
                             <RadioButton Name="LibrarianDashboardRBtn"
-                                         Content="Dashboard"                                        
+                                         Content="Bảng điều khiển"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                         FontSize="16"
                                         Height="50"
@@ -128,7 +129,7 @@
                                          Checked="LibrarianDashboardRBtn_Checked"/>
 
                             <RadioButton Name="LibrarianBookRBtn"
-                                         Content="Book Database"                                        
+                                         Content="Thông tin sách"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.Book}"
                                         FontSize="16"
                                         Height="50"
@@ -137,7 +138,7 @@
                                          Checked="LibrarianBookRBtn_Checked"/>
 
                             <RadioButton Name="LibrarianMemberRBtn"
-                                         Content="Member Database"                                        
+                                         Content="Thông tin độc giả"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.User}"
                                          FontSize="16"
                                          Height="50"
@@ -146,7 +147,7 @@
                                          Checked="LibrarianMemberRBtn_Checked"/>
 
                             <RadioButton Name="LibrarianCallCardRBtn"
-                                         Content="Call Cards"                                        
+                                         Content="Phiếu mượn sách"                                        
                                         DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
                                         FontSize="16"
                                         Height="50"
@@ -159,7 +160,7 @@
             </TabItem>
 
             <TabItem
-                Header="Treasurer" 
+                Header="Thủ quỹ" 
                 Foreground="Black" 
                 Background="White"
                 VerticalAlignment="Center"
@@ -198,7 +199,7 @@
                                     Margin="0,10,0,0">
 
                             <RadioButton Name="TreasurerDashboardRBtn" 
-                                         Content="Dashboard"                                        
+                                         Content="Bảng điều khiển"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                          FontSize="16"
                                          Height="50"
@@ -207,7 +208,8 @@
                                          IsChecked="True"
                                          Checked="TreasurerDashboardRBtn_Checked"/>
 
-                            <RadioButton Name="TreasurerCallCardRBtn" Content="Call Cards"                                        
+                            <RadioButton Name="TreasurerCallCardRBtn" 
+                                         Content="Phiếu mượn sách"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
                                          FontSize="16"
                                          Height="50"
@@ -220,7 +222,7 @@
             </TabItem>
 
             <TabItem
-                Header="Storekeeper" 
+                Header="Thủ kho" 
                 Foreground="Black" 
                 Background="White"
                 VerticalAlignment="Center"
@@ -259,7 +261,7 @@
                                     Margin="0,10,0,0">
 
                             <RadioButton Name="StorekeeperDashboardRBtn" 
-                                         Content="Dashboard"                                        
+                                         Content="Bảng điều khiển"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                          FontSize="16"
                                          Height="50"
@@ -269,7 +271,7 @@
                                          Checked="StorekeeperDashboardRBtn_Checked"/>
 
                             <RadioButton Name="StorekeeperBookRBtn" 
-                                         Content="Book Database"                                        
+                                         Content="Thông tin sách"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.Book}"
                                          FontSize="16"
                                          Height="50"
@@ -277,14 +279,14 @@
                                          Style="{StaticResource VerticalMenuTheme}"
                                          Checked="StorekeeperBookRBtn_Checked"/>
 
-                            <RadioButton Name="StorekeeperBMRBtn" 
-                                         Content="Book Modification"                                        
+                            <RadioButton Name="StorekeeperBACardRBtn" 
+                                         Content="Thẻ lịch sử sách"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.Edit}"
                                          FontSize="16"
                                          Height="50"
                                          Margin="0,0,0,0"
                                          Style="{StaticResource VerticalMenuTheme}"
-                                         Checked="StorekeeperBMRBtn_Checked"/>
+                                         Checked="StorekeeperBACardRBtn_Checked"/>
                         </StackPanel>
                     </Border>
                 </Grid>

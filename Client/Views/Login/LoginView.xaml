@@ -126,7 +126,7 @@
 
                 <CheckBox 
                     Grid.Column="1" 
-                    Content="Remember me" 
+                    Content="Ghi nhớ đăng nhập" 
                     HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="7"
                     Foreground="#3C3535"
                     BorderBrush="#3C3535"
@@ -135,7 +135,9 @@
 
                 <TextBlock
                     Grid.Column="1" 
-                    HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="7"
+                    Grid.Row="7"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" 
                     Background="Transparent"
                     Foreground="#3C3535"
                     FontSize="14" Height="20" Margin="296,0,0,0" Width="104">
@@ -143,13 +145,13 @@
                         Foreground="#3C3535"
                         NavigateUri="Client\Views\Main\MainView.xaml"
                         RequestNavigate="Hyperlink_RequestNavigate">
-                        Forgot password
+                        Quên mật khẩu
                     </Hyperlink>
                 </TextBlock>
 
                 <Button 
                     Name="LoginBtn"
-                    Content="Login"
+                    Content="Đăng nhập"
                     Foreground="white"
                     Grid.Column="1" Grid.Row="8"
                     Background="#3B2C5E"

@@ -4,72 +4,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="BookAuditCardView" Height="450" Width="800">
-    <Grid Background="White">
+    <Grid Grid.Column="2"
+          Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
 
             <TextBox Name="BookAuditCardSearchTxt"
-                     Grid.Column="0"
-                 Style="{StaticResource SearchboxTheme}"
-                 Margin="10,10,0,10" />
+                         Grid.Column="0"
+                         Style="{StaticResource SearchboxTheme}"
+                         Height="35"
+                         Margin="10,10,0,10" />
 
             <Button Name="BookAuditCardNewBtn"
-                    Grid.Column="1"
-                    Content="New"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Height="40"
-                    Margin="10,0,5,0"
-                    Padding="5"
-                    Click="BookAuditCardNewBtn_Click"/>
-            <Button Name="BookAuditCardUpdateBtn"
-                    Grid.Column="2"
-                    Content="Update"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"
-                    Click="BookAuditCardUpdateBtn_Click"/>
-            <Button Name="BookAuditCardRemoveBtn"
-                    Grid.Column="3"
-                    Content="Remove"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"
-                    Margin="5,0,5,0"
-                    Height="40"
-                    Padding="5"
-                    Click="BookAuditCardRemoveBtn_Click"/>
+                        Grid.Column="1"
+                        Content="Tạo mới"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Height="35"
+                        Margin="10,0,10,0"
+                        Padding="5"
+                        Click="BookAuditCardNewBtn_Click"/>
         </Grid>
 
         <DataGrid Name="BookAuditCardDataGrid"
-                  Grid.Row="1"
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Auto"
-                  Margin="10,0,10,10"
-                  BorderThickness="1"
-                  AlternatingRowBackground="#FF929191">
+                      Grid.Row="1"
+                      Margin="10,0,10,10"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="50" Width="*" Binding="{Binding BookAuditCardID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" MinWidth="50" Width="*" Binding="{Binding BookAuditCardType}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" Binding="{Binding BookAuditCardISBN}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Created date" MinWidth="50" Width="*" Binding="{Binding BookAuditCardCreatedDate}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Creator" MinWidth="50" Width="*" Binding="{Binding BookAuditCardCreator}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Thẻ lịch sử sách" MinWidth="50" Width="2*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookAuditCardId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Lý do" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Reason}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
