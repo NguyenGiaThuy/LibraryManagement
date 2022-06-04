@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Server.Helpers.Exceptions
+﻿namespace Server.Helpers.Exceptions
 {
     [Serializable]
     public class NonExistenceException : Exception

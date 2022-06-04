@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Server.Helpers.Exceptions;
 using Server.Models;
 
 namespace Server.Repositories
@@ -14,79 +15,56 @@ namespace Server.Repositories
 
         public async Task<List<LibBook>> GetBooksAsync()
         {
-            var result = await _context.LibBooks.ToListAsync();
-            return result;
+            var books = await _context.LibBooks.ToListAsync();
+            return books;
         }
 
-        public async Task<List<LibBook>> GetBooksByGenreAsync(int genre)
+        public async Task<LibBook> GetBookByIdAsync(string bookId)
         {
-            var result = await _context.LibBooks.Where(x => x.Genre == genre).ToListAsync();
-            if (result == null) throw new ArgumentException(genre + " not found");
-            return result;
+            var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookId);
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookId));
+            return book;
         }
 
-        public async Task<List<LibBook>> GetBooksByAuthorAsync(string author)
+        public async Task<string> AddBookAsync(LibBook bookToAdd)
         {
-            var result = await _context.LibBooks.Where(x => x.Author != null ? x.Author.Contains(author) : false).ToListAsync();
-            if (result == null) throw new ArgumentException(author + " not found");
-            return result;
-        }
-
-        public async Task<List<LibBook>> GetBooksByPublisherAsync(string publisher)
-        {
-            var result = await _context.LibBooks.Where(x => x.Publisher != null ? x.Publisher.Contains(publisher) : false).ToListAsync();
-            if (result == null) throw new ArgumentException(publisher + " not found");
-            return result;
-        }
-
-        public async Task<LibBook> GetBooksByTitleAsync(string title)
-        {
-            var result = await _context.LibBooks.FirstOrDefaultAsync(x => x.Title != null ? x.Title.Contains(title) : false);
-            if (result == null) throw new ArgumentException(title + " not found");
-            return result;
-        }
-
-        public async Task<LibBook> GetBookByIsbnAsync(string isbn)
-        {
-            var result = await _context.LibBooks.FirstOrDefaultAsync(x => x.Isbn == isbn);
-            if (result == null) throw new ArgumentException(isbn + " not found");
-            return result;
-        }
-
-        public async Task<string> AddBookAsync(LibBook book)
-        {
-            _context.LibBooks.Add(book);
+            _context.LibBooks.Add(bookToAdd);
             await _context.SaveChangesAsync();
-            return book.Isbn;
+            return bookToAdd.BookId;
         }
 
-        public async Task<string> UpdateBookAsync(string isbn, LibBook book)
+        public async Task<string> UpdateBookAsync(LibBook bookToUpdate)
         {
-            var result = await _context.LibBooks.FirstOrDefaultAsync(x => x.Isbn == isbn);
-            if (result == null) throw new ArgumentException(isbn + " not found");
+            var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToUpdate.BookId);
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookToUpdate.BookId));
 
-            _context.LibBooks.Update(book);
+            book.Isbn = bookToUpdate.Isbn;
+            book.Title = bookToUpdate.Title;
+            book.Genre = bookToUpdate.Genre;
+            book.Author = bookToUpdate.Author;
+            book.Publisher = bookToUpdate.Publisher;
+            book.PublishedDate = bookToUpdate.PublishedDate;
+            book.Price = bookToUpdate.Price;
+            book.Status = bookToUpdate.Status;
+            book.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
-            return isbn;
+            return bookToUpdate.BookId;
         }
 
-        public async Task<string> RemoveBookAsync(string isbn)
+        public async Task<string> RemoveBookAsync(LibBook bookToRemove)
         {
-            var result = await _context.LibBooks.FirstOrDefaultAsync(x => x.Isbn == isbn);
-            if (result == null) throw new ArgumentException(isbn + " not found");
+            var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToRemove.BookId);
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookToRemove.BookId));
 
-            var conditionalQuery = from callCard in _context.LibCallCards 
-                                   where (callCard.Status == 1 || callCard.Status == 3)
-                                   && (callCard.Isbn == isbn)
-                                   select callCard;
+            // Check if book is available
+            if (book.Status == 1)
+                throw new UnavailableBookException(
+                    string.Format("Cannot remove book {0} due to it is unavailable", bookToRemove.BookId));
 
-            var conditionalCallCard = await conditionalQuery.FirstOrDefaultAsync();
-            if (conditionalCallCard != null) throw new InvalidOperationException("Cannot remove " + isbn + "due to some books are not returned");
-
-            result.Quantity = 0;
-            _context.LibBooks.Update(result);
+            // Remove book
+            book.Status = 1;
             await _context.SaveChangesAsync();
-            return isbn;
+            return bookToRemove.BookId;
         }
     }
 }
