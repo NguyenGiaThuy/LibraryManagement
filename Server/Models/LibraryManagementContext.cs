@@ -62,14 +62,14 @@ namespace Server.Models
                         .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<LibMembership>()
-                        .HasOne(x => x.Creator)
-                        .WithMany(y => y.CreatedLibMemberships)
-                        .HasForeignKey(z => z.CreatorId);
+                       .HasOne(x => x.Creator)
+                       .WithMany(y => y.CreatedLibMemberships)
+                       .HasForeignKey(z => z.CreatorId);
 
             modelBuilder.Entity<LibMembership>()
-                        .HasOne(x => x.Modifier)
-                        .WithMany(y => y.ModifiedLibMemberships)
-                        .HasForeignKey(z => z.ModifierId);
+                       .HasOne(x => x.Modifier)
+                       .WithMany(y => y.ModifiedLibMemberships)
+                       .HasForeignKey(z => z.ModifierId);
         }
     }
 }
