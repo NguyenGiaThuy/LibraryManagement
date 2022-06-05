@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject></StartupObject>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\Algorithms.jpg" />
+    <None Remove="Assets\Images\Books\Algorithms.jpg" />
+    <None Remove="Assets\Images\Books\Calculus.jpg" />
+    <None Remove="Assets\Images\Books\ElonMusk.jpg" />
+    <None Remove="Assets\Images\Calculus.jpg" />
+    <None Remove="Assets\Images\ElonMusk.jpg" />
+    <None Remove="Assets\Images\Members\EmmaWatson.jpg" />
+    <None Remove="Assets\Images\Members\MeganFox.jpg" />
+    <None Remove="Assets\Images\Members\NataliePortman.jpg" />
+    <None Remove="Assets\Images\Users\TomCruise.jpg" />
+    <None Remove="Assets\Images\Users\TomHanks.jpg" />
+    <None Remove="Assets\Images\Users\TomHolland.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentUI.Core" Version="1.0.51" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Books\Algorithms.jpg" />
+    <Resource Include="Assets\Images\Books\Calculus.jpg" />
+    <Resource Include="Assets\Images\Books\ElonMusk.jpg" />
+    <Resource Include="Assets\Images\Members\EmmaWatson.jpg" />
+    <Resource Include="Assets\Images\Members\MeganFox.jpg" />
+    <Resource Include="Assets\Images\Members\NataliePortman.jpg" />
+    <Resource Include="Assets\Images\Users\TomCruise.jpg" />
+    <Resource Include="Assets\Images\Users\TomHanks.jpg" />
+    <Resource Include="Assets\Images\Users\TomHolland.jpg" />
+  </ItemGroup>
+
+</Project>
