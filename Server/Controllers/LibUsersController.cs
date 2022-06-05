@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Server.Helpers.Exceptions;
 using Server.Models;
 using Server.Repositories;
 
@@ -10,18 +11,18 @@ namespace Server.Controllers
     [ApiController]
     public class LibUsersController : ControllerBase
     {
-        private readonly ILibUserRepository _repository;
+        private readonly ILibUsersRepository _usersRepository;
 
-        public LibUsersController(ILibUserRepository repository)
+        public LibUsersController(ILibUsersRepository usersRepository)
         {
-            _repository = repository;
+            _usersRepository = usersRepository;
         }
 
         // GET: api/<LibUsersController>
         [HttpGet]
-        public async Task<IActionResult> GetAllUsersAsync()
+        public async Task<IActionResult> GetUsersAsync()
         {
-            var result = await _repository.GetUsersAsync();
+            var result = await _usersRepository.GetUsersAsync();
             return Ok(result);
         }
 
@@ -31,12 +32,16 @@ namespace Server.Controllers
         {
             try
             {
-                var result = await _repository.GetUserByIdAsync(userId);
+                var result = await _usersRepository.GetUserByIdAsync(userId);
                 return Ok(result);
-            } 
-            catch (ArgumentException ex)
+            }
+            catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -44,9 +49,9 @@ namespace Server.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUserAsync([FromBody] LibUser user)
         {
-            try 
+            try
             {
-                var result = await _repository.CreateUserAsync(user);
+                var result = await _usersRepository.CreateUserAsync(user);
                 return Ok(user);
             }
             catch (Exception ex)
@@ -59,12 +64,14 @@ namespace Server.Controllers
         [HttpPut("{userId}")]
         public async Task<IActionResult> UpdateUserAsync([FromRoute] string userId, [FromBody] LibUser user)
         {
+            if (userId != user.UserId) return BadRequest("User Id does not match");
+
             try
             {
-                var result = await _repository.UpdateUserAsync(userId, user);
+                var result = await _usersRepository.UpdateUserAsync(user);
                 return Ok(result);
             }
-            catch(ArgumentException ex)
+            catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
             }
@@ -74,18 +81,41 @@ namespace Server.Controllers
             }
         }
 
-        // DELETE api/<LibUsersController>/5
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> DeleteUserAsync([FromRoute] string userId)
+        // PUT api/<LibUsersController>/5/disable
+        [HttpPut("{userId}/disable")]
+        public async Task<IActionResult> DisableUserAsync([FromRoute] string userId)
         {
             try
             {
-                var result = await _repository.DeleteUserAsync(userId);
+                var result = await _usersRepository.DisableUserAsync(userId);
                 return Ok(result);
             }
-            catch (ArgumentException ex)
+            catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // PUT api/<LibUsersController>/5/enable
+        [HttpPut("{userId}/enable")]
+        public async Task<IActionResult> EnableUserAsync([FromRoute] string userId)
+        {
+            try
+            {
+                var result = await _usersRepository.EnableUserAsync(userId);
+                return Ok(result);
+            }
+            catch (NonExistenceException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace Server.Models
         public LibBook(string isbn, string? title, int? genre, string? author, string? publisher,
             DateTime? publishedDate, int? price, string? receiverId, string? imageUrl)
         {
-            LibBookAuditCards = new HashSet<LibFineCard>();
+            LibBookAuditCards = new HashSet<LibBookAuditCard>();
             LibCallCards = new HashSet<LibCallCard>();
 
             Isbn = isbn;
@@ -52,7 +52,7 @@ namespace Server.Models
 
         public virtual LibUser? Receiver { get; set; }
         public virtual LibUser? Modifier { get; set; }
-        public virtual ICollection<LibFineCard> LibBookAuditCards { get; set; }
+        public virtual ICollection<LibBookAuditCard> LibBookAuditCards { get; set; }
         public virtual ICollection<LibCallCard> LibCallCards { get; set; }
     }
 }
