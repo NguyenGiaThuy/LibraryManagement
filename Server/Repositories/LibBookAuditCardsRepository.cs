@@ -22,14 +22,14 @@ namespace Server.Repositories
         public async Task<LibBookAuditCard> GetBookAuditCardByIdAsync(string bookAuditCardId)
         {
             var bookAuditCard = await _context.LibBookAuditCards.FirstOrDefaultAsync(x => x.BookAuditCardId == bookAuditCardId);
-            if (bookAuditCard == null) throw new NonExistenceException(string.Format("Book audit card {0} not found", bookAuditCardId));
+            if (bookAuditCard == null) throw new NonExistenceException(string.Format("Book audit card {0} is not found", bookAuditCardId));
             return bookAuditCard;
         }
 
         public async Task<LibBookAuditCard> GetBookAuditCardByBookIdAsync(string bookId)
         {
             var bookAuditCard = await _context.LibBookAuditCards.FirstOrDefaultAsync(x => x.BookId == bookId);
-            if (bookAuditCard == null) throw new NonExistenceException(string.Format("Book audit card for book {0} not found", bookId));
+            if (bookAuditCard == null) throw new NonExistenceException(string.Format("Book audit card for book {0} is not found", bookId));
             return bookAuditCard;
         }
 

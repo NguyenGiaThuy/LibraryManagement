@@ -22,7 +22,7 @@ namespace Server.Repositories
         public async Task<LibBook> GetBookByIdAsync(string bookId)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookId);
-            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookId));
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", bookId));
             return book;
         }
 
@@ -36,7 +36,7 @@ namespace Server.Repositories
         public async Task<string> UpdateBookAsync(LibBook bookToUpdate)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToUpdate.BookId);
-            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookToUpdate.BookId));
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", bookToUpdate.BookId));
 
             book.Isbn = bookToUpdate.Isbn;
             book.Title = bookToUpdate.Title;
@@ -54,7 +54,7 @@ namespace Server.Repositories
         public async Task<string> RemoveBookAsync(LibBook bookToRemove)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToRemove.BookId);
-            if (book == null) throw new NonExistenceException(string.Format("Book {0} not found", bookToRemove.BookId));
+            if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", bookToRemove.BookId));
 
             // Check if book is available
             if (book.Status == 1)

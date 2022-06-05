@@ -20,7 +20,7 @@ namespace Server.Controllers
 
         // GET: api/<LibBooksController>
         [HttpGet]
-        public async Task<IActionResult> GetAllBooksAsync()
+        public async Task<IActionResult> GetBooksAsync()
         {
             var result = await _booksRepository.GetBooksAsync();
             return Ok(result);
@@ -38,6 +38,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -80,7 +84,7 @@ namespace Server.Controllers
         }
 
         // DELETE api/<LibBooksController>/5/0
-        [HttpDelete("/{bookId}/{reason}")]
+        [HttpDelete("{bookId}/{reason}")]
         public async Task<IActionResult> RemoveBookAsync([FromRoute] string bookId, [FromRoute] int reason, [FromBody] LibBook book, [FromServices] ILibBookAuditCardsRepository bookAuditCardsRepository)
         {
             if (bookId != book.BookId) return BadRequest("Book Id does not match");
@@ -98,6 +102,10 @@ namespace Server.Controllers
             catch (UnavailableBookException ex)
             {
                 return StatusCode(500, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace Server.Controllers
 
         // GET: api/<LibBookAuditCardsController>
         [HttpGet]
-        public async Task<IActionResult> GetAllBookAuditCardsAsync()
+        public async Task<IActionResult> GetBookAuditCardsAsync()
         {
             var result = await _bookAuditCardsRepository.GetBookAuditCardsAsync();
             return Ok(result);
@@ -38,6 +38,10 @@ namespace Server.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // GET api/<LibBookAuditCardsController>/book/5
@@ -52,6 +56,10 @@ namespace Server.Controllers
             catch (NonExistenceException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
