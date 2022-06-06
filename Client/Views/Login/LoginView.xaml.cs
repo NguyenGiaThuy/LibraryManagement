@@ -17,12 +17,17 @@ using Client.Views.Login;
 using Client.Views.Main;
 using Client.Views.Main.Users;
 using Client.Views.Main.Features;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Client.Models;
 
 namespace Client.Views.Login {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
     public partial class LoginView : Window {
+        private Credential credential = new Credential();
+
         public LoginView() {
             InitializeComponent();
         }
@@ -36,40 +41,87 @@ namespace Client.Views.Login {
             Close();
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e) {
-            switch (AccountTextBox.Text) {
-                case "librarian":
-                    LibrarianView librarianView = new LibrarianView();
-                    librarianView.Show();
-                    Close();
-                    break;
-                case "libraryadmin":
-                    LibraryAdminView libraryAdminView = new LibraryAdminView();
-                    libraryAdminView.Show();
-                    Close();
-                    break;
-                case "storekeeper":
-                    StorekeeperView storekeeperView = new StorekeeperView();
-                    storekeeperView.Show();
-                    Close();
-                    break;
-                case "treasurer":
-                    TreasurerView treasurerView = new TreasurerView();
-                    treasurerView.Show();
-                    Close();
-                    break;
-                case "dev":
-                    DevView devView = new DevView();
-                    devView.Show();
-                    Close();
-                    break;
-                case "":
-                    LoginCheckTxt.Text = "The username & password field cannot be blank!";
-                    break;
-                default:
-                    LoginCheckTxt.Text = "Incorrect username or password!";
-                    break;
+        private async Task<LibUser> GetUser(string path)
+        {
+            LibUser user = null;
+            HttpResponseMessage response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                user = await response.Content.ReadAsAsync<LibUser>();
             }
+
+            return user;
+        }
+
+        private async void LoginBtn_Click(object sender, RoutedEventArgs e) {
+            credential.Username = AccountTextBox.Text.Trim();
+            credential.Password = PasswordBox.Password.Trim();
+
+            if (credential.Username == "") 
+            { 
+                LoginCheckTxt.Text = "Username field cannot be blank!";
+                return;
+            }
+            if (credential.Password == "")
+            {
+                LoginCheckTxt.Text = "Password field cannot be blank!";
+                return;
+            }
+
+            LibUser user = null;
+            try
+            {
+                user = await GetUser($"api/libusers/{credential.Username}");
+
+                if (credential.Password != user.Password)
+                {
+                    LoginCheckTxt.Text = "Incorrect username or password";
+                    return;
+                }
+
+                credential.StatusCode = (LibUser.UserStatus)user.Status;
+
+                if (credential.StatusCode == LibUser.UserStatus.Inactive)
+                {
+                    MessageBox.Show("Your account is inactive. Please contact manager for more details.");
+                    return;
+                }
+
+                credential.DepartmentCode = (LibUser.UserDepartment)user.Department;
+
+                switch (credential.DepartmentCode)
+                {
+                    case LibUser.UserDepartment.Librarian:
+                        LibrarianView librarianView = new LibrarianView();
+                        librarianView.Show();
+                        Close();
+                        break;
+                    case LibUser.UserDepartment.Administrator:
+                        LibraryAdminView libraryAdminView = new LibraryAdminView();
+                        libraryAdminView.Show();
+                        Close();
+                        break;
+                    case LibUser.UserDepartment.Storekeeper:
+                        StorekeeperView storekeeperView = new StorekeeperView();
+                        storekeeperView.Show();
+                        Close();
+                        break;
+                    case LibUser.UserDepartment.Treasurer:
+                        TreasurerView treasurerView = new TreasurerView();
+                        treasurerView.Show();
+                        Close();
+                        break;
+                    case LibUser.UserDepartment.Developer:
+                        DevView devView = new DevView();
+                        devView.Show();
+                        Close();
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            } 
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
@@ -77,15 +129,82 @@ namespace Client.Views.Login {
         }
 
         //Press Enter key to Login
-        private void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e) {
+        private async void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e) {
             UIElement uIElement = e.OriginalSource as UIElement;
-            try {
-                if ((uIElement != null) && (e.Key == Key.Enter)) {
-                    e.Handled = true;
-                    LoginBtn_Click(LoginBtn, e);
+
+            if ((uIElement != null) && (e.Key == Key.Enter))
+            {
+                e.Handled = true;
+
+                credential.Username = AccountTextBox.Text.Trim();
+                credential.Password = PasswordBox.Password.Trim();
+
+                if (credential.Username == "")
+                {
+                    LoginCheckTxt.Text = "Username field cannot be blank!";
+                    return;
+                }
+                if (credential.Password == "")
+                {
+                    LoginCheckTxt.Text = "Password field cannot be blank!";
+                    return;
+                }
+
+                LibUser user = null;
+                try
+                {
+                    user = await GetUser($"api/libusers/{credential.Username}");
+
+                    if (credential.Password != user.Password)
+                    {
+                        LoginCheckTxt.Text = "Incorrect username or password";
+                        return;
+                    }
+
+                    credential.StatusCode = (LibUser.UserStatus)user.Status;
+
+                    if (credential.StatusCode == LibUser.UserStatus.Inactive)
+                    {
+                        MessageBox.Show("Your account is inactive. Please contact manager for more details.");
+                        return;
+                    }
+
+                    credential.DepartmentCode = (LibUser.UserDepartment)user.Department;
+
+                    switch (credential.DepartmentCode)
+                    {
+                        case LibUser.UserDepartment.Librarian:
+                            LibrarianView librarianView = new LibrarianView();
+                            librarianView.Show();
+                            Close();
+                            break;
+                        case LibUser.UserDepartment.Administrator:
+                            LibraryAdminView libraryAdminView = new LibraryAdminView();
+                            libraryAdminView.Show();
+                            Close();
+                            break;
+                        case LibUser.UserDepartment.Storekeeper:
+                            StorekeeperView storekeeperView = new StorekeeperView();
+                            storekeeperView.Show();
+                            Close();
+                            break;
+                        case LibUser.UserDepartment.Treasurer:
+                            TreasurerView treasurerView = new TreasurerView();
+                            treasurerView.Show();
+                            Close();
+                            break;
+                        case LibUser.UserDepartment.Developer:
+                            DevView devView = new DevView();
+                            devView.Show();
+                            Close();
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex) { }
         }
     }
 }

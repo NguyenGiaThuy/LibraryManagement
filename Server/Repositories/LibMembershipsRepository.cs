@@ -61,7 +61,7 @@ namespace Server.Repositories
             // Reset membership
             membership.StartDate = DateTime.Now;
             membership.ExpiryDate = DateTime.Now.AddMonths(6);
-            membership.MembershipType = 0;
+            membership.Type = 0;
             membership.ModifierId = membershipToDisable.ModifierId;
             membership.ModifiedDate = DateTime.Now;
             membership.Status = 0;
@@ -79,7 +79,7 @@ namespace Server.Repositories
             membership.ModifiedDate = DateTime.Now;
 
             // Change membership type if tenure > 1 year
-            if ((membership.ExpiryDate.Value - membership.StartDate.Value).Days >= 365) membership.MembershipType = 1;
+            if ((membership.ExpiryDate.Value - membership.StartDate.Value).Days >= 365) membership.Type = 1;
 
             await _context.SaveChangesAsync();
             return membershipToDisable.MembershipId;

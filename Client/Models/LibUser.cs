@@ -6,6 +6,40 @@ using System.Threading.Tasks;
 
 namespace Client.Models {
     public class LibUser {
+        public enum UserEducation
+        {
+            HighschoolDegree,
+            IntermediateDegree,
+            CollegeDegree,
+            BachelorDegree,
+            MasterDegree,
+            PhDDegree
+        }
+
+        public enum UserDepartment
+        {
+            Librarian,
+            Storekeeper,
+            Treasurer,
+            Administrator,
+            Developer
+        }
+
+        public enum UserPosition
+        {
+            Director,
+            ViceDirector,
+            Manager,
+            ViceManager,
+            Clerk
+        }
+
+        public enum UserStatus
+        {
+            Active,
+            Inactive
+        }
+
         public LibUser() { }
 
         public LibUser(string userId, string password, string? name, string? address,

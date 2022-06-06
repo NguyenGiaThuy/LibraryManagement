@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace Client.Models {
     public class LibMembership {
+        public enum MembershipType
+        {
+            New,
+            Honored
+        }
+
+        public enum MembershipStatus
+        {
+            Active,
+            Inactive
+        }
+
         public LibMembership() { }
 
         public LibMembership(string memberId, string socialId, string? creatorId) {
@@ -13,7 +25,7 @@ namespace Client.Models {
 
             MemberId = memberId;
             SocialId = socialId;
-            MembershipType = 0;
+            Type = 0;
             Status = 0;
             CreatorId = creatorId;
             CreatedDate = DateTime.Now;
@@ -26,7 +38,7 @@ namespace Client.Models {
         public string SocialId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
-        public int? MembershipType { get; set; }
+        public int? Type { get; set; }
         public int? Status { get; set; }
         public string MemberId { get; set; }
         public string? CreatorId { get; set; }

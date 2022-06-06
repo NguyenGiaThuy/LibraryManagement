@@ -5,6 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Client.Models {
+    public enum FineCardStatus
+    {
+        NotPaid,
+        Paid
+    }
+
+    public enum FineCardReason
+    {
+        Due,
+        Lost
+    }
+
     public class LibFineCard {
         public LibFineCard() { }
 

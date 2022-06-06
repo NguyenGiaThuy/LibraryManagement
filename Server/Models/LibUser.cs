@@ -42,9 +42,9 @@ namespace Server.Models
         public string? Address { get; set; }
         public DateTime? Dob { get; set; }
         public string? Mobile { get; set; }
-        [Range(0, 4)]
+        [Range(0, 5)]
         public int? Education { get; set; }
-        [Range(0, 3)]
+        [Range(0, 4)]
         public int? Department { get; set; }
         [Range(0, 4)]
         public int? Position { get; set; }

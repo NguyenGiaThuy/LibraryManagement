@@ -6,6 +6,20 @@ using System.Threading.Tasks;
 
 namespace Client.Models {
     public class LibBookAuditCard {
+        public enum BookAuditCardType
+        {
+            Add,
+            Update,
+            Remove
+        }
+
+        public enum BookAuditCardReason
+        {
+            Lost,
+            Damaged,
+            LostByMember
+        }
+
         public LibBookAuditCard() { }
 
         public LibBookAuditCard(string bookId, int? type, int? reason, string? creatorId) {

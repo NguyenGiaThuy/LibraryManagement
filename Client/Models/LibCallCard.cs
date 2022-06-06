@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Client.Models {
     public class LibCallCard {
+        public enum CallCardStatus
+        {
+            Borrowing,
+            Returned,
+            Due,
+            Lost
+        }
+
         public LibCallCard() {}
 
         public LibCallCard(string bookId, DateTime? dueDate, string membershipId, string? creatorId) {

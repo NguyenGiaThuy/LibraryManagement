@@ -6,6 +6,19 @@ using System.Threading.Tasks;
 
 namespace Client.Models {
     public class LibBook {
+        public enum BookGenre
+        {
+            ComputerScience,
+            Mathematics,
+            Novel
+        }
+
+        public enum BookStatus
+        {
+            Available,
+            Unavailable
+        }
+
         public LibBook() { }
 
         public LibBook(string isbn, string? title, int? genre, string? author, string? publisher,

@@ -160,8 +160,7 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Margin="0,13,0,0"
-                    Click="LoginBtn_Click"
-                    TabIndex="2"/>
+                    TabIndex="2" Click="LoginBtn_Click"/>
             </Grid>
 
             <Border 

@@ -12,7 +12,7 @@ namespace Server.Models
 
             MemberId = memberId;
             SocialId = socialId;
-            MembershipType = 0;
+            Type = 0;
             Status = 0;
             CreatorId = creatorId;
             CreatedDate = DateTime.Now;
@@ -30,7 +30,7 @@ namespace Server.Models
         public DateTime? StartDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         [Range(0, 1)]
-        public int? MembershipType { get; set; }
+        public int? Type { get; set; }
         [Range(0, 1)]
         public int? Status { get; set; }
         [ForeignKey("Member")]
