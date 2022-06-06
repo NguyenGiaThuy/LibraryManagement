@@ -41,10 +41,9 @@ namespace Client.Views.Login {
             Close();
         }
 
-        private async Task<LibUser> GetUser(string path)
+        private async Task<LibUser> GetUser(LibUser user, string path)
         {
-            LibUser user = null;
-            HttpResponseMessage response = await App.Client.GetAsync(path);
+            HttpResponseMessage response = await App.Client.PostAsJsonAsync(path, user);
             if (response.IsSuccessStatusCode)
             {
                 user = await response.Content.ReadAsAsync<LibUser>();
@@ -68,10 +67,10 @@ namespace Client.Views.Login {
                 return;
             }
 
-            LibUser user = null;
+            LibUser user = new LibUser(credential.Username, credential.Password, null, null, null, null, null, null, null, null);
             try
             {
-                user = await GetUser($"api/libusers/{credential.Username}");
+                user = await GetUser(user, $"api/libusers/login");
 
                 if (credential.Password != user.Password)
                 {
@@ -150,10 +149,10 @@ namespace Client.Views.Login {
                     return;
                 }
 
-                LibUser user = null;
+                LibUser user = new LibUser(credential.Username, credential.Password, null, null, null, null, null, null, null, null);
                 try
                 {
-                    user = await GetUser($"api/libusers/{credential.Username}");
+                    user = await GetUser(user, $"api/libusers/login");
 
                     if (credential.Password != user.Password)
                     {

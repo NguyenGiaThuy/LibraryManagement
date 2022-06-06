@@ -5,7 +5,7 @@ namespace Server.Repositories
     public interface ILibUsersRepository
     {
         public Task<List<LibUser>> GetUsersAsync();
-        public Task<LibUser> GetUserByIdAsync(string userId);
+        public Task<LibUser> GetUserByIdAndPasswordAsync(string userId, string password);
         public Task<string> CreateUserAsync(LibUser userToCreate);
         public Task<string> UpdateUserAsync(LibUser userToUpdate);
         public Task<string> DisableUserAsync(string userId);

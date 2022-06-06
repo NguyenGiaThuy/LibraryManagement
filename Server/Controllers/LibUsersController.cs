@@ -26,13 +26,13 @@ namespace Server.Controllers
             return Ok(result);
         }
 
-        // GET api/<LibUsersController>/5
-        [HttpGet("{userId}")]
-        public async Task<IActionResult> GetUserByIdAsync([FromRoute] string userId)
+        // POST api/<LibUsersController>/login
+        [HttpPost("login")]
+        public async Task<IActionResult> GetUserByIdAndPasswordAsync([FromBody] LibUser user)
         {
             try
             {
-                var result = await _usersRepository.GetUserByIdAsync(userId);
+                var result = await _usersRepository.GetUserByIdAndPasswordAsync(user.UserId, user.Password);
                 return Ok(result);
             }
             catch (NonExistenceException ex)
