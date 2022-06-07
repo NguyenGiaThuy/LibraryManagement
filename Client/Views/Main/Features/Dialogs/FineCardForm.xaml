@@ -109,8 +109,8 @@
                          Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Due"></ComboBoxItem>
-                <ComboBoxItem Content="Lost"></ComboBoxItem>
+                <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
+                <ComboBoxItem Content="Dã mất"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="StatusComboBox"
                          Text=""
@@ -118,8 +118,8 @@
                          Grid.Row="5"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="NotPaid"></ComboBoxItem>
-                <ComboBoxItem Content="Paid"></ComboBoxItem>
+                <ComboBoxItem Content="Chưa trả tiền"></ComboBoxItem>
+                <ComboBoxItem Content="Đã trả tiền"></ComboBoxItem>
             </ComboBox>
             <TextBox Name="CreatorIdTxt"
                          Text=""

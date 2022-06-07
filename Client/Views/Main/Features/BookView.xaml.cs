@@ -88,7 +88,8 @@ namespace Client.Views.Main.Features
             bookForm.BookIdTxt.Text = selectedBook.BookId;
             bookForm.AuthorTxt.Text = selectedBook.Author;
             bookForm.PublisherTxt.Text = selectedBook.Publisher;
-            bookForm.PublishedDateTxt.Text = selectedBook.PublishedDate.ToString();
+            DateTime publishedDate = (DateTime)selectedBook.PublishedDate;
+            bookForm.PublishedDateComboBox.Text = publishedDate.ToString("dd/MM/yyyy");
             bookForm.ReceiverIdTxt.IsEnabled = false;
             bookForm.ReceiverIdTxt.Text = selectedBook.ReceiverId;
             bookForm.ReceivedDateTxt.IsEnabled = false;

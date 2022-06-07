@@ -103,10 +103,10 @@
                          Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Borrowing"></ComboBoxItem>
-                <ComboBoxItem Content="Returned"></ComboBoxItem>
-                <ComboBoxItem Content="Due"></ComboBoxItem>
-                <ComboBoxItem Content="Lost"></ComboBoxItem>
+                <ComboBoxItem Content="Đang mượn"></ComboBoxItem>
+                <ComboBoxItem Content="Đã trả"></ComboBoxItem>
+                <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
+                <ComboBoxItem Content="Đã mất"></ComboBoxItem>
             </ComboBox>
             <TextBox Name="CreatorIdTxt"
                          Text=""
