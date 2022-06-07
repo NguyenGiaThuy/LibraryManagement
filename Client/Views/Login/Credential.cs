@@ -1,10 +1,4 @@
-﻿using Client.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Client.Views.Login
 {
@@ -15,7 +9,5 @@ namespace Client.Views.Login
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public LibUser.UserDepartment DepartmentCode { get; set; }
-        public LibUser.UserStatus StatusCode { get; set; }
     }
 }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+﻿using Client.Models;
+using Client.Views.Login;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Windows;
-using Client;
-using Client.Views;
-using Client.Views.Login;
 
 namespace Client
 {
@@ -20,6 +14,7 @@ namespace Client
     {
         public static string BaseAddress = "https://localhost:5001/";
         public static HttpClient Client = new HttpClient();
+        public static LibUser User;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -29,12 +24,14 @@ namespace Client
             Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
+            User = null;
+
             LoginView loginView = new LoginView();
             loginView.Show();
 
             base.OnStartup(e);
         }
-            
+
         public App()
         {
             ShutdownMode = ShutdownMode.OnLastWindowClose;

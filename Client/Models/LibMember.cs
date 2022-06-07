@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibMember {
+namespace Client.Models
+{
+    public class LibMember
+    {
         public LibMember() { }
 
-        public LibMember(string socialId, string? name, DateTime? dob, string? address, string? mobile, string? email, string? creatorId, string? imageUrl) {
+        public LibMember(string socialId, string? name, DateTime? dob, string? address, string? mobile, string? email, string? creatorId, string? imageUrl)
+        {
             SocialId = socialId;
             Name = name;
             Dob = dob;

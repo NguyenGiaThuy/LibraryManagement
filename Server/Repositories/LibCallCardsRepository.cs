@@ -69,15 +69,15 @@ namespace Server.Repositories
 
             var callCards = await query.ToListAsync();
             int count = 0;
-            foreach(var callCard in callCards)
-                if ((DateTime.Now - callCard.CreatedDate.Value).Days <= 4) count++;            
+            foreach (var callCard in callCards)
+                if ((DateTime.Now - callCard.CreatedDate.Value).Days <= 4) count++;
 
             if (count >= 5)
                 throw new InvalidOperationException(
                     string.Format("Cannot create call card for membership {0} due to membership borrowing more than 5 books in 4 days", membership.MembershipId));
 
             // Check if due date > created date
-            if(callCardToCreate.DueDate <= callCardToCreate.CreatedDate) throw new InvalidOperationException("Cannot create call card since due date must be after created date");
+            if (callCardToCreate.DueDate <= callCardToCreate.CreatedDate) throw new InvalidOperationException("Cannot create call card since due date must be after created date");
 
             // Create call card
             book.Status = 1;
@@ -120,7 +120,7 @@ namespace Server.Repositories
                             (string.Format("Book {0} in call card {1} was already returned", book.BookId, callCardId));
 
                     // Does not allow to mark as due if due date is not met
-                    if (DateTime.Now <= callCard.DueDate) 
+                    if (DateTime.Now <= callCard.DueDate)
                         throw new InvalidOperationException
                             (string.Format("Call card {0}'s due date is not met", callCardId));
 
@@ -128,7 +128,7 @@ namespace Server.Repositories
                     break;
                 case 3:
                     // Does not allow to mark as lost if book was already returned 
-                    if(book.Status == 0)
+                    if (book.Status == 0)
                         throw new InvalidOperationException
                             (string.Format("Book {0} in call card {1} was already returned", book.BookId, callCardId));
 

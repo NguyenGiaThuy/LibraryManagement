@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibBook {
+namespace Client.Models
+{
+    public class LibBook
+    {
         public enum BookGenre
         {
             ComputerScience,
@@ -22,7 +21,8 @@ namespace Client.Models {
         public LibBook() { }
 
         public LibBook(string isbn, string? title, int? genre, string? author, string? publisher,
-            DateTime? publishedDate, int? price, string? receiverId, string? imageUrl) {
+            DateTime? publishedDate, int? price, string? receiverId, string? imageUrl)
+        {
             LibBookAuditCards = new HashSet<LibBookAuditCard>();
             LibCallCards = new HashSet<LibCallCard>();
 
@@ -61,7 +61,8 @@ namespace Client.Models {
         public virtual ICollection<LibBookAuditCard> LibBookAuditCards { get; set; }
         public virtual ICollection<LibCallCard> LibCallCards { get; set; }
 
-        public void CopyFrom(LibBook libBook) {
+        public void CopyFrom(LibBook libBook)
+        {
             this.Isbn = libBook.Isbn;
             this.Title = libBook.Title;
             this.Genre = libBook.Genre;

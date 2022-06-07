@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Client;
-using Client.Views;
-using Client.Views.Login;
-using Client.Views.Main;
-using Client.Views.Main.Features;
+﻿using Client.Views.Main.Features;
 using Client.Views.Main.Features.Dashboard;
-using Client.Views.Main.Users;
+using System;
+using System.Windows;
 
-namespace Client.Views.Main {
+namespace Client.Views.Main
+{
     /// <summary>
     /// Interaction logic for DevView.xaml
     /// </summary>
-    public partial class DevView : Window {
+    public partial class DevView : Window
+    {
         LibrarianDashboardView librarianDashboardView = new LibrarianDashboardView();
         LibraryAdminDashboardView libraryAdminDashboardView = new LibraryAdminDashboardView();
         StorekeeperDashboardView storekeeperDashboardView = new StorekeeperDashboardView();
@@ -33,11 +19,11 @@ namespace Client.Views.Main {
         MemberView memberView = new MemberView();
         CallCardView callCardView = new CallCardView();
         BookAuditCardView bookAuditCardView = new BookAuditCardView();
-        UserView userView = new UserView();
 
         public string Text { get; set; } = "abc";
 
-        public DevView() {
+        public DevView()
+        {
             this.DataContext = this;
             InitializeComponent();
 
@@ -48,55 +34,68 @@ namespace Client.Views.Main {
         }
 
         //LIBRARY ADMINISTRATOR ========================================================================
-        private void LibraryAdminDashboardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void LibraryAdminDashboardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             LibraryAdminFrame.Content = libraryAdminDashboardView.Content;
         }
 
-        private void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e) {
+        private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            UserView userView = await UserView.Create();
             LibraryAdminFrame.Content = userView.Content;
         }
 
         //LIBRARIAN ====================================================================================
-        private void LibrarianDashboardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void LibrarianDashboardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             LibrarianFrame.Content = librarianDashboardView.Content;
         }
 
-        private void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             LibrarianFrame.Content = memberView.Content;
         }
 
-        private void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             LibrarianFrame.Content = bookView.Content;
         }
 
-        private void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             LibrarianFrame.Content = callCardView.Content;
         }
 
         //TREASURER ====================================================================================
-        private void TreasurerDashboardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void TreasurerDashboardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             TreasurerFrame.Content = treasurerDashboardView.Content;
         }
 
-        private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             TreasurerFrame.Content = callCardView.Content;
         }
 
         //STOREKEEPER ==================================================================================
-        private void StorekeeperDashboardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void StorekeeperDashboardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             StorekeeperFrame.Content = storekeeperDashboardView.Content;
         }
 
-        private void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             StorekeeperFrame.Content = bookView.Content;
         }
 
-        private void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             StorekeeperFrame.Content = bookAuditCardView.Content;
         }
 
         //Close properly the application when the exit button is pressed
-        protected override void OnClosed(EventArgs e) {
+        protected override void OnClosed(EventArgs e)
+        {
             base.OnClosed(e);
 
             Application.Current.Shutdown();

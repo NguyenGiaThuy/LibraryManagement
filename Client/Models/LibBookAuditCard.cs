@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibBookAuditCard {
+namespace Client.Models
+{
+    public class LibBookAuditCard
+    {
         public enum BookAuditCardType
         {
             Add,
@@ -22,7 +20,8 @@ namespace Client.Models {
 
         public LibBookAuditCard() { }
 
-        public LibBookAuditCard(string bookId, int? type, int? reason, string? creatorId) {
+        public LibBookAuditCard(string bookId, int? type, int? reason, string? creatorId)
+        {
             BookId = bookId;
             CreatedDate = DateTime.Now;
             Type = type;
@@ -41,7 +40,8 @@ namespace Client.Models {
         public virtual LibBook? Book { get; set; }
         public virtual LibUser? Creator { get; set; }
 
-        public void CopyFrom(LibBookAuditCard libBookAuditCard) {
+        public void CopyFrom(LibBookAuditCard libBookAuditCard)
+        {
             this.BookAuditCardId = libBookAuditCard.BookAuditCardId;
             this.BookId = libBookAuditCard.BookId;
             this.Type = libBookAuditCard.Type;

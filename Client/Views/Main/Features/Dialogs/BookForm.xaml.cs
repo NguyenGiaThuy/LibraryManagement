@@ -1,31 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Client.Models;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Client.Views.Main.Features;
-using Client.Models;
 
-namespace Client.Views.Main.Features.Dialogs {
+namespace Client.Views.Main.Features.Dialogs
+{
     /// <summary>
     /// Interaction logic for BookForm.xaml
     /// </summary>
-    public partial class BookForm : Window {
+    public partial class BookForm : Window
+    {
         public Action<LibBook> OnBookFormSaved;
 
-        public BookForm() {
+        public BookForm()
+        {
             InitializeComponent();
         }
 
-        private void BookFormSaveBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        {
             LibBook book = new LibBook();
 
             book.BookId = BookIdTxt.Text;
@@ -38,15 +30,17 @@ namespace Client.Views.Main.Features.Dialogs {
             book.Price = int.Parse(PriceTxt.Text);
             //Update database
             OnBookFormSaved?.Invoke(book);
-            
+
             Hide();
         }
 
-        private void BookFormCancelBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookFormCancelBtn_Click(object sender, RoutedEventArgs e)
+        {
             Hide();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             e.Cancel = true;
             Hide();
         }

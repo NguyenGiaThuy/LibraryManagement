@@ -1,86 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Client.Models;
+using Client.Views.Main;
+using Client.Views.Main.Users;
+using System;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Diagnostics;
-using System.Windows.Navigation;
-using Client.Views.Login;
-using Client.Views.Main;
-using Client.Views.Main.Users;
-using Client.Views.Main.Features;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Client.Models;
 
-namespace Client.Views.Login {
+namespace Client.Views.Login
+{
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window {
+    public partial class LoginView : Window
+    {
         private Credential credential = new Credential();
 
-        public LoginView() {
+        public LoginView()
+        {
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e) {
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
             Close();
         }
 
-        private async Task<LibUser> GetUser(LibUser user, string path)
+        private async Task<HttpResponseMessage> LogInAsync(string path, string username, string password)
         {
-            HttpResponseMessage response = await App.Client.PostAsJsonAsync(path, user);
-            if (response.IsSuccessStatusCode)
-            {
-                user = await response.Content.ReadAsAsync<LibUser>();
-            }
-
-            return user;
+            LibUser user = new LibUser(username, password, null, null, null, null, null, null, null, null);
+            var response = await App.Client.PostAsJsonAsync(path, user);
+            response.EnsureSuccessStatusCode();
+            return response;
         }
 
-        private async void LoginBtn_Click(object sender, RoutedEventArgs e) {
+        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
             credential.Username = AccountTextBox.Text.Trim();
             credential.Password = PasswordBox.Password.Trim();
 
             UsernameCheckTxt.Text = "";
             PasswordCheckTxt.Text = "";
-            if (credential.Username == "" || credential.Password == "") 
-            { 
-                if(credential.Username == "") UsernameCheckTxt.Text = "Username field cannot be blank!";
+            if (credential.Username == "" || credential.Password == "")
+            {
+                if (credential.Username == "") UsernameCheckTxt.Text = "Username field cannot be blank!";
                 if (credential.Password == "") PasswordCheckTxt.Text = "Password field cannot be blank!";
                 return;
             }
 
-            LibUser user = new LibUser(credential.Username, credential.Password, null, null, null, null, null, null, null, null);
             try
             {
-                user = await GetUser(user, $"api/libusers/login");
+                var response = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
+                App.User = await response.Content.ReadAsAsync<LibUser>();
 
-                credential.StatusCode = (LibUser.UserStatus)user.Status;
-
-                if (credential.StatusCode == LibUser.UserStatus.Inactive)
+                if ((LibUser.UserStatus)App.User.Status == LibUser.UserStatus.Inactive)
                 {
                     MessageBox.Show("Your account is inactive. Please contact manager for more details.");
                     return;
                 }
 
-                credential.DepartmentCode = (LibUser.UserDepartment)user.Department;
-
-                switch (credential.DepartmentCode)
+                switch ((LibUser.UserDepartment)App.User.Department)
                 {
                     case LibUser.UserDepartment.Librarian:
                         LibrarianView librarianView = new LibrarianView();
@@ -109,14 +96,20 @@ namespace Client.Views.Login {
                         break;
                 }
             }
-            catch(Exception ex)
+            catch(HttpRequestException ex)
+            {
+                if(ex.StatusCode == HttpStatusCode.NotFound)
+                    MessageBox.Show("Incorrect username or password.", "Login failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            } 
+            }
         }
 
         //Press Enter key to Login
-        private async void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e) {
+        private async void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
             UIElement uIElement = e.OriginalSource as UIElement;
 
             if ((uIElement != null) && (e.Key == Key.Enter))
@@ -128,28 +121,25 @@ namespace Client.Views.Login {
 
                 UsernameCheckTxt.Text = "";
                 PasswordCheckTxt.Text = "";
-                if (credential.Username == "" || credential.Password == "") {
+                if (credential.Username == "" || credential.Password == "")
+                {
                     if (credential.Username == "") UsernameCheckTxt.Text = "Username field cannot be blank!";
                     if (credential.Password == "") PasswordCheckTxt.Text = "Password field cannot be blank!";
                     return;
                 }
 
-                LibUser user = new LibUser(credential.Username, credential.Password, null, null, null, null, null, null, null, null);
                 try
                 {
-                    user = await GetUser(user, $"api/libusers/login");
+                    var response = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
+                    App.User = await response.Content.ReadAsAsync<LibUser>();
 
-                    credential.StatusCode = (LibUser.UserStatus)user.Status;
-
-                    if (credential.StatusCode == LibUser.UserStatus.Inactive)
+                    if ((LibUser.UserStatus)App.User.Status == LibUser.UserStatus.Inactive)
                     {
                         MessageBox.Show("Your account is inactive. Please contact manager for more details.");
                         return;
                     }
 
-                    credential.DepartmentCode = (LibUser.UserDepartment)user.Department;
-
-                    switch (credential.DepartmentCode)
+                    switch ((LibUser.UserDepartment)App.User.Department)
                     {
                         case LibUser.UserDepartment.Librarian:
                             LibrarianView librarianView = new LibrarianView();
@@ -177,6 +167,11 @@ namespace Client.Views.Login {
                             Close();
                             break;
                     }
+                }
+                catch (HttpRequestException ex)
+                {
+                    if (ex.StatusCode == HttpStatusCode.NotFound)
+                        MessageBox.Show("Incorrect username or password.", "Login failed!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (Exception ex)
                 {

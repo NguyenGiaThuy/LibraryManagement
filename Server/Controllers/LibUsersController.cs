@@ -28,7 +28,7 @@ namespace Server.Controllers
 
         // POST api/<LibUsersController>/login
         [HttpPost("login")]
-        public async Task<IActionResult> GetUserByIdAndPasswordAsync([FromBody] LibUser user)
+        public async Task<IActionResult> GetUserByIdAndPasswordAsync(LibUser user)
         {
             try
             {

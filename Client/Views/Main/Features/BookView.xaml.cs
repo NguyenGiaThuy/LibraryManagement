@@ -1,35 +1,25 @@
-﻿using System;
+﻿using Client.Models;
+using Client.Views.Main.Features.Dialogs;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Controls.Primitives;
-using Microsoft.Win32;
-using System.Diagnostics;
-using System.Globalization;
-using Client;
-using Client.Models;
-using Client.Views.Main.Features.Dialogs;
 
-namespace Client.Views.Main.Features {
+namespace Client.Views.Main.Features
+{
     /// <summary>
     /// Interaction logic for BookView.xaml
     /// </summary>
 
-    public partial class BookView : Window {
+    public partial class BookView : Window
+    {
         BookForm bookForm;
         List<LibBook> bookList;
         LibBook selectedBook;
 
-        public BookView() {
+        public BookView()
+        {
             InitializeComponent();
 
             BookDataGrid.Focus();
@@ -44,18 +34,21 @@ namespace Client.Views.Main.Features {
             bookForm.OnBookFormSaved += BookForm_OnBookFormSaved;
         }
 
-        ~BookView() {
+        ~BookView()
+        {
             bookForm.OnBookFormSaved -= BookForm_OnBookFormSaved;
         }
 
-        private void BookForm_OnBookFormSaved(LibBook book) {
+        private void BookForm_OnBookFormSaved(LibBook book)
+        {
             selectedBook.CopyFrom(book);
             UpdateBookSidePanel(selectedBook);
             BookDataGrid.ItemsSource = null;
             BookDataGrid.ItemsSource = bookList;
         }
 
-        private void ClearBookSidePanel() {
+        private void ClearBookSidePanel()
+        {
             BookTitleTxt.Text = "";
             BookIdTxt.Text = "";
             AuthorTxt.Text = "";
@@ -65,7 +58,8 @@ namespace Client.Views.Main.Features {
             BookImg.Source = null;
         }
 
-        private void UpdateBookSidePanel(LibBook book) {
+        private void UpdateBookSidePanel(LibBook book)
+        {
             BookTitleTxt.Text = book.Title;
             BookIdTxt.Text = book.BookId;
             AuthorTxt.Text = book.Author;
@@ -75,11 +69,13 @@ namespace Client.Views.Main.Features {
             BookImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Books/" + book.ImageUrl));
         }
 
-        private void BookNewBtn_Click(object sender, RoutedEventArgs e) {
-               
+        private void BookNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
 
             bookForm.Title = "Update Form";
@@ -108,9 +104,11 @@ namespace Client.Views.Main.Features {
             bookForm.ShowDialog();
         }
 
-        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+            if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
                 bookList.Remove(selectedBook);
                 BookDataGrid.ItemsSource = null;
                 BookDataGrid.ItemsSource = bookList;
@@ -119,9 +117,11 @@ namespace Client.Views.Main.Features {
             }
         }
 
-        private void BookDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void BookDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            if (selectedBook != null) {
+            if (selectedBook != null)
+            {
                 UpdateBookSidePanel(selectedBook);
             }
         }

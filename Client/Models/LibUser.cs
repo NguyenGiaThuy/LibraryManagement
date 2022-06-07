@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibUser {
+namespace Client.Models
+{
+    public class LibUser
+    {
         public enum UserEducation
         {
             HighschoolDegree,
@@ -43,7 +42,8 @@ namespace Client.Models {
         public LibUser() { }
 
         public LibUser(string userId, string password, string? name, string? address,
-            DateTime? dob, string? mobile, int? education, int? department, int? position, string? imageUrl) {
+            DateTime? dob, string? mobile, int? education, int? department, int? position, string? imageUrl)
+        {
             CreatedLibBooks = new HashSet<LibBook>();
             ModifiedLibBooks = new HashSet<LibBook>();
             CreatedLibCallCards = new HashSet<LibCallCard>();
@@ -88,7 +88,8 @@ namespace Client.Models {
         public virtual ICollection<LibMember> CreatedLibMembers { get; set; }
         public virtual ICollection<LibMember> ModifiedLibMembers { get; set; }
 
-        public void CopyFrom(LibUser libUser) {
+        public void CopyFrom(LibUser libUser)
+        {
             this.UserId = libUser.UserId;
             this.Password = libUser.Password;
             this.Name = libUser.Name;

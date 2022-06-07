@@ -1,33 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.Diagnostics;
-using System.Globalization;
-using Client;
-using Client.Models;
+﻿using Client.Models;
 using Client.Views.Main.Features.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
-namespace Client.Views.Main.Features {
+namespace Client.Views.Main.Features
+{
     /// <summary>
     /// Interaction logic for CallCardView.xaml
     /// </summary>
-    public partial class CallCardView : Window {
+    public partial class CallCardView : Window
+    {
         CallCardForm callCardForm;
         List<LibCallCard> callCardList;
         LibCallCard selectedCallCard;
 
-        public CallCardView() {
+        public CallCardView()
+        {
             InitializeComponent();
 
             CallCardDataGrid.Focus();
@@ -42,20 +31,24 @@ namespace Client.Views.Main.Features {
             callCardForm.OnCallCardFormSaved += CallCardForm_OnCallCardFormSaved;
         }
 
-        ~CallCardView() {
+        ~CallCardView()
+        {
             callCardForm.OnCallCardFormSaved -= CallCardForm_OnCallCardFormSaved;
         }
 
-        private void CallCardForm_OnCallCardFormSaved(LibCallCard callCard) {
+        private void CallCardForm_OnCallCardFormSaved(LibCallCard callCard)
+        {
             selectedCallCard.CopyFrom(callCard);
             CallCardDataGrid.ItemsSource = null;
             CallCardDataGrid.ItemsSource = callCardList;
         }
 
-        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e) {
+        private void CallCardNewBtn_Click(object sender, RoutedEventArgs e)
+        {
         }
 
-        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
 
             callCardForm.Title = "Update Form";
@@ -75,9 +68,11 @@ namespace Client.Views.Main.Features {
             callCardForm.ShowDialog();
         }
 
-        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
-            if (MessageBox.Show("Are you sure you want to remove the following callCard?\n\n- Call Card ID: " + selectedCallCard.CallCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+            if (MessageBox.Show("Are you sure you want to remove the following callCard?\n\n- Call Card ID: " + selectedCallCard.CallCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
                 callCardList.Remove(selectedCallCard);
                 CallCardDataGrid.ItemsSource = null;
                 CallCardDataGrid.ItemsSource = callCardList;

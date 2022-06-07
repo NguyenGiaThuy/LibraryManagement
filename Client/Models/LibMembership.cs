@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibMembership {
+namespace Client.Models
+{
+    public class LibMembership
+    {
         public enum MembershipType
         {
             New,
@@ -20,7 +19,8 @@ namespace Client.Models {
 
         public LibMembership() { }
 
-        public LibMembership(string memberId, string socialId, string? creatorId) {
+        public LibMembership(string memberId, string socialId, string? creatorId)
+        {
             LibCallCards = new HashSet<LibCallCard>();
 
             MemberId = memberId;

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
+namespace Client.Models
+{
     public enum FineCardStatus
     {
         NotPaid,
@@ -17,10 +14,12 @@ namespace Client.Models {
         Lost
     }
 
-    public class LibFineCard {
+    public class LibFineCard
+    {
         public LibFineCard() { }
 
-        public LibFineCard(string callCardId, string? creatorId) {
+        public LibFineCard(string callCardId, string? creatorId)
+        {
             CallCardId = callCardId;
             Status = 0;
             CreatorId = creatorId;
@@ -40,7 +39,8 @@ namespace Client.Models {
         public virtual LibCallCard? CallCard { get; set; } = null!;
         public virtual LibUser? Creator { get; set; }
 
-        public void CopyFrom(LibFineCard libFineCard) {
+        public void CopyFrom(LibFineCard libFineCard)
+        {
             this.FineCardId = libFineCard.FineCardId;
             this.Arrears = libFineCard.Arrears;
             this.DaysInArrears = libFineCard.DaysInArrears;

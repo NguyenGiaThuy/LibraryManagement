@@ -1,33 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.Diagnostics;
-using System.Globalization;
-using Client;
-using Client.Models;
+﻿using Client.Models;
 using Client.Views.Main.Features.Dialogs;
+using System.Collections.Generic;
+using System.Windows;
 
-namespace Client.Views.Main.Features {
+namespace Client.Views.Main.Features
+{
     /// <summary>
     /// Interaction logic for FineCardView.xaml
     /// </summary>
-    public partial class FineCardView : Window {
+    public partial class FineCardView : Window
+    {
         FineCardForm fineCardForm;
         List<LibFineCard> fineCardList;
         LibFineCard selectedFineCard;
 
-        public FineCardView() {
+        public FineCardView()
+        {
             InitializeComponent();
 
             FineCardDataGrid.Focus();
@@ -42,20 +30,24 @@ namespace Client.Views.Main.Features {
             fineCardForm.OnFineCardFormSaved += FineCardForm_OnFineCardFormSaved;
         }
 
-        ~FineCardView() {
+        ~FineCardView()
+        {
             fineCardForm.OnFineCardFormSaved -= FineCardForm_OnFineCardFormSaved;
         }
 
-        private void FineCardForm_OnFineCardFormSaved(LibFineCard fineCard) {
+        private void FineCardForm_OnFineCardFormSaved(LibFineCard fineCard)
+        {
             selectedFineCard.CopyFrom(fineCard);
             FineCardDataGrid.ItemsSource = null;
             FineCardDataGrid.ItemsSource = fineCardList;
         }
 
-        private void FineCardNewBtn_Click(object sender, RoutedEventArgs e) {
+        private void FineCardNewBtn_Click(object sender, RoutedEventArgs e)
+        {
         }
 
-        private void FineCardUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        private void FineCardUpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
 
             fineCardForm.Title = "Update Form";
@@ -78,9 +70,11 @@ namespace Client.Views.Main.Features {
             fineCardForm.ShowDialog();
         }
 
-        private void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
-            if (MessageBox.Show("Are you sure you want to remove the following fineCard?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+            if (MessageBox.Show("Are you sure you want to remove the following fineCard?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
                 fineCardList.Remove(selectedFineCard);
                 FineCardDataGrid.ItemsSource = null;
                 FineCardDataGrid.ItemsSource = fineCardList;

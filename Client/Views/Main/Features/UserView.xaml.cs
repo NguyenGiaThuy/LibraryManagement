@@ -1,60 +1,65 @@
-﻿using System;
+﻿using Client.Models;
+using Client.Views.Main.Features.Dialogs;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.Diagnostics;
-using System.Globalization;
-using Client;
-using Client.Models;
-using Client.Views.Main.Features.Dialogs;
 
-namespace Client.Views.Main.Features {
+namespace Client.Views.Main.Features
+{
     /// <summary>
     /// Interaction logic for UserView.xaml
     /// </summary>
-    
-    public partial class UserView : Window {
+
+    public partial class UserView : Window
+    {
         UserForm userForm;
         List<LibUser> userList;
         LibUser selectedUser;
 
-        public UserView() {
+        public static async Task<UserView> Create()
+        {
+            var userView = new UserView();
+            userView.userList = await userView.GetUsersAsync($"api/libusers");
+            userView.UserDataGrid.ItemsSource = userView.userList;
+            return userView;
+        }
+
+        private UserView()
+        {
             InitializeComponent();
 
             UserDataGrid.Focus();
-            //Get users from database
-            userList = new List<LibUser>();
-            userList.Add(new LibUser("990292", "afs(#093", "Tom Hanks", "CA, USA", new DateTime(1970, 12, 07), "0393908786", 1, 1, 1, "TomHanks.jpg"));
-            userList.Add(new LibUser("937202", "34g34g(!", "Tom Cruise", "CA, USA", new DateTime(1930, 7, 24), "0978364259", 1, 1, 1, "TomCruise.jpg"));
-            userList.Add(new LibUser("908840", "%(*sdf24", "Tom Holland", "CA, USA", new DateTime(1912, 4, 11), "0867325659", 1, 1, 1, "TomHolland.jpg"));
-            UserDataGrid.ItemsSource = userList;
-
             userForm = new UserForm();
             userForm.OnUserFormSaved += UserForm_OnUserFormSaved;
         }
 
-        ~UserView() {
+        ~UserView()
+        {
             userForm.OnUserFormSaved -= UserForm_OnUserFormSaved;
         }
 
-        private void UserForm_OnUserFormSaved(LibUser user) {
+        private async Task<List<LibUser>> GetUsersAsync(string path)
+        {
+            List<LibUser> users = null;
+            var response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode) users = await response.Content.ReadAsAsync<List<LibUser>>();
+            return users;
+        }
+
+        private void UserForm_OnUserFormSaved(LibUser user)
+        {
             selectedUser.CopyFrom(user);
             UpdateUserSidePanel(selectedUser);
             UserDataGrid.ItemsSource = null;
             UserDataGrid.ItemsSource = userList;
         }
 
-        private void ClearUserSidePanel() {
+        private void ClearUserSidePanel()
+        {
             UserNameTxt.Text = "";
             IDTxt.Text = "";
             DOBTxt.Text = "";
@@ -66,7 +71,8 @@ namespace Client.Views.Main.Features {
             UserImg.Source = null;
         }
 
-        private void UpdateUserSidePanel(LibUser user) {
+        private void UpdateUserSidePanel(LibUser user)
+        {
             UserNameTxt.Text = user.Name;
             IDTxt.Text = user.UserId;
             DOBTxt.Text = user.Dob.ToString();
@@ -75,14 +81,19 @@ namespace Client.Views.Main.Features {
             EducationTxt.Text = user.Education.ToString();
             DepartmentTxt.Text = user.Department.ToString();
             PositionTxt.Text = user.Position.ToString();
-            UserImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Users/" + user.ImageUrl));
+            try
+            {
+                UserImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Users/" + user.ImageUrl));
+            } catch(Exception) { }
         }
 
-        private void UserNewBtn_Click(object sender, RoutedEventArgs e) {
-            
+        private void UserNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void UserUpdateBtn_Click(object sender, RoutedEventArgs e) {
+        private void UserUpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedUser = UserDataGrid.SelectedItem as LibUser;
 
             userForm.Title = "Update Form";
@@ -102,9 +113,11 @@ namespace Client.Views.Main.Features {
             userForm.ShowDialog();
         }
 
-        private void UserRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private void UserRemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
             selectedUser = UserDataGrid.SelectedItem as LibUser;
-            if (MessageBox.Show("Are you sure you want to remove the following user?\n\n- Name: " + selectedUser.Name + "\n- ID: " + selectedUser.UserId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+            if (MessageBox.Show("Are you sure you want to remove the following user?\n\n- Name: " + selectedUser.Name + "\n- ID: " + selectedUser.UserId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
                 userList.Remove(selectedUser);
                 UserDataGrid.ItemsSource = null;
                 UserDataGrid.ItemsSource = userList;
@@ -113,9 +126,11 @@ namespace Client.Views.Main.Features {
             }
         }
 
-        private void UserDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void UserDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             selectedUser = UserDataGrid.SelectedItem as LibUser;
-            if (selectedUser != null) {
+            if (selectedUser != null)
+            {
                 UpdateUserSidePanel(selectedUser);
             }
         }

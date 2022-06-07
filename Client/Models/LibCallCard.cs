@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Client.Models {
-    public class LibCallCard {
+namespace Client.Models
+{
+    public class LibCallCard
+    {
         public enum CallCardStatus
         {
             Borrowing,
@@ -14,9 +12,10 @@ namespace Client.Models {
             Lost
         }
 
-        public LibCallCard() {}
+        public LibCallCard() { }
 
-        public LibCallCard(string bookId, DateTime? dueDate, string membershipId, string? creatorId) {
+        public LibCallCard(string bookId, DateTime? dueDate, string membershipId, string? creatorId)
+        {
             BookId = bookId;
             DueDate = dueDate;
             MembershipId = membershipId;
@@ -38,7 +37,8 @@ namespace Client.Models {
         public virtual LibMembership? Membership { get; set; }
         public virtual LibUser? Creator { get; set; }
 
-        public void CopyFrom(LibCallCard libCallCard) { 
+        public void CopyFrom(LibCallCard libCallCard)
+        {
             this.CallCardId = libCallCard.CallCardId;
             this.DueDate = libCallCard.DueDate;
             this.BookId = libCallCard.BookId;
