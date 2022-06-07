@@ -11,5 +11,6 @@ namespace Server.Repositories
         public Task<string> DisableMembershipAsync(LibMembership membershipToDisable);
         public Task<string> EnableMembershipAsync(LibMembership membershipToEnable);
         public Task<string> ExtendMembershipAsync(LibMembership membershipToExtend);
+        public Task<string> UpdateMembershipStatusOnExpiredAsync(string membershipId);
     }
 }

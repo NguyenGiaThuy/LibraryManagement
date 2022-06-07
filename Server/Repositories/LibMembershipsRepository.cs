@@ -84,5 +84,19 @@ namespace Server.Repositories
             await _context.SaveChangesAsync();
             return membershipToDisable.MembershipId;
         }
+
+        public async Task<string> UpdateMembershipStatusOnExpiredAsync(string membershipId)
+        {
+            var membership = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipId);
+            if (membership == null) throw new NonExistenceException(string.Format("Membership {0} is not found", membershipId));
+
+            if (DateTime.Now >= membership.ExpiryDate)
+            {
+                membership.Status = 1;
+                await _context.SaveChangesAsync();
+            }
+
+            return membershipId;
+        }
     }
 }

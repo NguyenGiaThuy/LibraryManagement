@@ -82,23 +82,6 @@ namespace Server.Repositories
             return fineCardToCreate.FineCardId;
         }
 
-        //public async void UpdateAllFineCardsArrearsAsync()
-        //{
-        //    var query = from fineCard in _context.LibFineCards
-        //                where fineCard.Reason == 0
-        //                select fineCard;
-
-        //    var fineCards = await query.ToListAsync();
-        //    foreach (var fineCard in fineCards)
-        //    {
-        //        int? daysInArrears = (int?)(DateTime.Now - fineCard.CreatedDate.Value).TotalDays;
-        //        int? arrears = 1000 * daysInArrears;
-        //        fineCard.DaysInArrears += daysInArrears;
-        //        fineCard.Arrears += arrears;
-        //    }
-        //    await _context.SaveChangesAsync();
-        //}
-
         public async Task<string> UpdateFineCardArrearsAsync(string fineCardId)
         {
             var fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.FineCardId == fineCardId);

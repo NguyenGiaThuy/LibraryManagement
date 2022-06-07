@@ -128,5 +128,24 @@ namespace Server.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // PATCH api/<LibMembershipsController>/5
+        [HttpPatch("{membershipId}")]
+        public async Task<IActionResult> UpdateMembershipStatusOnExpiredAsync([FromRoute] string membershipId)
+        {
+            try
+            {
+                var result = await _membershipsRepository.UpdateMembershipStatusOnExpiredAsync(membershipId);
+                return Ok(result);
+            }
+            catch (NonExistenceException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

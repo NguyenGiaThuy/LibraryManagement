@@ -55,24 +55,28 @@ namespace Server.Repositories
                     callCardToCreate.MembershipId, callCardToCreate.BookId));
 
             // Check due call card
-            foreach (var mCallCard in membership.LibCallCards)
-                if (mCallCard.Status == 2)
-                    throw new DueCallCardException(
-                        string.Format("Cannot create call card for membership {0} due to membership has due call card {1}",
-                        membership.MembershipId, mCallCard.CallCardId));
+            var query1 = from cCallCard in _context.LibCallCards
+                         join cMembership in _context.LibMemberships on cCallCard.MembershipId equals cMembership.MembershipId
+                         where cCallCard.Status == 2 && cMembership.MembershipId == membership.MembershipId
+                         select cCallCard;
+
+            var callCards = await query1.ToListAsync();
+            if (callCards.Count > 0)
+                throw new DueCallCardException(
+                    string.Format("Cannot create call card for membership {0} due to membership has due call card(s)", membership.MembershipId));
 
             // Check if membership is borrowing more than 5 books in 4 days
-            var query = from cCallCard in _context.LibCallCards
-                        join cMembership in _context.LibMemberships on cCallCard.MembershipId equals cMembership.MembershipId
-                        where cCallCard.Status != 1
-                        select cCallCard;
+            var query2 = from cCallCard in _context.LibCallCards
+                         join cMembership in _context.LibMemberships on cCallCard.MembershipId equals cMembership.MembershipId
+                         where cCallCard.Status != 1 && cMembership.MembershipId == membership.MembershipId
+                         select cCallCard;
 
-            var callCards = await query.ToListAsync();
+            callCards = await query2.ToListAsync();
             int count = 0;
             foreach (var callCard in callCards)
                 if ((DateTime.Now - callCard.CreatedDate.Value).Days <= 4) count++;
 
-            if (count >= 5)
+            if (count > 5)
                 throw new InvalidOperationException(
                     string.Format("Cannot create call card for membership {0} due to membership borrowing more than 5 books in 4 days", membership.MembershipId));
 
