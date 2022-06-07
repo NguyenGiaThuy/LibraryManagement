@@ -56,14 +56,12 @@ namespace Client.Views.Login {
             credential.Username = AccountTextBox.Text.Trim();
             credential.Password = PasswordBox.Password.Trim();
 
-            if (credential.Username == "") 
+            UsernameCheckTxt.Text = "";
+            PasswordCheckTxt.Text = "";
+            if (credential.Username == "" || credential.Password == "") 
             { 
-                LoginCheckTxt.Text = "Username field cannot be blank!";
-                return;
-            }
-            if (credential.Password == "")
-            {
-                LoginCheckTxt.Text = "Password field cannot be blank!";
+                if(credential.Username == "") UsernameCheckTxt.Text = "Username field cannot be blank!";
+                if (credential.Password == "") PasswordCheckTxt.Text = "Password field cannot be blank!";
                 return;
             }
 
@@ -71,12 +69,6 @@ namespace Client.Views.Login {
             try
             {
                 user = await GetUser(user, $"api/libusers/login");
-
-                if (credential.Password != user.Password)
-                {
-                    LoginCheckTxt.Text = "Incorrect username or password";
-                    return;
-                }
 
                 credential.StatusCode = (LibUser.UserStatus)user.Status;
 
@@ -123,10 +115,6 @@ namespace Client.Views.Login {
             } 
         }
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
-            MessageBox.Show("Please contact to your administrator to retrieve password!", "Forgot password", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
         //Press Enter key to Login
         private async void LoginGrid_PreviewKeyDown(object sender, KeyEventArgs e) {
             UIElement uIElement = e.OriginalSource as UIElement;
@@ -138,14 +126,11 @@ namespace Client.Views.Login {
                 credential.Username = AccountTextBox.Text.Trim();
                 credential.Password = PasswordBox.Password.Trim();
 
-                if (credential.Username == "")
-                {
-                    LoginCheckTxt.Text = "Username field cannot be blank!";
-                    return;
-                }
-                if (credential.Password == "")
-                {
-                    LoginCheckTxt.Text = "Password field cannot be blank!";
+                UsernameCheckTxt.Text = "";
+                PasswordCheckTxt.Text = "";
+                if (credential.Username == "" || credential.Password == "") {
+                    if (credential.Username == "") UsernameCheckTxt.Text = "Username field cannot be blank!";
+                    if (credential.Password == "") PasswordCheckTxt.Text = "Password field cannot be blank!";
                     return;
                 }
 
@@ -153,12 +138,6 @@ namespace Client.Views.Login {
                 try
                 {
                     user = await GetUser(user, $"api/libusers/login");
-
-                    if (credential.Password != user.Password)
-                    {
-                        LoginCheckTxt.Text = "Incorrect username or password";
-                        return;
-                    }
 
                     credential.StatusCode = (LibUser.UserStatus)user.Status;
 

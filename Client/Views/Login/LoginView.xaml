@@ -36,15 +36,14 @@
                 Background="White"
                 PreviewKeyDown="LoginGrid_PreviewKeyDown">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="101*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="12*"/>
-                    <RowDefinition Height="58*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="58*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="91*"/>
+                    <RowDefinition Height="101"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="91"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
@@ -52,15 +51,8 @@
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Name="LoginCheckTxt"
-                           Grid.Column="1"
-                           Grid.Row="1"
-                           Text=""
-                           TextAlignment="Left"
-                           FontSize="14"
-                           Foreground="Red"/>
-
-                <Grid Grid.Column="1" Margin="0,1,0,0" Grid.Row="3">
+                <Grid Grid.Column="1" 
+                      Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition/>
@@ -92,7 +84,16 @@
                     </Border>
                 </Grid>
 
-                <Grid  Grid.Column="1" Grid.Row="5" Margin="0,0,0,2">
+                <TextBlock Name="UsernameCheckTxt"
+                           Grid.Column="1"
+                           Grid.Row="3"
+                           Text=""
+                           TextAlignment="Left"
+                           FontSize="14"
+                           Foreground="Red"/>
+
+                <Grid  Grid.Column="1" 
+                       Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition/>
@@ -124,43 +125,35 @@
                     </Border>
                 </Grid>
 
-                <CheckBox 
-                    Grid.Column="1" 
-                    Content="Ghi nhớ đăng nhập" 
-                    HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="7"
-                    Foreground="#3C3535"
-                    BorderBrush="#3C3535"
-                    FontSize="14" 
-                    Width="150" Height="20"/>
+                <TextBlock Name="PasswordCheckTxt"
+                           Grid.Column="1"
+                           Grid.Row="5"
+                           Text=""
+                           TextAlignment="Left"
+                           FontSize="14"
+                           Foreground="Red"/>
 
-                <TextBlock
-                    Grid.Column="1" 
-                    Grid.Row="7"
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Center" 
-                    Background="Transparent"
-                    Foreground="#3C3535"
-                    FontSize="14" Height="20" Margin="296,0,0,0" Width="104">
-                    <Hyperlink 
-                        Foreground="#3C3535"
-                        NavigateUri="Client\Views\Main\MainView.xaml"
-                        RequestNavigate="Hyperlink_RequestNavigate">
-                        Quên mật khẩu
-                    </Hyperlink>
-                </TextBlock>
+                <CheckBox Grid.Column="1" 
+                          Grid.Row="6"
+                          Content="Ghi nhớ đăng nhập" 
+                          HorizontalAlignment="Left" VerticalAlignment="Center" 
+                          Foreground="#3C3535"
+                          BorderBrush="#3C3535"
+                          FontSize="14" 
+                          Width="150" Height="20"/>
 
-                <Button 
-                    Name="LoginBtn"
-                    Content="Đăng nhập"
-                    Foreground="white"
-                    Grid.Column="1" Grid.Row="8"
-                    Background="#3B2C5E"
-                    Width="158"
-                    Height="50"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Margin="0,13,0,0"
-                    TabIndex="2" Click="LoginBtn_Click"/>
+                <Button Name="LoginBtn"
+                        Grid.Column="1" 
+                        Grid.Row="10"
+                        Content="Đăng nhập"
+                        Foreground="white"
+                        Background="#3B2C5E"
+                        Width="158"
+                        Height="50"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0,13,0,0"
+                        TabIndex="2" Click="LoginBtn_Click"/>
             </Grid>
 
             <Border 
