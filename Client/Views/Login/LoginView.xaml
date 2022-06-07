@@ -37,12 +37,11 @@
                 PreviewKeyDown="LoginGrid_PreviewKeyDown">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="101"/>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="55"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="55"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="25"/>
                     <RowDefinition Height="91"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -132,15 +131,6 @@
                            TextAlignment="Left"
                            FontSize="14"
                            Foreground="Red"/>
-
-                <CheckBox Grid.Column="1" 
-                          Grid.Row="6"
-                          Content="Ghi nhớ đăng nhập" 
-                          HorizontalAlignment="Left" VerticalAlignment="Center" 
-                          Foreground="#3C3535"
-                          BorderBrush="#3C3535"
-                          FontSize="14" 
-                          Width="150" Height="20"/>
 
                 <Button Name="LoginBtn"
                         Grid.Column="1" 

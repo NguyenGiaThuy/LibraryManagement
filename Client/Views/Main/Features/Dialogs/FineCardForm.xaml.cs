@@ -24,8 +24,8 @@ namespace Client.Views.Main.Features.Dialogs
             fineCard.Arrears = int.Parse(ArrearsTxt.Text);
             fineCard.DaysInArrears = int.Parse(DaysInArrearsTxt.Text);
             fineCard.CallCardId = CallCardIdTxt.Text;
-            fineCard.Reason = int.Parse(ReasonComboBox.Text);
-            fineCard.Status = int.Parse(StatusComboBox.Text);
+            fineCard.Reason = ReasonComboBox.SelectedIndex;
+            fineCard.Status = StatusComboBox.SelectedIndex;
             fineCard.CreatorId = CreatorIdTxt.Text;
             fineCard.CreatedDate = DateTime.Parse(CreatedDateTxt.Text);
             //Update database

@@ -133,12 +133,12 @@
                          Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="HighschoolDegree"></ComboBoxItem>
-                <ComboBoxItem Content="IntermediateDegree"></ComboBoxItem>
-                <ComboBoxItem Content="CollegeDegree"></ComboBoxItem>
-                <ComboBoxItem Content="BachelorDegree"></ComboBoxItem>
-                <ComboBoxItem Content="MasterDegree"></ComboBoxItem>
-                <ComboBoxItem Content="PhDDegree"></ComboBoxItem>
+                <ComboBoxItem Content="Phổ thông"></ComboBoxItem>
+                <ComboBoxItem Content="Trung cấp"></ComboBoxItem>
+                <ComboBoxItem Content="Cao đẳng"></ComboBoxItem>
+                <ComboBoxItem Content="Đại học"></ComboBoxItem>
+                <ComboBoxItem Content="Thạc sĩ"></ComboBoxItem>
+                <ComboBoxItem Content="Tiến sĩ"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="DepartmentComboBox"
                          Text=""
@@ -146,11 +146,11 @@
                          Grid.Row="7"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Librarian"></ComboBoxItem>
-                <ComboBoxItem Content="Storekeeper"></ComboBoxItem>
-                <ComboBoxItem Content="Treasurer"></ComboBoxItem>
-                <ComboBoxItem Content="Administrator"></ComboBoxItem>
-                <ComboBoxItem Content="Developer"></ComboBoxItem>
+                <ComboBoxItem Content="Thủ thư"></ComboBoxItem>
+                <ComboBoxItem Content="Thủ kho"></ComboBoxItem>
+                <ComboBoxItem Content="Thủ quỹ"></ComboBoxItem>
+                <ComboBoxItem Content="Ban giám đốc"></ComboBoxItem>
+                <ComboBoxItem Content="Lập trình viên"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="PositionComboBox"
                          Text=""
@@ -158,11 +158,11 @@
                          Grid.Row="8"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Director"></ComboBoxItem>
-                <ComboBoxItem Content="ViceDirector"></ComboBoxItem>
-                <ComboBoxItem Content="Manager"></ComboBoxItem>
-                <ComboBoxItem Content="ViceManager"></ComboBoxItem>
-                <ComboBoxItem Content="Clerk"></ComboBoxItem>
+                <ComboBoxItem Content="Giám đốc"></ComboBoxItem>
+                <ComboBoxItem Content="Phó giám đốc"></ComboBoxItem>
+                <ComboBoxItem Content="Trưởng phòng"></ComboBoxItem>
+                <ComboBoxItem Content="Phó phòng"></ComboBoxItem>
+                <ComboBoxItem Content="Nhân viên"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="StatusComboBox"
                          Text=""
@@ -170,8 +170,8 @@
                          Grid.Row="9"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Active"></ComboBoxItem>
-                <ComboBoxItem Content="Inactive"></ComboBoxItem>
+                <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
+                <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>
             </ComboBox>
         </Grid>
 

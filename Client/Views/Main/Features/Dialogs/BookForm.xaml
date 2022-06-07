@@ -132,28 +132,36 @@
                       Grid.Row="3"
                       Margin="0,5,10,5"
                       Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="ComputerScience"></ComboBoxItem>
-                <ComboBoxItem Content="Mathematics"></ComboBoxItem>
-                <ComboBoxItem Content="Novel"></ComboBoxItem>
+                <ComboBoxItem Content="Khoa học máy tính"></ComboBoxItem>
+                <ComboBoxItem Content="Toán học"></ComboBoxItem>
+                <ComboBoxItem Content="Tiểu thuyết"></ComboBoxItem>
             </ComboBox>
             <TextBox Name="AuthorTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="4"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="4"
+                     Margin="0,5,10,5"
+                     Style="{StaticResource InputTextbox}"/>
             <TextBox Name="PublisherTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="5"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="PublishedDateTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="6"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="5"
+                     Margin="0,5,10,5"
+                     Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="PublishedDateComboBox"
+                      Text="Chọn ngày"
+                      Grid.Column="1"
+                      Grid.Row="6"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}"
+                      LostFocus="PublishedDateComboBox_LostFocus">
+                <Calendar Name="MainCalendar"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="5"
+                          SelectedDatesChanged="MainCalendar_SelectedDatesChanged"
+                          Style="{x:Null}"/>
+            </ComboBox>
             <TextBox Name="ReceiverIdTxt"
                          Text=""
                          Grid.Column="1"
@@ -190,8 +198,8 @@
                          Grid.Row="12"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Available"></ComboBoxItem>
-                <ComboBoxItem Content="Unavailable"></ComboBoxItem>
+                <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
+                <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>
             </ComboBox>
         </Grid>
 

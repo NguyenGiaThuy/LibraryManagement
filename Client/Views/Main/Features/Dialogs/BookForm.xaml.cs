@@ -23,10 +23,10 @@ namespace Client.Views.Main.Features.Dialogs
             book.BookId = BookIdTxt.Text;
             book.Isbn = ISBNTxt.Text;
             book.Title = TitleTxt.Text;
-            book.Genre = int.Parse(GenreComboBox.Text);
+            book.Genre = GenreComboBox.SelectedIndex;
             book.Author = AuthorTxt.Text;
             book.Publisher = PublisherTxt.Text;
-            book.PublishedDate = DateTime.Parse(PublishedDateTxt.Text);
+            book.PublishedDate = DateTime.Parse(PublishedDateComboBox.Text);
             book.Price = int.Parse(PriceTxt.Text);
             //Update database
             OnBookFormSaved?.Invoke(book);
@@ -43,6 +43,18 @@ namespace Client.Views.Main.Features.Dialogs
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void MainCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)MainCalendar.SelectedDate;
+            PublishedDateComboBox.Text = selectedDate.ToString("dd/MM/yyyy");
+        }
+
+        private void PublishedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
+            if (PublishedDateComboBox.SelectedItem != null) {
+                DateTime selectedDate = (DateTime)MainCalendar.SelectedDate;
+                PublishedDateComboBox.Text = selectedDate.ToString("dd/MM/yyyy");
+            }
         }
     }
 }

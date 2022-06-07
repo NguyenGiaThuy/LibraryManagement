@@ -12,5 +12,7 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="IsEditable" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>
     </Style>
 </ResourceDictionary>
