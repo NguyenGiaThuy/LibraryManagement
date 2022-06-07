@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="CallCardForm" Height="400" Width="500"
+        Title="CallCardForm" Height="auto" Width="500"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -37,7 +37,7 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="ID Thẻ mượn sách"
+            <TextBlock Text="ID Phiếu mượn sách"
                            Grid.Column="0"
                            Grid.Row="0"
                            Margin="10,5,10,5"
@@ -97,12 +97,17 @@
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="StatusTxt"
+            <ComboBox Name="StatusComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Borrowing"></ComboBoxItem>
+                <ComboBoxItem Content="Returned"></ComboBoxItem>
+                <ComboBoxItem Content="Due"></ComboBoxItem>
+                <ComboBoxItem Content="Lost"></ComboBoxItem>
+            </ComboBox>
             <TextBox Name="CreatorIdTxt"
                          Text=""
                          Grid.Column="1"
@@ -131,14 +136,14 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
-                    Content="Save"
+                    Content="Lưu"
                     Click="CallCardFormSaveBtn_Click"/>
             <Button Name="CallCardFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
-                    Content="Cancel"
+                    Content="Hủy"
                     Click="CallCardFormCancelBtn_Click"/>
         </Grid>
     </Grid>

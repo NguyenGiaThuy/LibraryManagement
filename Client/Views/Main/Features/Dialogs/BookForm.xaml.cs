@@ -23,7 +23,7 @@ namespace Client.Views.Main.Features.Dialogs
             book.BookId = BookIdTxt.Text;
             book.Isbn = ISBNTxt.Text;
             book.Title = TitleTxt.Text;
-            book.Genre = int.Parse(GenreTxt.Text);
+            book.Genre = int.Parse(GenreComboBox.Text);
             book.Author = AuthorTxt.Text;
             book.Publisher = PublisherTxt.Text;
             book.PublishedDate = DateTime.Parse(PublishedDateTxt.Text);

@@ -44,7 +44,7 @@
                       IsReadOnly="True">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID Thẻ lịch sử sách" MinWidth="50" Width="2*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookAuditCardId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Phiếu lịch sử sách" MinWidth="50" Width="2*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookAuditCardId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Type}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Lý do" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Reason}"></DataGridTextColumn>

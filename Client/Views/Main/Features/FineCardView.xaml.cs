@@ -51,7 +51,7 @@ namespace Client.Views.Main.Features
             selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
 
             fineCardForm.Title = "Update Form";
-            fineCardForm.FineCardFormTitleTxt.Text = "UPDATE THE FINE CARD";
+            fineCardForm.FineCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU PHẠT";
             fineCardForm.FineCardIdTxt.IsEnabled = false;
             fineCardForm.FineCardIdTxt.Text = selectedFineCard.FineCardId;
             fineCardForm.ArrearsTxt.IsEnabled = false;
@@ -59,10 +59,10 @@ namespace Client.Views.Main.Features
             fineCardForm.DaysInArrearsTxt.IsEnabled = false;
             fineCardForm.DaysInArrearsTxt.Text = selectedFineCard.DaysInArrears.ToString();
             fineCardForm.CallCardIdTxt.Text = selectedFineCard.CallCardId;
-            fineCardForm.ReasonTxt.IsEnabled = false;
-            fineCardForm.ReasonTxt.Text = selectedFineCard.Reason.ToString();
-            fineCardForm.StatusTxt.IsEnabled = false;
-            fineCardForm.StatusTxt.Text = selectedFineCard.Status.ToString();
+            fineCardForm.ReasonComboBox.IsEnabled = false;
+            fineCardForm.ReasonComboBox.Text = selectedFineCard.Reason.ToString();
+            fineCardForm.StatusComboBox.IsEnabled = false;
+            fineCardForm.StatusComboBox.Text = selectedFineCard.Status.ToString();
             fineCardForm.CreatorIdTxt.Text = selectedFineCard.CreatorId;
             fineCardForm.CreatedDateTxt.IsEnabled=false;
             fineCardForm.CreatedDateTxt.Text = selectedFineCard.CreatedDate.ToString();

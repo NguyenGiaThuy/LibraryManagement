@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="MemberForm" Height="580" Width="500"
+        Title="MemberForm" Height="auto" Width="500"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -191,14 +191,14 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
-                    Content="Save"
+                    Content="Lưu"
                     Click="UserFormSaveBtn_Click"/>
             <Button Name="UserFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
-                    Content="Cancel"
+                    Content="Hủy"
                     Click="UserFormCancelBtn_Click"/>
         </Grid>
     </Grid>

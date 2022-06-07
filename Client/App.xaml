@@ -35,6 +35,7 @@
                 <ResourceDictionary Source="Theme/HorizontalMenuTheme.xaml"/>
                 <ResourceDictionary Source="Theme/SearchboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/PasswordTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextBlockTheme.xaml"/>
                 <ResourceDictionary Source="Theme/DatagridContentTheme.xaml"/>

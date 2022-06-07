@@ -97,7 +97,7 @@ namespace Client.Views.Main.Features
             selectedUser = UserDataGrid.SelectedItem as LibUser;
 
             userForm.Title = "Update Form";
-            userForm.UserFormTitleTxt.Text = "UPDATE THE USER";
+            userForm.UserFormTitleTxt.Text = "CẬP NHẬT NHÂN VIÊN";
             userForm.UserIdTxt.IsEnabled = false;
             userForm.UserIdTxt.Text = selectedUser.UserId;
             userForm.PasswordTxt.Password = selectedUser.Password;
@@ -105,10 +105,10 @@ namespace Client.Views.Main.Features
             userForm.AddressTxt.Text = selectedUser.Address;
             userForm.DateOfBirthTxt.Text = selectedUser.Dob.ToString();
             userForm.MobileTxt.Text = selectedUser.Mobile;
-            userForm.EducationTxt.Text = selectedUser.Education.ToString();
-            userForm.DepartmentTxt.Text = selectedUser.Department.ToString();
-            userForm.PositionTxt.Text = selectedUser.Position.ToString();
-            userForm.StatusTxt.Text = selectedUser.Status.ToString();
+            userForm.EducationComboBox.Text = selectedUser.Education.ToString();
+            userForm.DepartmentComboBox.Text = selectedUser.Department.ToString();
+            userForm.PositionComboBox.Text = selectedUser.Position.ToString();
+            userForm.StatusComboBox.Text = selectedUser.Status.ToString();
 
             userForm.ShowDialog();
         }

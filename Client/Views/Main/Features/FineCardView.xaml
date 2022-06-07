@@ -47,7 +47,7 @@
                 <DataGridTextColumn Header="ID Phiếu phạt" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding FineCardId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tiền còn nợ" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Arrears}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ngày nợ" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding DaysInArrears, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ID Thẻ mượn sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CallCardId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID Phiếu mượn sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CallCardId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Lý do" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Reason}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>

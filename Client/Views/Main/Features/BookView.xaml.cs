@@ -79,11 +79,11 @@ namespace Client.Views.Main.Features
             selectedBook = BookDataGrid.SelectedItem as LibBook;
 
             bookForm.Title = "Update Form";
-            bookForm.BookFormTitleTxt.Text = "UPDATE THE BOOK";
+            bookForm.BookFormTitleTxt.Text = "CẬP NHẬT SÁCH";
             bookForm.TitleTxt.Text = selectedBook.Title;
             bookForm.ISBNTxt.IsEnabled = false;
             bookForm.ISBNTxt.Text = selectedBook.Isbn;
-            bookForm.GenreTxt.Text = selectedBook.Genre.ToString();
+            bookForm.GenreComboBox.Text = selectedBook.Genre.ToString();
             bookForm.BookIdTxt.IsEnabled = false;
             bookForm.BookIdTxt.Text = selectedBook.BookId;
             bookForm.AuthorTxt.Text = selectedBook.Author;
@@ -98,8 +98,8 @@ namespace Client.Views.Main.Features
             bookForm.ModifiedDateTxt.IsEnabled = false;
             bookForm.ModifiedDateTxt.Text = selectedBook.ModifiedDate.ToString();
             bookForm.PriceTxt.Text = selectedBook.Price.ToString();
-            bookForm.StatusTxt.IsEnabled = false;
-            bookForm.StatusTxt.Text = selectedBook.Status.ToString();
+            bookForm.StatusComboBox.IsEnabled = false;
+            bookForm.StatusComboBox.Text = selectedBook.Status.ToString();
 
             bookForm.ShowDialog();
         }

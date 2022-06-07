@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="UserForm" Height="500" Width="500"
+        Title="UserForm" Height="auto" Width="500"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -127,30 +127,52 @@
                          Grid.Row="5"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="EducationTxt"
+            <ComboBox Name="EducationComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="6"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="DepartmentTxt"
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="HighschoolDegree"></ComboBoxItem>
+                <ComboBoxItem Content="IntermediateDegree"></ComboBoxItem>
+                <ComboBoxItem Content="CollegeDegree"></ComboBoxItem>
+                <ComboBoxItem Content="BachelorDegree"></ComboBoxItem>
+                <ComboBoxItem Content="MasterDegree"></ComboBoxItem>
+                <ComboBoxItem Content="PhDDegree"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="DepartmentComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="7"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="PositionTxt"
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Librarian"></ComboBoxItem>
+                <ComboBoxItem Content="Storekeeper"></ComboBoxItem>
+                <ComboBoxItem Content="Treasurer"></ComboBoxItem>
+                <ComboBoxItem Content="Administrator"></ComboBoxItem>
+                <ComboBoxItem Content="Developer"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="PositionComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="8"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="StatusTxt"
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Director"></ComboBoxItem>
+                <ComboBoxItem Content="ViceDirector"></ComboBoxItem>
+                <ComboBoxItem Content="Manager"></ComboBoxItem>
+                <ComboBoxItem Content="ViceManager"></ComboBoxItem>
+                <ComboBoxItem Content="Clerk"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="StatusComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="9"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Active"></ComboBoxItem>
+                <ComboBoxItem Content="Inactive"></ComboBoxItem>
+            </ComboBox>
         </Grid>
 
         <Grid Grid.Row="2" 
@@ -167,14 +189,14 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
-                    Content="Save"
+                    Content="Lưu"
                     Click="UserFormSaveBtn_Click"/>
             <Button Name="UserFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
-                    Content="Cancel"
+                    Content="Hủy"
                     Click="UserFormCancelBtn_Click"/>
         </Grid>
     </Grid>

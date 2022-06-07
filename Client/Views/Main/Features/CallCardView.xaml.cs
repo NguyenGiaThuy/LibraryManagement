@@ -52,15 +52,15 @@ namespace Client.Views.Main.Features
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
 
             callCardForm.Title = "Update Form";
-            callCardForm.CallCardFormTitleTxt.Text = "UPDATE THE CALL CARD";
+            callCardForm.CallCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU MƯỢN SÁCH";
             callCardForm.CallCardIdTxt.IsEnabled = false;
             callCardForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
             callCardForm.DueDateTxt.Text = selectedCallCard.DueDate.ToString();
             callCardForm.BookIdTxt.IsEnabled = false;
             callCardForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
             callCardForm.MembershipIdTxt.Text = selectedCallCard.MembershipId;
-            callCardForm.StatusTxt.IsEnabled = false;
-            callCardForm.StatusTxt.Text = selectedCallCard.Status.ToString();
+            callCardForm.StatusComboBox.IsEnabled = false;
+            callCardForm.StatusComboBox.Text = selectedCallCard.Status.ToString();
             callCardForm.CreatorIdTxt.Text = selectedCallCard.CreatorId;
             callCardForm.CreatedDateTxt.IsEnabled = false;
             callCardForm.CreatedDateTxt.Text = selectedCallCard.CreatedDate.ToString();

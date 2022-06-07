@@ -38,7 +38,7 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="ID Thẻ phạt"
+            <TextBlock Text="ID Phiếu phạt"
                            Grid.Column="0"
                            Grid.Row="0"
                            Margin="10,5,10,5"
@@ -53,7 +53,7 @@
                            Grid.Row="2"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-            <TextBlock Text="ID Thẻ mượn sách"
+            <TextBlock Text="ID Phiếu mượn sách"
                            Grid.Column="0"
                            Grid.Row="3"
                            Margin="10,5,10,5"
@@ -103,18 +103,24 @@
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="ReasonTxt"
+            <ComboBox Name="ReasonComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="StatusTxt"
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Due"></ComboBoxItem>
+                <ComboBoxItem Content="Lost"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="StatusComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="5"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="NotPaid"></ComboBoxItem>
+                <ComboBoxItem Content="Paid"></ComboBoxItem>
+            </ComboBox>
             <TextBox Name="CreatorIdTxt"
                          Text=""
                          Grid.Column="1"
@@ -143,14 +149,14 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
-                    Content="Save"
+                    Content="Lưu"
                     Click="FineCardFormSaveBtn_Click"/>
             <Button Name="FineCardFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
-                    Content="Cancel"
+                    Content="Hủy"
                     Click="FineCardFormCancelBtn_Click"/>
         </Grid>
     </Grid>

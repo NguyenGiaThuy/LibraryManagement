@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="BookForm" Height="600" Width="500"
+        Title="BookForm" Height="auto" Width="500"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -127,12 +127,15 @@
                          Grid.Row="2"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="GenreTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="3"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="GenreComboBox"
+                      Grid.Column="1"
+                      Grid.Row="3"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="ComputerScience"></ComboBoxItem>
+                <ComboBoxItem Content="Mathematics"></ComboBoxItem>
+                <ComboBoxItem Content="Novel"></ComboBoxItem>
+            </ComboBox>
             <TextBox Name="AuthorTxt"
                          Text=""
                          Grid.Column="1"
@@ -181,12 +184,15 @@
                          Grid.Row="11"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="StatusTxt"
+            <ComboBox Name="StatusComboBox"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="12"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                         Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Available"></ComboBoxItem>
+                <ComboBoxItem Content="Unavailable"></ComboBoxItem>
+            </ComboBox>
         </Grid>
 
         <Grid Grid.Row="2" 
@@ -203,14 +209,14 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
-                    Content="Save"
+                    Content="Lưu"
                     Click="BookFormSaveBtn_Click"/>
             <Button Name="BookFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
-                    Content="Cancel"
+                    Content="Hủy"
                     Click="BookFormCancelBtn_Click"/>
         </Grid>
     </Grid>

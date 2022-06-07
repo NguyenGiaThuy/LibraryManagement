@@ -280,7 +280,7 @@
                                          Checked="StorekeeperBookRBtn_Checked"/>
 
                             <RadioButton Name="StorekeeperBACardRBtn" 
-                                         Content="Thẻ lịch sử sách"                                        
+                                         Content="Phiếu lịch sử sách"                                        
                                          DataContext="{x:Static materialDesign:PackIconKind.Edit}"
                                          FontSize="16"
                                          Height="50"
