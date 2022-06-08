@@ -50,20 +50,29 @@ namespace Client.Views.Main.Features
         private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
-
+            //callCardForm description
             callCardForm.Title = "Update Form";
             callCardForm.CallCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU MƯỢN SÁCH";
+            //CallCardId
             callCardForm.CallCardIdTxt.IsEnabled = false;
             callCardForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
-            callCardForm.DueDateTxt.Text = selectedCallCard.DueDate.ToString();
+            //DueDate
+            DateTime dueDate = (DateTime)selectedCallCard.DueDate;
+            callCardForm.DueDateComboBox.Text = dueDate.ToString("dd-MM-yyyy");
+            //BookId
             callCardForm.BookIdTxt.IsEnabled = false;
             callCardForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
+            //Membership
             callCardForm.MembershipIdTxt.Text = selectedCallCard.MembershipId;
+            //Status
             callCardForm.StatusComboBox.IsEnabled = false;
             callCardForm.StatusComboBox.Text = selectedCallCard.Status.ToString();
+            //Creator
             callCardForm.CreatorIdTxt.Text = selectedCallCard.CreatorId;
-            callCardForm.CreatedDateTxt.IsEnabled = false;
-            callCardForm.CreatedDateTxt.Text = selectedCallCard.CreatedDate.ToString();
+            //CreatedDate
+            callCardForm.CreatedDateComboBox.IsEnabled = false;
+            DateTime createdDate = (DateTime)selectedCallCard.DueDate;
+            callCardForm.CreatedDateComboBox.Text = createdDate.ToString("dd-MM-yyyy");
 
             callCardForm.ShowDialog();
         }

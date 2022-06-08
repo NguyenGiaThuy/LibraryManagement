@@ -176,11 +176,11 @@
                     <DataGridTextColumn Header="Tác giả" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Author}"></DataGridTextColumn>
                     <DataGridTextColumn Header="ISBN" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Isbn}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Nhà XB" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Publisher}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày XB" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding PublishedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày XB" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding PublishedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Người nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceiverId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceivedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceivedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Người chỉnh sửa" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifierId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Giá" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Price}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                     

@@ -79,12 +79,20 @@
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="DueDateTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="1"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="DueDateComboBox"
+                      Text="Chọn ngày tới hạn"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}"
+                      LostFocus="DueDateComboBox_LostFocus">
+                <Calendar Name="DueDateCalendar"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="5"
+                          SelectedDatesChanged="DueDateCalendar_SelectedDatesChanged"
+                          Style="{x:Null}"/>
+            </ComboBox>
             <TextBox Name="BookIdTxt"
                          Text=""
                          Grid.Column="1"
@@ -114,12 +122,20 @@
                          Grid.Row="5"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="CreatedDateTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="6"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="CreatedDateComboBox"
+                      Text="Chọn ngày tạo"
+                      Grid.Column="1"
+                      Grid.Row="6"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}"
+                      LostFocus="CreatedDateTxt_LostFocus">
+                <Calendar Name="CreatedDateCalendar"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="5"
+                          SelectedDatesChanged="CreatedDateCalendar_SelectedDatesChanged"
+                          Style="{x:Null}"/>
+            </ComboBox>
         </Grid>
 
         <Grid Grid.Row="2" 

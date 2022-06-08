@@ -27,7 +27,7 @@ namespace Client.Views.Main.Features.Dialogs
             fineCard.Reason = ReasonComboBox.SelectedIndex;
             fineCard.Status = StatusComboBox.SelectedIndex;
             fineCard.CreatorId = CreatorIdTxt.Text;
-            fineCard.CreatedDate = DateTime.Parse(CreatedDateTxt.Text);
+            fineCard.CreatedDate = DateTime.Parse(CreatedDateComboBox.Text);
             //Update database
             OnFineCardFormSaved?.Invoke(fineCard);
 
@@ -43,6 +43,18 @@ namespace Client.Views.Main.Features.Dialogs
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void CreatedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
+            if (CreatedDateComboBox.SelectedItem != null) {
+                DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
+                CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+            }
+        }
+
+        private void CreatedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
+            CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }
     }
 }

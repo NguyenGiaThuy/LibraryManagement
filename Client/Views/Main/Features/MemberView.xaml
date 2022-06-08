@@ -179,15 +179,15 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Thẻ độc giả" MinWidth="50" Width="2*" CellStyle="{StaticResource LeftContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Số định danh" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding SocialId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày bắt đầu" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding StartDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày hết hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ExpiryDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày bắt đầu" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding StartDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày hết hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ExpiryDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Loại thẻ độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipType}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                     <DataGridTextColumn Header="ID Độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MemberId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="ID Người chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifierId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
 
                     <DataGridTemplateColumn Header="Công cụ" MinWidth="95" MaxWidth="95">
                         <DataGridTemplateColumn.CellTemplate>

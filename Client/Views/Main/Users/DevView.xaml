@@ -69,7 +69,7 @@
 
                             <RadioButton Name="LibraryAdminUserRBtn" 
                                          Content="Thông tin nhân viên"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Account}"
+                                        DataContext="{x:Static materialDesign:PackIconKind.Administrator}"
                                         FontSize="16"
                                         Height="50"
                                         Margin="0,0,0,0"
@@ -216,6 +216,15 @@
                                          Margin="0,0,0,0"
                                          Style="{StaticResource VerticalMenuTheme}"
                                          Checked="TreasurerCallCardRBtn_Checked"/>
+                            
+                            <RadioButton Name="TreasurerFineCardRBtn" 
+                                         Content="Phiếu phạt"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.Money}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="TreasurerFineCardRBtn_Checked"/>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -281,7 +290,7 @@
 
                             <RadioButton Name="StorekeeperBACardRBtn" 
                                          Content="Phiếu lịch sử sách"                                        
-                                         DataContext="{x:Static materialDesign:PackIconKind.Edit}"
+                                         DataContext="{x:Static materialDesign:PackIconKind.ClipboardTextHistory}"
                                          FontSize="16"
                                          Height="50"
                                          Margin="0,0,0,0"

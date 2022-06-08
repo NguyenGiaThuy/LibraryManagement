@@ -19,6 +19,7 @@ namespace Client.Views.Main
         MemberView memberView = new MemberView();
         CallCardView callCardView = new CallCardView();
         BookAuditCardView bookAuditCardView = new BookAuditCardView();
+        FineCardView fineCardView = new FineCardView();
 
         public string Text { get; set; } = "abc";
 
@@ -75,6 +76,10 @@ namespace Client.Views.Main
         private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
             TreasurerFrame.Content = callCardView.Content;
+        }
+
+        private void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e) {
+            TreasurerFrame.Content = fineCardView.Content;
         }
 
         //STOREKEEPER ==================================================================================
