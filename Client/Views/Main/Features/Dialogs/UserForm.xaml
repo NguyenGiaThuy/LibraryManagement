@@ -115,12 +115,20 @@
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="DateOfBirthTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="4"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="DateOfBirthComboBox"
+                      Text="Chọn ngày sinh"
+                      Grid.Column="1"
+                      Grid.Row="4"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}"
+                      LostFocus="DateOfBirthComboBox_LostFocus">
+                <Calendar Name="DateOfBirthCalendar"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="5"
+                          SelectedDatesChanged="DateOfBirthCalendar_SelectedDatesChanged"
+                          Style="{x:Null}"/>
+            </ComboBox>
             <TextBox Name="MobileTxt"
                          Text=""
                          Grid.Column="1"

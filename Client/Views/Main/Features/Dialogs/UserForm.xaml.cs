@@ -28,7 +28,7 @@ namespace Client.Views.Main.Features.Dialogs
             user.Address = AddressTxt.Text;
 
             DateTime dob;
-            if(DateTime.TryParse(DateOfBirthTxt.Text, out dob)) user.Dob = dob;
+            if(DateTime.TryParse(DateOfBirthComboBox.Text, out dob)) user.Dob = dob;
             else user.Dob = null;
 
             user.Mobile = MobileTxt.Text;
@@ -67,6 +67,18 @@ namespace Client.Views.Main.Features.Dialogs
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void DateOfBirthComboBox_LostFocus(object sender, RoutedEventArgs e) {
+            if (DateOfBirthComboBox.SelectedItem != null) {
+                DateTime selectedDate = (DateTime)DateOfBirthCalendar.SelectedDate;
+                DateOfBirthComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+            }
+        }
+
+        private void DateOfBirthCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)DateOfBirthCalendar.SelectedDate;
+            DateOfBirthComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }
     }
 }

@@ -45,12 +45,12 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID Phiếu mượn sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CallCardId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngày tới hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding DueDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tới hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding DueDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Thẻ độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
 
                 <DataGridTemplateColumn Header="Tools" MinWidth="95" MaxWidth="95">
                     <DataGridTemplateColumn.CellTemplate>

@@ -1,5 +1,6 @@
 ﻿using Client.Models;
 using Client.Views.Main.Features.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -49,23 +50,32 @@ namespace Client.Views.Main.Features
         private void FineCardUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
-
+            //fineCardForm description
             fineCardForm.Title = "Update Form";
             fineCardForm.FineCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU PHẠT";
+            //FineCardId
             fineCardForm.FineCardIdTxt.IsEnabled = false;
             fineCardForm.FineCardIdTxt.Text = selectedFineCard.FineCardId;
+            //Arrears
             fineCardForm.ArrearsTxt.IsEnabled = false;
             fineCardForm.ArrearsTxt.Text = selectedFineCard.Arrears.ToString();
+            //DaysInArrears
             fineCardForm.DaysInArrearsTxt.IsEnabled = false;
             fineCardForm.DaysInArrearsTxt.Text = selectedFineCard.DaysInArrears.ToString();
+            //CallCardId
             fineCardForm.CallCardIdTxt.Text = selectedFineCard.CallCardId;
+            //Reason
             fineCardForm.ReasonComboBox.IsEnabled = false;
             fineCardForm.ReasonComboBox.Text = selectedFineCard.Reason.ToString();
+            //Status
             fineCardForm.StatusComboBox.IsEnabled = false;
             fineCardForm.StatusComboBox.Text = selectedFineCard.Status.ToString();
+            //CreatorId
             fineCardForm.CreatorIdTxt.Text = selectedFineCard.CreatorId;
-            fineCardForm.CreatedDateTxt.IsEnabled=false;
-            fineCardForm.CreatedDateTxt.Text = selectedFineCard.CreatedDate.ToString();
+            //CreatedDate
+            fineCardForm.CreatedDateComboBox.IsEnabled=false;
+            DateTime createdDate = (DateTime)selectedFineCard.CreatedDate;
+            fineCardForm.CreatedDateComboBox.Text = createdDate.ToString("dd-MM-yyyy");
 
             fineCardForm.ShowDialog();
         }

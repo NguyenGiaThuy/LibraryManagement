@@ -45,16 +45,40 @@ namespace Client.Views.Main.Features.Dialogs
             Hide();
         }
 
-        private void MainCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
-            DateTime selectedDate = (DateTime)MainCalendar.SelectedDate;
-            PublishedDateComboBox.Text = selectedDate.ToString("dd/MM/yyyy");
-        }
-
         private void PublishedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
             if (PublishedDateComboBox.SelectedItem != null) {
-                DateTime selectedDate = (DateTime)MainCalendar.SelectedDate;
-                PublishedDateComboBox.Text = selectedDate.ToString("dd/MM/yyyy");
+                DateTime selectedDate = (DateTime)PublishedDateCalendar.SelectedDate;
+                PublishedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
+        }
+
+        private void PublishedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)PublishedDateCalendar.SelectedDate;
+            PublishedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+        }
+
+        private void ReceivedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
+            if (ReceivedDateComboBox.SelectedItem != null) {
+                DateTime selectedDate = (DateTime)ReceivedDateCalendar.SelectedDate;
+                ReceivedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+            }
+        }
+
+        private void ReceivedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)ReceivedDateCalendar.SelectedDate;
+            ReceivedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+        }
+
+        private void ModifiedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
+            if (ModifiedDateComboBox.SelectedItem != null) {
+                DateTime selectedDate = (DateTime)ModifiedDateCalendar.SelectedDate;
+                ModifiedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+            }
+        }
+
+        private void ModifiedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            DateTime selectedDate = (DateTime)ModifiedDateCalendar.SelectedDate;
+            ModifiedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }
     }
 }

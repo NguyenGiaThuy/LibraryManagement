@@ -77,28 +77,52 @@ namespace Client.Views.Main.Features
         private void BookUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-
+            //bookForm description
             bookForm.Title = "Update Form";
             bookForm.BookFormTitleTxt.Text = "CẬP NHẬT SÁCH";
+            //Title
             bookForm.TitleTxt.Text = selectedBook.Title;
+            //ISBN
             bookForm.ISBNTxt.IsEnabled = false;
             bookForm.ISBNTxt.Text = selectedBook.Isbn;
+            //Genre
             bookForm.GenreComboBox.Text = selectedBook.Genre.ToString();
+            //BookId
             bookForm.BookIdTxt.IsEnabled = false;
             bookForm.BookIdTxt.Text = selectedBook.BookId;
+            //Author
             bookForm.AuthorTxt.Text = selectedBook.Author;
+            //Publisher
             bookForm.PublisherTxt.Text = selectedBook.Publisher;
+            //PublishedDate
             DateTime publishedDate = (DateTime)selectedBook.PublishedDate;
-            bookForm.PublishedDateComboBox.Text = publishedDate.ToString("dd/MM/yyyy");
+            bookForm.PublishedDateComboBox.Text = publishedDate.ToString("dd-MM-yyyy");
+            //ReceiverId
             bookForm.ReceiverIdTxt.IsEnabled = false;
             bookForm.ReceiverIdTxt.Text = selectedBook.ReceiverId;
-            bookForm.ReceivedDateTxt.IsEnabled = false;
-            bookForm.ReceivedDateTxt.Text = selectedBook.ReceivedDate.ToString();
+            //ReceivedDate
+            bookForm.ReceivedDateComboBox.IsEnabled = false;
+            DateTime receivedDate;
+            if (DateTime.TryParse(selectedBook.ReceivedDate.ToString(), out receivedDate)) {
+                bookForm.ReceivedDateComboBox.Text = receivedDate.ToString("dd-MM-yyyy");
+            }
+            else {
+                bookForm.ReceivedDateComboBox.Text = "";
+            }
+            //ModifierId
             bookForm.ModifierIdTxt.IsEnabled = false;
             bookForm.ModifierIdTxt.Text = selectedBook.ModifierId;
-            bookForm.ModifiedDateTxt.IsEnabled = false;
-            bookForm.ModifiedDateTxt.Text = selectedBook.ModifiedDate.ToString();
+            //ModifiedDate
+            bookForm.ModifiedDateComboBox.IsEnabled = false;
+            DateTime modifiedDate;
+            if(DateTime.TryParse(selectedBook.ModifiedDate.ToString(), out modifiedDate)) {
+                bookForm.ModifiedDateComboBox.Text = modifiedDate.ToString("dd-MM-yyyy");
+            } else {
+                bookForm.ModifiedDateComboBox.Text = "";
+            }
+            //Price
             bookForm.PriceTxt.Text = selectedBook.Price.ToString();
+            //Status
             bookForm.StatusComboBox.IsEnabled = false;
             bookForm.StatusComboBox.Text = selectedBook.Status.ToString();
 

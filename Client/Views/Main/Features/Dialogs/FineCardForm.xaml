@@ -127,12 +127,20 @@
                          Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <TextBox Name="CreatedDateTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="7"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="CreatedDateComboBox"
+                      Text="Chọn ngày tạo"
+                      Grid.Column="1"
+                      Grid.Row="7"
+                      Margin="0,5,10,5"
+                      Style="{StaticResource InputComboBox}"
+                      LostFocus="CreatedDateComboBox_LostFocus">
+                <Calendar Name="CreatedDateCalendar"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="5"
+                          SelectedDatesChanged="CreatedDateCalendar_SelectedDatesChanged"
+                          Style="{x:Null}"/>
+            </ComboBox>
         </Grid>
 
         <Grid Grid.Row="2" 

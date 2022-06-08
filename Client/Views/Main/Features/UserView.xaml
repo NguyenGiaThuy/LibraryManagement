@@ -193,7 +193,7 @@
                     <DataGridTextColumn Header="ID" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding UserId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tên NV" MinWidth="50" Width="2*" CellStyle="{StaticResource LeftContent}" Binding="{Binding Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Địa chỉ" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Address}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày sinh" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Dob, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ngày sinh" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Dob, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Di động" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Mobile}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Học vấn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Education}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Phòng ban" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Department}"></DataGridTextColumn>

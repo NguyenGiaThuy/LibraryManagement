@@ -49,7 +49,7 @@
                 <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Type}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Lý do" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Reason}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

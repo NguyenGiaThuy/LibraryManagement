@@ -95,19 +95,30 @@ namespace Client.Views.Main.Features
         private void UserUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedUser = UserDataGrid.SelectedItem as LibUser;
-
+            //userForm description
             userForm.Title = "Update Form";
             userForm.UserFormTitleTxt.Text = "CẬP NHẬT NHÂN VIÊN";
+            //UserId
             userForm.UserIdTxt.IsEnabled = false;
             userForm.UserIdTxt.Text = selectedUser.UserId;
+            //Password
             userForm.PasswordTxt.Password = selectedUser.Password;
+            //Name
             userForm.NameTxt.Text = selectedUser.Name;
+            //Address
             userForm.AddressTxt.Text = selectedUser.Address;
-            userForm.DateOfBirthTxt.Text = selectedUser.Dob.ToString();
+            //DateOfBirth
+            DateTime dateOfBirth = (DateTime)selectedUser.Dob;
+            userForm.DateOfBirthComboBox.Text = dateOfBirth.ToString();
+            //Mobile
             userForm.MobileTxt.Text = selectedUser.Mobile;
+            //Education
             userForm.EducationComboBox.Text = selectedUser.Education.ToString();
+            //Department
             userForm.DepartmentComboBox.Text = selectedUser.Department.ToString();
+            //Position
             userForm.PositionComboBox.Text = selectedUser.Position.ToString();
+            //Status
             userForm.StatusComboBox.Text = selectedUser.Status.ToString();
 
             userForm.ShowDialog();
