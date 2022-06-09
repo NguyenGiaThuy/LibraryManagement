@@ -50,22 +50,22 @@ namespace Client.Views.Main.Features
         private void ClearBookSidePanel()
         {
             BookTitleTxt.Text = "";
-            BookIdTxt.Text = "";
             AuthorTxt.Text = "";
             PublisherTxt.Text = "";
             ISBNTxt.Text = "";
             GenreTxt.Text = "";
+            PriceTxt.Text = "";
             BookImg.Source = null;
         }
 
         private void UpdateBookSidePanel(LibBook book)
         {
             BookTitleTxt.Text = book.Title;
-            BookIdTxt.Text = book.BookId;
             AuthorTxt.Text = book.Author;
             PublisherTxt.Text = book.Publisher;
             ISBNTxt.Text = book.Isbn;
             GenreTxt.Text = book.Genre.ToString();
+            PriceTxt.Text = book.Price.ToString();
             BookImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Books/" + book.ImageUrl));
         }
 
