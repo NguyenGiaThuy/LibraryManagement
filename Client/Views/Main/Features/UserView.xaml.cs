@@ -61,7 +61,6 @@ namespace Client.Views.Main.Features
         private void ClearUserSidePanel()
         {
             UserNameTxt.Text = "";
-            IDTxt.Text = "";
             DOBTxt.Text = "";
             AddressTxt.Text = "";
             MobileTxt.Text = "";
@@ -74,7 +73,6 @@ namespace Client.Views.Main.Features
         private void UpdateUserSidePanel(LibUser user)
         {
             UserNameTxt.Text = user.Name;
-            IDTxt.Text = user.UserId;
             DOBTxt.Text = user.Dob.ToString();
             AddressTxt.Text = user.Address;
             MobileTxt.Text = user.Mobile;
