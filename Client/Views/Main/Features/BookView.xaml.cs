@@ -25,9 +25,9 @@ namespace Client.Views.Main.Features
             BookDataGrid.Focus();
             //Get books from database
             bookList = new List<LibBook>();
-            bookList.Add(new LibBook("1285740629", "ACalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), 25, "803920", "Calculus.jpg"));
-            bookList.Add(new LibBook("1617295485", "AAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), 30, "803850", "Algorithms.jpg"));
-            bookList.Add(new LibBook("006230125X", "AElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), 13, "809327", "ElonMusk.jpg"));
+            bookList.Add(new LibBook("1285740629", "ACalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), 25, "803920", "https://www.ubuy.vn/productimg/?image=aHR0cHM6Ly9pbWFnZXMtbmEuc3NsLWltYWdlcy1hbWF6b24uY29tL2ltYWdlcy9JLzUxSHFxTTVXM3JMLmpwZw.jpg"));
+            bookList.Add(new LibBook("1617295485", "AAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), 30, "803850", "https://images.manning.com/book/e/59c8b18-b8fd-4d32-939b-25dcbb4d525d/Rocca-ADS-HI.png"));
+            bookList.Add(new LibBook("006230125X", "AElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), 13, "809327", "https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg"));
             BookDataGrid.ItemsSource = bookList;
 
             bookForm = new BookForm();
@@ -66,7 +66,7 @@ namespace Client.Views.Main.Features
             ISBNTxt.Text = book.Isbn;
             GenreTxt.Text = book.Genre.ToString();
             PriceTxt.Text = book.Price.ToString();
-            BookImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Books/" + book.ImageUrl));
+            BookImg.Source = new BitmapImage(new Uri(book.ImageUrl));
         }
 
         private void BookNewBtn_Click(object sender, RoutedEventArgs e)

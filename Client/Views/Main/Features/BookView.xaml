@@ -176,11 +176,9 @@
                     <DataGridTextColumn Header="Ngày XB" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding PublishedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Người nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceiverId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ngày nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceivedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Người chỉnh sửa" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifierId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                     
-                    <DataGridTemplateColumn Header="Công cụ" MinWidth="85" MaxWidth="85">
+                    <DataGridTemplateColumn Header="Công cụ" MinWidth="90" MaxWidth="90">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid VerticalAlignment="Stretch"

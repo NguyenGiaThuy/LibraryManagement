@@ -1,22 +1,23 @@
-﻿<Window x:Class="Client.Views.Main.Features.UserView"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Client.Views.Main.Features.UserView"
         mc:Ignorable="d"
         Title="UserView" Height="600" Width="900"
         Background="Transparent"
         AllowsTransparency="True">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Name="PropertyColumnDefinition" Width="250"/>
-            <ColumnDefinition Name="MainColumnDefinition" Width="10"/>
+            <ColumnDefinition x:Name="PropertyColumnDefinition" Width="250"/>
+            <ColumnDefinition x:Name="MainColumnDefinition" Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Name="ProperyGrid"
+        <Grid x:Name="ProperyGrid"
               Grid.Column="0"
               Background="White">
             <Grid.RowDefinitions>
@@ -31,7 +32,7 @@
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10">
-                <Image Name="UserImg"/>
+                <Image x:Name="UserImg"/>
             </Border>
 
             <Grid Grid.Row="1"
@@ -52,7 +53,7 @@
                            FontSize="14"
                            FontWeight="SemiBold"/>
                 <TextBox Grid.Row="2" 
-                         Name="UserNameTxt"
+                         x:Name="UserNameTxt"
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,10"
@@ -106,32 +107,32 @@
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
-                <TextBox Name="DOBTxt"
+                <TextBox x:Name="DOBTxt"
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="AddressTxt"
+                <TextBox x:Name="AddressTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="MobileTxt"
+                <TextBox x:Name="MobileTxt"
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="EducationTxt"
+                <TextBox x:Name="EducationTxt"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="DepartmentTxt"
+                <TextBox x:Name="DepartmentTxt"
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="PositionTxt"
+                <TextBox x:Name="PositionTxt"
                          Grid.Column="1"
                          Grid.Row="5"
                          Margin="0,5,10,5"
@@ -139,7 +140,7 @@
             </Grid>
         </Grid>
 
-        <Grid Name="MainGrid" 
+        <Grid x:Name="MainGrid" 
               Grid.Column="2" 
               Background="White">
             <Grid.RowDefinitions>
@@ -153,13 +154,13 @@
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="UserSearchTxt"
+                <TextBox x:Name="UserSearchTxt"
                          Grid.Column="0"
                          Style="{StaticResource SearchboxTheme}"
                          Height="35"
                          Margin="10,10,0,10" />
 
-                <Button Name="UserNewBtn"
+                <Button x:Name="UserNewBtn"
                         Grid.Column="1"
                         Content="Tạo mới"
                         VerticalAlignment="Stretch"
@@ -169,26 +170,30 @@
                         Padding="5"
                         Click="UserNewBtn_Click"/>
             </Grid>
-
-            <DataGrid Name="UserDataGrid"
-                      Grid.Row="1"
-                      Margin="10,0,10,10"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      SelectionChanged="UserDataGrid_SelectionChanged">
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding UserId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Địa chỉ" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Address}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày sinh" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Dob, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Di động" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Mobile}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Học vấn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Education}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Phòng ban" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Department}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Vị trí" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Position}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
+            
+            <Syncfusion:SfDataGrid Name="UserDataGrid"
+                                   Grid.Row="1"
+                                   Style="{x:Null}"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="10,0,10,10"
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="False"
+                                   ColumnSizer="Auto"
+                                   AllowResizingColumns="True"
+                                   SelectionChanged="UserDataGrid_SelectionChanged">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn HeaderText="ID" MappingName="UserId" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Địa chỉ" MappingName="Address" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Ngày sinh" MappingName="Dob" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Di động" MappingName="Mobile" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Học vấn" MappingName="Education" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Phòng ban" MappingName="Department" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Vị trí" MappingName="Position" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Trạng thái" MappingName="Status" AllowFiltering="True"/>
                     
-                    <DataGridTemplateColumn Header="Công cụ" MinWidth="85" MaxWidth="85">
-                        <DataGridTemplateColumn.CellTemplate>
+                    <Syncfusion:GridTemplateColumn>
+                        <Syncfusion:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid VerticalAlignment="Stretch"
                                       HorizontalAlignment="Stretch">
@@ -217,10 +222,10 @@
                                     </Button>
                                 </Grid>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                        </Syncfusion:GridTemplateColumn.CellTemplate>
+                    </Syncfusion:GridTemplateColumn>
+                </Syncfusion:SfDataGrid.Columns>
+            </Syncfusion:SfDataGrid>
         </Grid>
     </Grid>
 </Window>

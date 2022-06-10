@@ -52,7 +52,7 @@
                 <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
 
-                <DataGridTemplateColumn Header="Tools" MinWidth="95" MaxWidth="95">
+                <DataGridTemplateColumn Header="Công cụ" MinWidth="90" MaxWidth="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid VerticalAlignment="Stretch"

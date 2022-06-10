@@ -141,12 +141,12 @@
                          Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Phổ thông"></ComboBoxItem>
-                <ComboBoxItem Content="Trung cấp"></ComboBoxItem>
-                <ComboBoxItem Content="Cao đẳng"></ComboBoxItem>
-                <ComboBoxItem Content="Đại học"></ComboBoxItem>
-                <ComboBoxItem Content="Thạc sĩ"></ComboBoxItem>
-                <ComboBoxItem Content="Tiến sĩ"></ComboBoxItem>
+                <ComboBoxItem Content="Phổ_thông"></ComboBoxItem>
+                <ComboBoxItem Content="Trung_cấp"></ComboBoxItem>
+                <ComboBoxItem Content="Cao_đẳng"></ComboBoxItem>
+                <ComboBoxItem Content="Đại_học"></ComboBoxItem>
+                <ComboBoxItem Content="Thạc_sĩ"></ComboBoxItem>
+                <ComboBoxItem Content="Tiến_sĩ"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="DepartmentComboBox"
                          Text=""

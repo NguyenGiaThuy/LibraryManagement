@@ -12,7 +12,7 @@ namespace Client
     /// </summary>
     public partial class App : Application
     {
-        public static string BaseAddress = "https://localhost:7277/";
+        public static string BaseAddress = @"https://libmanagement.azurewebsites.net/";
         public static HttpClient Client = new HttpClient();
         public static LibUser User;
 

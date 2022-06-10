@@ -72,65 +72,55 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="ID Độc giả"
+                <TextBlock Text="Số định danh"
                            Grid.Column="0"
                            Grid.Row="0"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Số định danh"
+                <TextBlock Text="Ngày sinh"
                            Grid.Column="0"
                            Grid.Row="1"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Ngày sinh"
+                <TextBlock Text="Địa chỉ"
                            Grid.Column="0"
                            Grid.Row="2"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Địa chỉ"
+                <TextBlock Text="Di động"
                            Grid.Column="0"
                            Grid.Row="3"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Di động"
+                <TextBlock Text="Email"
                            Grid.Column="0"
                            Grid.Row="4"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-                <TextBlock Text="Email"
-                           Grid.Column="0"
-                           Grid.Row="5"
-                           Margin="10,5,10,5"
-                           Style="{StaticResource PropertyLabelTextBlock}"/>
 
-                <TextBox Name="MemberIdTxt"
+                <TextBox Name="SocialIdTxt"
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="SocialIdTxt"
+                <TextBox Name="DobTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="DobTxt"
+                <TextBox Name="AddressTxt"
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="AddressTxt"
+                <TextBox Name="MobileTxt"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
-                <TextBox Name="MobileTxt"
-                         Grid.Column="1"
-                         Grid.Row="4"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="EmailTxt"
                          Grid.Column="1"
-                         Grid.Row="5"
+                         Grid.Row="4"
                          Margin="0,5,10,5"
                          Style="{StaticResource PropertyTextbox}"/>
             </Grid>
@@ -175,17 +165,15 @@
                       SelectionChanged="MemberDataGrid_SelectionChanged">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Thẻ độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID Độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ngày bắt đầu" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding StartDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ngày hết hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ExpiryDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipType}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
                     <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ID Người chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifierId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày chỉnh sửa" MinWidth="50" Width="1*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ModifiedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
 
-                    <DataGridTemplateColumn Header="Công cụ" MinWidth="85" MaxWidth="85">
+                    <DataGridTemplateColumn Header="Công cụ" MinWidth="90" MaxWidth="90">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid VerticalAlignment="Stretch"

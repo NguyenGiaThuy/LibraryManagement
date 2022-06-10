@@ -81,7 +81,7 @@ namespace Client.Views.Main.Features
             PositionTxt.Text = user.Position.ToString();
             try
             {
-                UserImg.Source = new BitmapImage(new Uri("pack://application:,,,/Client;component/Assets/Images/Users/" + user.ImageUrl));
+                UserImg.Source = new BitmapImage(new Uri(user.ImageUrl));
             } catch(Exception) { }
         }
 
@@ -135,7 +135,7 @@ namespace Client.Views.Main.Features
             }
         }
 
-        private void UserDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UserDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
             selectedUser = UserDataGrid.SelectedItem as LibUser;
             if (selectedUser != null)

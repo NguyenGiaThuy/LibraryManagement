@@ -10,21 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\Algorithms.jpg" />
-    <None Remove="Assets\Images\Books\Algorithms.jpg" />
-    <None Remove="Assets\Images\Books\Calculus.jpg" />
-    <None Remove="Assets\Images\Books\ElonMusk.jpg" />
-    <None Remove="Assets\Images\Calculus.jpg" />
-    <None Remove="Assets\Images\ElonMusk.jpg" />
-    <None Remove="Assets\Images\Members\EmmaWatson.jpg" />
-    <None Remove="Assets\Images\Members\MeganFox.jpg" />
-    <None Remove="Assets\Images\Members\NataliePortman.jpg" />
-    <None Remove="Assets\Images\Users\TomCruise.jpg" />
-    <None Remove="Assets\Images\Users\TomHanks.jpg" />
-    <None Remove="Assets\Images\Users\TomHolland.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Assets\Icon.ico" />
   </ItemGroup>
 
@@ -32,18 +17,7 @@
     <PackageReference Include="FluentUI.Core" Version="1.0.51" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Assets\Images\Books\Algorithms.jpg" />
-    <Resource Include="Assets\Images\Books\Calculus.jpg" />
-    <Resource Include="Assets\Images\Books\ElonMusk.jpg" />
-    <Resource Include="Assets\Images\Members\EmmaWatson.jpg" />
-    <Resource Include="Assets\Images\Members\MeganFox.jpg" />
-    <Resource Include="Assets\Images\Members\NataliePortman.jpg" />
-    <Resource Include="Assets\Images\Users\TomCruise.jpg" />
-    <Resource Include="Assets\Images\Users\TomHanks.jpg" />
-    <Resource Include="Assets\Images\Users\TomHolland.jpg" />
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="20.1.0.59" />
   </ItemGroup>
 
 </Project>

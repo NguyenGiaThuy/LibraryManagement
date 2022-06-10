@@ -27,7 +27,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="DataGridCell"
            x:Key="CenterContent"
            BasedOn="{StaticResource MaterialDesignDataGridCell}">
