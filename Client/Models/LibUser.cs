@@ -44,16 +44,6 @@ namespace Client.Models
         public LibUser(string userId, string password, string? name, string? address,
             DateTime? dob, string? mobile, UserEducation? education, UserDepartment? department, UserPosition? position, string? imageUrl)
         {
-            CreatedLibBooks = new HashSet<LibBook>();
-            ModifiedLibBooks = new HashSet<LibBook>();
-            CreatedLibCallCards = new HashSet<LibCallCard>();
-            CreatedLibFineCards = new HashSet<LibFineCard>();
-            CreatedLibBookAuditCards = new HashSet<LibBookAuditCard>();
-            CreatedLibMembers = new HashSet<LibMember>();
-            ModifiedLibMembers = new HashSet<LibMember>();
-            CreatedLibMemberships = new HashSet<LibMembership>();
-            ModifiedLibMemberships = new HashSet<LibMembership>();
-
             UserId = userId;
             Password = password;
             Name = name;
@@ -63,7 +53,7 @@ namespace Client.Models
             Education = education;
             Department = department;
             Position = position;
-            Status = 0;
+            Status = UserStatus.Active;
             ImageUrl = imageUrl;
         }
         public string UserId { get; set; } = null!;
@@ -78,16 +68,6 @@ namespace Client.Models
         public UserStatus? Status { get; set; }
         public string? ImageUrl { get; set; }
 
-        public virtual ICollection<LibBook> CreatedLibBooks { get; set; }
-        public virtual ICollection<LibBook> ModifiedLibBooks { get; set; }
-        public virtual ICollection<LibCallCard> CreatedLibCallCards { get; set; }
-        public virtual ICollection<LibFineCard> CreatedLibFineCards { get; set; }
-        public virtual ICollection<LibBookAuditCard> CreatedLibBookAuditCards { get; set; }
-        public virtual ICollection<LibMembership> CreatedLibMemberships { get; set; }
-        public virtual ICollection<LibMembership> ModifiedLibMemberships { get; set; }
-        public virtual ICollection<LibMember> CreatedLibMembers { get; set; }
-        public virtual ICollection<LibMember> ModifiedLibMembers { get; set; }
-
         public void CopyFrom(LibUser libUser)
         {
             this.UserId = libUser.UserId;
@@ -99,6 +79,7 @@ namespace Client.Models
             this.Education = libUser.Education;
             this.Department = libUser.Department;
             this.Position = libUser.Position;
+            this.ImageUrl = libUser.ImageUrl;
         }
     }
 }

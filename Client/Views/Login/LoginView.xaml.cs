@@ -34,12 +34,13 @@ namespace Client.Views.Login
             Close();
         }
 
-        private async Task<HttpResponseMessage> LogInAsync(string path, string username, string password)
+        private async Task<LibUser> LogInAsync(string path, string username, string password)
         {
             LibUser user = new LibUser(username, password, null, null, null, null, null, null, null, null);
             var response = await App.Client.PostAsJsonAsync(path, user);
             response.EnsureSuccessStatusCode();
-            return response;
+            user = await response.Content.ReadAsAsync<LibUser>();
+            return user;
         }
 
         private async void LoginBtn_Click(object sender, RoutedEventArgs e)
@@ -58,16 +59,15 @@ namespace Client.Views.Login
 
             try
             {
-                var response = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
-                App.User = await response.Content.ReadAsAsync<LibUser>();
+                App.User = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
 
-                if ((LibUser.UserStatus)App.User.Status == LibUser.UserStatus.Inactive)
+                if (App.User.Status == LibUser.UserStatus.Inactive)
                 {
                     MessageBox.Show("Your account is inactive. Please contact manager for more details.");
                     return;
                 }
 
-                switch ((LibUser.UserDepartment)App.User.Department)
+                switch (App.User.Department)
                 {
                     case LibUser.UserDepartment.Librarian:
                         LibrarianView librarianView = new LibrarianView();
@@ -130,16 +130,15 @@ namespace Client.Views.Login
 
                 try
                 {
-                    var response = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
-                    App.User = await response.Content.ReadAsAsync<LibUser>();
+                    App.User = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
 
-                    if ((LibUser.UserStatus)App.User.Status == LibUser.UserStatus.Inactive)
+                    if (App.User.Status == LibUser.UserStatus.Inactive)
                     {
                         MessageBox.Show("Your account is inactive. Please contact manager for more details.");
                         return;
                     }
 
-                    switch ((LibUser.UserDepartment)App.User.Department)
+                    switch (App.User.Department)
                     {
                         case LibUser.UserDepartment.Librarian:
                             LibrarianView librarianView = new LibrarianView();
