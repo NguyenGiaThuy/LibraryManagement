@@ -42,7 +42,7 @@ namespace Client.Models
         public LibUser() { }
 
         public LibUser(string userId, string password, string? name, string? address,
-            DateTime? dob, string? mobile, UserEducation? education, UserDepartment? department, UserPosition? position, string? imageUrl)
+            DateTime? dob, string? mobile, int? education, int? department, int? position, string? imageUrl)
         {
             CreatedLibBooks = new HashSet<LibBook>();
             ModifiedLibBooks = new HashSet<LibBook>();
@@ -72,10 +72,10 @@ namespace Client.Models
         public string? Address { get; set; }
         public DateTime? Dob { get; set; }
         public string? Mobile { get; set; }
-        public UserEducation? Education { get; set; }
-        public UserDepartment? Department { get; set; }
-        public UserPosition? Position { get; set; }
-        public UserStatus? Status { get; set; }
+        public int? Education { get; set; }
+        public int? Department { get; set; }
+        public int? Position { get; set; }
+        public int? Status { get; set; }
         public string? ImageUrl { get; set; }
 
         public virtual ICollection<LibBook> CreatedLibBooks { get; set; }

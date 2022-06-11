@@ -20,4 +20,45 @@
     <PackageReference Include="Syncfusion.SfGrid.WPF" Version="20.1.0.59" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\Main\Features\Dialogs\BookCreateForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Main\Features\Dialogs\CallCardCreateForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Main\Features\Dialogs\FineCardCreateForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Main\Features\Dialogs\MemberCreateForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Main\Features\Dialogs\UserCreateForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\Main\Features\Dialogs\BookCreateForm.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Main\Features\Dialogs\CallCardCreateForm.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Main\Features\Dialogs\FineCardCreateForm.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Main\Features\Dialogs\MemberCreateForm.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Main\Features\Dialogs\UserCreateForm.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

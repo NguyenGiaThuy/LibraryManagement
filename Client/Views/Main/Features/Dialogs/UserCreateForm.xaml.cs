@@ -8,17 +8,17 @@ using System.Windows;
 namespace Client.Views.Main.Features.Dialogs
 {
     /// <summary>
-    /// Interaction logic for UserForm.xaml
+    /// Interaction logic for UserCreateForm.xaml
     /// </summary>
-    public partial class UserForm : Window
+    public partial class UserCreateForm : Window
     {
-        public Action<LibUser> OnUserFormSaved;
+        public Action<LibUser> OnUserCreateFormSaved;
 
-        public UserForm()
+        public UserCreateForm()
         {
             InitializeComponent();
         }
-        private async void UserFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async void UserCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             LibUser user = new LibUser();
 
@@ -47,7 +47,7 @@ namespace Client.Views.Main.Features.Dialogs
             // Update database
             user = await UpdateUserAsync($"api/libusers/{user.UserId}", user);
 
-            OnUserFormSaved?.Invoke(user);
+            OnUserCreateFormSaved?.Invoke(user);
 
             Hide();
         }
@@ -60,7 +60,7 @@ namespace Client.Views.Main.Features.Dialogs
             return user;
         }
 
-        private void UserFormCancelBtn_Click(object sender, RoutedEventArgs e)
+        private void UserCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Hide();
         }

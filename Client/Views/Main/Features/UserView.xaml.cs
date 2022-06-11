@@ -107,7 +107,7 @@ namespace Client.Views.Main.Features
             userForm.AddressTxt.Text = selectedUser.Address;
             //DateOfBirth
             DateTime dateOfBirth = (DateTime)selectedUser.Dob;
-            userForm.DateOfBirthComboBox.Text = dateOfBirth.ToString();
+            userForm.DateOfBirthComboBox.Text = dateOfBirth.ToString("dd-MM-yyyy");
             //Mobile
             userForm.MobileTxt.Text = selectedUser.Mobile;
             //Education
