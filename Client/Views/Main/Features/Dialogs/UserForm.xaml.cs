@@ -22,10 +22,41 @@ namespace Client.Views.Main.Features.Dialogs
 
         private async Task<bool> UserExistsAsync(string path)
         {
+<<<<<<< HEAD
             bool result = false;
             var response = await App.Client.GetAsync(path);
             if (response.IsSuccessStatusCode) result = true;
             return result;
+=======
+            LibUser user = new LibUser();
+
+            user.UserId = UserIdTxt.Text;
+            user.Password = PasswordTxt.Password;
+            user.Name = NameTxt.Text;
+            user.Address = AddressTxt.Text;
+
+            DateTime dob;
+            if(DateTime.TryParse(DateOfBirthComboBox.Text, out dob)) user.Dob = dob;
+            else user.Dob = null;
+
+            user.Mobile = MobileTxt.Text;
+
+            // BUG
+            //int education =
+            //user.Education = int.TryParse(EducationTxt.Text);
+
+
+            //user.Department = int.Parse(DepartmentTxt.Text);
+            //user.Position = int.Parse(PositionTxt.Text);
+            //user.Status = int.Parse(StatusTxt.Text);
+
+            // Update database
+            user = await UpdateUserAsync($"api/libusers/{user.UserId}", user);
+
+            OnUserFormSaved?.Invoke(user);
+
+            Hide();
+>>>>>>> parent of 17916c3 (Add CreateForms)
         }
 
         private async Task<string> CreateUserAsync(string path, LibUser user)

@@ -121,8 +121,13 @@ namespace Client.Views.Main.Features
             //Address
             userForm.AddressTxt.Text = selectedUser.Address ?? "";
             //DateOfBirth
+<<<<<<< HEAD
             DateTime dateOfBirth = selectedUser.Dob != null ? (DateTime)selectedUser.Dob : DateTime.MinValue;
             userForm.DateOfBirthComboBox.Text = selectedUser.Dob != null ? dateOfBirth.ToString("dd-MM-yyyy") : "";
+=======
+            DateTime dateOfBirth = (DateTime)selectedUser.Dob;
+            userForm.DateOfBirthComboBox.Text = dateOfBirth.ToString();
+>>>>>>> parent of 17916c3 (Add CreateForms)
             //Mobile
             userForm.MobileTxt.Text = selectedUser.Mobile ?? "";
             //Education
