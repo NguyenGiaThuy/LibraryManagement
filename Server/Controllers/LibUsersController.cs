@@ -26,6 +26,25 @@ namespace Server.Controllers
             return Ok(result);
         }
 
+        // GET: api/<LibUsersController>/5
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserByIdAsync([FromRoute] string userId)
+        {
+            try
+            {
+                var result = await _usersRepository.GetUserByIdAsync(userId);
+                return Ok(result);
+            }
+            catch (NonExistenceException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // POST api/<LibUsersController>/login
         [HttpPost("login")]
         public async Task<IActionResult> GetUserByIdAndPasswordAsync(LibUser user)
