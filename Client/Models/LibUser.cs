@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Client.Models
 {
@@ -39,7 +38,10 @@ namespace Client.Models
             Inactive
         }
 
-        public LibUser() { }
+        public LibUser()
+        {
+            Status = UserStatus.Active;
+        }
 
         public LibUser(string userId, string password, string? name, string? address,
             DateTime? dob, string? mobile, UserEducation? education, UserDepartment? department, UserPosition? position, string? imageUrl)
@@ -80,6 +82,7 @@ namespace Client.Models
             this.Department = libUser.Department;
             this.Position = libUser.Position;
             this.ImageUrl = libUser.ImageUrl;
+            this.Status = libUser.Status;
         }
     }
 }

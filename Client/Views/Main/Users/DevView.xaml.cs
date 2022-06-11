@@ -49,9 +49,9 @@ namespace Client.Views.Main
             {
                 MessageBox.Show(ex.Message);
             }
-            finally 
-            { 
-                LibraryAdminFrame.Content = userView.Content; 
+            finally
+            {
+                LibraryAdminFrame.Content = userView.Content;
             }
         }
 
@@ -87,7 +87,8 @@ namespace Client.Views.Main
             TreasurerFrame.Content = callCardView.Content;
         }
 
-        private void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e) {
+        private void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e)
+        {
             TreasurerFrame.Content = fineCardView.Content;
         }
 

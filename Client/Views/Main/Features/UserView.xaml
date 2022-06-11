@@ -57,7 +57,8 @@
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,10"
-                         Style="{StaticResource TitleTextbox}"/>
+                         Style="{StaticResource TitleTextbox}"
+                         IsEnabled="False"/>
             </Grid>
 
             <Grid Grid.Row="2">
@@ -111,32 +112,38 @@
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
                 <TextBox x:Name="AddressTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
                 <TextBox x:Name="MobileTxt"
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
                 <TextBox x:Name="EducationTxt"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
                 <TextBox x:Name="DepartmentTxt"
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
                 <TextBox x:Name="PositionTxt"
                          Grid.Column="1"
                          Grid.Row="5"
                          Margin="0,5,10,5"
-                         Style="{StaticResource PropertyTextbox}"/>
+                         Style="{StaticResource PropertyTextbox}"
+                         IsEnabled="False"/>
             </Grid>
         </Grid>
 
@@ -190,7 +197,7 @@
                     <Syncfusion:GridTextColumn     HeaderText="Học vấn" MinimumWidth="50" MappingName="Education" TextAlignment="Center" AllowFiltering="True"/>
                     <Syncfusion:GridTextColumn     HeaderText="Phòng ban" MinimumWidth="50" MappingName="Department" TextAlignment="Center" AllowFiltering="True"/>
                     <Syncfusion:GridTextColumn     HeaderText="Vị trí" MinimumWidth="50" MappingName="Position" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="False"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
 
                     <Syncfusion:GridTemplateColumn HeaderText="Công cụ" MinimumWidth="65" MaximumWidth="65" TextAlignment="Center" AllowFiltering="False" AllowSorting="False">
                         <Syncfusion:GridTemplateColumn.CellTemplate>

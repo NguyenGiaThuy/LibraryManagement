@@ -28,14 +28,17 @@ namespace Client.Views.Main.Features.Dialogs
 
         }
 
-        private void DobComboBox_LostFocus(object sender, RoutedEventArgs e) {
-            if (DobComboBox.SelectedItem != null) {
+        private void DobComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (DobComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)DobCalendar.SelectedDate;
                 DobComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void DobCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void DobCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)DobCalendar.SelectedDate;
             DobComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }

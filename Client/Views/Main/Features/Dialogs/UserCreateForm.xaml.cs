@@ -30,23 +30,23 @@ namespace Client.Views.Main.Features.Dialogs
 
         private async void UserCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            LibUser user = new LibUser()
-            {
-                UserId = UserIdTxt.Text.Trim(),
-                Password = PasswordTxt.Password.Trim(),
-                Name = NameTxt.Text.Trim(),
-                Address = AddressTxt.Text.Trim(),
-                Mobile = MobileTxt.Text.Trim(),
-                Dob = DateOfBirthComboBox.Text != null ? DateTime.ParseExact(DateOfBirthComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
-                Education = EducationComboBox.SelectedIndex != -1 ? (LibUser.UserEducation)EducationComboBox.SelectedIndex : null,
-                Department = DepartmentComboBox.SelectedIndex != -1 ? (LibUser.UserDepartment)DepartmentComboBox.SelectedIndex : null,
-                Position = PositionComboBox.SelectedIndex != -1 ? (LibUser.UserPosition)PositionComboBox.SelectedIndex : null,
-                //user.ImageUrl = imageUrlTxt.Text
-            };
-
             try
             {
-                OnUserFormSaved?.Invoke(await CreateUserAsync($"api/libusers/{user.UserId}", user));
+                LibUser user = new LibUser()
+                {
+                    UserId = UserIdTxt.Text.Trim(),
+                    Password = PasswordTxt.Password.Trim(),
+                    Name = NameTxt.Text.Trim(),
+                    Address = AddressTxt.Text.Trim(),
+                    Mobile = MobileTxt.Text.Trim(),
+                    Dob = DateOfBirthComboBox.Text.Trim() != "" ? DateTime.ParseExact(DateOfBirthComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    Education = EducationComboBox.SelectedIndex != -1 ? (LibUser.UserEducation)EducationComboBox.SelectedIndex : null,
+                    Department = DepartmentComboBox.SelectedIndex != -1 ? (LibUser.UserDepartment)DepartmentComboBox.SelectedIndex : null,
+                    Position = PositionComboBox.SelectedIndex != -1 ? (LibUser.UserPosition)PositionComboBox.SelectedIndex : null,
+                    ImageUrl = ImgTxt.Text
+                };
+
+                OnUserFormSaved?.Invoke(await CreateUserAsync($"api/libusers", user));
 
                 Hide();
             }
@@ -67,14 +67,17 @@ namespace Client.Views.Main.Features.Dialogs
             Hide();
         }
 
-        private void DateOfBirthComboBox_LostFocus(object sender, RoutedEventArgs e) {
-            if (DateOfBirthComboBox.SelectedItem != null) {
+        private void DateOfBirthComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (DateOfBirthComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)DateOfBirthCalendar.SelectedDate;
                 DateOfBirthComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void DateOfBirthCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void DateOfBirthCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)DateOfBirthCalendar.SelectedDate;
             DateOfBirthComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }

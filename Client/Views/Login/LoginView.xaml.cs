@@ -43,8 +43,10 @@ namespace Client.Views.Login
             return user;
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            LoginBtn.IsEnabled = false;
+
             credential.Username = AccountTextBox.Text.Trim();
             credential.Password = PasswordBox.Password.Trim();
 
@@ -59,9 +61,7 @@ namespace Client.Views.Login
 
             try
             {
-                Task<LibUser> task = LogInAsync($"api/libusers/login", credential.Username, credential.Password);
-                task.Wait();
-                App.User = task.Result;
+                App.User = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
 
                 if (App.User.Status == LibUser.UserStatus.Inactive)
                 {
@@ -98,14 +98,18 @@ namespace Client.Views.Login
                         break;
                 }
             }
-            catch(HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
-                if(ex.StatusCode == HttpStatusCode.NotFound)
+                if (ex.StatusCode == HttpStatusCode.NotFound)
                     MessageBox.Show("Incorrect username or password.", "Login failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+                else MessageBox.Show(ex.Message);
+
+                LoginBtn.IsEnabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                LoginBtn.IsEnabled = true;
             }
         }
 
@@ -116,6 +120,7 @@ namespace Client.Views.Login
 
             if ((uIElement != null) && (e.Key == Key.Enter))
             {
+                LoginBtn.IsEnabled = false;
                 e.Handled = true;
 
                 credential.Username = AccountTextBox.Text.Trim();
@@ -173,10 +178,14 @@ namespace Client.Views.Login
                 {
                     if (ex.StatusCode == HttpStatusCode.NotFound)
                         MessageBox.Show("Incorrect username or password.", "Login failed!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    else MessageBox.Show(ex.Message);
+
+                    LoginBtn.IsEnabled = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    LoginBtn.IsEnabled = true;
                 }
             }
         }

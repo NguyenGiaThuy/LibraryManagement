@@ -44,14 +44,17 @@ namespace Client.Views.Main.Features.Dialogs
             Hide();
         }
 
-        private void PublishedDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
-            if (PublishedDateComboBox.SelectedItem != null) {
+        private void PublishedDateComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (PublishedDateComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)PublishedDateCalendar.SelectedDate;
                 PublishedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void PublishedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void PublishedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)PublishedDateCalendar.SelectedDate;
             PublishedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }

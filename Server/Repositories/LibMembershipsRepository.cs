@@ -79,7 +79,7 @@ namespace Server.Repositories
             membership.ModifiedDate = DateTime.Now;
 
             // Enable and reset membership if expiry date > now
-            if (membership.Status == 1 && membership.ExpiryDate > DateTime.Now) 
+            if (membership.Status == 1 && membership.ExpiryDate > DateTime.Now)
             {
                 membership.StartDate = DateTime.Now;
                 membership.Type = 0;
