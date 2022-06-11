@@ -41,7 +41,7 @@ namespace Client.Views.Main.Features.Dialogs
                 Education = EducationComboBox.SelectedIndex != -1 ? (LibUser.UserEducation)EducationComboBox.SelectedIndex : null,
                 Department = DepartmentComboBox.SelectedIndex != -1 ? (LibUser.UserDepartment)DepartmentComboBox.SelectedIndex : null,
                 Position = PositionComboBox.SelectedIndex != -1 ? (LibUser.UserPosition)PositionComboBox.SelectedIndex : null,
-                //user.ImageUrl = imageUrlTxt.Text
+                ImageUrl = ImgTxt.Text.Trim(),
             };
 
             try
