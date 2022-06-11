@@ -47,11 +47,11 @@ namespace Server.Controllers
 
         // POST api/<LibUsersController>/login
         [HttpPost("login")]
-        public async Task<IActionResult> GetUserByIdAndPasswordAsync(LibUser user)
+        public IActionResult GetUserByIdAndPassword(LibUser user)
         {
             try
             {
-                var result = await _usersRepository.GetUserByIdAndPasswordAsync(user.UserId, user.Password);
+                var result = _usersRepository.GetUserByIdAndPassword(user.UserId, user.Password);
                 return Ok(result);
             }
             catch (NonExistenceException ex)
