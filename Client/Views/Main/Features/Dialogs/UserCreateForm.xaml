@@ -37,6 +37,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="ID Nhân viên"
@@ -82,6 +83,11 @@
             <TextBlock Text="Vị trí"
                            Grid.Column="0"
                            Grid.Row="8"
+                           Margin="10,5,10,5"
+                           Style="{StaticResource PropertyLabelTextBlock}"/>
+            <TextBlock Text="Hình ảnh"
+                           Grid.Column="0"
+                           Grid.Row="9"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -166,6 +172,12 @@
                 <ComboBoxItem Content="Phó phòng"></ComboBoxItem>
                 <ComboBoxItem Content="Nhân viên"></ComboBoxItem>
             </ComboBox>
+            <TextBox Name="ImgTxt"
+                         Text=""
+                         Grid.Column="1"
+                         Grid.Row="9"
+                         Margin="0,5,10,5"
+                         Style="{StaticResource InputTextbox}"/>
         </Grid>
 
         <Grid Grid.Row="2" 
