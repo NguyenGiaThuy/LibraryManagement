@@ -6,8 +6,8 @@ namespace Server.Repositories
     {
         public Task<List<LibBook>> GetBooksAsync();
         public Task<LibBook> GetBookByIdAsync(string bookId);
-        public Task<string> AddBookAsync(LibBook bookToAdd);
-        public Task<string> UpdateBookAsync(LibBook bookToUpdate);
-        public Task<string> RemoveBookAsync(LibBook bookToRemove);
+        public Task<LibBook> AddBookAsync(LibBook bookToAdd);
+        public Task<LibBook> UpdateBookAsync(LibBook bookToUpdate);
+        public Task<LibBook> RemoveBookAsync(LibBook bookToRemove);
     }
 }

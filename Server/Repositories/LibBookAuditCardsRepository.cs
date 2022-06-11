@@ -33,28 +33,28 @@ namespace Server.Repositories
             return bookAuditCard;
         }
 
-        public async Task<string> CreateBookAuditCardFromAddedBookAsync(LibBook addedBook)
+        public async Task<LibBookAuditCard> CreateBookAuditCardFromAddedBookAsync(LibBook addedBook)
         {
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(addedBook.BookId, 0, null, addedBook.ReceiverId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return bookAuditCard.BookAuditCardId;
+            return await GetBookAuditCardByBookIdAsync(addedBook.BookId);
         }
 
-        public async Task<string> CreateBookAuditCardFromUpdatedBookAsync(LibBook updatedBook)
+        public async Task<LibBookAuditCard> CreateBookAuditCardFromUpdatedBookAsync(LibBook updatedBook)
         {
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(updatedBook.BookId, 1, null, updatedBook.ModifierId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return bookAuditCard.BookAuditCardId;
+            return await GetBookAuditCardByBookIdAsync(updatedBook.BookId);
         }
 
-        public async Task<string> CreateBookAuditCardFromRemovedBookAsync(LibBook removedBook, int? reason)
+        public async Task<LibBookAuditCard> CreateBookAuditCardFromRemovedBookAsync(LibBook removedBook, int? reason)
         {
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(removedBook.BookId, 2, reason, removedBook.ModifierId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return bookAuditCard.BookAuditCardId;
+            return await GetBookAuditCardByBookIdAsync(removedBook.BookId);
         }
     }
 }

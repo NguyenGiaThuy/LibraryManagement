@@ -33,15 +33,15 @@ namespace Server.Repositories
             return membership;
         }
 
-        public async Task<string> CreateMembershipFromMemberAsync(LibMember member)
+        public async Task<LibMembership> CreateMembershipFromMemberAsync(LibMember member)
         {
             LibMembership membership = new LibMembership(member.MemberId, member.SocialId, member.CreatorId);
             _context.LibMemberships.Add(membership);
             await _context.SaveChangesAsync();
-            return membership.MembershipId;
+            return await GetMembershipByIdAsync(membership.MembershipId);
         }
 
-        public async Task<string> DisableMembershipAsync(LibMembership membershipToDisable)
+        public async Task<LibMembership> DisableMembershipAsync(LibMembership membershipToDisable)
         {
             var membership = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipToDisable.MembershipId);
             if (membership == null) throw new NonExistenceException(string.Format("Membership {0} is not found", membershipToDisable.MembershipId));
@@ -50,10 +50,10 @@ namespace Server.Repositories
             membership.ModifiedDate = DateTime.Now;
             membership.Status = 1;
             await _context.SaveChangesAsync();
-            return membershipToDisable.MembershipId;
+            return await GetMembershipByIdAsync(membershipToDisable.MembershipId);
         }
 
-        public async Task<string> EnableMembershipAsync(LibMembership membershipToDisable)
+        public async Task<LibMembership> EnableMembershipAsync(LibMembership membershipToDisable)
         {
             var membership = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipToDisable.MembershipId);
             if (membership == null) throw new NonExistenceException(string.Format("Membership {0} is not found", membershipToDisable.MembershipId));
@@ -66,10 +66,10 @@ namespace Server.Repositories
             membership.ModifiedDate = DateTime.Now;
             membership.Status = 0;
             await _context.SaveChangesAsync();
-            return membershipToDisable.MembershipId;
+            return await GetMembershipByIdAsync(membershipToDisable.MembershipId);
         }
 
-        public async Task<string> ExtendMembershipAsync(LibMembership membershipToDisable)
+        public async Task<LibMembership> ExtendMembershipAsync(LibMembership membershipToDisable)
         {
             var membership = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipToDisable.MembershipId);
             if (membership == null) throw new NonExistenceException(string.Format("Membership {0} is not found", membershipToDisable.MembershipId));
@@ -90,10 +90,10 @@ namespace Server.Repositories
             if ((membership.ExpiryDate.Value - membership.StartDate.Value).Days >= 365) membership.Type = 1;
 
             await _context.SaveChangesAsync();
-            return membershipToDisable.MembershipId;
+            return await GetMembershipByIdAsync(membershipToDisable.MembershipId);
         }
 
-        public async Task<string> UpdateMembershipStatusOnExpiredAsync(string membershipId)
+        public async Task<LibMembership> UpdateMembershipStatusOnExpiredAsync(string membershipId)
         {
             var membership = await _context.LibMemberships.FirstOrDefaultAsync(x => x.MembershipId == membershipId);
             if (membership == null) throw new NonExistenceException(string.Format("Membership {0} is not found", membershipId));
@@ -104,7 +104,7 @@ namespace Server.Repositories
                 await _context.SaveChangesAsync();
             }
 
-            return membershipId;
+            return await GetMembershipByIdAsync(membershipId);
         }
     }
 }

@@ -39,14 +39,14 @@ namespace Server.Repositories
             return member;
         }
 
-        public async Task<string> CreateMemberAsync(LibMember memberToCreate)
+        public async Task<LibMember> CreateMemberAsync(LibMember memberToCreate)
         {
             _context.LibMembers.Add(memberToCreate);
             await _context.SaveChangesAsync();
-            return memberToCreate.MemberId;
+            return await GetMemberByIdAsync(memberToCreate.MemberId);
         }
 
-        public async Task<string> UpdateMemberAsync(LibMember memberToUpdate)
+        public async Task<LibMember> UpdateMemberAsync(LibMember memberToUpdate)
         {
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberToUpdate.MemberId);
             if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberToUpdate.MemberId));
@@ -60,17 +60,17 @@ namespace Server.Repositories
             member.ModifierId = memberToUpdate.ModifierId;
             member.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
-            return memberToUpdate.MemberId;
+            return await GetMemberByIdAsync(memberToUpdate.MemberId);
         }
 
-        public async Task<string> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId)
+        public async Task<LibMember> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId)
         {
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberId);
             if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberId));
 
             member.MembershipId = membershipId;
             await _context.SaveChangesAsync();
-            return member.MemberId;
+            return await GetMemberByIdAsync(member.MemberId);
         }
     }
 }

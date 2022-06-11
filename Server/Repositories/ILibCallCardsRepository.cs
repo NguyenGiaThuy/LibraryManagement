@@ -7,8 +7,8 @@ namespace Server.Repositories
         public Task<List<LibCallCard>> GetCallCardsAsync();
         public Task<LibCallCard> GetCallCardByIdAsync(string callCardId);
         public Task<LibCallCard> GetCallCardByBookIdAsync(string bookId);
-        public Task<string> CreateCallCardAsync(LibCallCard callCardToCreate);
+        public Task<LibCallCard> CreateCallCardAsync(LibCallCard callCardToCreate);
         //public void UpdateAllCallCardsStatusesAsync();
-        public Task<string> UpdateCallCardStatusAsync(string callCardId, int status);
+        public Task<LibCallCard> UpdateCallCardStatusAsync(string callCardId, int status);
     }
 }

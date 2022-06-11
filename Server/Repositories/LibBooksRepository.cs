@@ -26,14 +26,14 @@ namespace Server.Repositories
             return book;
         }
 
-        public async Task<string> AddBookAsync(LibBook bookToAdd)
+        public async Task<LibBook> AddBookAsync(LibBook bookToAdd)
         {
             _context.LibBooks.Add(bookToAdd);
             await _context.SaveChangesAsync();
-            return bookToAdd.BookId;
+            return await GetBookByIdAsync(bookToAdd.BookId);
         }
 
-        public async Task<string> UpdateBookAsync(LibBook bookToUpdate)
+        public async Task<LibBook> UpdateBookAsync(LibBook bookToUpdate)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToUpdate.BookId);
             if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", bookToUpdate.BookId));
@@ -48,10 +48,10 @@ namespace Server.Repositories
             book.Status = bookToUpdate.Status;
             book.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
-            return bookToUpdate.BookId;
+            return await GetBookByIdAsync(bookToUpdate.BookId);
         }
 
-        public async Task<string> RemoveBookAsync(LibBook bookToRemove)
+        public async Task<LibBook> RemoveBookAsync(LibBook bookToRemove)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == bookToRemove.BookId);
             if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", bookToRemove.BookId));
@@ -64,7 +64,7 @@ namespace Server.Repositories
             // Remove book
             book.Status = 1;
             await _context.SaveChangesAsync();
-            return bookToRemove.BookId;
+            return await GetBookByIdAsync(bookToRemove.BookId);
         }
     }
 }

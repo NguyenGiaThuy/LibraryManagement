@@ -33,7 +33,7 @@ namespace Server.Repositories
             return callCard;
         }
 
-        public async Task<string> CreateCallCardAsync(LibCallCard callCardToCreate)
+        public async Task<LibCallCard> CreateCallCardAsync(LibCallCard callCardToCreate)
         {
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == callCardToCreate.BookId);
             if (book == null) throw new NonExistenceException(string.Format("Book {0} is not found", callCardToCreate.BookId));
@@ -88,7 +88,7 @@ namespace Server.Repositories
             book.Status = 1;
             _context.LibCallCards.Add(callCardToCreate);
             await _context.SaveChangesAsync();
-            return callCardToCreate.CallCardId;
+            return await GetCallCardByIdAsync(callCardToCreate.CallCardId);
         }
 
         //public async void UpdateAllCallCardsStatusesAsync()
@@ -102,7 +102,7 @@ namespace Server.Repositories
         //    await _context.SaveChangesAsync();
         //}
 
-        public async Task<string> UpdateCallCardStatusAsync(string callCardId, int status)
+        public async Task<LibCallCard> UpdateCallCardStatusAsync(string callCardId, int status)
         {
             var callCard = await _context.LibCallCards.FirstOrDefaultAsync(x => x.CallCardId == callCardId);
             if (callCard == null) throw new NonExistenceException(string.Format("Call card {0} is not found", callCardId));
@@ -143,7 +143,7 @@ namespace Server.Repositories
 
             callCard.Status = status;
             await _context.SaveChangesAsync();
-            return callCardId;
+            return await GetCallCardByIdAsync(callCard.CallCardId);
         }
     }
 }

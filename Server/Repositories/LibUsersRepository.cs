@@ -33,14 +33,14 @@ namespace Server.Repositories
             return user;
         }
 
-        public async Task<string> CreateUserAsync(LibUser userToCreate)
+        public async Task<LibUser> CreateUserAsync(LibUser userToCreate)
         {
             _context.LibUsers.Add(userToCreate);
             await _context.SaveChangesAsync();
-            return userToCreate.UserId;
+            return await GetUserByIdAsync(userToCreate.UserId);
         }
 
-        public async Task<string> UpdateUserAsync(LibUser userToUpdate)
+        public async Task<LibUser> UpdateUserAsync(LibUser userToUpdate)
         {
             var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userToUpdate.UserId);
             if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userToUpdate.UserId));
@@ -54,10 +54,10 @@ namespace Server.Repositories
             user.Department = userToUpdate.Department;
             user.Position = userToUpdate.Position;
             await _context.SaveChangesAsync();
-            return userToUpdate.UserId;
+            return await GetUserByIdAsync(userToUpdate.UserId);
         }
 
-        public async Task<string> DisableUserAsync(string userId)
+        public async Task<LibUser> DisableUserAsync(string userId)
         {
             var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
             if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
@@ -65,10 +65,10 @@ namespace Server.Repositories
             user.Status = 1;
             _context.LibUsers.Update(user);
             await _context.SaveChangesAsync();
-            return userId;
+            return await GetUserByIdAsync(userId);
         }
 
-        public async Task<string> EnableUserAsync(string userId)
+        public async Task<LibUser> EnableUserAsync(string userId)
         {
             var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId);
             if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
@@ -76,7 +76,7 @@ namespace Server.Repositories
             user.Status = 0;
             _context.LibUsers.Update(user);
             await _context.SaveChangesAsync();
-            return userId;
+            return await GetUserByIdAsync(userId);
         }
     }
 }

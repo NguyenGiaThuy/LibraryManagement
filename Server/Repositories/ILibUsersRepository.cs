@@ -7,9 +7,9 @@ namespace Server.Repositories
         public Task<List<LibUser>> GetUsersAsync();
         public Task<LibUser> GetUserByIdAsync(string userId);
         public Task<LibUser> GetUserByIdAndPasswordAsync(string userId, string password);
-        public Task<string> CreateUserAsync(LibUser userToCreate);
-        public Task<string> UpdateUserAsync(LibUser userToUpdate);
-        public Task<string> DisableUserAsync(string userId);
-        public Task<string> EnableUserAsync(string userId);
+        public Task<LibUser> CreateUserAsync(LibUser userToCreate);
+        public Task<LibUser> UpdateUserAsync(LibUser userToUpdate);
+        public Task<LibUser> DisableUserAsync(string userId);
+        public Task<LibUser> EnableUserAsync(string userId);
     }
 }

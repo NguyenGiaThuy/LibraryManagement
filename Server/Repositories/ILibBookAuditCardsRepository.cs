@@ -7,8 +7,8 @@ namespace Server.Repositories
         public Task<List<LibBookAuditCard>> GetBookAuditCardsAsync();
         public Task<LibBookAuditCard> GetBookAuditCardByIdAsync(string bookAuditCardId);
         public Task<LibBookAuditCard> GetBookAuditCardByBookIdAsync(string bookId);
-        public Task<string> CreateBookAuditCardFromAddedBookAsync(LibBook addedBook);
-        public Task<string> CreateBookAuditCardFromUpdatedBookAsync(LibBook updatedBook);
-        public Task<string> CreateBookAuditCardFromRemovedBookAsync(LibBook removedBook, int? reason);
+        public Task<LibBookAuditCard> CreateBookAuditCardFromAddedBookAsync(LibBook addedBook);
+        public Task<LibBookAuditCard> CreateBookAuditCardFromUpdatedBookAsync(LibBook updatedBook);
+        public Task<LibBookAuditCard> CreateBookAuditCardFromRemovedBookAsync(LibBook removedBook, int? reason);
     }
 }

@@ -91,7 +91,7 @@ namespace Server.Controllers
             {
                 var result1 = await _membersRepository.CreateMemberAsync(member);
                 var result2 = await membershipsRepository.CreateMembershipFromMemberAsync(member);
-                var result3 = await _membersRepository.UpdateMemberhipIdforMemberAsync(result1, result2);
+                var result3 = await _membersRepository.UpdateMemberhipIdforMemberAsync(result1.MemberId, result2.MembershipId);
                 return Ok(string.Format("{0}\n{1}", result3, result2));
             }
             catch (Exception ex)

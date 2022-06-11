@@ -8,8 +8,8 @@ namespace Server.Repositories
         public Task<LibMember> GetMemberByIdAsync(string memberId);
         public Task<LibMember> GetMemberByMembershipIdAsync(string membershipId);
         public Task<LibMember> GetMemberBySocialIdAsync(string socialId);
-        public Task<string> CreateMemberAsync(LibMember memberToCreate);
-        public Task<string> UpdateMemberAsync(LibMember memberToUpdate);
-        public Task<string> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId);
+        public Task<LibMember> CreateMemberAsync(LibMember memberToCreate);
+        public Task<LibMember> UpdateMemberAsync(LibMember memberToUpdate);
+        public Task<LibMember> UpdateMemberhipIdforMemberAsync(string memberId, string membershipId);
     }
 }

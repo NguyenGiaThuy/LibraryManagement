@@ -7,10 +7,10 @@ namespace Server.Repositories
         public Task<List<LibMembership>> GetMembershipsAsync();
         public Task<LibMembership> GetMembershipByIdAsync(string membershipId);
         public Task<LibMembership> GetMembershipBySocialIdAsync(string socialId);
-        public Task<string> CreateMembershipFromMemberAsync(LibMember member);
-        public Task<string> DisableMembershipAsync(LibMembership membershipToDisable);
-        public Task<string> EnableMembershipAsync(LibMembership membershipToEnable);
-        public Task<string> ExtendMembershipAsync(LibMembership membershipToExtend);
-        public Task<string> UpdateMembershipStatusOnExpiredAsync(string membershipId);
+        public Task<LibMembership> CreateMembershipFromMemberAsync(LibMember member);
+        public Task<LibMembership> DisableMembershipAsync(LibMembership membershipToDisable);
+        public Task<LibMembership> EnableMembershipAsync(LibMembership membershipToEnable);
+        public Task<LibMembership> ExtendMembershipAsync(LibMembership membershipToExtend);
+        public Task<LibMembership> UpdateMembershipStatusOnExpiredAsync(string membershipId);
     }
 }

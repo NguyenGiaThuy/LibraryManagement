@@ -33,7 +33,7 @@ namespace Server.Repositories
             return fineCard;
         }
 
-        public async Task<string> CreateFineCardAsync(LibFineCard fineCardToCreate)
+        public async Task<LibFineCard> CreateFineCardAsync(LibFineCard fineCardToCreate)
         {
             var callCard = await _context.LibCallCards.FirstOrDefaultAsync(x => x.CallCardId == fineCardToCreate.CallCardId);
             if (callCard == null) throw new NonExistenceException(string.Format("Call card {0} is not found", fineCardToCreate.CallCardId));
@@ -79,10 +79,10 @@ namespace Server.Repositories
 
             _context.LibFineCards.Add(fineCardToCreate);
             await _context.SaveChangesAsync();
-            return fineCardToCreate.FineCardId;
+            return await GetFineCardByIdAsync(fineCardToCreate.FineCardId);
         }
 
-        public async Task<string> UpdateFineCardArrearsAsync(string fineCardId)
+        public async Task<LibFineCard> UpdateFineCardArrearsAsync(string fineCardId)
         {
             var fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.FineCardId == fineCardId);
             if (fineCard == null) throw new NonExistenceException(string.Format("Fine card {0} is not found", fineCardId));
@@ -97,16 +97,16 @@ namespace Server.Repositories
             fineCard.DaysInArrears += daysInArrears;
             fineCard.Arrears += arrears;
             await _context.SaveChangesAsync();
-            return fineCardId;
+            return fineCard;
         }
 
-        public async Task<string> CloseFineCardAsync(string fineCardId)
+        public async Task<LibFineCard> CloseFineCardAsync(string fineCardId)
         {
             var fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.FineCardId == fineCardId);
             if (fineCard == null) throw new NonExistenceException(string.Format("Fine card {0} is not found", fineCardId));
             fineCard.Status = 1;
             await _context.SaveChangesAsync();
-            return fineCardId;
+            return await GetFineCardByIdAsync(fineCard.FineCardId);
         }
     }
 }
