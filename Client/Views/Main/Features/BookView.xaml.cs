@@ -103,10 +103,12 @@ namespace Client.Views.Main.Features
             //ReceivedDate
             bookForm.ReceivedDateComboBox.IsEnabled = false;
             DateTime receivedDate;
-            if (DateTime.TryParse(selectedBook.ReceivedDate.ToString(), out receivedDate)) {
+            if (DateTime.TryParse(selectedBook.ReceivedDate.ToString(), out receivedDate))
+            {
                 bookForm.ReceivedDateComboBox.Text = receivedDate.ToString("dd-MM-yyyy");
             }
-            else {
+            else
+            {
                 bookForm.ReceivedDateComboBox.Text = "";
             }
             //ModifierId
@@ -115,9 +117,12 @@ namespace Client.Views.Main.Features
             //ModifiedDate
             bookForm.ModifiedDateComboBox.IsEnabled = false;
             DateTime modifiedDate;
-            if(DateTime.TryParse(selectedBook.ModifiedDate.ToString(), out modifiedDate)) {
+            if (DateTime.TryParse(selectedBook.ModifiedDate.ToString(), out modifiedDate))
+            {
                 bookForm.ModifiedDateComboBox.Text = modifiedDate.ToString("dd-MM-yyyy");
-            } else {
+            }
+            else
+            {
                 bookForm.ModifiedDateComboBox.Text = "";
             }
             //Price

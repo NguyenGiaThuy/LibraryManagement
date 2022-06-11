@@ -40,26 +40,32 @@ namespace Client.Views.Main.Features.Dialogs
             Hide();
         }
 
-        private void DueDateComboBox_LostFocus(object sender, RoutedEventArgs e) {
-            if (DueDateComboBox.SelectedItem != null) {
+        private void DueDateComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (DueDateComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)DueDateCalendar.SelectedDate;
                 DueDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void DueDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void DueDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)DueDateCalendar.SelectedDate;
             DueDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }
 
-        private void CreatedDateTxt_LostFocus(object sender, RoutedEventArgs e) {
-            if (CreatedDateComboBox.SelectedItem != null) {
+        private void CreatedDateTxt_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (CreatedDateComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
                 CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void CreatedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void CreatedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
             CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }

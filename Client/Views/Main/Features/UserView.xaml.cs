@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace Client.Views.Main.Features
@@ -65,10 +64,9 @@ namespace Client.Views.Main.Features
 
         private void UserCreateForm_OnFormSaved(LibUser user)
         {
-            //selectedUser.CopyFrom(user);
-            //UpdateUserSidePanel(selectedUser);
-            //UserDataGrid.ItemsSource = null;
-            //UserDataGrid.ItemsSource = userList;
+            userList.Add(user);
+            UserDataGrid.ItemsSource = null;
+            UserDataGrid.ItemsSource = userList;
         }
 
         private void UserUpdateForm_OnFormSaved(LibUser user)
@@ -90,12 +88,27 @@ namespace Client.Views.Main.Features
             EducationTxt.Text = user.Education != null ? user.Education.ToString() : "";
             DepartmentTxt.Text = user.Department != null ? user.Department.ToString() : "";
             PositionTxt.Text = user.Position != null ? user.Position.ToString() : "";
-            UserImg.Source = user.ImageUrl != null ? new BitmapImage(new Uri(user.ImageUrl)) : null;
+            try
+            {
+                UserImg.Source = user.ImageUrl != null ? new BitmapImage(new Uri(user.ImageUrl)) : null;
+            }
+            catch (Exception) { }
         }
 
         private void UserNewBtn_Click(object sender, RoutedEventArgs e)
         {
+            userCreateForm.DateOfBirthComboBox.Text = "";
+            userCreateForm.UserIdTxt.Text = "";
+            userCreateForm.PasswordTxt.Password = "";
+            userCreateForm.NameTxt.Text = "";
+            userCreateForm.AddressTxt.Text = "";
+            userCreateForm.MobileTxt.Text = "";
+            userCreateForm.EducationComboBox.SelectedIndex = -1;
+            userCreateForm.DepartmentComboBox.SelectedIndex = -1;
+            userCreateForm.PositionComboBox.SelectedIndex = -1;
+            userCreateForm.ImgTxt.Text = "";
 
+            userCreateForm.ShowDialog();
         }
 
         private void UserUpdateBtn_Click(object sender, RoutedEventArgs e)

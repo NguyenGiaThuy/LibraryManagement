@@ -81,7 +81,7 @@ namespace Server.Repositories
                     string.Format("Cannot create call card for membership {0} due to membership borrowing more than 5 books in 4 days", membership.MembershipId));
 
             // Check if due date > created date
-            if (callCardToCreate.DueDate <= callCardToCreate.CreatedDate) 
+            if (callCardToCreate.DueDate <= callCardToCreate.CreatedDate)
                 throw new InvalidOperationException("Cannot create call card since due date must be after created date");
 
             // Create call card
