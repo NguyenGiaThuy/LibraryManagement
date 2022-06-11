@@ -18,9 +18,12 @@ namespace Client.Views.Login
     {
         private Credential credential = new Credential();
 
+        private bool enterPressed;
+
         public LoginView()
         {
             InitializeComponent();
+            enterPressed = false;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -118,9 +121,10 @@ namespace Client.Views.Login
         {
             UIElement uIElement = e.OriginalSource as UIElement;
 
-            if ((uIElement != null) && (e.Key == Key.Enter))
+            if ((uIElement != null) && (e.Key == Key.Enter) && !enterPressed)
             {
                 LoginBtn.IsEnabled = false;
+                enterPressed = true;
                 e.Handled = true;
 
                 credential.Username = AccountTextBox.Text.Trim();
@@ -181,11 +185,13 @@ namespace Client.Views.Login
                     else MessageBox.Show(ex.Message);
 
                     LoginBtn.IsEnabled = true;
+                    enterPressed = false;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     LoginBtn.IsEnabled = true;
+                    enterPressed = false;
                 }
             }
         }
