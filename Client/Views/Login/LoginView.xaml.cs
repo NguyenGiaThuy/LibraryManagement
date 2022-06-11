@@ -43,7 +43,7 @@ namespace Client.Views.Login
             return user;
         }
 
-        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             credential.Username = AccountTextBox.Text.Trim();
             credential.Password = PasswordBox.Password.Trim();
@@ -59,7 +59,9 @@ namespace Client.Views.Login
 
             try
             {
-                App.User = await LogInAsync($"api/libusers/login", credential.Username, credential.Password);
+                Task<LibUser> task = LogInAsync($"api/libusers/login", credential.Username, credential.Password);
+                task.Wait();
+                App.User = task.Result;
 
                 if (App.User.Status == LibUser.UserStatus.Inactive)
                 {
