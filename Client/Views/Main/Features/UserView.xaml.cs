@@ -127,6 +127,9 @@ namespace Client.Views.Main.Features
 =======
             DateTime dateOfBirth = (DateTime)selectedUser.Dob;
             userForm.DateOfBirthComboBox.Text = dateOfBirth.ToString();
+<<<<<<< HEAD
+>>>>>>> parent of 17916c3 (Add CreateForms)
+=======
 >>>>>>> parent of 17916c3 (Add CreateForms)
             //Mobile
             userForm.MobileTxt.Text = selectedUser.Mobile ?? "";
