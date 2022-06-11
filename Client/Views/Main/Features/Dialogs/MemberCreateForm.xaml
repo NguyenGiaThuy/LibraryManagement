@@ -34,6 +34,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Căn cước công dân"
@@ -64,6 +65,11 @@
             <TextBlock Text="Email"
                            Grid.Column="0"
                            Grid.Row="5"
+                           Margin="10,5,10,5"
+                           Style="{StaticResource PropertyLabelTextBlock}"/>
+            <TextBlock Text="Hình ảnh"
+                           Grid.Column="0"
+                           Grid.Row="6"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -109,6 +115,12 @@
                          Text=""
                          Grid.Column="1"
                          Grid.Row="5"
+                         Margin="0,5,10,5"
+                         Style="{StaticResource InputTextbox}"/>
+            <TextBox Name="ImgTxt"
+                         Text=""
+                         Grid.Column="1"
+                         Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
         </Grid>

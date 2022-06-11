@@ -40,6 +40,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="ID Độc giả"
@@ -100,6 +101,11 @@
             <TextBlock Text="Ngày chỉnh sửa"
                            Grid.Column="0"
                            Grid.Row="11"
+                           Margin="10,5,10,5"
+                           Style="{StaticResource PropertyLabelTextBlock}"/>
+            <TextBlock Text="Hình ảnh"
+                           Grid.Column="0"
+                           Grid.Row="12"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -199,6 +205,12 @@
                           SelectedDatesChanged="ModifiedDateCalendar_SelectedDatesChanged"
                           Style="{x:Null}"/>
             </ComboBox>
+            <TextBox Name="ImgTxt"
+                         Text=""
+                         Grid.Column="1"
+                         Grid.Row="12"
+                         Margin="0,5,10,5"
+                         Style="{StaticResource InputTextbox}"/>
         </Grid>
 
         <Grid Grid.Row="2" 
