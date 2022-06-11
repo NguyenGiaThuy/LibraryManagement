@@ -26,9 +26,9 @@ namespace Server.Repositories
             return user;
         }
 
-        public async Task<LibUser> GetUserByIdAndPasswordAsync(string userId, string password)
+        public LibUser GetUserByIdAndPassword(string userId, string password)
         {
-            var user = await _context.LibUsers.FirstOrDefaultAsync(x => x.UserId == userId && x.Password == password);
+            var user = _context.LibUsers.FirstOrDefault(x => x.UserId == userId && x.Password == password);
             if (user == null) throw new NonExistenceException(string.Format("User {0} is not found", userId));
             return user;
         }
