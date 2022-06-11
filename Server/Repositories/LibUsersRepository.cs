@@ -46,7 +46,6 @@ namespace Server.Repositories
             user.Education = userToUpdate.Education;
             user.Department = userToUpdate.Department;
             user.Position = userToUpdate.Position;
-            user.Status = userToUpdate.Status;
             await _context.SaveChangesAsync();
             return userToUpdate.UserId;
         }
