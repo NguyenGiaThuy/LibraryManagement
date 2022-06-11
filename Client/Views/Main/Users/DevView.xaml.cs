@@ -21,8 +21,6 @@ namespace Client.Views.Main
         BookAuditCardView bookAuditCardView = new BookAuditCardView();
         FineCardView fineCardView = new FineCardView();
 
-        public string Text { get; set; } = "abc";
-
         public DevView()
         {
             this.DataContext = this;
@@ -42,8 +40,19 @@ namespace Client.Views.Main
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            UserView userView = await UserView.Create();
-            LibraryAdminFrame.Content = userView.Content;
+            UserView userView = null;
+            try
+            {
+                userView = await UserView.Create();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            { 
+                LibraryAdminFrame.Content = userView.Content; 
+            }
         }
 
         //LIBRARIAN ====================================================================================
