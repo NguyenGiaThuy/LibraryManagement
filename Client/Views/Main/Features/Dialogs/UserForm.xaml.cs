@@ -28,10 +28,8 @@ namespace Client.Views.Main.Features.Dialogs
             user.Address = AddressTxt.Text;
 
             DateTime dob;
-            if(DateTime.TryParse(DateOfBirthComboBox.Text, out dob)) 
-                user.Dob = dob;
-            else 
-                user.Dob = null;
+            if(DateTime.TryParse(DateOfBirthComboBox.Text, out dob)) user.Dob = dob;
+            else user.Dob = null;
 
             user.Mobile = MobileTxt.Text;
 

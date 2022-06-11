@@ -173,26 +173,26 @@
             
             <Syncfusion:SfDataGrid Name="UserDataGrid"
                                    Grid.Row="1"
+                                   Style="{x:Null}"
                                    VerticalAlignment="Stretch"
                                    HorizontalAlignment="Stretch"
                                    Margin="10,0,10,10"
-                                   RowHeight="35"
-                                   ColumnSizer="Auto"
                                    AutoGenerateColumns="False"
                                    AllowEditing="False"
+                                   ColumnSizer="Auto"
                                    AllowResizingColumns="True"
                                    SelectionChanged="UserDataGrid_SelectionChanged">
                 <Syncfusion:SfDataGrid.Columns>
-                    <Syncfusion:GridTextColumn     HeaderText="ID" MinimumWidth="50" MappingName="UserId" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Địa chỉ" MinimumWidth="50" MappingName="Address" AllowFiltering="True"/>
-                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày sinh" MinimumWidth="50" MappingName="Dob" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Di động" MinimumWidth="50" MappingName="Mobile" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Học vấn" MinimumWidth="50" MappingName="Education" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Phòng ban" MinimumWidth="50" MappingName="Department" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Vị trí" MinimumWidth="50" MappingName="Position" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="False"/>
-
-                    <Syncfusion:GridTemplateColumn HeaderText="Công cụ" MinimumWidth="65" MaximumWidth="65" TextAlignment="Center" AllowFiltering="False" AllowSorting="False">
+                    <Syncfusion:GridTextColumn HeaderText="ID" MappingName="UserId" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Địa chỉ" MappingName="Address" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Ngày sinh" MappingName="Dob" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Di động" MappingName="Mobile" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Học vấn" MappingName="Education" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Phòng ban" MappingName="Department" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Vị trí" MappingName="Position" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn HeaderText="Trạng thái" MappingName="Status" AllowFiltering="True"/>
+                    
+                    <Syncfusion:GridTemplateColumn>
                         <Syncfusion:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid VerticalAlignment="Stretch"
@@ -208,7 +208,7 @@
                                             Style="{x:Null}" 
                                             Click="UserUpdateBtn_Click" 
                                             Padding="2" 
-                                            Margin="2,2,0,2">
+                                            Margin="2,0,1,0">
                                         <materialDesign:PackIcon Kind="Edit"/>
                                     </Button>
                                     <Button Grid.Column="1" 
@@ -217,7 +217,7 @@
                                             Style="{x:Null}" 
                                             Click="UserRemoveBtn_Click" 
                                             Padding="2" 
-                                            Margin="2">
+                                            Margin="1,0,2,0">
                                         <materialDesign:PackIcon Kind="Remove"/>
                                     </Button>
                                 </Grid>

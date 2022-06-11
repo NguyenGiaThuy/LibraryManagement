@@ -178,8 +178,8 @@
                          Grid.Row="9"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Còn hiệu lực"></ComboBoxItem>
-                <ComboBoxItem Content="Hết hiệu lực"></ComboBoxItem>
+                <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
+                <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>
             </ComboBox>
         </Grid>
 

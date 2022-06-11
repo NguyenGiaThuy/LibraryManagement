@@ -28,7 +28,7 @@
 
             <Button Name="FineCardNewBtn"
                         Grid.Column="1"
-                        Content="Tạo mới"
+                        Content="New"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"
                         Height="35"
