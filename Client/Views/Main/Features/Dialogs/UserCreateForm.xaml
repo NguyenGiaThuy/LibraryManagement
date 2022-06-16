@@ -136,11 +136,12 @@
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="EducationComboBox"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="6"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputComboBox}">
+                      Text=""
+                      Grid.Column="1"
+                      Grid.Row="6"
+                      Margin="0,5,10,5"
+                      IsSynchronizedWithCurrentItem="True"
+                      Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Phổ_thông"></ComboBoxItem>
                 <ComboBoxItem Content="Trung_cấp"></ComboBoxItem>
                 <ComboBoxItem Content="Cao_đẳng"></ComboBoxItem>
@@ -149,11 +150,12 @@
                 <ComboBoxItem Content="Tiến_sĩ"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="DepartmentComboBox"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="7"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputComboBox}">
+                      Text=""
+                      Grid.Column="1"
+                      Grid.Row="7"
+                      Margin="0,5,10,5"
+                      IsSynchronizedWithCurrentItem="True"
+                      Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Thủ thư"></ComboBoxItem>
                 <ComboBoxItem Content="Thủ kho"></ComboBoxItem>
                 <ComboBoxItem Content="Thủ quỹ"></ComboBoxItem>
@@ -161,11 +163,12 @@
                 <ComboBoxItem Content="Lập trình viên"></ComboBoxItem>
             </ComboBox>
             <ComboBox Name="PositionComboBox"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="8"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputComboBox}">
+                      Text=""
+                      Grid.Column="1"
+                      Grid.Row="8"
+                      Margin="0,5,10,5"
+                      IsSynchronizedWithCurrentItem="True"
+                      Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Giám đốc"></ComboBoxItem>
                 <ComboBoxItem Content="Phó giám đốc"></ComboBoxItem>
                 <ComboBoxItem Content="Trưởng phòng"></ComboBoxItem>

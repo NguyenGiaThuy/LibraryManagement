@@ -143,5 +143,9 @@ namespace Client.Views.Main.Features
                 UpdateUserSidePanel(selectedUser);
             }
         }
+
+        private void UserEnableBtn_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

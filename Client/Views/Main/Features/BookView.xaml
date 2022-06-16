@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="BookView" Height="600" Width="900"
         Background="Transparent"
@@ -56,6 +57,7 @@
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,10"
+                         IsReadOnly="True"
                          Style="{StaticResource TitleTextbox}"/>
             </Grid>
 
@@ -105,30 +107,35 @@
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="PublisherTxt"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="ISBNTxt"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="GenreTxt"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="PriceTxt"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
             </Grid>
         </Grid>
@@ -164,7 +171,7 @@
                         Click="BookNewBtn_Click"/>
             </Grid>
             
-            <DataGrid Name="BookDataGrid"
+            <!--<DataGrid Name="BookDataGrid"
                       Grid.Row="1"
                       Margin="10,0,10,10"
                       AutoGenerateColumns="False"
@@ -211,7 +218,62 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
+
+            <Syncfusion:SfDataGrid Name="BookDataGrid"
+                                   Grid.Row="1"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="10,0,10,10"
+                                   RowHeight="35"
+                                   ColumnSizer="Auto"
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="False"
+                                   AllowResizingColumns="True"
+                                   SelectionChanged="BookDataGrid_SelectionChanged">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn     HeaderText="ID"         MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>
+                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày XB"    MinimumWidth="50" MappingName="PublishedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Người nhận" MinimumWidth="50" MappingName="ReceiverId" AllowFiltering="True"/>
+                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày nhận"  MinimumWidth="50" MappingName="ReceivedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                    
+                    <Syncfusion:GridTemplateColumn HeaderText="Công cụ" MinimumWidth="65" MaximumWidth="65" TextAlignment="Center" AllowFiltering="False" AllowSorting="False">
+                        <Syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Grid.Column="0" 
+                                            Name="BookUpdateBtn"
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="BookUpdateBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2,2,0,2">
+                                        <materialDesign:PackIcon Kind="Edit"/>
+                                    </Button>
+                                    <Button Grid.Column="1" 
+                                            Name="BookRemoveBtn"
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="BookRemoveBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2">
+                                        <materialDesign:PackIcon Kind="Remove"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </Syncfusion:GridTemplateColumn.CellTemplate>
+                    </Syncfusion:GridTemplateColumn>
+                </Syncfusion:SfDataGrid.Columns>
+            </Syncfusion:SfDataGrid>
         </Grid>
     </Grid>
 </Window>

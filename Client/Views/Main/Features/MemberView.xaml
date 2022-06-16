@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="MemberView" Height="600" Width="900"
         Background="Transparent"
@@ -53,6 +54,7 @@
                          VerticalAlignment="Stretch"
                          HorizontalAlignment="Stretch"
                          Margin="0,0,0,5"
+                         IsReadOnly="True"
                          Style="{StaticResource TitleTextbox}"/>
             </Grid>
 
@@ -63,7 +65,6 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
                     <RowDefinition Height="35"/>
@@ -102,26 +103,31 @@
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="DobTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="AddressTxt"
                          Grid.Column="1"
                          Grid.Row="2"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="MobileTxt"
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
                 <TextBox Name="EmailTxt"
                          Grid.Column="1"
                          Grid.Row="4"
                          Margin="0,5,10,5"
+                         IsReadOnly="True"
                          Style="{StaticResource PropertyTextbox}"/>
             </Grid>
         </Grid>
@@ -157,56 +163,73 @@
                         Click="MemberNewBtn_Click"/>
             </Grid>
 
-            <DataGrid Name="MemberDataGrid"
-                      Grid.Row="1"
-                      Margin="10,0,10,10"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      SelectionChanged="MemberDataGrid_SelectionChanged">
+            <Syncfusion:SfDataGrid Name="MemberDataGrid"
+                                   Grid.Row="1"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="10,0,10,10"
+                                   RowHeight="35"
+                                   ColumnSizer="Auto"
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="False"
+                                   AllowResizingColumns="True"
+                                   SelectionChanged="MemberDataGrid_SelectionChanged">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn     HeaderText="ID"           MinimumWidth="50" MappingName="MembershipId" AllowFiltering="True"/>
+                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày bắt đầu" MinimumWidth="50" MappingName="StartDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
+                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày hết hạn" MinimumWidth="50" MappingName="ExpiryDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="MembershipType" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái"   MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="ID Người tạo" MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"     MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Độc giả" MinWidth="50" Width="*" CellStyle="{StaticResource LeftContent}" Binding="{Binding MembershipId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày bắt đầu" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding StartDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày hết hạn" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ExpiryDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding MembershipType}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
-
-                    <DataGridTemplateColumn Header="Công cụ" MinWidth="90" MaxWidth="90">
-                        <DataGridTemplateColumn.CellTemplate>
+                    <Syncfusion:GridTemplateColumn HeaderText="Công cụ" MinimumWidth="95" MaximumWidth="95" TextAlignment="Center" AllowFiltering="False" AllowSorting="False">
+                        <Syncfusion:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid VerticalAlignment="Stretch"
                                       HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Column="0" 
+                                            Name="MemberEnableBtn"
+                                            Width="25" 
+                                            Height="25" 
+                                            Style="{x:Null}" 
+                                            Click="MemberEnableBtn_Click" 
+                                            Padding="2" 
+                                            Margin="2,2,0,2">
+                                        <materialDesign:PackIcon Kind="UserAdd"/>
+                                    </Button>
+                                    <Button Grid.Column="1" 
+                                            Name="MemberUpdateBtn"
                                             Width="25" 
                                             Height="25" 
                                             Style="{x:Null}" 
                                             Click="MemberUpdateBtn_Click" 
                                             Padding="2" 
-                                            Margin="2,0,1,0">
+                                            Margin="2">
                                         <materialDesign:PackIcon Kind="Edit"/>
                                     </Button>
-                                    <Button Grid.Column="1" 
+                                    <Button Grid.Column="2" 
+                                            Name="MemberRemoveBtn"
                                             Width="25" 
                                             Height="25" 
                                             Style="{x:Null}" 
                                             Click="MemberRemoveBtn_Click" 
                                             Padding="2" 
-                                            Margin="1,0,2,0">
+                                            Margin="2">
                                         <materialDesign:PackIcon Kind="Remove"/>
                                     </Button>
                                 </Grid>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                        </Syncfusion:GridTemplateColumn.CellTemplate>
+                    </Syncfusion:GridTemplateColumn>
+                </Syncfusion:SfDataGrid.Columns>
+            </Syncfusion:SfDataGrid>
         </Grid>
     </Grid>
 </Window>

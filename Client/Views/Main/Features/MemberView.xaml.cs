@@ -25,8 +25,12 @@ namespace Client.Views.Main.Features
         {
         }
 
-        private void MemberDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MemberDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
+
+        }
+
+        private void MemberEnableBtn_Click(object sender, RoutedEventArgs e) {
 
         }
     }

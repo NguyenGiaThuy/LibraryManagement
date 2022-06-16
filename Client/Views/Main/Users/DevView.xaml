@@ -59,22 +59,22 @@
 
                             <RadioButton Name="LibraryAdminDashboardRBtn" 
                                          Content="Bảng điều khiển"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"
-                                        IsChecked="True"
-                                        Checked="LibraryAdminDashboardRBtn_Checked"/>
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"
+                                         Checked="LibraryAdminDashboardRBtn_Checked"/>
 
                             <RadioButton Name="LibraryAdminUserRBtn" 
                                          Content="Thông tin nhân viên"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Administrator}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"
-                                        Checked="LibraryAdminUserRBtn_Checked"/>
+                                         DataContext="{x:Static materialDesign:PackIconKind.Administrator}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="LibraryAdminUserRBtn_Checked"/>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -120,21 +120,21 @@
 
                             <RadioButton Name="LibrarianDashboardRBtn"
                                          Content="Bảng điều khiển"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"
-                                        IsChecked="True"
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"
                                          Checked="LibrarianDashboardRBtn_Checked"/>
 
                             <RadioButton Name="LibrarianBookRBtn"
                                          Content="Thông tin sách"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.Book}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"
+                                         DataContext="{x:Static materialDesign:PackIconKind.Book}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
                                          Checked="LibrarianBookRBtn_Checked"/>
 
                             <RadioButton Name="LibrarianMemberRBtn"
@@ -148,12 +148,12 @@
 
                             <RadioButton Name="LibrarianCallCardRBtn"
                                          Content="Phiếu mượn sách"                                        
-                                        DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
-                                        FontSize="16"
-                                        Height="50"
-                                        Margin="0,0,0,0"
-                                        Style="{StaticResource VerticalMenuTheme}"
-                                        Checked="LibrarianCallCardRBtn_Checked"/>
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="LibrarianCallCardRBtn_Checked"/>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -199,7 +199,7 @@
                                     Margin="0,10,0,0">
 
                             <RadioButton Name="TreasurerDashboardRBtn" 
-                                         Content="Bảng điều khiển"                                        
+                                         Content="Bảng điều khiển"                                       
                                          DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
                                          FontSize="16"
                                          Height="50"
