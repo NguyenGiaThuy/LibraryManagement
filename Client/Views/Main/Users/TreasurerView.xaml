@@ -4,12 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Users"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TreasurerView" Height="450" Width="800">
+        Title="TreasurerView" Height="700" Width="1300"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <TextBlock 
-            Text="TreasurerView"
-            FontSize="20"
-            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TabControl TabStripPlacement="Top"
+                    SelectedIndex="2">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem
+                Header="Ban giám đốc" 
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+
+            <TabItem
+                Header="Thủ thư"
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+
+            <TabItem
+                Header="Thủ quỹ" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="Transparent"
+                        Margin="10,10,10,10">
+                        <Frame Name="TreasurerFrame" NavigationUIVisibility="Hidden"/>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="0,10,0,0">
+
+                            <RadioButton Name="TreasurerDashboardRBtn" 
+                                         Content="Bảng điều khiển"                                       
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"
+                                         Checked="TreasurerDashboardRBtn_Checked"/>
+
+                            <RadioButton Name="TreasurerCallCardRBtn" 
+                                         Content="Phiếu mượn sách"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChromeReaderMode}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="TreasurerCallCardRBtn_Checked"/>
+
+                            <RadioButton Name="TreasurerFineCardRBtn" 
+                                         Content="Phiếu phạt"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.Money}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="TreasurerFineCardRBtn_Checked"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem
+                Header="Thủ kho" 
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+        </TabControl>
     </Grid>
 </Window>
