@@ -156,5 +156,9 @@ namespace Client.Views.Main.Features
             selectedUser = UserDataGrid.SelectedItem as LibUser;
             if (selectedUser != null) UpdateUserSidePanel(selectedUser);
         }
+
+        private void UserEnableBtn_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

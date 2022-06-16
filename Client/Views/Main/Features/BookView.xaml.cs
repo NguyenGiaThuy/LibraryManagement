@@ -147,7 +147,7 @@ namespace Client.Views.Main.Features
             }
         }
 
-        private void BookDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BookDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
             if (selectedBook != null)

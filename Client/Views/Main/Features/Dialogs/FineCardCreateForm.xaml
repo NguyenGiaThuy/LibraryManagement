@@ -61,6 +61,7 @@
                       Grid.Row="1"
                       Margin="0,5,10,5"
                       IsEnabled="False"
+                      IsSynchronizedWithCurrentItem="True"
                       Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
                 <ComboBoxItem Content="Dã mất"></ComboBoxItem>
