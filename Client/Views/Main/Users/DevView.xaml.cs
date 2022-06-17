@@ -15,6 +15,7 @@ namespace Client.Views.Main
         StorekeeperDashboardView storekeeperDashboardView = new StorekeeperDashboardView();
         TreasurerDashboardView treasurerDashboardView = new TreasurerDashboardView();
 
+        UserView userView = null;
         BookView bookView = new BookView();
         MemberView memberView = new MemberView();
         CallCardView callCardView = new CallCardView();
@@ -40,7 +41,8 @@ namespace Client.Views.Main
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            UserView userView = null;
+            if (userView != null) return;
+
             try
             {
                 userView = await UserView.Create();
