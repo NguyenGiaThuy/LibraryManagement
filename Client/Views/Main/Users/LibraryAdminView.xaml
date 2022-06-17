@@ -6,13 +6,106 @@
         xmlns:local="clr-namespace:Client.Views.Main"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Library Management" Height="700" Width="1300"
+        Title="LibraryAdminView" Height="700" Width="1300"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
-        <TextBlock 
-            Text="LibraryAdminView"
-            FontSize="20"
-            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TabControl TabStripPlacement="Top"
+                    SelectedIndex="0">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem
+                Header="Ban giám đốc" 
+                Foreground="Black" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                            <GradientStop Color="#EDEBF2" Offset="0.005"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border 
+                        Grid.Column="1"
+                        Background="Transparent"
+                        Margin="10,10,10,10">
+                        <Frame Name="LibraryAdminFrame" NavigationUIVisibility="Hidden"/>
+                    </Border>
+
+                    <Border 
+                        Grid.Column="0"
+                        Margin="0,0,0,0">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9E9E9E" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.005"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel Orientation="Vertical"
+                                        Margin="0,10,0,0" Grid.Row="0">
+
+                            <RadioButton Name="LibraryAdminDashboardRBtn" 
+                                         Content="Bảng điều khiển"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.ChartBar}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         IsChecked="True"
+                                         Checked="LibraryAdminDashboardRBtn_Checked"/>
+
+                            <RadioButton Name="LibraryAdminUserRBtn" 
+                                         Content="Thông tin nhân viên"                                        
+                                         DataContext="{x:Static materialDesign:PackIconKind.Administrator}"
+                                         FontSize="16"
+                                         Height="50"
+                                         Margin="0,0,0,0"
+                                         Style="{StaticResource VerticalMenuTheme}"
+                                         Checked="LibraryAdminUserRBtn_Checked"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem
+                Header="Thủ thư"
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+
+            <TabItem
+                Header="Thủ quỹ" 
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+
+            <TabItem
+                Header="Thủ kho" 
+                Foreground="Gray" 
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,0"
+                IsEnabled="False"/>
+        </TabControl>
     </Grid>
 </Window>

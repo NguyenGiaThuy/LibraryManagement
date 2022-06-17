@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="BookAuditCardView" Height="450" Width="800">
     <Grid Grid.Column="2"
@@ -37,20 +38,24 @@
                         Click="BookAuditCardNewBtn_Click"/>
         </Grid>
 
-        <DataGrid Name="BookAuditCardDataGrid"
-                      Grid.Row="1"
-                      Margin="10,0,10,10"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True">
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID Phiếu lịch sử sách" MinWidth="50" Width="2*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookAuditCardId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Loại" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Type}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Lý do" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Reason}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ID Người tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatorId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngày tạo" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding CreatedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Syncfusion:SfDataGrid Name="BookAuditCardDataGrid"
+                               Grid.Row="1"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch"
+                               Margin="10,0,10,10"
+                               RowHeight="35"
+                               ColumnSizer="Auto"
+                               AutoGenerateColumns="False"
+                               AllowEditing="False"
+                               AllowResizingColumns="True">
+            <Syncfusion:SfDataGrid.Columns>
+                <Syncfusion:GridTextColumn     HeaderText="ID"           MinimumWidth="50" MappingName="BookAuditCardId" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="ID Sách"      MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="Type" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Lý do"        MinimumWidth="50" MappingName="Reason" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="ID Người tạo" MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"     MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
+            </Syncfusion:SfDataGrid.Columns>
+        </Syncfusion:SfDataGrid>
     </Grid>
 </Window>

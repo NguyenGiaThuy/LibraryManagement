@@ -106,11 +106,12 @@
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="StatusComboBox"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="4"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputComboBox}">
+                      Text=""
+                      Grid.Column="1"
+                      Grid.Row="4"
+                      Margin="0,5,10,5"
+                      IsSynchronizedWithCurrentItem="True"
+                      Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Đang mượn"></ComboBoxItem>
                 <ComboBoxItem Content="Đã trả"></ComboBoxItem>
                 <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
