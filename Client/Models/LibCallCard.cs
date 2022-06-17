@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Client.Models
 {
@@ -6,10 +7,20 @@ namespace Client.Models
     {
         public enum CallCardStatus
         {
+            [Description("Đang mượn")]
             Borrowing,
+            [Description("Đã trả")]
             Returned,
+            [Description("Tới hạn")]
             Due,
+            [Description("Mất")]
             Lost
+        }
+        public string GetStatusDescription(CallCardStatus callCardStatus) {
+            var type = typeof(CallCardStatus);
+            var member = type.GetMember(callCardStatus.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
         }
 
         public LibCallCard() { }
@@ -29,13 +40,15 @@ namespace Client.Models
         public DateTime? DueDate { get; set; }
         public string BookId { get; set; }
         public string MembershipId { get; set; }
-        public int? Status { get; set; }
+        public CallCardStatus? Status { get; set; }
+        public string? StatusDescription {
+            get {
+                if (Status == null) return "";
+                else return GetStatusDescription((CallCardStatus)Status);
+            }
+        }
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
-
-        public virtual LibBook? Book { get; set; }
-        public virtual LibMembership? Membership { get; set; }
-        public virtual LibUser? Creator { get; set; }
 
         public void CopyFrom(LibCallCard libCallCard)
         {

@@ -73,12 +73,11 @@
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
-            <PasswordBox Name="SocialIdTxt"
-                         Password=""
+            <TextBox Name="SocialIdTxt"
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputPasswordBox}"/>
+                         Style="{StaticResource InputTextbox}"/>
             <TextBox Name="NameTxt"
                          Text=""
                          Grid.Column="1"
@@ -134,20 +133,20 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="UserFormSaveBtn"
+            <Button Name="MemberCreateFormSaveBtn"
                     Grid.Column="0"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
                     Content="Lưu"
-                    Click="UserFormSaveBtn_Click"/>
-            <Button Name="UserFormCancelBtn"
+                    Click="MemberCreateFormSaveBtn_Click"/>
+            <Button Name="MemberCreateFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
                     Content="Hủy"
-                    Click="UserFormCancelBtn_Click"/>
+                    Click="MemberCreateFormCancelBtn_Click"/>
         </Grid>
     </Grid>
 </Window>

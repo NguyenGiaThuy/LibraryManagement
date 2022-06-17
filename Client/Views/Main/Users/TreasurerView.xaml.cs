@@ -12,8 +12,8 @@ namespace Client.Views.Main.Users
     {
         TreasurerDashboardView treasurerDashboardView = new TreasurerDashboardView();
 
-        CallCardView callCardView = new CallCardView();
-        FineCardView fineCardView = new FineCardView();
+        CallCardView callCardView = null;
+        FineCardView fineCardView = null;
 
         public TreasurerView()
         {
@@ -28,12 +28,34 @@ namespace Client.Views.Main.Users
             TreasurerFrame.Content = treasurerDashboardView.Content;
         }
 
-        private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            TreasurerFrame.Content = callCardView.Content;
+        private async void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
+            if (callCardView != null) {
+                TreasurerFrame.Content = callCardView.Content;
+                return;
+            }
+
+            try {
+                callCardView = await CallCardView.Create();
+                TreasurerFrame.Content = callCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            TreasurerFrame.Content = fineCardView.Content;
+        private async void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e) {
+            if (fineCardView != null) {
+                TreasurerFrame.Content = fineCardView.Content;
+                return;
+            }
+
+            try {
+                fineCardView = await FineCardView.Create();
+                TreasurerFrame.Content = fineCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Close properly the app when the exit button is pressed

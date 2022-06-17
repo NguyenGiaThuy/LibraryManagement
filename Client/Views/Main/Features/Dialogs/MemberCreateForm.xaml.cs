@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Client.Models;
+using System;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Views.Main.Features.Dialogs
@@ -8,6 +13,15 @@ namespace Client.Views.Main.Features.Dialogs
     /// </summary>
     public partial class MemberCreateForm : Window
     {
+        public Action<LibMember> OnMemberFormSaved;
+
+        private async Task<LibMember> CreateMemberAsync(string path, LibMember member) {
+            var response = await App.Client.PostAsJsonAsync(path, member);
+            response.EnsureSuccessStatusCode();
+            member = await response.Content.ReadAsAsync<LibMember>();
+            return member;
+        }
+
         public MemberCreateForm()
         {
             InitializeComponent();
@@ -15,27 +29,54 @@ namespace Client.Views.Main.Features.Dialogs
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            e.Cancel = true;
+            Hide();
         }
 
-        private void UserFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async void MemberCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            try {
+                LibMember member = new LibMember() {
+                    //MemberId =
+                    SocialId = SocialIdTxt.Text.Trim(),
+                    Name = NameTxt.Text.Trim(),
+                    Dob = DobComboBox.Text.Trim() != "" ? DateTime.ParseExact(DobComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    Address = AddressTxt.Text.Trim(),
+                    Mobile = MobileTxt.Text.Trim(),
+                    Email = EmailTxt.Text.Trim(),
+                    //MembershipId =
+                    //CreatorId =
+                    //CreatedDate =
+                    //ModifierId =
+                    //ModifiedDate =
+                    ImageUrl = ImgTxt.Text.Trim()
+                };
 
+                OnMemberFormSaved?.Invoke(await CreateMemberAsync($"api/libmembers", member));
+
+                Hide();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void UserFormCancelBtn_Click(object sender, RoutedEventArgs e)
+        private void MemberCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Hide();
         }
 
-        private void DobComboBox_LostFocus(object sender, RoutedEventArgs e) {
-            if (DobComboBox.SelectedItem != null) {
+        private void DobComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (DobComboBox.SelectedItem != null)
+            {
                 DateTime selectedDate = (DateTime)DobCalendar.SelectedDate;
                 DobComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
             }
         }
 
-        private void DobCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void DobCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
             DateTime selectedDate = (DateTime)DobCalendar.SelectedDate;
             DobComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }

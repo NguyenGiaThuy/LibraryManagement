@@ -2,7 +2,10 @@
 using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Client.Views.Main.Features
 {
@@ -11,33 +14,57 @@ namespace Client.Views.Main.Features
     /// </summary>
     public partial class CallCardView : Window
     {
-        CallCardForm callCardForm;
+        CallCardDetailsForm callCardUpdateForm;
+        CallCardCreateForm callCardCreateForm;
         List<LibCallCard> callCardList;
         LibCallCard selectedCallCard;
+
+        public static async Task<CallCardView> Create() {
+            var callCardView = new CallCardView();
+            callCardView.callCardList = await callCardView.GetCallCardsAsync($"api/libcallcards");
+            callCardView.CallCardDataGrid.ItemsSource = callCardView.callCardList;
+            return callCardView;
+        }
 
         public CallCardView()
         {
             InitializeComponent();
 
             CallCardDataGrid.Focus();
-            //Get callCards from database
-            callCardList = new List<LibCallCard>();
-            callCardList.Add(new LibCallCard("098209", new DateTime(2018, 08, 12), "393822", "207935"));
-            callCardList.Add(new LibCallCard("094682", new DateTime(2016, 12, 03), "393485", "237785"));
-            callCardList.Add(new LibCallCard("091385", new DateTime(2019, 05, 08), "345831", "203124"));
-            CallCardDataGrid.ItemsSource = callCardList;
-
-            callCardForm = new CallCardForm();
-            callCardForm.OnCallCardFormSaved += CallCardForm_OnCallCardFormSaved;
+            callCardUpdateForm = new CallCardDetailsForm();
+            callCardCreateForm = new CallCardCreateForm();
+            callCardCreateForm.OnCallCardFormSaved += CallCardCreateForm_OnFormSaved;
+            callCardUpdateForm.OnCallCardFormSaved += CallCardUpdateForm_OnFormSaved;
         }
 
         ~CallCardView()
         {
-            callCardForm.OnCallCardFormSaved -= CallCardForm_OnCallCardFormSaved;
+            callCardCreateForm.OnCallCardFormSaved -= CallCardCreateForm_OnFormSaved;
+            callCardUpdateForm.OnCallCardFormSaved -= CallCardUpdateForm_OnFormSaved;
         }
 
-        private void CallCardForm_OnCallCardFormSaved(LibCallCard callCard)
-        {
+        private async Task<List<LibCallCard>> GetCallCardsAsync(string path) {
+            List<LibCallCard> callCards = null;
+            var response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode) callCards = await response.Content.ReadAsAsync<List<LibCallCard>>();
+            return callCards;
+        }
+
+        private async Task<LibCallCard> DisableCallCardAsync(string path) {
+            LibCallCard callCard = new LibCallCard();
+            var response = await App.Client.PutAsJsonAsync(path, callCard);
+            response.EnsureSuccessStatusCode();
+            callCard = await response.Content.ReadAsAsync<LibCallCard>();
+            return callCard;
+        }
+
+        private void CallCardCreateForm_OnFormSaved(LibCallCard callCard) {
+            callCardList.Add(callCard);
+            CallCardDataGrid.ItemsSource = null;
+            CallCardDataGrid.ItemsSource = callCardList;
+        }
+
+        private void CallCardUpdateForm_OnFormSaved(LibCallCard callCard) {
             selectedCallCard.CopyFrom(callCard);
             CallCardDataGrid.ItemsSource = null;
             CallCardDataGrid.ItemsSource = callCardList;
@@ -45,48 +72,35 @@ namespace Client.Views.Main.Features
 
         private void CallCardNewBtn_Click(object sender, RoutedEventArgs e)
         {
+            callCardCreateForm.DueDateComboBox.Text = "";
+            callCardCreateForm.BookIdTxt.Text = "";
+            callCardCreateForm.MembershipIdTxt.Text = "";
+            callCardCreateForm.CreatorIdTxt.Text = "";
+
+            callCardCreateForm.ShowDialog();
         }
 
         private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
-            //callCardForm description
-            callCardForm.Title = "Update Form";
-            callCardForm.CallCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU MƯỢN SÁCH";
-            //CallCardId
-            callCardForm.CallCardIdTxt.IsEnabled = false;
-            callCardForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
-            //DueDate
-            DateTime dueDate = (DateTime)selectedCallCard.DueDate;
-            callCardForm.DueDateComboBox.Text = dueDate.ToString("dd-MM-yyyy");
-            //BookId
-            callCardForm.BookIdTxt.IsEnabled = false;
-            callCardForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
-            //Membership
-            callCardForm.MembershipIdTxt.Text = selectedCallCard.MembershipId;
-            //Status
-            callCardForm.StatusComboBox.IsEnabled = false;
-            callCardForm.StatusComboBox.Text = selectedCallCard.Status.ToString();
-            //Creator
-            callCardForm.CreatorIdTxt.Text = selectedCallCard.CreatorId;
-            //CreatedDate
-            callCardForm.CreatedDateComboBox.IsEnabled = false;
-            DateTime createdDate = (DateTime)selectedCallCard.DueDate;
-            callCardForm.CreatedDateComboBox.Text = createdDate.ToString("dd-MM-yyyy");
+            //CallCardIdTxt
+            callCardUpdateForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
+            //DueDateComboBox
+            DateTime dueDate = selectedCallCard.DueDate != null ? (DateTime)selectedCallCard.DueDate : DateTime.MinValue;
+            callCardUpdateForm.DueDateComboBox.Text = selectedCallCard.DueDate != null ? dueDate.ToString("dd-MM-yyyy") : "";
+            //BookIdTxt
+            callCardUpdateForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
+            //MembershipIdTxt
+            callCardUpdateForm.MembershipIdTxt.Text = selectedCallCard.MembershipId ?? "";
+            //StatusComboBox
+            callCardUpdateForm.StatusComboBox.Text = selectedCallCard.Status.ToString();
+            //CreatorIdTxt
+            callCardUpdateForm.CreatorIdTxt.Text = selectedCallCard.CreatorId ?? "";
+            //CreatedDateComboBox
+            DateTime createdDate = selectedCallCard.CreatedDate != null ? (DateTime)selectedCallCard.CreatedDate : DateTime.MinValue;
+            callCardUpdateForm.CreatedDateComboBox.Text = selectedCallCard.CreatedDate != null ? createdDate.ToString("dd-MM-yyyy") : "";
 
-            callCardForm.ShowDialog();
-        }
-
-        private void CallCardRemoveBtn_Click(object sender, RoutedEventArgs e)
-        {
-            selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
-            if (MessageBox.Show("Are you sure you want to remove the following callCard?\n\n- Call Card ID: " + selectedCallCard.CallCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                callCardList.Remove(selectedCallCard);
-                CallCardDataGrid.ItemsSource = null;
-                CallCardDataGrid.ItemsSource = callCardList;
-                //Update database
-            }
+            callCardUpdateForm.ShowDialog();
         }
     }
 }

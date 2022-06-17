@@ -12,11 +12,7 @@ namespace Client.Views.Main.Users
     {
         LibraryAdminDashboardView libraryAdminDashboardView = new LibraryAdminDashboardView();
 
-        BookView bookView = new BookView();
-        MemberView memberView = new MemberView();
-        CallCardView callCardView = new CallCardView();
-        BookAuditCardView bookAuditCardView = new BookAuditCardView();
-        FineCardView fineCardView = new FineCardView();
+        UserView userView = null;
 
         public LibraryAdminView()
         {
@@ -32,15 +28,17 @@ namespace Client.Views.Main.Users
         }
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e) {
-            UserView userView = null;
+            if (userView != null) {
+                LibraryAdminFrame.Content = userView.Content;
+                return;
+            }
+
             try {
                 userView = await UserView.Create();
+                LibraryAdminFrame.Content = userView.Content;
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }
-            finally {
-                LibraryAdminFrame.Content = userView.Content;
             }
         }
 
