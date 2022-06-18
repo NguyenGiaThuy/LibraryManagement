@@ -3,6 +3,7 @@ using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -23,6 +24,10 @@ namespace Client.Views.Main.Features
         {
             var fineCardView = new FineCardView();
             fineCardView.fineCardList = await fineCardView.GetFineCardsAsync($"api/libfinecards");
+
+            // Update arrears
+            foreach (var fineCard in fineCardView.fineCardList) fineCardView.UpdateFineCardArrearsAsync($"api/libfinecards/{fineCard.FineCardId}");
+
             fineCardView.FineCardDataGrid.ItemsSource = fineCardView.fineCardList;
             return fineCardView;
         }
@@ -40,6 +45,14 @@ namespace Client.Views.Main.Features
         ~FineCardView()
         {
             fineCardCreateForm.OnFineCardFormSaved -= FineCardCreateForm_OnFormSaved;
+        }
+
+        private async Task<LibFineCard> UpdateFineCardArrearsAsync(string path)
+        {
+            LibFineCard fineCard = new LibFineCard();
+            var response = await App.Client.PutAsJsonAsync(path, fineCard);
+            if (response.IsSuccessStatusCode) fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+            return fineCard;
         }
 
         private async Task<List<LibFineCard>> GetFineCardsAsync(string path)
