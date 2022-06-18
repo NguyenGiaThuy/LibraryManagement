@@ -7,6 +7,21 @@ namespace Client.Models
     {
         public enum CallCardStatus
         {
+            [Description("Khả dụng")]
+            Active,
+            [Description("Không khả dụng")]
+            Inactive
+        }
+        public string GetStatusDescription(CallCardStatus callCardStatus)
+        {
+            var type = typeof(CallCardStatus);
+            var member = type.GetMember(callCardStatus.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
+        }
+
+        public enum CallCardState
+        {
             [Description("Đang mượn")]
             Borrowing,
             [Description("Đã trả")]
@@ -16,9 +31,9 @@ namespace Client.Models
             [Description("Mất")]
             Lost
         }
-        public string GetStatusDescription(CallCardStatus callCardStatus) {
-            var type = typeof(CallCardStatus);
-            var member = type.GetMember(callCardStatus.ToString());
+        public string GetStatusDescription(CallCardState callCardState) {
+            var type = typeof(CallCardState);
+            var member = type.GetMember(callCardState.ToString());
             var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
             return ((DescriptionAttribute)attr[0]).Description;
         }
@@ -30,7 +45,8 @@ namespace Client.Models
             BookId = bookId;
             DueDate = dueDate;
             MembershipId = membershipId;
-            Status = 0;
+            Status = CallCardStatus.Active;
+            State = CallCardState.Borrowing;
             CreatorId = creatorId;
             CreatedDate = DateTime.Now;
             CallCardId = string.Concat("CALL", (BookId + CreatedDate.ToString()).GetHashCode().ToString().AsSpan(1, 6));
@@ -41,10 +57,11 @@ namespace Client.Models
         public string BookId { get; set; }
         public string MembershipId { get; set; }
         public CallCardStatus? Status { get; set; }
+        public CallCardState? State { get; set; }
         public string? StatusDescription {
             get {
-                if (Status == null) return "";
-                else return GetStatusDescription((CallCardStatus)Status);
+                if (State == null) return "";
+                else return GetStatusDescription((CallCardState)State);
             }
         }
         public string? CreatorId { get; set; }
@@ -57,6 +74,7 @@ namespace Client.Models
             this.BookId = libCallCard.BookId;
             this.MembershipId = libCallCard.MembershipId;
             this.Status = libCallCard.Status;
+            this.State = libCallCard.State;
             this.CreatorId = libCallCard.CreatorId;
             this.CreatedDate = libCallCard.CreatedDate;
         }

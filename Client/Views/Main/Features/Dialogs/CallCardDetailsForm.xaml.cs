@@ -35,7 +35,7 @@ namespace Client.Views.Main.Features.Dialogs
                     DueDate = DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                     BookId = BookIdTxt.Text.Trim(),
                     MembershipId = MembershipIdTxt.Text.Trim(),
-                    Status = StatusComboBox.SelectedIndex != -1 ? (LibCallCard.CallCardStatus)StatusComboBox.SelectedIndex : null,
+                    State = StatusComboBox.SelectedIndex != -1 ? (LibCallCard.CallCardState)StatusComboBox.SelectedIndex : null,
                     CreatorId = CreatorIdTxt.Text.Trim(),
                     CreatedDate = CreatedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(CreatedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                 };

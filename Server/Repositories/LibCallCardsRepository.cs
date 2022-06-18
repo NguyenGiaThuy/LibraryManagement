@@ -57,7 +57,7 @@ namespace Server.Repositories
             // Check due call card
             var query1 = from cCallCard in _context.LibCallCards
                          join cMembership in _context.LibMemberships on cCallCard.MembershipId equals cMembership.MembershipId
-                         where cCallCard.Status == 2 && cMembership.MembershipId == membership.MembershipId
+                         where cCallCard.State == 2 && cMembership.MembershipId == membership.MembershipId
                          select cCallCard;
 
             var callCards = await query1.ToListAsync();
@@ -68,7 +68,7 @@ namespace Server.Repositories
             // Check if membership is borrowing more than 5 books in 4 days
             var query2 = from cCallCard in _context.LibCallCards
                          join cMembership in _context.LibMemberships on cCallCard.MembershipId equals cMembership.MembershipId
-                         where cCallCard.Status != 1 && cMembership.MembershipId == membership.MembershipId
+                         where cCallCard.State != 1 && cMembership.MembershipId == membership.MembershipId
                          select cCallCard;
 
             callCards = await query2.ToListAsync();
@@ -102,7 +102,7 @@ namespace Server.Repositories
         //    await _context.SaveChangesAsync();
         //}
 
-        public async Task<LibCallCard> UpdateCallCardStatusAsync(string callCardId, int status)
+        public async Task<LibCallCard> UpdateCallCardStateAsync(string callCardId, int state)
         {
             var callCard = await _context.LibCallCards.FirstOrDefaultAsync(x => x.CallCardId == callCardId);
             if (callCard == null) throw new NonExistenceException(string.Format("Call card {0} is not found", callCardId));
@@ -110,13 +110,15 @@ namespace Server.Repositories
             var book = await _context.LibBooks.FirstOrDefaultAsync(x => x.BookId == callCard.BookId);
             if (book == null) throw new NonExistenceException(string.Format("Call card for book {0} is not found", callCard.BookId));
 
-            switch (status)
+            switch (state)
             {
                 case 0:
                     book.Status = 1;
+                    callCard.Status = 0;
                     break;
                 case 1:
                     book.Status = 0;
+                    callCard.Status = 1;
                     break;
                 case 2:
                     // Does not allow to mark as due if book was already returned 
@@ -141,7 +143,7 @@ namespace Server.Repositories
                     break;
             }
 
-            callCard.Status = status;
+            callCard.State = state;
             await _context.SaveChangesAsync();
             return await GetCallCardByIdAsync(callCard.CallCardId);
         }

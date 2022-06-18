@@ -93,7 +93,7 @@ namespace Client.Views.Main.Features
             //MembershipIdTxt
             callCardUpdateForm.MembershipIdTxt.Text = selectedCallCard.MembershipId ?? "";
             //StatusComboBox
-            callCardUpdateForm.StatusComboBox.Text = selectedCallCard.Status.ToString();
+            callCardUpdateForm.StatusComboBox.Text = selectedCallCard.State.ToString();
             //CreatorIdTxt
             callCardUpdateForm.CreatorIdTxt.Text = selectedCallCard.CreatorId ?? "";
             //CreatedDateComboBox

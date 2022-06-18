@@ -53,7 +53,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.AddBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromAddedBookAsync(book);
-                return Ok(string.Format("{0}\n{1}", result1, result2));
+                return Ok(result1);
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.UpdateBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromUpdatedBookAsync(book);
-                return Ok(string.Format("{0}\n{1}", result1, result2));
+                return Ok(result1);
             }
             catch (NonExistenceException ex)
             {
@@ -93,7 +93,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.RemoveBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromRemovedBookAsync(book, reason);
-                return Ok(string.Format("{0}\n{1}", result1, result2));
+                return Ok(result1);
             }
             catch (NonExistenceException ex)
             {

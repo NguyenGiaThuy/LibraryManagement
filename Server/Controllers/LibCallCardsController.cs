@@ -101,7 +101,7 @@ namespace Server.Controllers
         {
             try
             {
-                var result = await _callCardsRepository.UpdateCallCardStatusAsync(callCardId, status);
+                var result = await _callCardsRepository.UpdateCallCardStateAsync(callCardId, status);
                 return Ok(result);
             }
             catch (NonExistenceException ex)
