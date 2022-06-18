@@ -101,5 +101,10 @@ namespace Client.Views.Main.Features
 
             callCardUpdateForm.ShowDialog();
         }
+
+        private void CallCardChangeStateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
