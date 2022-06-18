@@ -36,7 +36,7 @@ namespace Client.Views.Main.Features.Dialogs
                     BookId = BookIdTxt.Text.Trim(),
                     MembershipId = MembershipIdTxt.Text.Trim(),
                     //Status = 
-                    CreatorId = CreatorIdTxt.Text.Trim(),
+                    //CreatorId = CreatorIdTxt.Text.Trim(),
                     //CreatedDate =
                 };
 

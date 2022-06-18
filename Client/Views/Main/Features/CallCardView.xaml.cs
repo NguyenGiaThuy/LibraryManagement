@@ -75,7 +75,6 @@ namespace Client.Views.Main.Features
             callCardCreateForm.DueDateComboBox.Text = "";
             callCardCreateForm.BookIdTxt.Text = "";
             callCardCreateForm.MembershipIdTxt.Text = "";
-            callCardCreateForm.CreatorIdTxt.Text = "";
 
             callCardCreateForm.ShowDialog();
         }

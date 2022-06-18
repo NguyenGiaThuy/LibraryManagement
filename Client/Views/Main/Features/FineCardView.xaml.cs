@@ -55,9 +55,9 @@ namespace Client.Views.Main.Features
         private async Task<LibFineCard> CloseFineCardAsync(string path)
         {
             LibFineCard fineCard = new LibFineCard();
-            //var response = await App.Client.PutAsJsonAsync(path, fineCard);
-            //response.EnsureSuccessStatusCode();
-            //fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+            var response = await App.Client.PutAsJsonAsync(path, fineCard);
+            response.EnsureSuccessStatusCode();
+            fineCard = await response.Content.ReadAsAsync<LibFineCard>();
             return fineCard;
         }
 
@@ -78,7 +78,6 @@ namespace Client.Views.Main.Features
         private void FineCardNewBtn_Click(object sender, RoutedEventArgs e)
         {
             fineCardCreateForm.CallCardIdTxt.Text = "";
-            fineCardCreateForm.CreatorIdTxt.Text = "";
 
             fineCardCreateForm.ShowDialog();
         }
