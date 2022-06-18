@@ -97,11 +97,11 @@ namespace Server.Controllers
 
         // PUT api/<LibCallCardsController>/5
         [HttpPut("{callCardId}/{status}")]
-        public async Task<IActionResult> UpdateCallCardStatusAsync([FromRoute] string callCardId, [FromRoute] int status)
+        public async Task<IActionResult> UpdateCallCardStateAsync([FromRoute] string callCardId, [FromRoute] int state)
         {
             try
             {
-                var result = await _callCardsRepository.UpdateCallCardStateAsync(callCardId, status);
+                var result = await _callCardsRepository.UpdateCallCardStateAsync(callCardId, state);
                 return Ok(result);
             }
             catch (NonExistenceException ex)

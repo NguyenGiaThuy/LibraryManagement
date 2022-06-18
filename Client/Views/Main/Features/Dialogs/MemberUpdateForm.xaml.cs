@@ -38,17 +38,15 @@ namespace Client.Views.Main.Features.Dialogs
             try {
                 LibMember member = new LibMember() {
                     MemberId = MemberIdTxt.Text.Trim(),
+                    MembershipId = MembershipIdTxt.Text.Trim(),
                     SocialId = SocialIdTxt.Text.Trim(),
                     Name = NameTxt.Text.Trim(),
                     Dob = DobComboBox.Text.Trim() != "" ? DateTime.ParseExact(DobComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                     Address = AddressTxt.Text.Trim(),
                     Mobile = MobileTxt.Text.Trim(),
-                    Email = EmailTxt.Text.Trim(),
-                    MembershipId = MembershipIdTxt.Text.Trim(),
-                    CreatorId = CreatorIdTxt.Text.Trim(),
-                    CreatedDate = CreatedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(CreatedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
-                    ModifierId = ModifierIdTxt.Text.Trim(),
-                    ModifiedDate = ModifiedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(ModifiedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    Email = EmailTxt.Text != "" ?  EmailTxt.Text.Trim() : null,
+                    ModifierId = App.User.UserId,
+                    ModifiedDate = DateTime.Now,
                     ImageUrl = ImgTxt.Text.Trim()
                 };
 

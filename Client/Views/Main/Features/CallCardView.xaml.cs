@@ -1,5 +1,6 @@
 ﻿using Client.Models;
 using Client.Views.Main.Features.Dialogs;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -50,13 +51,14 @@ namespace Client.Views.Main.Features
             return callCards;
         }
 
-        private async Task<LibCallCard> DisableCallCardAsync(string path) {
-            LibCallCard callCard = new LibCallCard();
-            var response = await App.Client.PutAsJsonAsync(path, callCard);
-            response.EnsureSuccessStatusCode();
-            callCard = await response.Content.ReadAsAsync<LibCallCard>();
-            return callCard;
-        }
+        //private async Task<LibCallCard> UpdateCallCardStatusAsync(string path)
+        //{
+        //    LibCallCard callCard = new LibCallCard();
+        //    var response = await App.Client.PutAsJsonAsync(path, callCard);
+        //    response.EnsureSuccessStatusCode();
+        //    callCard = await response.Content.ReadAsAsync<LibCallCard>();
+        //    return callCard;
+        //}
 
         private void CallCardCreateForm_OnFormSaved(LibCallCard callCard) {
             callCardList.Add(callCard);
@@ -80,7 +82,7 @@ namespace Client.Views.Main.Features
             callCardCreateForm.ShowDialog();
         }
 
-        private void CallCardUpdateBtn_Click(object sender, RoutedEventArgs e)
+        private void CallCardDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
             //CallCardIdTxt

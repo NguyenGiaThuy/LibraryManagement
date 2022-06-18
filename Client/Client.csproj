@@ -17,6 +17,7 @@
     <PackageReference Include="FluentUI.Core" Version="1.0.51" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.6" />
     <PackageReference Include="Syncfusion.SfGrid.WPF" Version="20.1.0.59" />
   </ItemGroup>
 
