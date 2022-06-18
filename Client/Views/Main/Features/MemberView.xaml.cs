@@ -73,14 +73,17 @@ namespace Client.Views.Main.Features
 
         private void MemberNewBtn_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void MemberUpdateBtn_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void MemberRemoveBtn_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void MemberDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)

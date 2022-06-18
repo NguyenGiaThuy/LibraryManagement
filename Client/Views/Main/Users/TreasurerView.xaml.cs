@@ -37,6 +37,8 @@ namespace Client.Views.Main.Users
             try {
                 callCardView = await CallCardView.Create();
                 TreasurerFrame.Content = callCardView.Content;
+                callCardView.CallCardNewBtn.IsEnabled = false;
+                callCardView.CallCardDataGrid.Columns[7].IsHidden = true;
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
