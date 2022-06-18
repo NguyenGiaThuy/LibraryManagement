@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="UserForm" Height="auto" Width="500"
+        Title="Cập nhật nhân viên" Height="auto" Width="500"
+        SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="CallCardDetailsForm" Height="auto" Width="500"
+        Title="Chi tiết thẻ mượn sách" Height="auto" Width="500"
+        SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Name="CallCardDetailsFormTitleTxt"
-                   Text="CẬP NHẬT THẺ MƯỢN SÁCH"
+                   Text="CHI TIẾT THẺ MƯỢN SÁCH"
                    Margin="10"
                    Style="{StaticResource TitleLabelTextBlock}"/>
 

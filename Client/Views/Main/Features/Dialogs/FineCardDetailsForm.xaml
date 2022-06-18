@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="FineCardDetailsForm" Height="auto" Width="500"
+        Title="Chi tiết phiếu phạt" Height="auto" Width="500"
+        SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Name="FineCardDetailsFormTitleTxt"
-                   Text="CHI TIẾT THẺ PHẠT"
+                   Text="CHI TIẾT PHIẾU PHẠT"
                    Margin="10"
                    Style="{StaticResource TitleLabelTextBlock}"/>
 

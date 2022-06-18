@@ -1,6 +1,7 @@
 ﻿using Client.Models;
 using Client.Views.Main;
 using Client.Views.Main.Users;
+using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -24,6 +25,9 @@ namespace Client.Views.Login
         {
             InitializeComponent();
             enterPressed = false;
+
+            BookRemoveForm bookRemoveForm = new BookRemoveForm();
+            bookRemoveForm.ShowDialog();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
