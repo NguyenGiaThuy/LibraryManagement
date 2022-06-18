@@ -71,6 +71,8 @@ namespace Server.Controllers
             try
             {
                 var result = await _callCardsRepository.CreateCallCardAsync(callCard);
+                result.Book = null;
+                result.Membership = null;
                 return Ok(result);
             }
             catch (ExpiredMembershipException ex)
@@ -95,13 +97,13 @@ namespace Server.Controllers
             }
         }
 
-        // PATCH api/<LibCallCardsController>/5
-        [HttpPatch("{callCardId}/{status}")]
-        public async Task<IActionResult> UpdateCallCardStatusAsync([FromRoute] string callCardId, [FromRoute] int status)
+        // PUT api/<LibCallCardsController>/5
+        [HttpPut("{callCardId}/{status}")]
+        public async Task<IActionResult> UpdateCallCardStateAsync([FromRoute] string callCardId, [FromRoute] int state)
         {
             try
             {
-                var result = await _callCardsRepository.UpdateCallCardStatusAsync(callCardId, status);
+                var result = await _callCardsRepository.UpdateCallCardStateAsync(callCardId, state);
                 return Ok(result);
             }
             catch (NonExistenceException ex)

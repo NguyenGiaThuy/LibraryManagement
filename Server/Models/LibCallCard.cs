@@ -12,6 +12,7 @@ namespace Server.Models
             DueDate = dueDate;
             MembershipId = membershipId;
             Status = 0;
+            State = 0;
             CreatorId = creatorId;
             CreatedDate = DateTime.Now;
             CallCardId = string.Concat("CALL", (BookId + CreatedDate.ToString()).GetHashCode().ToString().AsSpan(1, 6));
@@ -27,8 +28,10 @@ namespace Server.Models
         [ForeignKey("Membership")]
         [Required]
         public string MembershipId { get; set; }
-        [Range(0, 3)]
+        [Range(0, 1)]
         public int? Status { get; set; }
+        [Range(0, 3)]
+        public int? State { get; set; }
         [ForeignKey("Creator")]
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }

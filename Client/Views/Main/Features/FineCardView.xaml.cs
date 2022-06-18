@@ -2,7 +2,11 @@
 using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Client.Views.Main.Features
 {
@@ -11,85 +15,123 @@ namespace Client.Views.Main.Features
     /// </summary>
     public partial class FineCardView : Window
     {
-        FineCardForm fineCardForm;
+        FineCardDetailsForm fineCardDetailsForm;
+        FineCardCreateForm fineCardCreateForm;
         List<LibFineCard> fineCardList;
         LibFineCard selectedFineCard;
+
+        public static async Task<FineCardView> Create()
+        {
+            var fineCardView = new FineCardView();
+            fineCardView.fineCardList = await fineCardView.GetFineCardsAsync($"api/libfinecards");
+
+            // Update arrears
+            foreach (var fineCard in fineCardView.fineCardList) fineCardView.UpdateFineCardArrearsAsync($"api/libfinecards/{fineCard.FineCardId}");
+
+            fineCardView.FineCardDataGrid.ItemsSource = fineCardView.fineCardList;
+            return fineCardView;
+        }
 
         public FineCardView()
         {
             InitializeComponent();
 
             FineCardDataGrid.Focus();
-            //Get fineCards from database
-            fineCardList = new List<LibFineCard>();
-            fineCardList.Add(new LibFineCard("334672", "962749"));
-            fineCardList.Add(new LibFineCard("333850", "907731"));
-            fineCardList.Add(new LibFineCard("313758", "907064"));
-            FineCardDataGrid.ItemsSource = fineCardList;
-
-            fineCardForm = new FineCardForm();
-            fineCardForm.OnFineCardFormSaved += FineCardForm_OnFineCardFormSaved;
+            fineCardDetailsForm = new FineCardDetailsForm();
+            fineCardCreateForm = new FineCardCreateForm();
+            fineCardCreateForm.OnFineCardFormSaved += FineCardCreateForm_OnFormSaved;
         }
 
         ~FineCardView()
         {
-            fineCardForm.OnFineCardFormSaved -= FineCardForm_OnFineCardFormSaved;
+            fineCardCreateForm.OnFineCardFormSaved -= FineCardCreateForm_OnFormSaved;
         }
 
-        private void FineCardForm_OnFineCardFormSaved(LibFineCard fineCard)
+        private async Task<LibFineCard> UpdateFineCardArrearsAsync(string path)
         {
-            selectedFineCard.CopyFrom(fineCard);
+            LibFineCard fineCard = new LibFineCard();
+            var response = await App.Client.PutAsJsonAsync(path, fineCard);
+            if (response.IsSuccessStatusCode) fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+            return fineCard;
+        }
+
+        private async Task<List<LibFineCard>> GetFineCardsAsync(string path)
+        {
+            List<LibFineCard> fineCards = null;
+            var response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode) fineCards = await response.Content.ReadAsAsync<List<LibFineCard>>();
+            return fineCards;
+        }
+
+        private async Task<LibFineCard> CloseFineCardAsync(string path)
+        {
+            var response = await App.Client.DeleteAsync(path);
+            response.EnsureSuccessStatusCode();
+            var fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+
+            return fineCard;
+        }
+
+        private void FineCardCreateForm_OnFormSaved(LibFineCard fineCard)
+        {
+            fineCardList.Add(fineCard);
             FineCardDataGrid.ItemsSource = null;
             FineCardDataGrid.ItemsSource = fineCardList;
         }
 
         private void FineCardNewBtn_Click(object sender, RoutedEventArgs e)
         {
+            fineCardCreateForm.CallCardIdTxt.Text = "";
+
+            fineCardCreateForm.ShowDialog();
         }
 
-        private void FineCardUpdateBtn_Click(object sender, RoutedEventArgs e)
+        private void FineCardDatailsBtn_Click(object sender, RoutedEventArgs e)
         {
             selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
-            //fineCardForm description
-            fineCardForm.Title = "Update Form";
-            fineCardForm.FineCardFormTitleTxt.Text = "CẬP NHẬT PHIẾU PHẠT";
-            //FineCardId
-            fineCardForm.FineCardIdTxt.IsEnabled = false;
-            fineCardForm.FineCardIdTxt.Text = selectedFineCard.FineCardId;
-            //Arrears
-            fineCardForm.ArrearsTxt.IsEnabled = false;
-            fineCardForm.ArrearsTxt.Text = selectedFineCard.Arrears.ToString();
-            //DaysInArrears
-            fineCardForm.DaysInArrearsTxt.IsEnabled = false;
-            fineCardForm.DaysInArrearsTxt.Text = selectedFineCard.DaysInArrears.ToString();
-            //CallCardId
-            fineCardForm.CallCardIdTxt.Text = selectedFineCard.CallCardId;
-            //Reason
-            fineCardForm.ReasonComboBox.IsEnabled = false;
-            fineCardForm.ReasonComboBox.Text = selectedFineCard.Reason.ToString();
-            //Status
-            fineCardForm.StatusComboBox.IsEnabled = false;
-            fineCardForm.StatusComboBox.Text = selectedFineCard.Status.ToString();
-            //CreatorId
-            fineCardForm.CreatorIdTxt.Text = selectedFineCard.CreatorId;
-            //CreatedDate
-            fineCardForm.CreatedDateComboBox.IsEnabled=false;
-            DateTime createdDate = (DateTime)selectedFineCard.CreatedDate;
-            fineCardForm.CreatedDateComboBox.Text = createdDate.ToString("dd-MM-yyyy");
+            //FineCardIdTxt
+            fineCardDetailsForm.FineCardIdTxt.Text = selectedFineCard.FineCardId;
+            //ArrearsTxt
+            fineCardDetailsForm.ArrearsTxt.Text = selectedFineCard.Arrears.ToString();
+            //DaysInArrearsTxt
+            fineCardDetailsForm.DaysInArrearsTxt.Text = selectedFineCard.DaysInArrears.ToString();
+            //CallCardIdTxt
+            fineCardDetailsForm.CallCardIdTxt.Text = selectedFineCard.CallCardId ?? "";
+            //ReasonComboBox
+            fineCardDetailsForm.ReasonComboBox.Text = selectedFineCard.Reason.ToString();
+            //StatusComboBox
+            fineCardDetailsForm.StatusComboBox.Text = selectedFineCard.Status.ToString();
+            //CreatorIdTxt
+            fineCardDetailsForm.CreatorIdTxt.Text = selectedFineCard.CreatorId ?? "";
+            //CreatedDateComboBox
+            DateTime createdDate = selectedFineCard.CreatedDate != null ? (DateTime)selectedFineCard.CreatedDate : DateTime.MinValue;
+            fineCardDetailsForm.CreatedDateComboBox.Text = selectedFineCard.CreatedDate != null ? createdDate.ToString("dd-MM-yyyy") : "";
 
-            fineCardForm.ShowDialog();
+            fineCardDetailsForm.ShowDialog();
         }
 
-        private void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e)
+        private async void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
-            if (MessageBox.Show("Are you sure you want to remove the following fineCard?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to mark the following fineCard as paid?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                fineCardList.Remove(selectedFineCard);
-                FineCardDataGrid.ItemsSource = null;
-                FineCardDataGrid.ItemsSource = fineCardList;
-                //Update database
+                try
+                {
+                    await CloseFineCardAsync($"api/libfinecards/{selectedFineCard.FineCardId}");
+
+                    fineCardList.Find(x => x.FineCardId == selectedFineCard.FineCardId).Status = LibFineCard.FineCardStatus.Paid;
+                    FineCardDataGrid.ItemsSource = null;
+                    FineCardDataGrid.ItemsSource = fineCardList;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+        }
+
+        private void FineCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
         }
     }
 }

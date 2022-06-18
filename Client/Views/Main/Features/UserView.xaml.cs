@@ -80,7 +80,7 @@ namespace Client.Views.Main.Features
         private void UpdateUserSidePanel(LibUser user)
         {
             DateTime dob = user.Dob != null ? (DateTime)user.Dob : DateTime.MinValue;
-            DOBTxt.Text = selectedUser.Dob != null ? dob.ToString("dd-MM-yyyy") : "";
+            DOBTxt.Text = user.Dob != null ? dob.ToString("dd-MM-yyyy") : "";
 
             UserNameTxt.Text = user.Name ?? "";
             AddressTxt.Text = user.Address ?? "";
@@ -127,6 +127,7 @@ namespace Client.Views.Main.Features
             userUpdateForm.DepartmentComboBox.SelectedIndex = selectedUser.Department != null ? (int)selectedUser.Department : -1;
             userUpdateForm.PositionComboBox.SelectedIndex = selectedUser.Position != null ? (int)selectedUser.Position : -1;
             userUpdateForm.StatusComboBox.SelectedIndex = selectedUser.Status != null ? (int)selectedUser.Status : -1;
+            userUpdateForm.ImgTxt.Text = selectedUser.ImageUrl ?? "";
 
             userUpdateForm.ShowDialog();
         }
@@ -157,8 +158,28 @@ namespace Client.Views.Main.Features
             if (selectedUser != null) UpdateUserSidePanel(selectedUser);
         }
 
-        private void UserEnableBtn_Click(object sender, RoutedEventArgs e) {
+        private async Task<LibUser> EnableUserAsync(string path)
+        {
+            LibUser user = new LibUser();
+            var response = await App.Client.PutAsJsonAsync(path, user);
+            response.EnsureSuccessStatusCode();
+            user = await response.Content.ReadAsAsync<LibUser>();
+            return user;
+        }
 
+        private async void UserEnableBtn_Click(object sender, RoutedEventArgs e) {
+            try
+            {
+                await EnableUserAsync($"api/libusers/{selectedUser.UserId}/enable");
+
+                userList.Find(x => x.UserId == selectedUser.UserId).Status = LibUser.UserStatus.Active;
+                UserDataGrid.ItemsSource = null;
+                UserDataGrid.ItemsSource = userList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

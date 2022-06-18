@@ -32,19 +32,17 @@ namespace Client.Views.Main.Features.Dialogs
         {
             try
             {
-                LibUser user = new LibUser()
-                {
-                    UserId = UserIdTxt.Text.Trim(),
-                    Password = PasswordTxt.Password.Trim(),
-                    Name = NameTxt.Text.Trim(),
-                    Address = AddressTxt.Text.Trim(),
-                    Mobile = MobileTxt.Text.Trim(),
-                    Dob = DateOfBirthComboBox.Text.Trim() != "" ? DateTime.ParseExact(DateOfBirthComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
-                    Education = EducationComboBox.SelectedIndex != -1 ? (LibUser.UserEducation)EducationComboBox.SelectedIndex : null,
-                    Department = DepartmentComboBox.SelectedIndex != -1 ? (LibUser.UserDepartment)DepartmentComboBox.SelectedIndex : null,
-                    Position = PositionComboBox.SelectedIndex != -1 ? (LibUser.UserPosition)PositionComboBox.SelectedIndex : null,
-                    ImageUrl = ImgTxt.Text
-                };
+                LibUser user = new LibUser(
+                    UserIdTxt.Text.Trim(),
+                    PasswordTxt.Password.Trim(),
+                    NameTxt.Text.Trim(),
+                    AddressTxt.Text.Trim(),
+                    DateOfBirthComboBox.Text.Trim() != "" ? DateTime.ParseExact(DateOfBirthComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    MobileTxt.Text.Trim(),
+                    EducationComboBox.SelectedIndex != -1 ? (LibUser.UserEducation)EducationComboBox.SelectedIndex : null,
+                    DepartmentComboBox.SelectedIndex != -1 ? (LibUser.UserDepartment)DepartmentComboBox.SelectedIndex : null,
+                    PositionComboBox.SelectedIndex != -1 ? (LibUser.UserPosition)PositionComboBox.SelectedIndex : null,
+                    ImgTxt.Text) {};
 
                 OnUserFormSaved?.Invoke(await CreateUserAsync($"api/libusers", user));
 

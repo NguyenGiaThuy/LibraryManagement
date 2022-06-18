@@ -47,13 +47,15 @@
                                ColumnSizer="Auto"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
-                               AllowResizingColumns="True">
+                               AllowResizingColumns="True"
+                               SelectionChanged="CallCardDataGrid_SelectionChanged">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn     HeaderText="ID"             MinimumWidth="50" MappingName="CallCardId" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày tới hạn"   MinimumWidth="50" MappingName="DueDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Sách"        MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Thẻ độc giả" MinimumWidth="50" MappingName="MembershipId" TextAlignment="Center" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn     HeaderText="Trạng thái"     MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Trạng thái"     MinimumWidth="50" MappingName="StatusDescription" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Tình trạng"     MinimumWidth="50" MappingName="StateDescription" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Người tạo"   MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"       MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
 
@@ -68,24 +70,24 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Button Grid.Column="0" 
-                                            Name="CallCardUpdateBtn"
-                                            Width="25" 
-                                            Height="25" 
-                                            Style="{x:Null}" 
-                                            Click="CallCardUpdateBtn_Click" 
-                                            Padding="2" 
-                                            Margin="2,2,0,2">
-                                    <materialDesign:PackIcon Kind="Edit"/>
+                                        Name="CallCardChangeStateBtn"
+                                        Width="25" 
+                                        Height="25" 
+                                        Style="{x:Null}" 
+                                        Click="CallCardChangeStateBtn_Click"
+                                        Padding="2" 
+                                        Margin="2,2,0,2">
+                                    <materialDesign:PackIcon Kind="Exchange"/>
                                 </Button>
                                 <Button Grid.Column="1" 
-                                            Name="CallCardRemoveBtn"
-                                            Width="25" 
-                                            Height="25" 
-                                            Style="{x:Null}" 
-                                            Click="CallCardRemoveBtn_Click" 
-                                            Padding="2" 
-                                            Margin="2">
-                                    <materialDesign:PackIcon Kind="Remove"/>
+                                        Name="CallCardUpdateBtn"
+                                        Width="25" 
+                                        Height="25" 
+                                        Style="{x:Null}" 
+                                        Click="CallCardDetailsBtn_Click" 
+                                        Padding="2" 
+                                        Margin="2,2,0,2">
+                                    <materialDesign:PackIcon Kind="Edit"/>
                                 </Button>
                             </Grid>
                         </DataTemplate>

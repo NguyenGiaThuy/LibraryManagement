@@ -1,21 +1,36 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Client.Models
 {
-    public enum FineCardStatus
-    {
-        NotPaid,
-        Paid
-    }
-
-    public enum FineCardReason
-    {
-        Due,
-        Lost
-    }
-
     public class LibFineCard
     {
+        public enum FineCardStatus {
+            [Description("Chưa trả tiền")]
+            NotPaid,
+            [Description("Đã trả tiền")]
+            Paid
+        }
+        public string GetStatusDescription(FineCardStatus fineCardStatus) {
+            var type = typeof(FineCardStatus);
+            var member = type.GetMember(fineCardStatus.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
+        }
+
+        public enum FineCardReason {
+            [Description("Tới hạn")]
+            Due,
+            [Description("Đã mất")]
+            Lost
+        }
+        public string GetReasonDescription(FineCardReason fineCardReason) {
+            var type = typeof(FineCardReason);
+            var member = type.GetMember(fineCardReason.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
+        }
+
         public LibFineCard() { }
 
         public LibFineCard(string callCardId, string? creatorId)
@@ -31,13 +46,22 @@ namespace Client.Models
         public int? Arrears { get; set; }
         public int? DaysInArrears { get; set; }
         public string CallCardId { get; set; }
-        public int? Reason { get; set; }
-        public int? Status { get; set; }
+        public FineCardReason? Reason { get; set; }
+        public string? ReasonDescription {
+            get {
+                if (Reason == null) return "";
+                else return GetReasonDescription((FineCardReason)Reason);
+            }
+        }
+        public FineCardStatus? Status { get; set; }
+        public string? StatusDescription {
+            get {
+                if (Status == null) return "";
+                else return GetStatusDescription((FineCardStatus)Status);
+            }
+        }
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
-
-        public virtual LibCallCard? CallCard { get; set; } = null!;
-        public virtual LibUser? Creator { get; set; }
 
         public void CopyFrom(LibFineCard libFineCard)
         {

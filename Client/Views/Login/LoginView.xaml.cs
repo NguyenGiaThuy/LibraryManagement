@@ -1,6 +1,7 @@
 ﻿using Client.Models;
 using Client.Views.Main;
 using Client.Views.Main.Users;
+using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Net;
 using System.Net.Http;

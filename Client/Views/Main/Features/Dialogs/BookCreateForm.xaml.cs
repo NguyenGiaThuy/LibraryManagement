@@ -1,5 +1,9 @@
 ﻿using Client.Models;
 using System;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Views.Main.Features.Dialogs
@@ -9,28 +13,41 @@ namespace Client.Views.Main.Features.Dialogs
     /// </summary>
     public partial class BookCreateForm : Window
     {
-        public Action<LibBook> OnBookCreateFormSaved;
+        public Action<LibBook> OnBookFormSaved;
 
         public BookCreateForm()
         {
             InitializeComponent();
         }
 
-        private void BookCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async Task<LibBook> CreateBookAsync(string path, LibBook book) {
+            var response = await App.Client.PostAsJsonAsync(path, book);
+            response.EnsureSuccessStatusCode();
+            book = await response.Content.ReadAsAsync<LibBook>();
+            return book;
+        }
+
+        private async void BookCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            LibBook book = new LibBook();
+            try {
+                LibBook book = new LibBook(
+                    ISBNTxt.Text.Trim(), 
+                    TitleTxt.Text.Trim(), 
+                    GenreComboBox.SelectedIndex != -1 ? (LibBook.BookGenre)GenreComboBox.SelectedIndex : null,
+                    AuthorTxt.Text.Trim(),
+                    PublisherTxt.Text.Trim(),
+                    PublishedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(PublishedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    PriceTxt.Text.Trim() != "" ? int.Parse(PriceTxt.Text) : null,
+                    App.User.UserId,
+                    ImgTxt.Text.Trim()) {};
 
-            book.Isbn = ISBNTxt.Text;
-            book.Title = TitleTxt.Text;
-            book.Genre = GenreComboBox.SelectedIndex;
-            book.Author = AuthorTxt.Text;
-            book.Publisher = PublisherTxt.Text;
-            book.PublishedDate = DateTime.Parse(PublishedDateComboBox.Text);
-            book.Price = int.Parse(PriceTxt.Text);
-            //Update database
-            OnBookCreateFormSaved?.Invoke(book);
+                OnBookFormSaved?.Invoke(await CreateBookAsync($"api/libbooks", book));
 
-            Hide();
+                Hide();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BookCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)

@@ -38,7 +38,7 @@ namespace Server.Repositories
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(addedBook.BookId, 0, null, addedBook.ReceiverId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return await GetBookAuditCardByBookIdAsync(addedBook.BookId);
+            return await GetBookAuditCardByIdAsync(bookAuditCard.BookAuditCardId);
         }
 
         public async Task<LibBookAuditCard> CreateBookAuditCardFromUpdatedBookAsync(LibBook updatedBook)
@@ -46,7 +46,7 @@ namespace Server.Repositories
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(updatedBook.BookId, 1, null, updatedBook.ModifierId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return await GetBookAuditCardByBookIdAsync(updatedBook.BookId);
+            return await GetBookAuditCardByIdAsync(bookAuditCard.BookAuditCardId);
         }
 
         public async Task<LibBookAuditCard> CreateBookAuditCardFromRemovedBookAsync(LibBook removedBook, int? reason)
@@ -54,7 +54,7 @@ namespace Server.Repositories
             LibBookAuditCard bookAuditCard = new LibBookAuditCard(removedBook.BookId, 2, reason, removedBook.ModifierId);
             _context.LibBookAuditCards.Add(bookAuditCard);
             await _context.SaveChangesAsync();
-            return await GetBookAuditCardByBookIdAsync(removedBook.BookId);
+            return await GetBookAuditCardByIdAsync(bookAuditCard.BookAuditCardId);
         }
     }
 }

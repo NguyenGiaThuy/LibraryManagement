@@ -1,6 +1,11 @@
 ﻿using Client.Models;
+using Client.Views.Main.Features.Dialogs;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Client.Views.Main.Features
 {
@@ -11,6 +16,13 @@ namespace Client.Views.Main.Features
     {
         List<LibBookAuditCard> bookAuditCardList;
         LibBookAuditCard selectedBookAuditCard;
+
+        public static async Task<BookAuditCardView> Create() {
+            var bookAuditCardView = new BookAuditCardView();
+            bookAuditCardView.bookAuditCardList = await bookAuditCardView.GetBookAuditCardsAsync($"api/libbookauditcards");
+            bookAuditCardView.BookAuditCardDataGrid.ItemsSource = bookAuditCardView.bookAuditCardList;
+            return bookAuditCardView;
+        }
 
         public BookAuditCardView()
         {
@@ -25,8 +37,16 @@ namespace Client.Views.Main.Features
             BookAuditCardDataGrid.ItemsSource = bookAuditCardList;
         }
 
-        private void BookAuditCardNewBtn_Click(object sender, RoutedEventArgs e)
+        private async Task<List<LibBookAuditCard>> GetBookAuditCardsAsync(string path) {
+            List<LibBookAuditCard> bookAuditCards = null;
+            var response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode) bookAuditCards = await response.Content.ReadAsAsync<List<LibBookAuditCard>>();
+            return bookAuditCards;
+        }
+
+        private void BookAuditCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
+            selectedBookAuditCard = BookAuditCardDataGrid.SelectedItem as LibBookAuditCard;
         }
     }
 }

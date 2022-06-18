@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="BookCreateForm" Height="auto" Width="500"
+        Title="Thêm mới sách" Height="auto" Width="500"
+        SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -28,7 +29,6 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
@@ -74,14 +74,9 @@
                            Grid.Row="6"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-            <TextBlock Text="Trạng thái"
-                           Grid.Column="0"
-                           Grid.Row="7"
-                           Margin="10,5,10,5"
-                           Style="{StaticResource PropertyLabelTextBlock}"/>
             <TextBlock Text="Hình ảnh"
                            Grid.Column="0"
-                           Grid.Row="8"
+                           Grid.Row="7"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -139,20 +134,10 @@
                          Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <ComboBox Name="StatusComboBox"
-                      Text=""
-                      Grid.Column="1"
-                      Grid.Row="7"
-                      Margin="0,5,10,5"
-                      IsSynchronizedWithCurrentItem="True"
-                      Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
-                <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>
-            </ComboBox>
             <TextBox Name="ImgTxt"
                          Text=""
                          Grid.Column="1"
-                         Grid.Row="8"
+                         Grid.Row="7"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
         </Grid>

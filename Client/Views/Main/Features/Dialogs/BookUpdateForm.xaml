@@ -1,11 +1,12 @@
-﻿<Window x:Class="Client.Views.Main.Features.Dialogs.BookForm"
+﻿<Window x:Class="Client.Views.Main.Features.Dialogs.BookUpdateForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="BookForm" Height="auto" Width="500"
+        Title="Cập nhật sách" Height="auto" Width="500"
+        SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -15,8 +16,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="BookFormTitleTxt"
-                   Text="Title"
+        <TextBlock Name="BookUpdateFormTitleTxt"
+                   Text="CẬP NHẬT SÁCH"
                    Margin="10"
                    Style="{StaticResource TitleLabelTextBlock}"/>
 
@@ -116,23 +117,25 @@
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
             <TextBox Name="BookIdTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="0"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     Margin="0,5,10,5"
+                     IsEnabled="False"
+                     Style="{StaticResource InputTextbox}"/>
             <TextBox Name="TitleTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="1"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     Margin="0,5,10,5"
+                     Style="{StaticResource InputTextbox}"/>
             <TextBox Name="ISBNTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="2"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     Margin="0,5,10,5"
+                     IsEnabled="False"
+                     Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="GenreComboBox"
                       Grid.Column="1"
                       Grid.Row="3"
@@ -174,12 +177,14 @@
                          Grid.Column="1"
                          Grid.Row="7"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="ReceivedDateComboBox"
                       Text="Chọn ngày nhận"
                       Grid.Column="1"
                       Grid.Row="8"
                       Margin="0,5,10,5"
+                      IsEnabled="False"
                       Style="{StaticResource InputComboBox}"
                       LostFocus="ReceivedDateComboBox_LostFocus">
                 <Calendar Name="ReceivedDateCalendar"
@@ -194,12 +199,14 @@
                          Grid.Column="1"
                          Grid.Row="9"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="ModifiedDateComboBox"
                       Text="Chọn ngày chỉnh sửa"
                       Grid.Column="1"
                       Grid.Row="10"
                       Margin="0,5,10,5"
+                      IsEnabled="False"
                       Style="{StaticResource InputComboBox}"
                       LostFocus="ModifiedDateComboBox_LostFocus">
                 <Calendar Name="ModifiedDateCalendar"
@@ -220,6 +227,7 @@
                       Grid.Column="1"
                       Grid.Row="12"
                       Margin="0,5,10,5"
+                      IsEnabled="False"
                       IsSynchronizedWithCurrentItem="True"
                       Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
@@ -242,20 +250,20 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="BookFormSaveBtn"
+            <Button Name="BookUpdateFormSaveBtn"
                     Grid.Column="0"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
                     Content="Lưu"
-                    Click="BookFormSaveBtn_Click"/>
-            <Button Name="BookFormCancelBtn"
+                    Click="BookUpdateFormSaveBtn_Click"/>
+            <Button Name="BookUpdateFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
                     Content="Hủy"
-                    Click="BookFormCancelBtn_Click"/>
+                    Click="BookUpdateFormCancelBtn_Click"/>
         </Grid>
     </Grid>
 </Window>

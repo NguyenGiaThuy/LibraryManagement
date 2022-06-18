@@ -18,24 +18,13 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
 
             <TextBox Name="BookAuditCardSearchTxt"
                          Grid.Column="0"
                          Style="{StaticResource SearchboxTheme}"
                          Height="35"
-                         Margin="10,10,0,10" />
-
-            <Button Name="BookAuditCardNewBtn"
-                        Grid.Column="1"
-                        Content="Tạo mới"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Height="35"
-                        Margin="10,0,10,0"
-                        Padding="5"
-                        Click="BookAuditCardNewBtn_Click"/>
+                         Margin="10" />
         </Grid>
 
         <Syncfusion:SfDataGrid Name="BookAuditCardDataGrid"
@@ -47,12 +36,13 @@
                                ColumnSizer="Auto"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
-                               AllowResizingColumns="True">
+                               AllowResizingColumns="True"
+                               SelectionChanged="BookAuditCardDataGrid_SelectionChanged">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn     HeaderText="ID"           MinimumWidth="50" MappingName="BookAuditCardId" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Sách"      MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="Type" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn     HeaderText="Lý do"        MinimumWidth="50" MappingName="Reason" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="TypeDescription" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Lý do"        MinimumWidth="50" MappingName="ReasonDescription" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Người tạo" MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"     MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
             </Syncfusion:SfDataGrid.Columns>

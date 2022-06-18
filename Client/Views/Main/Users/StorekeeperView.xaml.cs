@@ -12,8 +12,8 @@ namespace Client.Views.Main.Users
     {
         StorekeeperDashboardView storekeeperDashboardView = new StorekeeperDashboardView();
 
-        BookView bookView = new BookView();
-        BookAuditCardView bookAuditCardView = new BookAuditCardView();
+        BookView bookView = null;
+        BookAuditCardView bookAuditCardView = null;
 
         public StorekeeperView() {
             this.DataContext = this;
@@ -27,12 +27,34 @@ namespace Client.Views.Main.Users
             StorekeeperFrame.Content = storekeeperDashboardView.Content;
         }
 
-        private void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            StorekeeperFrame.Content = bookView.Content;
+        private async void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e) {
+            //if (bookView != null) {
+            //    StorekeeperFrame.Content = bookView.Content;
+            //    return;
+            //}
+
+            try {
+                bookView = await BookView.Create();
+                StorekeeperFrame.Content = bookView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e) {
-            StorekeeperFrame.Content = bookAuditCardView.Content;
+        private async void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e) {
+            //if (bookAuditCardView != null) {
+            //    StorekeeperFrame.Content = bookAuditCardView.Content;
+            //    return;
+            //}
+
+            try {
+                bookAuditCardView = await BookAuditCardView.Create();
+                StorekeeperFrame.Content = bookAuditCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Close properly the app when the exit button is pressed

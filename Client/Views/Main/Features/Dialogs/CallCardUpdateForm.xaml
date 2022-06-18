@@ -1,11 +1,11 @@
-﻿<Window x:Class="Client.Views.Main.Features.Dialogs.CallCardCreateForm"
+﻿<Window x:Class="Client.Views.Main.Features.Dialogs.CallCardUpdateForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="Tạo mới phiếu mượn sách" Height="auto" Width="500"
+        Title="Cập nhật phiếu mượn sách" Height="auto" Width="500"
         SizeToContent="Height"
         ResizeMode="NoResize"
         Closing="Window_Closing">
@@ -16,8 +16,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="CallCardCreateFormTitleTxt"
-                   Text="TẠO MỚI PHIẾU MƯỢN SÁCH"
+        <TextBlock Name="BookCreateFormTitleTxt"
+                   Text="CẬP NHẬT PHIẾU MƯỢN SÁCH"
                    Margin="10"
                    Style="{StaticResource TitleLabelTextBlock}"/>
 
@@ -32,9 +32,10 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Ngày tới hạn"
+            <TextBlock Text="ID Phiếu mượn sách"
                            Grid.Column="0"
                            Grid.Row="0"
                            Margin="10,5,10,5"
@@ -49,33 +50,44 @@
                            Grid.Row="2"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
+            <TextBlock Text="Lý do"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           Margin="10,5,10,5"
+                           Style="{StaticResource PropertyLabelTextBlock}"/>
 
-            <ComboBox Name="DueDateComboBox"
-                      Text="Chọn ngày tới hạn"
-                      Grid.Column="1"
-                      Grid.Row="0"
-                      Margin="0,5,10,5"
-                      Style="{StaticResource InputComboBox}"
-                      LostFocus="DueDateComboBox_LostFocus">
-                <Calendar Name="DueDateCalendar"
-                          VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                          Margin="5"
-                          SelectedDatesChanged="DueDateCalendar_SelectedDatesChanged"
-                          Style="{x:Null}"/>
-            </ComboBox>
+            <TextBox Name="CallCardIdTxt"
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     Margin="0,5,10,5"
+                     IsEnabled="False"
+                     Style="{StaticResource InputTextbox}"/>
             <TextBox Name="BookIdTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="1"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     Margin="0,5,10,5"
+                     IsEnabled="False"
+                     Style="{StaticResource InputTextbox}"/>
             <TextBox Name="MembershipIdTxt"
-                         Text=""
-                         Grid.Column="1"
-                         Grid.Row="2"
-                         Margin="0,5,10,5"
-                         Style="{StaticResource InputTextbox}"/>
+                     Text=""
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     Margin="0,5,10,5"
+                     IsEnabled="False"
+                     Style="{StaticResource InputTextbox}"/>
+            <ComboBox Name="ReasonComboBox"
+                      Grid.Column="1"
+                      Grid.Row="3"
+                      Margin="0,5,10,5"
+                      IsSynchronizedWithCurrentItem="True"
+                      Style="{StaticResource InputComboBox}">
+                <ComboBoxItem Content="Đang mượn"></ComboBoxItem>
+                <ComboBoxItem Content="Đã trả"></ComboBoxItem>
+                <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
+                <ComboBoxItem Content="Mất"></ComboBoxItem>
+            </ComboBox>
         </Grid>
 
         <Grid Grid.Row="2" 
@@ -87,20 +99,20 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="CallCardCreateFormSaveBtn"
+            <Button Name="CallCardUpdateFormSaveBtn"
                     Grid.Column="0"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
                     Content="Lưu"
-                    Click="CallCardCreateFormSaveBtn_Click"/>
-            <Button Name="CallCardCreateFormCancelBtn"
+                    Click="CallCardUpdateFormSaveBtn_Click"/>
+            <Button Name="CallCardUpdateFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
                     Content="Hủy"
-                    Click="CallCardCreateFormCancelBtn_Click"/>
+                    Click="CallCardUpdateFormCancelBtn_Click"/>
         </Grid>
     </Grid>
 </Window>

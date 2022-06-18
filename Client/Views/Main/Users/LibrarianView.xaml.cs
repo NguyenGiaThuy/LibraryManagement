@@ -12,9 +12,9 @@ namespace Client.Views.Main.Users
     {
         LibrarianDashboardView librarianDashboardView = new LibrarianDashboardView();
 
-        BookView bookView = new BookView();
-        MemberView memberView = new MemberView();
-        CallCardView callCardView = new CallCardView();
+        BookView bookView = null;
+        MemberView memberView = null;
+        CallCardView callCardView = null;
 
         public LibrarianView()
         {
@@ -29,16 +29,51 @@ namespace Client.Views.Main.Users
             LibrarianFrame.Content = librarianDashboardView.Content;
         }
 
-        private void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e) {
-            LibrarianFrame.Content = memberView.Content;
+        private async void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e) {
+            //if (memberView != null) {
+            //    LibrarianFrame.Content = memberView.Content;
+            //    return;
+            //}
+
+            try {
+                memberView = await MemberView.Create();
+                LibrarianFrame.Content = memberView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            LibrarianFrame.Content = bookView.Content;
+        private async void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e) {
+            //if (bookView != null) {
+            //    LibrarianFrame.Content = bookView.Content;
+            //    return;
+            //}
+
+            try {
+                bookView = await BookView.Create();
+                LibrarianFrame.Content = bookView.Content;
+                bookView.BookNewBtn.IsEnabled = false;
+                bookView.BookDataGrid.Columns[6].IsHidden = true;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            LibrarianFrame.Content = callCardView.Content;
+        private async void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
+            //if (callCardView != null) {
+            //    LibrarianFrame.Content = callCardView.Content;
+            //    return;
+            //}
+
+            try {
+                callCardView = await CallCardView.Create();
+                LibrarianFrame.Content = callCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Close properly the app when the exit button is pressed

@@ -37,12 +37,19 @@ namespace Server.Repositories
         {
             var callCard = await _context.LibCallCards.FirstOrDefaultAsync(x => x.CallCardId == fineCardToCreate.CallCardId);
             if (callCard == null) throw new NonExistenceException(string.Format("Call card {0} is not found", fineCardToCreate.CallCardId));
-            if (callCard.Status < 2)
+
+            // Check if call card violates rules
+            if (callCard.State < 2)
                 throw new InvalidOperationException(
-                    string.Format("Call card {0} does not violate rules", fineCardToCreate.CallCardId));
+                    string.Format("Call card {0} does not violate rules", callCard.CallCardId));
+
+            // Check if call card is active
+            if (callCard.Status == 1)
+                throw new InvalidOperationException(
+                    string.Format("Call card {0} is inactive", callCard.CallCardId));
 
             // Evaluate fine card reason
-            fineCardToCreate.Reason = callCard.Status - 2;
+            fineCardToCreate.Reason = callCard.State - 2;
 
             // Evaluate arrears
             LibFineCard? fineCard = null;
@@ -51,7 +58,7 @@ namespace Server.Repositories
             switch (fineCardToCreate.Reason)
             {
                 case 0: // Due
-                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 0);
+                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 0 && x.CallCardId == fineCardToCreate.CallCardId);
                     if (fineCard != null)
                         throw new InvalidOperationException(
                             string.Format("Fine card for call card {0} with current reason already exists", fineCardToCreate.CallCardId));
@@ -63,7 +70,7 @@ namespace Server.Repositories
                     break;
 
                 case 1: // Lost
-                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 1);
+                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 1 && x.CallCardId == fineCardToCreate.CallCardId);
                     if (fineCard != null)
                         throw new InvalidOperationException(
                             string.Format("Fine card for call card {0} with current reason already exists", fineCardToCreate.CallCardId));
@@ -104,7 +111,12 @@ namespace Server.Repositories
         {
             var fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.FineCardId == fineCardId);
             if (fineCard == null) throw new NonExistenceException(string.Format("Fine card {0} is not found", fineCardId));
+
+            var callCard = await _context.LibCallCards.FirstOrDefaultAsync(x => x.CallCardId == fineCard.CallCardId);
+            if (callCard == null) throw new NonExistenceException(string.Format("Call card {0} is not found", fineCard.CallCardId));
+
             fineCard.Status = 1;
+            callCard.Status = 1;
             await _context.SaveChangesAsync();
             return await GetFineCardByIdAsync(fineCard.FineCardId);
         }

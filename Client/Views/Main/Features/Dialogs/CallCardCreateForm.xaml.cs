@@ -1,5 +1,9 @@
 ﻿using Client.Models;
 using System;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Views.Main.Features.Dialogs
@@ -9,24 +13,36 @@ namespace Client.Views.Main.Features.Dialogs
     /// </summary>
     public partial class CallCardCreateForm : Window
     {
-        public Action<LibCallCard> OnCallCardCreateFormSaved;
+        public Action<LibCallCard> OnCallCardFormSaved;
 
         public CallCardCreateForm()
         {
             InitializeComponent();
         }
 
-        private void CallCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async Task<LibCallCard> CreateCallCardAsync(string path, LibCallCard callCard) {
+            var response = await App.Client.PostAsJsonAsync(path, callCard);
+            response.EnsureSuccessStatusCode();
+            callCard = await response.Content.ReadAsAsync<LibCallCard>();
+            return callCard;
+        }
+
+        private async void CallCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            LibCallCard callCard = new LibCallCard();
+            try {
+                LibCallCard callCard = new LibCallCard(
+                    BookIdTxt.Text.Trim(),
+                    DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    MembershipIdTxt.Text.Trim(),
+                    App.User.UserId) { }; 
+                
+                OnCallCardFormSaved?.Invoke(await CreateCallCardAsync($"api/libcallcards", callCard));
 
-            callCard.DueDate = DateTime.Parse(DueDateComboBox.Text);
-            callCard.MembershipId = MembershipIdTxt.Text;
-            callCard.CreatorId = CreatorIdTxt.Text;
-            //Update database
-            OnCallCardCreateFormSaved?.Invoke(callCard);
-
-            Hide();
+                Hide();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CallCardCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)
