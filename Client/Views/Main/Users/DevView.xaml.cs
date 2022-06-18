@@ -41,10 +41,10 @@ namespace Client.Views.Main
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (userView != null) {
-                LibraryAdminFrame.Content = userView.Content;
-                return;
-            }
+            //if (userView != null) {
+            //    LibraryAdminFrame.Content = userView.Content;
+            //    return;
+            //}
 
             try
             {
@@ -65,10 +65,10 @@ namespace Client.Views.Main
 
         private async void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (memberView != null) {
-                LibrarianFrame.Content = memberView.Content;
-                return;
-            }
+            //if (memberView != null) {
+            //    LibrarianFrame.Content = memberView.Content;
+            //    return;
+            //}
 
             try {
                 memberView = await MemberView.Create();
@@ -81,10 +81,10 @@ namespace Client.Views.Main
 
         private async void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (bookView != null) {
-                LibrarianFrame.Content = bookView.Content;
-                return;
-            }
+            //if (bookView != null) {
+            //    LibrarianFrame.Content = bookView.Content;
+            //    return;
+            //}
 
             try {
                 bookView = await BookView.Create();
@@ -97,10 +97,10 @@ namespace Client.Views.Main
 
         private async void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (callCardView != null) {
-                LibrarianFrame.Content = callCardView.Content;
-                return;
-            }
+            //if (callCardView != null) {
+            //    LibrarianFrame.Content = callCardView.Content;
+            //    return;
+            //}
 
             try {
                 callCardView = await CallCardView.Create();
@@ -119,10 +119,10 @@ namespace Client.Views.Main
 
         private async void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (callCardView != null) {
-                TreasurerFrame.Content = callCardView.Content;
-                return;
-            }
+            //if (callCardView != null) {
+            //    TreasurerFrame.Content = callCardView.Content;
+            //    return;
+            //}
 
             try {
                 callCardView = await CallCardView.Create();
@@ -135,10 +135,10 @@ namespace Client.Views.Main
 
         private async void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (fineCardView != null) {
-                TreasurerFrame.Content = fineCardView.Content;
-                return;
-            }
+            //if (fineCardView != null) {
+            //    TreasurerFrame.Content = fineCardView.Content;
+            //    return;
+            //}
 
             try {
                 fineCardView = await FineCardView.Create();
@@ -157,10 +157,10 @@ namespace Client.Views.Main
 
         private async void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (bookView != null) {
-                StorekeeperFrame.Content = bookView.Content;
-                return;
-            }
+            //if (bookView != null) {
+            //    StorekeeperFrame.Content = bookView.Content;
+            //    return;
+            //}
 
             try {
                 bookView = await BookView.Create();
@@ -173,10 +173,10 @@ namespace Client.Views.Main
 
         private async void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            if (bookAuditCardView != null) {
-                StorekeeperFrame.Content = bookAuditCardView.Content;
-                return;
-            }
+            //if (bookAuditCardView != null) {
+            //    StorekeeperFrame.Content = bookAuditCardView.Content;
+            //    return;
+            //}
 
             try {
                 bookAuditCardView = await BookAuditCardView.Create();

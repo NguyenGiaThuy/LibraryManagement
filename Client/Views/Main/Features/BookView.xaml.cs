@@ -1,8 +1,10 @@
 ﻿using Client.Models;
 using Client.Views.Main.Features.Dialogs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,9 +51,14 @@ namespace Client.Views.Main.Features
             return books;
         }
 
-        private async Task<LibBook> DisableBookAsync(string path) {
-            LibBook book = new LibBook();
-            var response = await App.Client.PutAsJsonAsync(path, book);
+        private async Task<LibBook> RemoveBookAsync(string path, LibBook book) {
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(App.Client.BaseAddress, path),
+                Content = new StringContent(JsonConvert.SerializeObject(book), Encoding.UTF8, "application/json")
+            };
+            var response = await App.Client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             book = await response.Content.ReadAsAsync<LibBook>();
             return book;
@@ -142,16 +149,15 @@ namespace Client.Views.Main.Features
             bookUpdateForm.ShowDialog();
         }
 
-        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
+        private async void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
             if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
                 try {
-                    //await DisableUserAsync($"api/libusers/{selectedUser.UserId}/disable");
+                    //await RemoveBookAsync($"api/libbooks/{selectedBook.BookId}/{reason}", selectedBook);
 
-                    //    userList.Find(x => x.UserId == selectedUser.UserId).Status = LibUser.UserStatus.Inactive;
-                    //    UserDataGrid.ItemsSource = null;
-                    //    UserDataGrid.ItemsSource = userList;
-                    ClearBookSidePanel();
+                    bookList.Find(x => x.BookId == selectedBook.BookId).Status = LibBook.BookStatus.Unavailable;
+                    BookDataGrid.ItemsSource = null;
+                    BookDataGrid.ItemsSource = bookList;
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);

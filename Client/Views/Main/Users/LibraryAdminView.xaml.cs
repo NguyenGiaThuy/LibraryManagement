@@ -28,10 +28,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (userView != null) {
-                LibraryAdminFrame.Content = userView.Content;
-                return;
-            }
+            //if (userView != null) {
+            //    LibraryAdminFrame.Content = userView.Content;
+            //    return;
+            //}
 
             try {
                 userView = await UserView.Create();

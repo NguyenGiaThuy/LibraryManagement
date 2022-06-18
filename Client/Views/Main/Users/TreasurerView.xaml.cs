@@ -29,10 +29,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (callCardView != null) {
-                TreasurerFrame.Content = callCardView.Content;
-                return;
-            }
+            //if (callCardView != null) {
+            //    TreasurerFrame.Content = callCardView.Content;
+            //    return;
+            //}
 
             try {
                 callCardView = await CallCardView.Create();
@@ -44,10 +44,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (fineCardView != null) {
-                TreasurerFrame.Content = fineCardView.Content;
-                return;
-            }
+            //if (fineCardView != null) {
+            //    TreasurerFrame.Content = fineCardView.Content;
+            //    return;
+            //}
 
             try {
                 fineCardView = await FineCardView.Create();
