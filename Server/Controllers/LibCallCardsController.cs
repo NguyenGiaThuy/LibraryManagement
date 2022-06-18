@@ -71,6 +71,8 @@ namespace Server.Controllers
             try
             {
                 var result = await _callCardsRepository.CreateCallCardAsync(callCard);
+                result.Book = null;
+                result.Membership = null;
                 return Ok(result);
             }
             catch (ExpiredMembershipException ex)

@@ -34,7 +34,7 @@ namespace Client.Views.Main.Features.Dialogs
                     BookIdTxt.Text.Trim(),
                     DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                     MembershipIdTxt.Text.Trim(),
-                    CreatorIdTxt.Text.Trim()) { }; 
+                    App.User.UserId) { }; 
                 
                 OnCallCardFormSaved?.Invoke(await CreateCallCardAsync($"api/libcallcards", callCard));
 

@@ -73,7 +73,7 @@
                                             Width="25" 
                                             Height="25" 
                                             Style="{x:Null}" 
-                                            Click="FineCardUpdateBtn_Click" 
+                                            Click="FineCardDatailsBtn_Click" 
                                             Padding="2" 
                                             Margin="2,2,0,2">
                                     <materialDesign:PackIcon Kind="Edit"/>

@@ -87,13 +87,11 @@
                       Grid.Row="1"
                       Margin="0,5,10,5"
                       IsEnabled="False"
-                      Style="{StaticResource InputComboBox}"
-                      LostFocus="DueDateComboBox_LostFocus">
+                      Style="{StaticResource InputComboBox}">
                 <Calendar Name="DueDateCalendar"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Margin="5"
-                          SelectedDatesChanged="DueDateCalendar_SelectedDatesChanged"
                           Style="{x:Null}"/>
             </ComboBox>
             <TextBox Name="BookIdTxt"
@@ -135,13 +133,11 @@
                       Grid.Row="6"
                       Margin="0,5,10,5"
                       IsEnabled="False"
-                      Style="{StaticResource InputComboBox}"
-                      LostFocus="CreatedDateTxt_LostFocus">
+                      Style="{StaticResource InputComboBox}">
                 <Calendar Name="CreatedDateCalendar"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Margin="5"
-                          SelectedDatesChanged="CreatedDateCalendar_SelectedDatesChanged"
                           Style="{x:Null}"/>
             </ComboBox>
         </Grid>

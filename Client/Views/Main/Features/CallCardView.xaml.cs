@@ -15,8 +15,9 @@ namespace Client.Views.Main.Features
     /// </summary>
     public partial class CallCardView : Window
     {
-        CallCardDetailsForm callCardUpdateForm;
+        CallCardDetailsForm callCardDetailsForm;
         CallCardCreateForm callCardCreateForm;
+        CallCardUpdateForm callCardUpdateForm;
         List<LibCallCard> callCardList;
         LibCallCard selectedCallCard;
 
@@ -32,8 +33,9 @@ namespace Client.Views.Main.Features
             InitializeComponent();
 
             CallCardDataGrid.Focus();
-            callCardUpdateForm = new CallCardDetailsForm();
+            callCardDetailsForm = new CallCardDetailsForm();
             callCardCreateForm = new CallCardCreateForm();
+            callCardUpdateForm = new CallCardUpdateForm();
             callCardCreateForm.OnCallCardFormSaved += CallCardCreateForm_OnFormSaved;
             callCardUpdateForm.OnCallCardFormSaved += CallCardUpdateForm_OnFormSaved;
         }
@@ -60,13 +62,15 @@ namespace Client.Views.Main.Features
         //    return callCard;
         //}
 
-        private void CallCardCreateForm_OnFormSaved(LibCallCard callCard) {
+        private void CallCardCreateForm_OnFormSaved(LibCallCard callCard)
+        {
             callCardList.Add(callCard);
             CallCardDataGrid.ItemsSource = null;
             CallCardDataGrid.ItemsSource = callCardList;
         }
 
-        private void CallCardUpdateForm_OnFormSaved(LibCallCard callCard) {
+        private void CallCardUpdateForm_OnFormSaved(LibCallCard callCard)
+        {
             selectedCallCard.CopyFrom(callCard);
             CallCardDataGrid.ItemsSource = null;
             CallCardDataGrid.ItemsSource = callCardList;
@@ -86,23 +90,23 @@ namespace Client.Views.Main.Features
         {
             selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
             //CallCardIdTxt
-            callCardUpdateForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
+            callCardDetailsForm.CallCardIdTxt.Text = selectedCallCard.CallCardId;
             //DueDateComboBox
             DateTime dueDate = selectedCallCard.DueDate != null ? (DateTime)selectedCallCard.DueDate : DateTime.MinValue;
-            callCardUpdateForm.DueDateComboBox.Text = selectedCallCard.DueDate != null ? dueDate.ToString("dd-MM-yyyy") : "";
+            callCardDetailsForm.DueDateComboBox.Text = selectedCallCard.DueDate != null ? dueDate.ToString("dd-MM-yyyy") : "";
             //BookIdTxt
-            callCardUpdateForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
+            callCardDetailsForm.BookIdTxt.Text = selectedCallCard.BookId.ToString();
             //MembershipIdTxt
-            callCardUpdateForm.MembershipIdTxt.Text = selectedCallCard.MembershipId ?? "";
+            callCardDetailsForm.MembershipIdTxt.Text = selectedCallCard.MembershipId ?? "";
             //StatusComboBox
-            callCardUpdateForm.StatusComboBox.Text = selectedCallCard.State.ToString();
+            callCardDetailsForm.StatusComboBox.Text = selectedCallCard.State.ToString();
             //CreatorIdTxt
-            callCardUpdateForm.CreatorIdTxt.Text = selectedCallCard.CreatorId ?? "";
+            callCardDetailsForm.CreatorIdTxt.Text = selectedCallCard.CreatorId ?? "";
             //CreatedDateComboBox
             DateTime createdDate = selectedCallCard.CreatedDate != null ? (DateTime)selectedCallCard.CreatedDate : DateTime.MinValue;
-            callCardUpdateForm.CreatedDateComboBox.Text = selectedCallCard.CreatedDate != null ? createdDate.ToString("dd-MM-yyyy") : "";
+            callCardDetailsForm.CreatedDateComboBox.Text = selectedCallCard.CreatedDate != null ? createdDate.ToString("dd-MM-yyyy") : "";
 
-            callCardUpdateForm.ShowDialog();
+            callCardDetailsForm.ShowDialog();
         }
     }
 }

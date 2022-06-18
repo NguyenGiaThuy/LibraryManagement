@@ -30,15 +30,7 @@ namespace Client.Views.Main.Features.Dialogs
         private async void FineCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try {
-                LibFineCard fineCard = new LibFineCard() {
-                    //FineCardId =
-                    //Arrears = 
-                    //DaysInArrears = 
-                    CallCardId = CallCardIdTxt.Text.Trim(),
-                    //Status =
-                    CreatorId = CreatorIdTxt.Text.Trim(),
-                    //CreatedDate =
-                };
+                LibFineCard fineCard = new LibFineCard(CallCardIdTxt.Text.Trim(), App.User.UserId) { };
 
                 OnFineCardFormSaved?.Invoke(await CreateFineCardAsync($"api/libfinecards", fineCard));
 
