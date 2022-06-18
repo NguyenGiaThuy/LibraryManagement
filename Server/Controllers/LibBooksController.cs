@@ -53,6 +53,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.AddBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromAddedBookAsync(book);
+                result1.LibBookAuditCards.Clear();
                 result2.Book = null;
                 return Ok(result1);
             }
@@ -72,6 +73,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.UpdateBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromUpdatedBookAsync(book);
+                result1.LibBookAuditCards.Clear();
                 result2.Book = null;
                 return Ok(result1);
             }
@@ -95,6 +97,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.RemoveBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromRemovedBookAsync(book, reason);
+                result1.LibBookAuditCards.Clear();
                 result2.Book = null;
                 return Ok(result1);
             }
