@@ -1,11 +1,11 @@
-﻿<Window x:Class="Client.Views.Main.Features.Dialogs.MemberForm"
+﻿<Window x:Class="Client.Views.Main.Features.Dialogs.MemberUpdateForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.Views.Main.Features.Dialogs"
         mc:Ignorable="d"
-        Title="MemberForm" Height="auto" Width="500"
+        Title="MemberUpdateForm" Height="auto" Width="500"
         ResizeMode="NoResize"
         Closing="Window_Closing">
     <Grid>
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Name="UserFormTitleTxt"
-                   Text="Title"
+                   Text="CẬP NHẬT NHÂN VIÊN"
                    Margin="10"
                    Style="{StaticResource TitleLabelTextBlock}"/>
 
@@ -114,13 +114,14 @@
                          Grid.Column="1"
                          Grid.Row="0"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
-            <PasswordBox Name="SocialIdTxt"
-                         Password=""
+            <TextBox Name="SocialIdTxt"
                          Grid.Column="1"
                          Grid.Row="1"
                          Margin="0,5,10,5"
-                         Style="{StaticResource InputPasswordBox}"/>
+                     IsEnabled="False"
+                         Style="{StaticResource InputTextbox}"/>
             <TextBox Name="NameTxt"
                          Text=""
                          Grid.Column="1"
@@ -164,18 +165,21 @@
                          Grid.Column="1"
                          Grid.Row="7"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
             <TextBox Name="CreatorIdTxt"
                          Text=""
                          Grid.Column="1"
                          Grid.Row="8"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="CreatedDateComboBox"
                       Text="Chọn ngày tạo"
                       Grid.Column="1"
                       Grid.Row="9"
                       Margin="0,5,10,5"
+                      IsEnabled="False"
                       Style="{StaticResource InputComboBox}"
                       LostFocus="CreatedDateComboBox_LostFocus">
                 <Calendar Name="CreatedDateCalendar"
@@ -190,12 +194,14 @@
                          Grid.Column="1"
                          Grid.Row="10"
                          Margin="0,5,10,5"
+                     IsEnabled="False"
                          Style="{StaticResource InputTextbox}"/>
             <ComboBox Name="ModifiedDateComboBox"
                       Text="Chọn ngày chỉnh sửa"
                       Grid.Column="1"
                       Grid.Row="11"
                       Margin="0,5,10,5"
+                      IsEnabled="False"
                       Style="{StaticResource InputComboBox}"
                       LostFocus="ModifiedDateComboBox_LostFocus">
                 <Calendar Name="ModifiedDateCalendar"
@@ -222,20 +228,20 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="UserFormSaveBtn"
+            <Button Name="MemberUpdateFormSaveBtn"
                     Grid.Column="0"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="10,10,5,10"
                     Content="Lưu"
-                    Click="UserFormSaveBtn_Click"/>
-            <Button Name="UserFormCancelBtn"
+                    Click="MemberUpdateFormSaveBtn_Click"/>
+            <Button Name="MemberUpdateFormCancelBtn"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     Margin="5,10,10,10"
                     Content="Hủy"
-                    Click="UserFormCancelBtn_Click"/>
+                    Click="MemberUpdateFormCancelBtn_Click"/>
         </Grid>
     </Grid>
 </Window>

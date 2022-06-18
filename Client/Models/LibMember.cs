@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Client.Models
 {
@@ -34,8 +35,20 @@ namespace Client.Models
         public DateTime? ModifiedDate { get; set; }
         public string? ImageUrl { get; set; }
 
-        public virtual LibUser? Creator { get; set; }
-        public virtual LibUser? Modifier { get; set; }
-        public virtual LibMembership? Membership { get; set; }
+        public void CopyFrom(LibMember libMember) {
+            this.MemberId = libMember.MemberId;
+            this.SocialId = libMember.SocialId;
+            this.Name = libMember.Name;
+            this.Dob = libMember.Dob;
+            this.Address = libMember.Address;
+            this.Mobile = libMember.Mobile;
+            this.Email = libMember.Email;
+            this.MembershipId = libMember.MembershipId;
+            this.CreatorId = libMember.CreatorId;
+            this.CreatedDate = libMember.CreatedDate;
+            this.ModifierId = libMember.ModifierId;
+            this.ModifiedDate = libMember.ModifiedDate;
+            this.ImageUrl = libMember.ImageUrl;
+        }
     }
 }

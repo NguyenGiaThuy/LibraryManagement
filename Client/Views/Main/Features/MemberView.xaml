@@ -178,8 +178,8 @@
                     <Syncfusion:GridTextColumn     HeaderText="ID"           MinimumWidth="50" MappingName="MembershipId" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày bắt đầu" MinimumWidth="50" MappingName="StartDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày hết hạn" MinimumWidth="50" MappingName="ExpiryDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="MembershipType" TextAlignment="Center" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái"   MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Loại"         MinimumWidth="50" MappingName="MembershipTypeDescription" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái"   MinimumWidth="50" MappingName="StatusDescription" TextAlignment="Center" AllowFiltering="True"/>
                     <Syncfusion:GridTextColumn     HeaderText="ID Người tạo" MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"     MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
 

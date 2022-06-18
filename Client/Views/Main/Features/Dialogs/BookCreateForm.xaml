@@ -36,7 +36,6 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Tiêu đề"
@@ -74,14 +73,9 @@
                            Grid.Row="6"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-            <TextBlock Text="Trạng thái"
-                           Grid.Column="0"
-                           Grid.Row="7"
-                           Margin="10,5,10,5"
-                           Style="{StaticResource PropertyLabelTextBlock}"/>
             <TextBlock Text="Hình ảnh"
                            Grid.Column="0"
-                           Grid.Row="8"
+                           Grid.Row="7"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -139,20 +133,10 @@
                          Grid.Row="6"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <ComboBox Name="StatusComboBox"
-                      Text=""
-                      Grid.Column="1"
-                      Grid.Row="7"
-                      Margin="0,5,10,5"
-                      IsSynchronizedWithCurrentItem="True"
-                      Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
-                <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>
-            </ComboBox>
             <TextBox Name="ImgTxt"
                          Text=""
                          Grid.Column="1"
-                         Grid.Row="8"
+                         Grid.Row="7"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
         </Grid>

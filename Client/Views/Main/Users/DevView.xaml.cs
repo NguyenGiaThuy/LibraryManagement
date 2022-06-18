@@ -15,11 +15,12 @@ namespace Client.Views.Main
         StorekeeperDashboardView storekeeperDashboardView = new StorekeeperDashboardView();
         TreasurerDashboardView treasurerDashboardView = new TreasurerDashboardView();
 
-        BookView bookView = new BookView();
-        MemberView memberView = new MemberView();
-        CallCardView callCardView = new CallCardView();
-        BookAuditCardView bookAuditCardView = new BookAuditCardView();
-        FineCardView fineCardView = new FineCardView();
+        UserView userView = null;
+        BookView bookView = null;
+        MemberView memberView = null;
+        CallCardView callCardView = null;
+        BookAuditCardView bookAuditCardView = null;
+        FineCardView fineCardView = null;
 
         public DevView()
         {
@@ -40,18 +41,19 @@ namespace Client.Views.Main
 
         private async void LibraryAdminUserRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            UserView userView = null;
+            if (userView != null) {
+                LibraryAdminFrame.Content = userView.Content;
+                return;
+            }
+
             try
             {
                 userView = await UserView.Create();
+                LibraryAdminFrame.Content = userView.Content;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                LibraryAdminFrame.Content = userView.Content;
             }
         }
 
@@ -61,19 +63,52 @@ namespace Client.Views.Main
             LibrarianFrame.Content = librarianDashboardView.Content;
         }
 
-        private void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            LibrarianFrame.Content = memberView.Content;
+            if (memberView != null) {
+                LibrarianFrame.Content = memberView.Content;
+                return;
+            }
+
+            try {
+                memberView = await MemberView.Create();
+                LibrarianFrame.Content = memberView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            LibrarianFrame.Content = bookView.Content;
+            if (bookView != null) {
+                LibrarianFrame.Content = bookView.Content;
+                return;
+            }
+
+            try {
+                bookView = await BookView.Create();
+                LibrarianFrame.Content = bookView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            LibrarianFrame.Content = callCardView.Content;
+            if (callCardView != null) {
+                LibrarianFrame.Content = callCardView.Content;
+                return;
+            }
+
+            try {
+                callCardView = await CallCardView.Create();
+                LibrarianFrame.Content = callCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //TREASURER ====================================================================================
@@ -82,14 +117,36 @@ namespace Client.Views.Main
             TreasurerFrame.Content = treasurerDashboardView.Content;
         }
 
-        private void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void TreasurerCallCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            TreasurerFrame.Content = callCardView.Content;
+            if (callCardView != null) {
+                TreasurerFrame.Content = callCardView.Content;
+                return;
+            }
+
+            try {
+                callCardView = await CallCardView.Create();
+                TreasurerFrame.Content = callCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void TreasurerFineCardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            TreasurerFrame.Content = fineCardView.Content;
+            if (fineCardView != null) {
+                TreasurerFrame.Content = fineCardView.Content;
+                return;
+            }
+
+            try {
+                fineCardView = await FineCardView.Create();
+                TreasurerFrame.Content = fineCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //STOREKEEPER ==================================================================================
@@ -98,14 +155,36 @@ namespace Client.Views.Main
             StorekeeperFrame.Content = storekeeperDashboardView.Content;
         }
 
-        private void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            StorekeeperFrame.Content = bookView.Content;
+            if (bookView != null) {
+                StorekeeperFrame.Content = bookView.Content;
+                return;
+            }
+
+            try {
+                bookView = await BookView.Create();
+                StorekeeperFrame.Content = bookView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e)
+        private async void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e)
         {
-            StorekeeperFrame.Content = bookAuditCardView.Content;
+            if (bookAuditCardView != null) {
+                StorekeeperFrame.Content = bookAuditCardView.Content;
+                return;
+            }
+
+            try {
+                bookAuditCardView = await BookAuditCardView.Create();
+                StorekeeperFrame.Content = bookAuditCardView.Content;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Close properly the application when the exit button is pressed

@@ -1,5 +1,9 @@
 ﻿using Client.Models;
 using System;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Views.Main.Features.Dialogs
@@ -9,24 +13,40 @@ namespace Client.Views.Main.Features.Dialogs
     /// </summary>
     public partial class FineCardCreateForm : Window
     {
-        public Action<LibFineCard> OnFineCardCreateFormSaved;
+        public Action<LibFineCard> OnFineCardFormSaved;
 
         public FineCardCreateForm()
         {
             InitializeComponent();
         }
 
-        private void FineCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async Task<LibFineCard> CreateFineCardAsync(string path, LibFineCard fineCard) {
+            var response = await App.Client.PostAsJsonAsync(path, fineCard);
+            response.EnsureSuccessStatusCode();
+            fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+            return fineCard;
+        }
+
+        private async void FineCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            LibFineCard fineCard = new LibFineCard();
+            try {
+                LibFineCard fineCard = new LibFineCard() {
+                    //FineCardId =
+                    //Arrears = 
+                    //DaysInArrears = 
+                    CallCardId = CallCardIdTxt.Text.Trim(),
+                    //Status =
+                    CreatorId = CreatorIdTxt.Text.Trim(),
+                    //CreatedDate =
+                };
 
-            fineCard.CallCardId = CallCardIdTxt.Text;
-            fineCard.Reason = ReasonComboBox.SelectedIndex;
-            fineCard.CreatorId = CreatorIdTxt.Text;
-            //Update database
-            OnFineCardCreateFormSaved?.Invoke(fineCard);
+                OnFineCardFormSaved?.Invoke(await CreateFineCardAsync($"api/libfinecards", fineCard));
 
-            Hide();
+                Hide();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FineCardCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)

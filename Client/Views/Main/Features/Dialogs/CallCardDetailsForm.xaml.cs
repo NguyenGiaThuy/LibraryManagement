@@ -9,38 +9,38 @@ using System.Windows;
 namespace Client.Views.Main.Features.Dialogs
 {
     /// <summary>
-    /// Interaction logic for CallCardCreateForm.xaml
+    /// Interaction logic for CallCardUpdateForm.xaml
     /// </summary>
-    public partial class CallCardCreateForm : Window
+    public partial class CallCardDetailsForm : Window
     {
         public Action<LibCallCard> OnCallCardFormSaved;
 
-        public CallCardCreateForm()
+        public CallCardDetailsForm()
         {
             InitializeComponent();
         }
 
-        private async Task<LibCallCard> CreateCallCardAsync(string path, LibCallCard callCard) {
-            var response = await App.Client.PostAsJsonAsync(path, callCard);
+        private async Task<LibCallCard> UpdateCallCardAsync(string path, LibCallCard callcard) {
+            var response = await App.Client.PutAsJsonAsync(path, callcard);
             response.EnsureSuccessStatusCode();
-            callCard = await response.Content.ReadAsAsync<LibCallCard>();
-            return callCard;
+            callcard = await response.Content.ReadAsAsync<LibCallCard>();
+            return callcard;
         }
 
-        private async void CallCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        private async void CallCardUpdateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try {
                 LibCallCard callCard = new LibCallCard() {
-                    //CallCardId =
+                    CallCardId = CallCardIdTxt.Text.Trim(),
                     DueDate = DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                     BookId = BookIdTxt.Text.Trim(),
                     MembershipId = MembershipIdTxt.Text.Trim(),
-                    //Status = 
+                    Status = StatusComboBox.SelectedIndex != -1 ? (LibCallCard.CallCardStatus)StatusComboBox.SelectedIndex : null,
                     CreatorId = CreatorIdTxt.Text.Trim(),
-                    //CreatedDate =
+                    CreatedDate = CreatedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(CreatedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
                 };
 
-                OnCallCardFormSaved?.Invoke(await CreateCallCardAsync($"api/libcallcards", callCard));
+                OnCallCardFormSaved?.Invoke(await UpdateCallCardAsync($"api/libcallCards/{callCard.CallCardId}", callCard));
 
                 Hide();
             }
@@ -49,7 +49,7 @@ namespace Client.Views.Main.Features.Dialogs
             }
         }
 
-        private void CallCardCreateFormCancelBtn_Click(object sender, RoutedEventArgs e)
+        private void CallCardDetailsFormCloseBtn_Click(object sender, RoutedEventArgs e)
         {
             Hide();
         }
@@ -73,6 +73,21 @@ namespace Client.Views.Main.Features.Dialogs
         {
             DateTime selectedDate = (DateTime)DueDateCalendar.SelectedDate;
             DueDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+        }
+
+        private void CreatedDateTxt_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (CreatedDateComboBox.SelectedItem != null)
+            {
+                DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
+                CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
+            }
+        }
+
+        private void CreatedDateCalendar_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            DateTime selectedDate = (DateTime)CreatedDateCalendar.SelectedDate;
+            CreatedDateComboBox.Text = selectedDate.ToString("dd-MM-yyyy");
         }
     }
 }

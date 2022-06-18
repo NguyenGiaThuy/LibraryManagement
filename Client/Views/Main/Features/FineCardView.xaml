@@ -53,8 +53,8 @@
                 <Syncfusion:GridTextColumn     HeaderText="Tiền còn nợ"        MinimumWidth="50" MappingName="Arrears" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày nợ"            MinimumWidth="50" MappingName="DaysInArrears" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Phiếu mượn sách" MinimumWidth="50" MappingName="CallCardId" TextAlignment="Center" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn     HeaderText="Lý do"              MinimumWidth="50" MappingName="Reason" TextAlignment="Center" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn     HeaderText="Trạng thái"         MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Lý do"              MinimumWidth="50" MappingName="ReasonDescription" TextAlignment="Center" AllowFiltering="True"/>
+                <Syncfusion:GridTextColumn     HeaderText="Trạng thái"         MinimumWidth="50" MappingName="StatusDescription" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Người tạo"       MinimumWidth="50" MappingName="CreatorId" TextAlignment="Center" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày tạo"           MinimumWidth="50" MappingName="CreatedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
 

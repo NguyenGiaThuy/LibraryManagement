@@ -1,40 +1,62 @@
 ﻿using Client.Models;
 using System;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Client.Views.Main.Features.Dialogs
 {
     /// <summary>
-    /// Interaction logic for BookForm.xaml
+    /// Interaction logic for BookUpdateForm.xaml
     /// </summary>
-    public partial class BookForm : Window
+    public partial class BookUpdateForm : Window
     {
         public Action<LibBook> OnBookFormSaved;
 
-        public BookForm()
+        public BookUpdateForm()
         {
             InitializeComponent();
         }
 
-        private void BookFormSaveBtn_Click(object sender, RoutedEventArgs e)
-        {
-            LibBook book = new LibBook();
-
-            book.BookId = BookIdTxt.Text;
-            book.Isbn = ISBNTxt.Text;
-            book.Title = TitleTxt.Text;
-            book.Genre = GenreComboBox.SelectedIndex;
-            book.Author = AuthorTxt.Text;
-            book.Publisher = PublisherTxt.Text;
-            book.PublishedDate = DateTime.Parse(PublishedDateComboBox.Text);
-            book.Price = int.Parse(PriceTxt.Text);
-            //Update database
-            OnBookFormSaved?.Invoke(book);
-
-            Hide();
+        private async Task<LibBook> UpdateBookAsync(string path, LibBook book) {
+            var response = await App.Client.PutAsJsonAsync(path, book);
+            response.EnsureSuccessStatusCode();
+            book = await response.Content.ReadAsAsync<LibBook>();
+            return book;
         }
 
-        private void BookFormCancelBtn_Click(object sender, RoutedEventArgs e)
+        private async void BookUpdateFormSaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LibBook book = new LibBook() 
+                {
+                    BookId = BookIdTxt.Text.Trim(),
+                    Isbn = ISBNTxt.Text.Trim(),
+                    Title = TitleTxt.Text.Trim(),
+                    Genre = GenreComboBox.SelectedIndex != -1 ? (LibBook.BookGenre)GenreComboBox.SelectedIndex : null,
+                    Author = AuthorTxt.Text.Trim(),
+                    Publisher = PublisherTxt.Text.Trim(),
+                    PublishedDate = PublishedDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(PublishedDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    Price = PriceTxt.Text.Trim() != "" ? int.Parse(PriceTxt.Text) : null,
+                    ImageUrl = ImgTxt.Text.Trim(),
+                    ModifierId = App.User.UserId,
+                    ModifiedDate = DateTime.Now
+                };
+
+                OnBookFormSaved?.Invoke(await UpdateBookAsync($"api/libbooks/{book.BookId}", book));
+
+                Hide();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BookUpdateFormCancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Hide();
         }

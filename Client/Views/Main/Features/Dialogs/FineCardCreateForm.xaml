@@ -30,7 +30,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="ID Phiếu mượn sách"
@@ -38,14 +37,9 @@
                            Grid.Row="0"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
-            <TextBlock Text="Lý do"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Margin="10,5,10,5"
-                           Style="{StaticResource PropertyLabelTextBlock}"/>
             <TextBlock Text="ID Người tạo"
                            Grid.Column="0"
-                           Grid.Row="2"
+                           Grid.Row="1"
                            Margin="10,5,10,5"
                            Style="{StaticResource PropertyLabelTextBlock}"/>
 
@@ -55,21 +49,10 @@
                          Grid.Row="0"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
-            <ComboBox Name="ReasonComboBox"
-                      Text=""
-                      Grid.Column="1"
-                      Grid.Row="1"
-                      Margin="0,5,10,5"
-                      IsEnabled="False"
-                      IsSynchronizedWithCurrentItem="True"
-                      Style="{StaticResource InputComboBox}">
-                <ComboBoxItem Content="Tới hạn"></ComboBoxItem>
-                <ComboBoxItem Content="Dã mất"></ComboBoxItem>
-            </ComboBox>
             <TextBox Name="CreatorIdTxt"
                          Text=""
                          Grid.Column="1"
-                         Grid.Row="2"
+                         Grid.Row="1"
                          Margin="0,5,10,5"
                          Style="{StaticResource InputTextbox}"/>
         </Grid>

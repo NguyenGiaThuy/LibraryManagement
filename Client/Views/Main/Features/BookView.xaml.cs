@@ -2,6 +2,8 @@
 using Client.Views.Main.Features.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -12,43 +14,63 @@ namespace Client.Views.Main.Features
     /// Interaction logic for BookView.xaml
     /// </summary>
 
-    public partial class BookView : Window
-    {
-        BookForm bookForm;
+    public partial class BookView : Window {
+        BookCreateForm bookCreateForm;
+        BookUpdateForm bookUpdateForm;
         List<LibBook> bookList;
         LibBook selectedBook;
 
-        public BookView()
-        {
+        public static async Task<BookView> Create() {
+            var bookView = new BookView();
+            bookView.bookList = await bookView.GetBooksAsync($"api/libbooks");
+            bookView.BookDataGrid.ItemsSource = bookView.bookList;
+            return bookView;
+        }
+
+        public BookView() {
             InitializeComponent();
 
             BookDataGrid.Focus();
-            //Get books from database
-            bookList = new List<LibBook>();
-            bookList.Add(new LibBook("1285740629", "ACalculus", 2, "James Stewart", "Cengage Learning", new DateTime(2015, 05, 19), 25, "803920", "https://www.ubuy.vn/productimg/?image=aHR0cHM6Ly9pbWFnZXMtbmEuc3NsLWltYWdlcy1hbWF6b24uY29tL2ltYWdlcy9JLzUxSHFxTTVXM3JMLmpwZw.jpg"));
-            bookList.Add(new LibBook("1617295485", "AAdvanced Algorithms and Data Structures", 1, "Marcello La Rocca", "Manning", new DateTime(2021, 07, 29), 30, "803850", "https://images.manning.com/book/e/59c8b18-b8fd-4d32-939b-25dcbb4d525d/Rocca-ADS-HI.png"));
-            bookList.Add(new LibBook("006230125X", "AElon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future", 0, "Ashlee Vance", "Ecco", new DateTime(2017, 01, 24), 13, "809327", "https://images-na.ssl-images-amazon.com/images/I/5112YFsXIJL.jpg"));
+            bookUpdateForm = new BookUpdateForm();
+            bookCreateForm = new BookCreateForm();
+            bookCreateForm.OnBookFormSaved += BookCreateForm_OnFormSaved;
+            bookUpdateForm.OnBookFormSaved += BookUpdateForm_OnFormSaved;
+        }
+
+        ~BookView() {
+            bookCreateForm.OnBookFormSaved -= BookCreateForm_OnFormSaved;
+            bookUpdateForm.OnBookFormSaved -= BookUpdateForm_OnFormSaved;
+        }
+
+        private async Task<List<LibBook>> GetBooksAsync(string path) {
+            List<LibBook> books = null;
+            var response = await App.Client.GetAsync(path);
+            if (response.IsSuccessStatusCode) books = await response.Content.ReadAsAsync<List<LibBook>>();
+            return books;
+        }
+
+        private async Task<LibBook> DisableBookAsync(string path) {
+            LibBook book = new LibBook();
+            var response = await App.Client.PutAsJsonAsync(path, book);
+            response.EnsureSuccessStatusCode();
+            book = await response.Content.ReadAsAsync<LibBook>();
+            return book;
+        }
+
+        private void BookCreateForm_OnFormSaved(LibBook book) {
+            bookList.Add(book);
+            BookDataGrid.ItemsSource = null;
             BookDataGrid.ItemsSource = bookList;
-
-            bookForm = new BookForm();
-            bookForm.OnBookFormSaved += BookForm_OnBookFormSaved;
         }
 
-        ~BookView()
-        {
-            bookForm.OnBookFormSaved -= BookForm_OnBookFormSaved;
-        }
-
-        private void BookForm_OnBookFormSaved(LibBook book)
-        {
+        private void BookUpdateForm_OnFormSaved(LibBook book) {
             selectedBook.CopyFrom(book);
             UpdateBookSidePanel(selectedBook);
             BookDataGrid.ItemsSource = null;
             BookDataGrid.ItemsSource = bookList;
         }
 
-        private void ClearBookSidePanel()
-        {
+        private void ClearBookSidePanel() {
             BookTitleTxt.Text = "";
             AuthorTxt.Text = "";
             PublisherTxt.Text = "";
@@ -58,102 +80,88 @@ namespace Client.Views.Main.Features
             BookImg.Source = null;
         }
 
-        private void UpdateBookSidePanel(LibBook book)
-        {
-            BookTitleTxt.Text = book.Title;
-            AuthorTxt.Text = book.Author;
-            PublisherTxt.Text = book.Publisher;
-            ISBNTxt.Text = book.Isbn;
-            GenreTxt.Text = book.Genre.ToString();
-            PriceTxt.Text = book.Price.ToString();
-            BookImg.Source = new BitmapImage(new Uri(book.ImageUrl));
+        private void UpdateBookSidePanel(LibBook book) {
+            BookTitleTxt.Text = book.Title ?? "";
+            AuthorTxt.Text = book.Author ?? "";
+            PublisherTxt.Text = book.Publisher ?? "";
+            ISBNTxt.Text = book.Isbn ?? "";
+            GenreTxt.Text = book.Genre != null ? book.Genre.ToString() : "";
+            PriceTxt.Text = book.Price.ToString() ?? "";
+            try {
+                BookImg.Source = book.ImageUrl != null ? new BitmapImage(new Uri(book.ImageUrl)) : null;
+            }
+            catch (Exception) { }
         }
 
-        private void BookNewBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookNewBtn_Click(object sender, RoutedEventArgs e) {
+            bookCreateForm.TitleTxt.Text = "";
+            bookCreateForm.ISBNTxt.Text = "";
+            bookCreateForm.GenreComboBox.SelectedIndex = -1;
+            bookCreateForm.AuthorTxt.Text = "";
+            bookCreateForm.PublisherTxt.Text = "";
+            bookCreateForm.PublishedDateComboBox.Text = "";
+            bookCreateForm.PriceTxt.Text = "";
+            bookCreateForm.ImgTxt.Text = "";
 
+            bookCreateForm.ShowDialog();
         }
 
-        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookUpdateBtn_Click(object sender, RoutedEventArgs e) {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            //bookForm description
-            bookForm.Title = "Update Form";
-            bookForm.BookFormTitleTxt.Text = "CẬP NHẬT SÁCH";
-            //Title
-            bookForm.TitleTxt.Text = selectedBook.Title;
-            //ISBN
-            bookForm.ISBNTxt.IsEnabled = false;
-            bookForm.ISBNTxt.Text = selectedBook.Isbn;
-            //Genre
-            bookForm.GenreComboBox.Text = selectedBook.Genre.ToString();
-            //BookId
-            bookForm.BookIdTxt.IsEnabled = false;
-            bookForm.BookIdTxt.Text = selectedBook.BookId;
-            //Author
-            bookForm.AuthorTxt.Text = selectedBook.Author;
-            //Publisher
-            bookForm.PublisherTxt.Text = selectedBook.Publisher;
-            //PublishedDate
-            DateTime publishedDate = (DateTime)selectedBook.PublishedDate;
-            bookForm.PublishedDateComboBox.Text = publishedDate.ToString("dd-MM-yyyy");
-            //ReceiverId
-            bookForm.ReceiverIdTxt.IsEnabled = false;
-            bookForm.ReceiverIdTxt.Text = selectedBook.ReceiverId;
-            //ReceivedDate
-            bookForm.ReceivedDateComboBox.IsEnabled = false;
-            DateTime receivedDate;
-            if (DateTime.TryParse(selectedBook.ReceivedDate.ToString(), out receivedDate))
-            {
-                bookForm.ReceivedDateComboBox.Text = receivedDate.ToString("dd-MM-yyyy");
-            }
-            else
-            {
-                bookForm.ReceivedDateComboBox.Text = "";
-            }
-            //ModifierId
-            bookForm.ModifierIdTxt.IsEnabled = false;
-            bookForm.ModifierIdTxt.Text = selectedBook.ModifierId;
-            //ModifiedDate
-            bookForm.ModifiedDateComboBox.IsEnabled = false;
-            DateTime modifiedDate;
-            if (DateTime.TryParse(selectedBook.ModifiedDate.ToString(), out modifiedDate))
-            {
-                bookForm.ModifiedDateComboBox.Text = modifiedDate.ToString("dd-MM-yyyy");
-            }
-            else
-            {
-                bookForm.ModifiedDateComboBox.Text = "";
-            }
-            //Price
-            bookForm.PriceTxt.Text = selectedBook.Price.ToString();
-            //Status
-            bookForm.StatusComboBox.IsEnabled = false;
-            bookForm.StatusComboBox.Text = selectedBook.Status.ToString();
 
-            bookForm.ShowDialog();
+            //BookIdTxt
+            bookUpdateForm.BookIdTxt.Text = selectedBook.BookId;
+            //TitleTxt
+            bookUpdateForm.TitleTxt.Text = selectedBook.Title ?? "";
+            //ISBNTxt
+            bookUpdateForm.ISBNTxt.Text = selectedBook.Isbn;
+            //GenreComboBox
+            bookUpdateForm.GenreComboBox.Text = selectedBook.Genre.ToString() ?? "";
+            //AuthorTxt
+            bookUpdateForm.AuthorTxt.Text = selectedBook.Author ?? "";
+            //PublisherTxt
+            bookUpdateForm.PublisherTxt.Text = selectedBook.Publisher ?? "";
+            //PublishedDateComboBox
+            DateTime publishedDate = selectedBook.PublishedDate != null ? (DateTime)selectedBook.PublishedDate : DateTime.MinValue;
+            bookUpdateForm.PublishedDateComboBox.Text = selectedBook.PublishedDate != null ? publishedDate.ToString("dd-MM-yyyy") : "";
+            //ReceiverIdTxt
+            bookUpdateForm.ReceiverIdTxt.Text = selectedBook.ReceiverId;
+            //ReceivedDateComboBox
+            DateTime receivedDate = selectedBook.ReceivedDate != null ? (DateTime)selectedBook.ReceivedDate : DateTime.MinValue;
+            bookUpdateForm.ReceivedDateComboBox.Text = selectedBook.ReceivedDate != null ? receivedDate.ToString("dd-MM-yyyy") : "";
+            //ModifierIdTxt
+            bookUpdateForm.ModifierIdTxt.Text = selectedBook.ModifierId;
+            //ModifiedDateComboBox
+            DateTime modifiedDate = selectedBook.ModifiedDate != null ? (DateTime)selectedBook.ModifiedDate : DateTime.MinValue;
+            bookUpdateForm.ModifiedDateComboBox.Text = selectedBook.ModifiedDate != null ? modifiedDate.ToString("dd-MM-yyyy") : "";
+            //PriceTxt
+            bookUpdateForm.PriceTxt.Text = selectedBook.Price.ToString();
+            //StatusComboBox
+            bookUpdateForm.StatusComboBox.Text = selectedBook.Status.ToString();
+
+            bookUpdateForm.ShowDialog();
         }
 
-        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                bookList.Remove(selectedBook);
-                BookDataGrid.ItemsSource = null;
-                BookDataGrid.ItemsSource = bookList;
-                //Update database
-                ClearBookSidePanel();
+            if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
+                try {
+                    //await DisableUserAsync($"api/libusers/{selectedUser.UserId}/disable");
+
+                    //    userList.Find(x => x.UserId == selectedUser.UserId).Status = LibUser.UserStatus.Inactive;
+                    //    UserDataGrid.ItemsSource = null;
+                    //    UserDataGrid.ItemsSource = userList;
+                    ClearBookSidePanel();
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
-        private void BookDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
-        {
+        private void BookDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e) {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            if (selectedBook != null)
-            {
-                UpdateBookSidePanel(selectedBook);
-            }
+            if (selectedBook != null) UpdateBookSidePanel(selectedBook);
         }
     }
 }

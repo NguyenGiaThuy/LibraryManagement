@@ -170,55 +170,6 @@
                         Padding="5"
                         Click="BookNewBtn_Click"/>
             </Grid>
-            
-            <!--<DataGrid Name="BookDataGrid"
-                      Grid.Row="1"
-                      Margin="10,0,10,10"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      SelectionChanged="BookDataGrid_SelectionChanged">
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Sách" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding BookId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày XB" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding PublishedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Người nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceiverId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ngày nhận" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding ReceivedDate, StringFormat=\{0:dd-MM-yyyy\}}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Trạng thái" MinWidth="50" Width="*" CellStyle="{StaticResource CenterContent}" Binding="{Binding Status}"></DataGridTextColumn>
-                    
-                    <DataGridTemplateColumn Header="Công cụ" MinWidth="90" MaxWidth="90">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid VerticalAlignment="Stretch"
-                                      HorizontalAlignment="Stretch">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Button Grid.Column="0" 
-                                            Width="25" 
-                                            Height="25" 
-                                            Style="{x:Null}" 
-                                            Click="BookUpdateBtn_Click" 
-                                            Padding="2" 
-                                            Margin="2,0,1,0">
-                                        <materialDesign:PackIcon Kind="Edit"/>
-                                    </Button>
-                                    <Button Grid.Column="1" 
-                                            Width="25" 
-                                            Height="25" 
-                                            Style="{x:Null}" 
-                                            Click="BookRemoveBtn_Click" 
-                                            Padding="2" 
-                                            Margin="1,0,2,0">
-                                        <materialDesign:PackIcon Kind="Remove"/>
-                                    </Button>
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>-->
 
             <Syncfusion:SfDataGrid Name="BookDataGrid"
                                    Grid.Row="1"
@@ -236,7 +187,7 @@
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày XB"    MinimumWidth="50" MappingName="PublishedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
                     <Syncfusion:GridTextColumn     HeaderText="Người nhận" MinimumWidth="50" MappingName="ReceiverId" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày nhận"  MinimumWidth="50" MappingName="ReceivedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
-                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="Status" TextAlignment="Center" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="Trạng thái" MinimumWidth="50" MappingName="StatusDescription" TextAlignment="Center" AllowFiltering="True"/>
                     
                     <Syncfusion:GridTemplateColumn HeaderText="Công cụ" MinimumWidth="65" MaximumWidth="65" TextAlignment="Center" AllowFiltering="False" AllowSorting="False">
                         <Syncfusion:GridTemplateColumn.CellTemplate>

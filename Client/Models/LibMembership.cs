@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace Client.Models
@@ -7,22 +8,36 @@ namespace Client.Models
     {
         public enum MembershipType
         {
+            [Description("Độc giả mới")]
             New,
+            [Description("Độc giả cao cấp")]
             Honored
+        }
+        public string GetTypeDescription(MembershipType membershipType) {
+            var type = typeof(MembershipType);
+            var member = type.GetMember(membershipType.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
         }
 
         public enum MembershipStatus
         {
+            [Description("Khả dụng")]
             Active,
+            [Description("Không khả dụng")]
             Inactive
+        }
+        public string GetStatusDescription(MembershipStatus membershipStatus) {
+            var type = typeof(MembershipStatus);
+            var member = type.GetMember(membershipStatus.ToString());
+            var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return ((DescriptionAttribute)attr[0]).Description;
         }
 
         public LibMembership() { }
 
         public LibMembership(string memberId, string socialId, string? creatorId)
         {
-            LibCallCards = new HashSet<LibCallCard>();
-
             MemberId = memberId;
             SocialId = socialId;
             Type = 0;
@@ -38,17 +53,38 @@ namespace Client.Models
         public string SocialId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
-        public int? Type { get; set; }
-        public int? Status { get; set; }
+        public MembershipType? Type { get; set; }
+        public string? TypeDescription {
+            get {
+                if (Type == null) return "";
+                else return GetTypeDescription((MembershipType)Type);
+            }
+        }
+        public MembershipStatus? Status { get; set; }
+        public string? StatusDescription {
+            get {
+                if (Status == null) return "";
+                else return GetStatusDescription((MembershipStatus)Status);
+            }
+        }
         public string MemberId { get; set; }
         public string? CreatorId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? ModifierId { get; set; }
         public DateTime? ModifiedDate { get; set; }
 
-        public virtual LibMember? Member { get; set; }
-        public virtual LibUser? Creator { get; set; }
-        public virtual LibUser? Modifier { get; set; }
-        public virtual ICollection<LibCallCard> LibCallCards { get; set; }
+        public void CopyFrom(LibMembership libMembership) {
+            this.MembershipId = libMembership.MembershipId;
+            this.SocialId = libMembership.SocialId;
+            this.CreatedDate = libMembership.CreatedDate;
+            this.ExpiryDate = libMembership.ExpiryDate;
+            this.Type = libMembership.Type;
+            this.Status = libMembership.Status;
+            this.ModifiedDate = libMembership.ModifiedDate;
+            this.ModifierId = libMembership.ModifierId;
+            this.MemberId = libMembership.MemberId;
+            this.CreatorId = libMembership.CreatorId;
+            this.StartDate = libMembership.StartDate;
+        }
     }
 }
