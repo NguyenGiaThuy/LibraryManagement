@@ -68,6 +68,7 @@ namespace Client.Views.Main.Features
             var response = await App.Client.DeleteAsync(path);
             response.EnsureSuccessStatusCode();
             var fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+
             return fineCard;
         }
 
@@ -81,7 +82,6 @@ namespace Client.Views.Main.Features
         private void FineCardNewBtn_Click(object sender, RoutedEventArgs e)
         {
             fineCardCreateForm.CallCardIdTxt.Text = "";
-            fineCardCreateForm.CreatorIdTxt.Text = "";
 
             fineCardCreateForm.ShowDialog();
         }
@@ -127,6 +127,11 @@ namespace Client.Views.Main.Features
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void FineCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
         }
     }
 }

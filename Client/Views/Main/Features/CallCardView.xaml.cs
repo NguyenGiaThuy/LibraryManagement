@@ -81,7 +81,6 @@ namespace Client.Views.Main.Features
             callCardCreateForm.DueDateComboBox.Text = "";
             callCardCreateForm.BookIdTxt.Text = "";
             callCardCreateForm.MembershipIdTxt.Text = "";
-            callCardCreateForm.CreatorIdTxt.Text = "";
 
             callCardCreateForm.ShowDialog();
         }
@@ -107,6 +106,16 @@ namespace Client.Views.Main.Features
             callCardDetailsForm.CreatedDateComboBox.Text = selectedCallCard.CreatedDate != null ? createdDate.ToString("dd-MM-yyyy") : "";
 
             callCardDetailsForm.ShowDialog();
+        }
+
+        private void CallCardChangeStateBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CallCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
         }
     }
 }
