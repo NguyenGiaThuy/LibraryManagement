@@ -47,7 +47,8 @@
                                ColumnSizer="Auto"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
-                               AllowResizingColumns="True">
+                               AllowResizingColumns="True"
+                               SelectionChanged="CallCardDataGrid_SelectionChanged">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn     HeaderText="ID"             MinimumWidth="50" MappingName="CallCardId" AllowFiltering="True"/>
                 <Syncfusion:GridDateTimeColumn HeaderText="Ngày tới hạn"   MinimumWidth="50" MappingName="DueDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>

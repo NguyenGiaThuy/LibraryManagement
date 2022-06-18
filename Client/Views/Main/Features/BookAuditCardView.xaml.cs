@@ -43,5 +43,10 @@ namespace Client.Views.Main.Features
             if (response.IsSuccessStatusCode) bookAuditCards = await response.Content.ReadAsAsync<List<LibBookAuditCard>>();
             return bookAuditCards;
         }
+
+        private void BookAuditCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedBookAuditCard = BookAuditCardDataGrid.SelectedItem as LibBookAuditCard;
+        }
     }
 }

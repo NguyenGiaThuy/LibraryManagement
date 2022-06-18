@@ -36,7 +36,8 @@
                                ColumnSizer="Auto"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
-                               AllowResizingColumns="True">
+                               AllowResizingColumns="True"
+                               SelectionChanged="BookAuditCardDataGrid_SelectionChanged">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn     HeaderText="ID"           MinimumWidth="50" MappingName="BookAuditCardId" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="ID Sách"      MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>

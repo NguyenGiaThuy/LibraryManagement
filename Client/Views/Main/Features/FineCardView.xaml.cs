@@ -124,5 +124,10 @@ namespace Client.Views.Main.Features
                 }
             }
         }
+
+        private void FineCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedFineCard = FineCardDataGrid.SelectedItem as LibFineCard;
+        }
     }
 }

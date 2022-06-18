@@ -106,5 +106,10 @@ namespace Client.Views.Main.Features
         {
 
         }
+
+        private void CallCardDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            selectedCallCard = CallCardDataGrid.SelectedItem as LibCallCard;
+        }
     }
 }

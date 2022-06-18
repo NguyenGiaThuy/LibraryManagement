@@ -47,7 +47,8 @@
                                ColumnSizer="Auto"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
-                               AllowResizingColumns="True">
+                               AllowResizingColumns="True"
+                               SelectionChanged="FineCardDataGrid_SelectionChanged">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn     HeaderText="ID"                 MinimumWidth="50" MappingName="FineCardId" AllowFiltering="True"/>
                 <Syncfusion:GridTextColumn     HeaderText="Tiền còn nợ"        MinimumWidth="50" MappingName="Arrears" AllowFiltering="True"/>
