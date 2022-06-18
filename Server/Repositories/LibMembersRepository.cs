@@ -51,14 +51,13 @@ namespace Server.Repositories
             var member = await _context.LibMembers.FirstOrDefaultAsync(x => x.MemberId == memberToUpdate.MemberId);
             if (member == null) throw new NonExistenceException(string.Format("Member {0} is not found", memberToUpdate.MemberId));
 
-            member.SocialId = memberToUpdate.SocialId;
             member.Name = memberToUpdate.Name;
             member.Dob = memberToUpdate.Dob;
             member.Address = memberToUpdate.Address;
             member.Mobile = memberToUpdate.Mobile;
             member.Email = memberToUpdate.Email;
             member.ModifierId = memberToUpdate.ModifierId;
-            member.ModifiedDate = DateTime.Now;
+            member.ModifiedDate = memberToUpdate.ModifiedDate;
             await _context.SaveChangesAsync();
             return await GetMemberByIdAsync(memberToUpdate.MemberId);
         }

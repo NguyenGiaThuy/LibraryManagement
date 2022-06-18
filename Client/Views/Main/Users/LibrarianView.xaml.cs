@@ -30,10 +30,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void LibrarianMemberRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (memberView != null) {
-                LibrarianFrame.Content = memberView.Content;
-                return;
-            }
+            //if (memberView != null) {
+            //    LibrarianFrame.Content = memberView.Content;
+            //    return;
+            //}
 
             try {
                 memberView = await MemberView.Create();
@@ -45,10 +45,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void LibrarianBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (bookView != null) {
-                LibrarianFrame.Content = bookView.Content;
-                return;
-            }
+            //if (bookView != null) {
+            //    LibrarianFrame.Content = bookView.Content;
+            //    return;
+            //}
 
             try {
                 bookView = await BookView.Create();
@@ -62,10 +62,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void LibrarianCallCardRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (callCardView != null) {
-                LibrarianFrame.Content = callCardView.Content;
-                return;
-            }
+            //if (callCardView != null) {
+            //    LibrarianFrame.Content = callCardView.Content;
+            //    return;
+            //}
 
             try {
                 callCardView = await CallCardView.Create();

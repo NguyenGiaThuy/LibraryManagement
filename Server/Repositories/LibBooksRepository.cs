@@ -45,8 +45,8 @@ namespace Server.Repositories
             book.Publisher = bookToUpdate.Publisher;
             book.PublishedDate = bookToUpdate.PublishedDate;
             book.Price = bookToUpdate.Price;
-            book.Status = bookToUpdate.Status;
-            book.ModifiedDate = DateTime.Now;
+            book.ModifierId = bookToUpdate.ModifierId;
+            book.ModifiedDate = bookToUpdate.ModifiedDate;
             await _context.SaveChangesAsync();
             return await GetBookByIdAsync(bookToUpdate.BookId);
         }

@@ -190,6 +190,7 @@
                       Grid.Row="9"
                       Margin="0,5,10,5"
                       IsSynchronizedWithCurrentItem="True"
+                      IsEnabled="False"
                       Style="{StaticResource InputComboBox}">
                 <ComboBoxItem Content="Khả dụng"></ComboBoxItem>
                 <ComboBoxItem Content="Không khả dụng"></ComboBoxItem>

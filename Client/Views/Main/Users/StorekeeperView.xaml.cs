@@ -28,10 +28,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void StorekeeperBookRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (bookView != null) {
-                StorekeeperFrame.Content = bookView.Content;
-                return;
-            }
+            //if (bookView != null) {
+            //    StorekeeperFrame.Content = bookView.Content;
+            //    return;
+            //}
 
             try {
                 bookView = await BookView.Create();
@@ -43,10 +43,10 @@ namespace Client.Views.Main.Users
         }
 
         private async void StorekeeperBACardRBtn_Checked(object sender, RoutedEventArgs e) {
-            if (bookAuditCardView != null) {
-                StorekeeperFrame.Content = bookAuditCardView.Content;
-                return;
-            }
+            //if (bookAuditCardView != null) {
+            //    StorekeeperFrame.Content = bookAuditCardView.Content;
+            //    return;
+            //}
 
             try {
                 bookAuditCardView = await BookAuditCardView.Create();

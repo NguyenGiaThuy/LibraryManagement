@@ -91,6 +91,7 @@ namespace Server.Controllers
             {
                 var result1 = await _membersRepository.CreateMemberAsync(member);
                 var result2 = await membershipsRepository.CreateMembershipFromMemberAsync(member);
+                result2.Member = null;
                 var result3 = await _membersRepository.UpdateMemberhipIdforMemberAsync(result1.MemberId, result2.MembershipId);
                 return Ok(result3);
             }
