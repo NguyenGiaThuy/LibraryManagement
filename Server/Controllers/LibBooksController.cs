@@ -71,6 +71,7 @@ namespace Server.Controllers
             {
                 var result1 = await _booksRepository.UpdateBookAsync(book);
                 var result2 = await bookAuditCardsRepository.CreateBookAuditCardFromUpdatedBookAsync(book);
+                result2.Book = null;
                 return Ok(result1);
             }
             catch (NonExistenceException ex)
