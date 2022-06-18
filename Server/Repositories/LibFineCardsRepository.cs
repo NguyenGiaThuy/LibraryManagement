@@ -58,7 +58,7 @@ namespace Server.Repositories
             switch (fineCardToCreate.Reason)
             {
                 case 0: // Due
-                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 0);
+                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 0 && x.CallCardId == fineCardToCreate.CallCardId);
                     if (fineCard != null)
                         throw new InvalidOperationException(
                             string.Format("Fine card for call card {0} with current reason already exists", fineCardToCreate.CallCardId));
@@ -70,7 +70,7 @@ namespace Server.Repositories
                     break;
 
                 case 1: // Lost
-                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 1);
+                    fineCard = await _context.LibFineCards.FirstOrDefaultAsync(x => x.Reason == 1 && x.CallCardId == fineCardToCreate.CallCardId);
                     if (fineCard != null)
                         throw new InvalidOperationException(
                             string.Format("Fine card for call card {0} with current reason already exists", fineCardToCreate.CallCardId));

@@ -53,14 +53,14 @@ namespace Client.Views.Main.Features
             return callCards;
         }
 
-        //private async Task<LibCallCard> UpdateCallCardStatusAsync(string path)
-        //{
-        //    LibCallCard callCard = new LibCallCard();
-        //    var response = await App.Client.PutAsJsonAsync(path, callCard);
-        //    response.EnsureSuccessStatusCode();
-        //    callCard = await response.Content.ReadAsAsync<LibCallCard>();
-        //    return callCard;
-        //}
+        private async Task<LibCallCard> UpdateCallCardStatusAsync(string path)
+        {
+            LibCallCard callCard = new LibCallCard();
+            var response = await App.Client.PutAsJsonAsync(path, callCard);
+            response.EnsureSuccessStatusCode();
+            callCard = await response.Content.ReadAsAsync<LibCallCard>();
+            return callCard;
+        }
 
         private void CallCardCreateForm_OnFormSaved(LibCallCard callCard)
         {

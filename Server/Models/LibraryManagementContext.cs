@@ -25,7 +25,7 @@ namespace Server.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Name=libmproddb");
+                optionsBuilder.UseSqlServer("Name=localhost");
             }
         }
 
