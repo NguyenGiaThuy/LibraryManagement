@@ -19,6 +19,7 @@ namespace Client.Views.Main.Features
     public partial class BookView : Window {
         BookCreateForm bookCreateForm;
         BookUpdateForm bookUpdateForm;
+        BookRemoveForm bookRemoveForm;
         List<LibBook> bookList;
         LibBook selectedBook;
 
@@ -35,13 +36,16 @@ namespace Client.Views.Main.Features
             BookDataGrid.Focus();
             bookUpdateForm = new BookUpdateForm();
             bookCreateForm = new BookCreateForm();
+            bookRemoveForm = new BookRemoveForm();
             bookCreateForm.OnBookFormSaved += BookCreateForm_OnFormSaved;
             bookUpdateForm.OnBookFormSaved += BookUpdateForm_OnFormSaved;
+            bookRemoveForm.OnBookFormSaved += BookRemoveForm_OnFormSaved;
         }
 
         ~BookView() {
             bookCreateForm.OnBookFormSaved -= BookCreateForm_OnFormSaved;
             bookUpdateForm.OnBookFormSaved -= BookUpdateForm_OnFormSaved;
+            bookRemoveForm.OnBookFormSaved -= BookRemoveForm_OnFormSaved;
         }
 
         private async Task<List<LibBook>> GetBooksAsync(string path) {
@@ -51,19 +55,6 @@ namespace Client.Views.Main.Features
             return books;
         }
 
-        private async Task<LibBook> RemoveBookAsync(string path, LibBook book) {
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Delete,
-                RequestUri = new Uri(App.Client.BaseAddress, path),
-                Content = new StringContent(JsonConvert.SerializeObject(book), Encoding.UTF8, "application/json")
-            };
-            var response = await App.Client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            book = await response.Content.ReadAsAsync<LibBook>();
-            return book;
-        }
-
         private void BookCreateForm_OnFormSaved(LibBook book) {
             bookList.Add(book);
             BookDataGrid.ItemsSource = null;
@@ -71,6 +62,14 @@ namespace Client.Views.Main.Features
         }
 
         private void BookUpdateForm_OnFormSaved(LibBook book) {
+            selectedBook.CopyFrom(book);
+            UpdateBookSidePanel(selectedBook);
+            BookDataGrid.ItemsSource = null;
+            BookDataGrid.ItemsSource = bookList;
+        }
+
+        private void BookRemoveForm_OnFormSaved(LibBook book)
+        {
             selectedBook.CopyFrom(book);
             UpdateBookSidePanel(selectedBook);
             BookDataGrid.ItemsSource = null;
@@ -151,18 +150,12 @@ namespace Client.Views.Main.Features
 
         private async void BookRemoveBtn_Click(object sender, RoutedEventArgs e) {
             selectedBook = BookDataGrid.SelectedItem as LibBook;
-            if (MessageBox.Show("Are you sure you want to remove the following book?\n\n- Title: " + selectedBook.Title + "\n- Author: " + selectedBook.Author + "\n- ISBN: " + selectedBook.Isbn + "\n- Publisher: " + selectedBook.Publisher, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
-                try {
-                    //await RemoveBookAsync($"api/libbooks/{selectedBook.BookId}/{reason}", selectedBook);
 
-                    bookList.Find(x => x.BookId == selectedBook.BookId).Status = LibBook.BookStatus.Unavailable;
-                    BookDataGrid.ItemsSource = null;
-                    BookDataGrid.ItemsSource = bookList;
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            bookRemoveForm.BookIdTxt.Text = selectedBook.BookId;
+            bookRemoveForm.ISBNTxt.Text = selectedBook.Isbn;
+            bookRemoveForm.SelectedBook = selectedBook;
+
+            bookRemoveForm.ShowDialog();
         }
 
         private void BookDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e) {

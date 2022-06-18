@@ -129,8 +129,8 @@ namespace Server.Controllers
             }
         }
 
-        // PATCH api/<LibMembershipsController>/5
-        [HttpPatch("{membershipId}")]
+        // PUT api/<LibMembershipsController>/5
+        [HttpPut("{membershipId}")]
         public async Task<IActionResult> UpdateMembershipStatusOnExpiredAsync([FromRoute] string membershipId)
         {
             try

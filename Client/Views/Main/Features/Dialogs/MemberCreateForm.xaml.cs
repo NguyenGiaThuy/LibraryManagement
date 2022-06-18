@@ -36,21 +36,14 @@ namespace Client.Views.Main.Features.Dialogs
         private async void MemberCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try {
-                LibMember member = new LibMember() {
-                    //MemberId =
-                    SocialId = SocialIdTxt.Text.Trim(),
-                    Name = NameTxt.Text.Trim(),
-                    Dob = DobComboBox.Text.Trim() != "" ? DateTime.ParseExact(DobComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
-                    Address = AddressTxt.Text.Trim(),
-                    Mobile = MobileTxt.Text.Trim(),
-                    Email = EmailTxt.Text.Trim(),
-                    //MembershipId =
-                    //CreatorId =
-                    //CreatedDate =
-                    //ModifierId =
-                    //ModifiedDate =
-                    ImageUrl = ImgTxt.Text.Trim()
-                };
+                LibMember member = new LibMember(SocialIdTxt.Text.Trim(),
+                    NameTxt.Text.Trim(),
+                    DobComboBox.Text.Trim() != "" ? DateTime.ParseExact(DobComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    AddressTxt.Text.Trim(),
+                    MobileTxt.Text.Trim(),
+                    EmailTxt.Text.Trim(),
+                    App.User.UserId,
+                    ImgTxt.Text.Trim()) { }; 
 
                 OnMemberFormSaved?.Invoke(await CreateMemberAsync($"api/libmembers", member));
 

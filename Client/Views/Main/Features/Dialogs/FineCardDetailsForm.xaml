@@ -142,13 +142,11 @@
                       Grid.Row="7"
                       Margin="0,5,10,5"
                       IsEnabled="False"
-                      Style="{StaticResource InputComboBox}"
-                      LostFocus="CreatedDateComboBox_LostFocus">
+                      Style="{StaticResource InputComboBox}">
                 <Calendar Name="CreatedDateCalendar"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           Margin="5"
-                          SelectedDatesChanged="CreatedDateCalendar_SelectedDatesChanged"
                           Style="{x:Null}"/>
             </ComboBox>
         </Grid>

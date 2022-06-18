@@ -117,12 +117,18 @@ namespace Client.Views.Main.Features
 
             DateTime dob = selectedMember.Dob != null ? (DateTime)selectedMember.Dob : DateTime.MinValue;
             memberUpdateForm.DobComboBox.Text = selectedMember.Dob != null ? dob.ToString("dd-MM-yyyy") : "";
-
+            memberUpdateForm.MemberIdTxt.Text = selectedMember.MemberId;
+            memberUpdateForm.MembershipIdTxt.Text = selectedMember.MembershipId;
+            memberUpdateForm.SocialIdTxt.Text = selectedMember.SocialId;
             memberUpdateForm.NameTxt.Text = selectedMember.Name ?? "";
             memberUpdateForm.AddressTxt.Text = selectedMember.Address ?? "";
             memberUpdateForm.MobileTxt.Text = selectedMember.Mobile ?? "";
             memberUpdateForm.EmailTxt.Text = selectedMember.Email ?? "";
             memberUpdateForm.ImgTxt.Text = selectedMember.ImageUrl ?? "";
+            memberUpdateForm.CreatorIdTxt.Text = selectedMember.CreatorId;
+            memberUpdateForm.CreatedDateComboBox.Text = selectedMember.CreatedDate.ToString();
+            memberUpdateForm.ModifierIdTxt.Text = selectedMember.ModifierId;
+            memberUpdateForm.ModifiedDateComboBox.Text = selectedMember.ModifiedDate.ToString();
 
             memberUpdateForm.ShowDialog();
         }

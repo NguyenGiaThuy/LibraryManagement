@@ -30,16 +30,12 @@ namespace Client.Views.Main.Features.Dialogs
         private async void CallCardCreateFormSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try {
-                LibCallCard callCard = new LibCallCard() {
-                    //CallCardId =
-                    DueDate = DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
-                    BookId = BookIdTxt.Text.Trim(),
-                    MembershipId = MembershipIdTxt.Text.Trim(),
-                    //Status = 
-                    //CreatorId = CreatorIdTxt.Text.Trim(),
-                    //CreatedDate =
-                };
-
+                LibCallCard callCard = new LibCallCard(
+                    BookIdTxt.Text.Trim(),
+                    DueDateComboBox.Text.Trim() != "" ? DateTime.ParseExact(DueDateComboBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture) : null,
+                    MembershipIdTxt.Text.Trim(),
+                    App.User.UserId) { }; 
+                
                 OnCallCardFormSaved?.Invoke(await CreateCallCardAsync($"api/libcallcards", callCard));
 
                 Hide();
