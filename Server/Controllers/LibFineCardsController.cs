@@ -79,8 +79,8 @@ namespace Server.Controllers
             }
         }
 
-        // PATCH api/<LibFineCardsController>/5
-        [HttpPatch("{fineCardId}")]
+        // PUT api/<LibFineCardsController>/5
+        [HttpPut("{fineCardId}")]
         public async Task<IActionResult> UpdateFineCardArrearsAsync([FromRoute] string fineCardId)
         {
             try

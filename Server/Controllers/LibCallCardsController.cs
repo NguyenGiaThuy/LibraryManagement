@@ -95,8 +95,8 @@ namespace Server.Controllers
             }
         }
 
-        // PATCH api/<LibCallCardsController>/5
-        [HttpPatch("{callCardId}/{status}")]
+        // PUT api/<LibCallCardsController>/5
+        [HttpPut("{callCardId}/{status}")]
         public async Task<IActionResult> UpdateCallCardStatusAsync([FromRoute] string callCardId, [FromRoute] int status)
         {
             try
