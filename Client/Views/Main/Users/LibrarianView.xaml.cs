@@ -53,6 +53,8 @@ namespace Client.Views.Main.Users
             try {
                 bookView = await BookView.Create();
                 LibrarianFrame.Content = bookView.Content;
+                bookView.BookNewBtn.IsEnabled = false;
+                bookView.BookDataGrid.Columns[5].IsHidden = true;
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
