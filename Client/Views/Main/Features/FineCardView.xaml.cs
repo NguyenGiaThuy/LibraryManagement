@@ -19,7 +19,8 @@ namespace Client.Views.Main.Features
         List<LibFineCard> fineCardList;
         LibFineCard selectedFineCard;
 
-        public static async Task<FineCardView> Create() {
+        public static async Task<FineCardView> Create()
+        {
             var fineCardView = new FineCardView();
             fineCardView.fineCardList = await fineCardView.GetFineCardsAsync($"api/libfinecards");
             fineCardView.FineCardDataGrid.ItemsSource = fineCardView.fineCardList;
@@ -43,28 +44,32 @@ namespace Client.Views.Main.Features
             fineCardUpdateForm.OnFineCardFormSaved -= FineCardUpdateForm_OnFormSaved;
         }
 
-        private async Task<List<LibFineCard>> GetFineCardsAsync(string path) {
+        private async Task<List<LibFineCard>> GetFineCardsAsync(string path)
+        {
             List<LibFineCard> fineCards = null;
             var response = await App.Client.GetAsync(path);
             if (response.IsSuccessStatusCode) fineCards = await response.Content.ReadAsAsync<List<LibFineCard>>();
             return fineCards;
         }
 
-        private async Task<LibFineCard> DisableFineCardAsync(string path) {
+        private async Task<LibFineCard> CloseFineCardAsync(string path)
+        {
             LibFineCard fineCard = new LibFineCard();
-            var response = await App.Client.PutAsJsonAsync(path, fineCard);
-            response.EnsureSuccessStatusCode();
-            fineCard = await response.Content.ReadAsAsync<LibFineCard>();
+            //var response = await App.Client.PutAsJsonAsync(path, fineCard);
+            //response.EnsureSuccessStatusCode();
+            //fineCard = await response.Content.ReadAsAsync<LibFineCard>();
             return fineCard;
         }
 
-        private void FineCardCreateForm_OnFormSaved(LibFineCard fineCard) {
+        private void FineCardCreateForm_OnFormSaved(LibFineCard fineCard)
+        {
             fineCardList.Add(fineCard);
             FineCardDataGrid.ItemsSource = null;
             FineCardDataGrid.ItemsSource = fineCardList;
         }
 
-        private void FineCardUpdateForm_OnFormSaved(LibFineCard fineCard) {
+        private void FineCardUpdateForm_OnFormSaved(LibFineCard fineCard)
+        {
             selectedFineCard.CopyFrom(fineCard);
             FineCardDataGrid.ItemsSource = null;
             FineCardDataGrid.ItemsSource = fineCardList;
@@ -102,17 +107,20 @@ namespace Client.Views.Main.Features
             fineCardUpdateForm.ShowDialog();
         }
 
-        private void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e)
+        private async void FineCardRemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the following fineCard?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes) {
-                try {
-                    //await DisableUserAsync($"api/libusers/{selectedUser.UserId}/disable");
+            if (MessageBox.Show("Are you sure you want to remove the following fineCard?\n\n- Fine Card ID: " + selectedFineCard.FineCardId, "Remove", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    await CloseFineCardAsync($"api/libfinecards/{selectedFineCard.FineCardId}/close");
 
-                    //    userList.Find(x => x.UserId == selectedUser.UserId).Status = LibUser.UserStatus.Inactive;
-                    //    UserDataGrid.ItemsSource = null;
-                    //    UserDataGrid.ItemsSource = userList;
+                    fineCardList.Find(x => x.FineCardId == selectedFineCard.FineCardId).Status = LibFineCard.FineCardStatus.Paid;
+                    FineCardDataGrid.ItemsSource = null;
+                    FineCardDataGrid.ItemsSource = fineCardList;
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show(ex.Message);
                 }
             }

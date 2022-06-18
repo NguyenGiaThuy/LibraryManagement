@@ -184,6 +184,7 @@
                                    SelectionChanged="BookDataGrid_SelectionChanged">
                 <Syncfusion:SfDataGrid.Columns>
                     <Syncfusion:GridTextColumn     HeaderText="ID"         MinimumWidth="50" MappingName="BookId" AllowFiltering="True"/>
+                    <Syncfusion:GridTextColumn     HeaderText="ISBN"       MinimumWidth="50" MappingName="Isbn" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày XB"    MinimumWidth="50" MappingName="PublishedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>
                     <Syncfusion:GridTextColumn     HeaderText="Người nhận" MinimumWidth="50" MappingName="ReceiverId" AllowFiltering="True"/>
                     <Syncfusion:GridDateTimeColumn HeaderText="Ngày nhận"  MinimumWidth="50" MappingName="ReceivedDate" TextAlignment="Center" Pattern="CustomPattern" CustomPattern="dd-MM-yyyy" AllowFiltering="True"/>

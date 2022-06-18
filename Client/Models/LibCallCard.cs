@@ -31,7 +31,7 @@ namespace Client.Models
             [Description("Mất")]
             Lost
         }
-        public string GetStatusDescription(CallCardState callCardState) {
+        public string GetStateDescription(CallCardState callCardState) {
             var type = typeof(CallCardState);
             var member = type.GetMember(callCardState.ToString());
             var attr = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -57,11 +57,19 @@ namespace Client.Models
         public string BookId { get; set; }
         public string MembershipId { get; set; }
         public CallCardStatus? Status { get; set; }
+        public string? StatusDescription
+        {
+            get
+            {
+                if (Status == null) return "";
+                else return GetStatusDescription((CallCardStatus)Status);
+            }
+        }
         public CallCardState? State { get; set; }
-        public string? StatusDescription {
+        public string? StateDescription {
             get {
                 if (State == null) return "";
-                else return GetStatusDescription((CallCardState)State);
+                else return GetStateDescription((CallCardState)State);
             }
         }
         public string? CreatorId { get; set; }
