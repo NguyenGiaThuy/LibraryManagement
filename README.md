@@ -56,13 +56,23 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ```
 
 ## Deploy project
-(Bổ sung sau)
+
 
 ## Demo
-(Bổ sung sau)
+
 
 ## Tiến độ hiện tại
-(Bổ sung sau)
+Hoàn thành các chức năng cơ bản:
++ Thêm, xóa, sửa nhân viên
++ Thêm, xóa, sửa sách
++ Thêm, xóa, sửa thẻ mượn sách
++ Thêm xóa, sửa độc giả
++ Thống kê các thông số
++ Giao diện cơ bản
 
 ## Tính năng chưa triển khai
-(Bổ sung sau)
+- Nâng cấp giao diện 
+- Bổ sung thêm tính năng hiẻn thị một số thông tin trong phiếu mượn phạt sách khi lập 
+phiếu phạt.
+- Tinh chỉnh giao diện phù hợp hơn với người dùng.
+

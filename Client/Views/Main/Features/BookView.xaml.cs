@@ -91,7 +91,7 @@ namespace Client.Views.Main.Features
             AuthorTxt.Text = book.Author ?? "";
             PublisherTxt.Text = book.Publisher ?? "";
             ISBNTxt.Text = book.Isbn ?? "";
-            GenreTxt.Text = book.Genre != null ? book.Genre.ToString() : "";
+            GenreTxt.Text = book.GenreDescription != null ? book.GenreDescription.ToString() : "";
             PriceTxt.Text = book.Price.ToString() ?? "";
             try {
                 BookImg.Source = book.ImageUrl != null ? new BitmapImage(new Uri(book.ImageUrl)) : null;

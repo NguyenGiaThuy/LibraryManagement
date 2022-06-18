@@ -85,9 +85,9 @@ namespace Client.Views.Main.Features
             UserNameTxt.Text = user.Name ?? "";
             AddressTxt.Text = user.Address ?? "";
             MobileTxt.Text = user.Mobile ?? "";
-            EducationTxt.Text = user.Education != null ? user.Education.ToString() : "";
-            DepartmentTxt.Text = user.Department != null ? user.Department.ToString() : "";
-            PositionTxt.Text = user.Position != null ? user.Position.ToString() : "";
+            EducationTxt.Text = user.EducationDescription != null ? user.EducationDescription.ToString() : "";
+            DepartmentTxt.Text = user.DepartmentDescription != null ? user.DepartmentDescription.ToString() : "";
+            PositionTxt.Text = user.PositionDescription != null ? user.PositionDescription.ToString() : "";
             try
             {
                 UserImg.Source = user.ImageUrl != null ? new BitmapImage(new Uri(user.ImageUrl)) : null;
