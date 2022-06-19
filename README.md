@@ -60,7 +60,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ![image](https://github.com/NguyenGiaThuy/LibraryManagement/blob/main/Image/deploy.png)
 
 ## Demo
-![Link Demo app](https://drive.google.com/drive/folders/13GzRtJSrml95JNFijaEs1yjf_UQCAAUC?usp=sharing)
+[Link Demo app](https://drive.google.com/drive/folders/13GzRtJSrml95JNFijaEs1yjf_UQCAAUC?usp=sharing)
 
 ## Tiến độ hiện tại
 Hoàn thành các chức năng cơ bản:
