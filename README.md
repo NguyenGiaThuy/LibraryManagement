@@ -56,7 +56,8 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ```
 
 ## Deploy project
-
+Đây là app dành cho PC nên chỉ có thể truy cập server thông qua API
+![image](https://github.com/NguyenGiaThuy/LibraryManagement/blob/main/Image/deploy.png)
 
 ## Demo
 
